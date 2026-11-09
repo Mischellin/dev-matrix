@@ -182,5 +182,22 @@ def test_parentheses_in_query_string_preserved_and_secrets_redacted() -> None:
     assert "?token=<redacted>&state=<redacted>" in out2
 
 
+def test_asterisk_in_query_string_and_token_redacted() -> None:
+    out1 = _scrubbed("/search?filter=*&token=REVIEW_PROBE")
+    assert "REVIEW_PROBE" not in out1
+    assert "?filter=*&token=<redacted>" in out1
+
+    out2 = _scrubbed("/download?token=prefix*REVIEW_PROBE")
+    assert "prefix*REVIEW_PROBE" not in out2
+    assert "?token=<redacted>" in out2
+
+
+def test_empty_query_segments_and_delimiters_preserved() -> None:
+    path = "/search?page=1&&limit=2&"
+    out = _scrubbed(path)
+    assert "?page=1&&limit=2&" in out
+
+
+
 
 

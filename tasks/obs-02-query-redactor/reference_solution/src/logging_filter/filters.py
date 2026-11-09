@@ -16,10 +16,10 @@ SENSITIVE_KEYS = {
     "signature",
 }
 
-# Regex to find URI query string in a string (allows internal commas, parentheses, internal single quotes,
-# includes <> for idempotent passes over <redacted>, but stops at boundaries between multiple URLs/data structures).
+# Regex to find URI query string in a string (allows RFC 3986 sub-delims including *, !, parentheses, commas,
+# internal single quotes, and <> for idempotent passes, while respecting boundaries between multiple URLs/data structures).
 _QUERY_PATTERN = re.compile(
-    r"(\?[a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()]*(?:\x27[a-zA-Z0-9_\-.~%!$&+=:;@?<>()][a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()]*)*)"
+    r"(\?[a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()*!]*(?:\x27[a-zA-Z0-9_\-.~%!$&+=:;@?<>()*!][a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()*!]*)*)"
 )
 
 
@@ -38,6 +38,7 @@ def redact_query_string(query_str: str) -> str:
     new_parts = []
     for part in parts:
         if not part:
+            new_parts.append("")
             continue
         if "=" in part:
             k, _v = part.split("=", 1)
