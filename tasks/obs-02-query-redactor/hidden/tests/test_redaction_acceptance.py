@@ -123,3 +123,30 @@ def test_apostrophe_does_not_break_subsequent_secrets() -> None:
     assert "?filter=john's&token=<redacted>" in out2
 
 
+def test_multiple_urls_in_single_message_scrubbed() -> None:
+    # Multiple URLs in list representation without spaces
+    text = "urls=['/a?page=1','/b?token=demo_secret']"
+    f = RedactQuerySecretsFilter()
+    rec = logging.LogRecord("test", logging.INFO, __file__, 1, text, (), None)
+    assert f.filter(rec) is True
+    out = rec.getMessage()
+    assert "demo_secret" not in out
+    assert "urls=['/a?page=1','/b?token=<redacted>']" in out
+
+
+def test_uvicorn_access_formatter_unpacking_compatibility() -> None:
+    # Emulate Uvicorn AccessFormatter unpacking: (client_addr, method, full_path, http_version, status_code)
+    f = RedactQuerySecretsFilter()
+    rec = _access_record(f"/api/v1/download?dl={_DL}")
+    assert f.filter(rec) is True
+
+    # AccessFormatter contract: record.args must remain unpackable tuple
+    assert isinstance(rec.args, tuple)
+    assert len(rec.args) == 5
+    _client_addr, _method, full_path, _http_version, status_code = rec.args
+    assert _DL not in full_path
+    assert "?dl=<redacted>" in full_path
+    assert status_code == 200
+
+
+

@@ -49,31 +49,36 @@ def _parse_pytest_summary(stdout: str) -> dict[str, int]:
     return counts
 
 
-def get_task_timeout(task_dir: Path) -> float:
+def get_task_meta(task_dir: Path) -> dict[str, Any]:
     task_toml = task_dir / "task.toml"
+    meta: dict[str, Any] = {"timeout_s": DEFAULT_TIMEOUT_S, "total_tests": 1}
     if task_toml.exists():
         try:
             data = tomllib.loads(task_toml.read_text(encoding="utf-8"))
-            return float(data.get("verifier", {}).get("timeout_s", DEFAULT_TIMEOUT_S))
+            verifier = data.get("verifier", {})
+            meta["timeout_s"] = float(verifier.get("timeout_s", DEFAULT_TIMEOUT_S))
+            meta["total_tests"] = int(verifier.get("total_tests", 1))
         except (tomllib.TOMLDecodeError, OSError, ValueError):
-            return DEFAULT_TIMEOUT_S
-    return DEFAULT_TIMEOUT_S
+            pass
+    return meta
 
 
 def run_pytest(
     cwd: Path,
     test_paths: list[str],
     timeout_s: float = DEFAULT_TIMEOUT_S,
+    min_passed_tests: int = 1,
 ) -> dict[str, Any]:
     cwd = cwd.resolve()
     env = os.environ.copy()
     src_path = str(cwd / "src")
     env["PYTHONPATH"] = src_path
-    # Prevent caller or external environment from filtering or tampering with acceptance tests
+    # Prevent external environment or user flags from filtering/tampering with acceptance tests
     env.pop("PYTEST_ADDOPTS", None)
     env.pop("PYTEST_CONFIG", None)
     env.pop("PYTEST_PLUGINS", None)
 
+    # Use fully controlled pytest config (-c /dev/null) to ignore arbitrary candidate pyproject.toml settings
     cmd = [
         "uv",
         "run",
@@ -82,16 +87,22 @@ def run_pytest(
         "pytest",
         "pytest",
         "-q",
-        "-o",
-        "addopts=",
+        "-c",
+        "/dev/null",
         "-o",
         f"pythonpath={src_path}",
+        "-o",
+        "python_files=test_*.py *_test.py",
+        "-o",
+        "python_classes=Test* *Test",
+        "-o",
+        "python_functions=test_*",
+        "-o",
+        "testpaths=",
+        "-o",
+        "addopts=",
     ]
 
-    # Explicitly configure pytest to use target workdir and pythonpath
-    pyproject = cwd / "pyproject.toml"
-    if pyproject.exists():
-        cmd.extend(["-c", str(pyproject)])
     cmd.extend([str(Path(p).resolve()) for p in test_paths])
 
     start_t = time.perf_counter()
@@ -117,9 +128,11 @@ def run_pytest(
                     f"Error: Mandatory tests were deselected ({counts['deselected']} deselected). "
                     f"All suite tests must be executed.\n{proc.stderr}"
                 )
-            elif counts["passed"] == 0:
+            elif counts["passed"] < min_passed_tests:
                 passed = False
-                err_msg = f"Error: No tests were executed/passed.\n{proc.stderr}"
+                err_msg = (
+                    f"Error: Expected at least {min_passed_tests} tests to pass, but only {counts['passed']} passed.\n{proc.stderr}"
+                )
 
         return {
             "exit_code": proc.returncode if passed else (proc.returncode or 1),
@@ -141,12 +154,14 @@ def run_pytest(
             "duration_s": round(duration, 3),
             "passed": False,
             "timed_out": True,
+            "counts": {"passed": 0, "failed": 0, "deselected": 0, "errors": 0},
         }
 
 
 def verify_task(task_dir: Path) -> bool:
     task_id = task_dir.name
-    timeout_s = get_task_timeout(task_dir)
+    meta = get_task_meta(task_dir)
+    timeout_s = meta["timeout_s"]
     print(f"\n👉 Verifying task: {task_id}")
 
     seed_dir = task_dir / "seed"
@@ -271,7 +286,10 @@ def evaluate_task(task_id: str, workdir: Path) -> dict[str, Any]:
         print(f"Error: task {task_id} not found", file=sys.stderr)
         sys.exit(1)
 
-    timeout_s = get_task_timeout(task_dir)
+    meta = get_task_meta(task_dir)
+    timeout_s = meta["timeout_s"]
+    expected_tests = meta["total_tests"]
+
     seed_tests = task_dir / "seed" / "tests"
     hidden_tests = task_dir / "hidden" / "tests"
 
@@ -284,10 +302,15 @@ def evaluate_task(task_id: str, workdir: Path) -> dict[str, Any]:
     if hidden_tests.exists():
         test_paths.append(str(hidden_tests))
 
-    result = run_pytest(workdir, test_paths, timeout_s=timeout_s)
+    result = run_pytest(
+        workdir,
+        test_paths,
+        timeout_s=timeout_s,
+        min_passed_tests=expected_tests,
+    )
 
     if result["passed"]:
-        print(f"Status: ✅ PASS in {result['duration_s']}s")
+        print(f"Status: ✅ PASS ({result['counts']['passed']}/{expected_tests} tests in {result['duration_s']}s)")
     else:
         status_note = "TIMEOUT" if result.get("timed_out") else "FAIL"
         print(f"Status: ❌ {status_note} in {result['duration_s']}s")

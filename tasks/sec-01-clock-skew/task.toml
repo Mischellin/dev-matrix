@@ -8,4 +8,5 @@ check_cmd = "pytest tests/"
 [verifier]
 type = "pytest"
 timeout_s = 60
+total_tests = 6
 passing_threshold = 1.0

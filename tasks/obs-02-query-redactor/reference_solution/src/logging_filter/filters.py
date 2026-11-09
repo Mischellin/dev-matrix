@@ -3,6 +3,7 @@ from __future__ import annotations
 import logging
 import re
 import urllib.parse
+from typing import Any
 
 SENSITIVE_KEYS = {
     "dl",
@@ -15,8 +16,11 @@ SENSITIVE_KEYS = {
     "signature",
 }
 
-# Regex to find URI query string in a string (allows internal single quotes per RFC 3986 sub-delims)
-_QUERY_PATTERN = re.compile(r"(\?[^ \t\r\n\"`\\]*)")
+# Regex to find URI query string in a string (allows internal single quotes per RFC 3986 sub-delims,
+# includes <> for idempotent passes over <redacted>, but stops at boundaries between multiple URLs/data structures).
+_QUERY_PATTERN = re.compile(
+    r"(\?[a-zA-Z0-9_\-.~%!$&+=:;@/?<>]*(?:\x27[a-zA-Z0-9_\-.~%!$&+=:;@/?<>]+)*)"
+)
 
 
 def _is_sensitive_key(key: str) -> bool:
@@ -50,13 +54,7 @@ def redact_query_string(query_str: str) -> str:
 def redact_text(text: str) -> str:
     """Find query strings inside text and redact them."""
     def _replace(match: re.Match) -> str:
-        qs = match.group(1)
-        suffix = ""
-        # If the query string was enclosed in quotes like 'GET /path?x=y', strip trailing quote
-        if qs.endswith("'") and text[:match.start()].count("'") % 2 == 1:
-            qs = qs[:-1]
-            suffix = "'"
-        return redact_query_string(qs) + suffix
+        return redact_query_string(match.group(1))
 
     return _QUERY_PATTERN.sub(_replace, text)
 
@@ -66,10 +64,33 @@ class RedactQuerySecretsFilter(logging.Filter):
 
     def filter(self, record: logging.LogRecord) -> bool:
         try:
-            # Format message with args first to prevent placeholder stripping collisions
-            formatted = record.getMessage()
-            record.msg = redact_text(formatted)
-            record.args = None
+            # Case A: If record.msg contains a query string with format placeholders (e.g. %s or %(key)s),
+            # we format message first so that stripping/replacing placeholders does not desync arguments.
+            if isinstance(record.msg, str) and "?" in record.msg and ("%s" in record.msg or "%(" in record.msg):
+                formatted = record.getMessage()
+                record.msg = redact_text(formatted)
+                record.args = () if isinstance(record.args, tuple) else {}
+            else:
+                # Case B: Standard logging and access logs (e.g. Uvicorn):
+                # 1. Redact args preserving exact tuple/list/dict structure so custom formatters
+                # (like Uvicorn's AccessFormatter) can unpack args.
+                if isinstance(record.args, tuple):
+                    record.args = tuple(
+                        redact_text(a) if isinstance(a, str) else a for a in record.args
+                    )
+                elif isinstance(record.args, list):
+                    record.args = [
+                        redact_text(a) if isinstance(a, str) else a for a in record.args
+                    ]
+                elif isinstance(record.args, dict):
+                    new_dict: dict[str, Any] = {}
+                    for k, v in record.args.items():
+                        new_dict[k] = redact_text(v) if isinstance(v, str) else v
+                    record.args = new_dict
+
+                # 2. Redact record.msg if it is a string
+                if isinstance(record.msg, str):
+                    record.msg = redact_text(record.msg)
         except Exception:  # noqa: BLE001, S110
             # Filter contract: never raise, never drop record
             pass

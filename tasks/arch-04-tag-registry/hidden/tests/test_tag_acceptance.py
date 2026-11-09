@@ -42,6 +42,22 @@ def test_list_recipes_filtering_empty_and_whitespace_tag() -> None:
     assert len(svc.list_recipes(tag=None)) == 1
 
 
+def test_save_recipe_overwrites_existing_tags() -> None:
+    svc = RecipeTagService()
+    svc.save_recipe("r1", ["dinner", "pasta"])
+    assert svc.get_recipe("r1")["tags"] == ["dinner", "pasta"]
+    assert svc.list_all_tags() == ["dinner", "pasta"]
+
+    # Overwrite tag set with new tags (must NOT append to existing set)
+    svc.save_recipe("r1", ["dessert"])
+    res = svc.get_recipe("r1")
+    assert res is not None
+    assert res["tags"] == ["dessert"]
+    # Unreferenced old tags must no longer appear in list_all_tags
+    assert svc.list_all_tags() == ["dessert"]
+
+
+
 def test_list_all_tags_sorted_and_cleaned() -> None:
     svc = RecipeTagService()
     svc.save_recipe("r1", ["soup", "dinner"])
