@@ -1,0 +1,142 @@
+{
+  "sonnet": {
+    "name": "Claude 3.7 Sonnet",
+    "provider": "Anthropic",
+    "family": "claude",
+    "context_window": 200000,
+    "input_price_per_m": 3.0,
+    "output_price_per_m": 15.0,
+    "role_strengths": [
+      "Enterprise 1C",
+      "Complex Refactoring",
+      "Multi-Agent Review"
+    ],
+    "description": "High reasoning density, exceptional code discipline and strict conformance to project rules."
+  },
+  "codex-sol": {
+    "name": "Codex Sol (GPT-SWE)",
+    "provider": "OpenAI",
+    "family": "codex",
+    "context_window": 128000,
+    "input_price_per_m": 2.5,
+    "output_price_per_m": 10.0,
+    "role_strengths": [
+      "System Architecture",
+      "Python Backend",
+      "Security Auditing"
+    ],
+    "description": "Top-tier engineering agent with deep static analysis and balanced token efficiency."
+  },
+  "codex-luna": {
+    "name": "Codex Luna (Fast SWE)",
+    "provider": "OpenAI",
+    "family": "codex",
+    "context_window": 128000,
+    "input_price_per_m": 0.5,
+    "output_price_per_m": 2.0,
+    "role_strengths": [
+      "Quick Fixes",
+      "Documentation",
+      "CRUD Features"
+    ],
+    "description": "Fast-turnaround agent optimized for low latency and high daily throughput."
+  },
+  "gemini-flash": {
+    "name": "Gemini 3.8 Flash",
+    "provider": "Google",
+    "family": "gemini",
+    "context_window": 1000000,
+    "input_price_per_m": 0.15,
+    "output_price_per_m": 0.6,
+    "role_strengths": [
+      "Orchestration",
+      "Session Planning",
+      "Large-Context Search"
+    ],
+    "description": "Massive context, ultra-low cost orchestrator capable of managing long multi-stage pipelines."
+  },
+  "gemini-4-argon": {
+    "name": "Gemini 4 Argon",
+    "provider": "Google",
+    "family": "gemini",
+    "context_window": 2000000,
+    "input_price_per_m": 2.0,
+    "output_price_per_m": 8.0,
+    "role_strengths": [
+      "Deep Reasoning",
+      "Multimodal Verification",
+      "Data Migrations"
+    ],
+    "description": "Flagship multi-million context model for complex reasoning and risk escalation."
+  },
+  "grok": {
+    "name": "Grok 4.7",
+    "provider": "xAI",
+    "family": "grok",
+    "context_window": 131072,
+    "input_price_per_m": 2.0,
+    "output_price_per_m": 10.0,
+    "role_strengths": [
+      "System Analysis",
+      "Epics & Specs",
+      "Python Architecture"
+    ],
+    "description": "Sharp architectural reasoning model excelling at decomposition and technical specs."
+  },
+  "gpt-6-astra": {
+    "name": "GPT-6 Astra",
+    "provider": "OpenAI",
+    "family": "codex",
+    "context_window": 256000,
+    "input_price_per_m": 5.0,
+    "output_price_per_m": 20.0,
+    "role_strengths": [
+      "Escalation",
+      "Critical Infrastructure",
+      "Dispute Resolution"
+    ],
+    "description": "Frontier model utilized for P0 escalation and high-stakes infrastructure mutations."
+  },
+  "minimax": {
+    "name": "MiniMax-M3.1-Flash",
+    "provider": "MiniMax",
+    "family": "minimax",
+    "context_window": 128000,
+    "input_price_per_m": 0.2,
+    "output_price_per_m": 1.1,
+    "role_strengths": [
+      "Fast SWE",
+      "API Integration",
+      "High Throughput"
+    ],
+    "description": "Competitive challenger model exhibiting 100% pass rates on historical validation suites."
+  },
+  "glm-5": {
+    "name": "GLM-5.3",
+    "provider": "Zhipu AI",
+    "family": "glm",
+    "context_window": 128000,
+    "input_price_per_m": 0.5,
+    "output_price_per_m": 2.0,
+    "role_strengths": [
+      "Code Generation",
+      "Bugfixing",
+      "Multi-lingual Docs"
+    ],
+    "description": "Robust code generation model with strong token-level reasoning capabilities."
+  },
+  "qwen3.8-max": {
+    "name": "Qwen 3.8 Max",
+    "provider": "Alibaba",
+    "family": "qwen",
+    "context_window": 128000,
+    "input_price_per_m": 1.6,
+    "output_price_per_m": 6.4,
+    "role_strengths": [
+      "Backend Logic",
+      "Reviewing",
+      "Fullstack Refactoring"
+    ],
+    "description": "Leading open-weight based model family with balanced accuracy across programming languages."
+  }
+}
