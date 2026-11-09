@@ -42,3 +42,47 @@ sys.exit(pytest.main(sys.argv[1:], plugins=[SkipOne()]))
 
     monkeypatch.setattr(runner.subprocess, "run", mock_run)
     assert runner.verify_task(runner.TASKS_DIR / "sec-01-clock-skew") is False
+
+
+def test_runner_rejects_xfailed_tests(monkeypatch) -> None:
+    plugin_code = """
+import sys, pytest
+class XfailOne:
+    def pytest_collection_modifyitems(self, items):
+        for item in items:
+            if item.name == "test_far_future_auth_date_fails":
+                item.add_marker(pytest.mark.xfail(run=False, reason="test xfail probe"))
+sys.exit(pytest.main(sys.argv[1:], plugins=[XfailOne()]))
+"""
+    original_run = runner.subprocess.run
+
+    def mock_run(cmd, **kwargs):
+        if kwargs.get("cwd", "").endswith("reference_solution") and "/hidden/tests" in cmd[-1]:
+            changed = ["uv", "run", "--no-project", "--with", "pytest", "python", "-c", plugin_code] + cmd[6:]
+            return original_run(changed, **kwargs)
+        return original_run(cmd, **kwargs)
+
+    monkeypatch.setattr(runner.subprocess, "run", mock_run)
+    assert runner.verify_task(runner.TASKS_DIR / "sec-01-clock-skew") is False
+
+
+def test_runner_rejects_collection_errors_as_valid_failure(monkeypatch) -> None:
+    original_run_pytest = runner.run_pytest
+
+    def mock_run(cwd, test_paths, **kwargs):
+        # Simulate collection error (syntax error or import error) on seed
+        if str(cwd).endswith("seed") and any("/hidden/tests" in p for p in test_paths):
+            return {
+                "exit_code": 2,
+                "stdout": "ERROR collecting test_foo.py\n1 error in 0.05s",
+                "stderr": "SyntaxError: invalid syntax",
+                "duration_s": 0.05,
+                "passed": False,
+                "timed_out": False,
+                "counts": {"passed": 0, "failed": 0, "deselected": 0, "skipped": 0, "xfailed": 0, "xpassed": 0, "errors": 1},
+            }
+        return original_run_pytest(cwd, test_paths, **kwargs)
+
+    monkeypatch.setattr(runner, "run_pytest", mock_run)
+    # verify_task must NOT accept collection error as clean test rejection
+    assert runner.verify_task(runner.TASKS_DIR / "sec-01-clock-skew") is False

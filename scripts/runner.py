@@ -4,10 +4,10 @@ DevMatrix Benchmark Suite Runner & Verifier.
 
 Commands:
   verify-suite: Verifies integrity of all anonymized benchmark tasks:
-    1. Seed baseline tests pass on initial seed (exact expected count, no skips).
-    2. Hidden tests fail on initial vulnerable/unimplemented seed.
-    3. Reference solution passes 100% of hidden acceptance tests (exact count, no skips).
-    4. Reference solution passes 100% of baseline seed tests (no regressions, no skips).
+    1. Seed baseline tests pass on initial seed (exact expected count, zero skips/xfails).
+    2. Hidden tests fail on initial vulnerable/unimplemented seed (actual test failure, zero infrastructure/collection errors).
+    3. Reference solution passes 100% of hidden acceptance tests (exact count, zero skips/xfails).
+    4. Reference solution passes 100% of baseline seed tests (no regressions, exact count, zero skips/xfails).
     5. Validates manifest.json and task.toml consistency.
   prepare: Copies anonymized seed + task prompt into target directory.
   evaluate: Runs baseline and hidden acceptance tests against agent's workdir.
@@ -34,7 +34,15 @@ DEFAULT_TIMEOUT_S = 60.0
 
 
 def _parse_pytest_summary(stdout: str) -> dict[str, int]:
-    counts = {"passed": 0, "failed": 0, "deselected": 0, "skipped": 0, "errors": 0}
+    counts = {
+        "passed": 0,
+        "failed": 0,
+        "deselected": 0,
+        "skipped": 0,
+        "xfailed": 0,
+        "xpassed": 0,
+        "errors": 0,
+    }
     m_pass = re.search(r"(\d+)\s+passed", stdout)
     if m_pass:
         counts["passed"] = int(m_pass.group(1))
@@ -47,6 +55,12 @@ def _parse_pytest_summary(stdout: str) -> dict[str, int]:
     m_skip = re.search(r"(\d+)\s+skipped", stdout)
     if m_skip:
         counts["skipped"] = int(m_skip.group(1))
+    m_xfail = re.search(r"(\d+)\s+xfailed", stdout)
+    if m_xfail:
+        counts["xfailed"] = int(m_xfail.group(1))
+    m_xpass = re.search(r"(\d+)\s+xpassed", stdout)
+    if m_xpass:
+        counts["xpassed"] = int(m_xpass.group(1))
     m_err = re.search(r"(\d+)\s+error", stdout)
     if m_err:
         counts["errors"] = int(m_err.group(1))
@@ -83,6 +97,7 @@ def run_pytest(
     cwd: Path,
     test_paths: list[str],
     timeout_s: float = DEFAULT_TIMEOUT_S,
+    expected_exact_tests: int | None = None,
     min_passed_tests: int = 1,
 ) -> dict[str, Any]:
     cwd = cwd.resolve()
@@ -150,6 +165,22 @@ def run_pytest(
                     f"Error: Tests were skipped ({counts['skipped']} skipped). "
                     f"All suite tests must be executed without skipping.\n{proc.stderr}"
                 )
+            elif counts["xfailed"] > 0:
+                passed = False
+                err_msg = (
+                    f"Error: Tests were xfailed ({counts['xfailed']} xfailed). "
+                    f"All suite tests must pass normally.\n{proc.stderr}"
+                )
+            elif counts["xpassed"] > 0:
+                passed = False
+                err_msg = (
+                    f"Error: Unexpected xpasses ({counts['xpassed']} xpassed).\n{proc.stderr}"
+                )
+            elif expected_exact_tests is not None and counts["passed"] != expected_exact_tests:
+                passed = False
+                err_msg = (
+                    f"Error: Expected exactly {expected_exact_tests} tests to pass, but {counts['passed']} passed.\n{proc.stderr}"
+                )
             elif counts["passed"] < min_passed_tests:
                 passed = False
                 err_msg = (
@@ -176,7 +207,15 @@ def run_pytest(
             "duration_s": round(duration, 3),
             "passed": False,
             "timed_out": True,
-            "counts": {"passed": 0, "failed": 0, "deselected": 0, "skipped": 0, "errors": 0},
+            "counts": {
+                "passed": 0,
+                "failed": 0,
+                "deselected": 0,
+                "skipped": 0,
+                "xfailed": 0,
+                "xpassed": 0,
+                "errors": 1,
+            },
         }
 
 
@@ -194,23 +233,40 @@ def verify_task(task_dir: Path) -> bool:
 
     # Step 1: Base seed must pass its baseline tests
     print(f"  1. Checking seed baseline tests ({exp_base} tests)... ", end="", flush=True)
-    res_base = run_pytest(seed_dir, [str(seed_dir / "tests")], timeout_s=timeout_s, min_passed_tests=exp_base)
+    res_base = run_pytest(
+        seed_dir,
+        [str(seed_dir / "tests")],
+        timeout_s=timeout_s,
+        expected_exact_tests=exp_base,
+    )
     if not res_base["passed"]:
         print(f"❌ FAILED (seed baseline tests should pass)\n{res_base['stdout']}\n{res_base['stderr']}")
         return False
     print("✅ Passed")
 
-    # Step 2: Hidden tests must fail on the seed
+    # Step 2: Hidden tests must fail on the seed (due to actual test failures, NOT collection/infrastructure errors)
     print("  2. Checking hidden tests fail on unpatched seed... ", end="", flush=True)
     res_hidden_on_seed = run_pytest(seed_dir, [str(hidden_dir / "tests")], timeout_s=timeout_s)
-    if res_hidden_on_seed["passed"]:
+    cnt = res_hidden_on_seed["counts"]
+    if res_hidden_on_seed["timed_out"]:
+        print(f"❌ FAILED (hidden tests timed out on seed instead of failing cleanly)\n{res_hidden_on_seed['stderr']}")
+        return False
+    if cnt["errors"] > 0:
+        print(f"❌ FAILED (hidden tests produced collection/syntax error on seed instead of test failure!)\n{res_hidden_on_seed['stderr']}")
+        return False
+    if cnt["failed"] == 0 or res_hidden_on_seed["passed"]:
         print("❌ FAILED (hidden tests must fail on vulnerable/unimplemented seed!)")
         return False
     print("✅ Correctly rejected")
 
     # Step 3: Hidden tests must pass on reference solution
     print(f"  3. Checking reference solution passes 100% of hidden tests ({exp_hidden} tests)... ", end="", flush=True)
-    res_ref_hidden = run_pytest(ref_dir, [str(hidden_dir / "tests")], timeout_s=timeout_s, min_passed_tests=exp_hidden)
+    res_ref_hidden = run_pytest(
+        ref_dir,
+        [str(hidden_dir / "tests")],
+        timeout_s=timeout_s,
+        expected_exact_tests=exp_hidden,
+    )
     if not res_ref_hidden["passed"]:
         print(f"❌ FAILED (reference solution must pass all hidden tests)\n{res_ref_hidden['stdout']}\n{res_ref_hidden['stderr']}")
         return False
@@ -218,7 +274,12 @@ def verify_task(task_dir: Path) -> bool:
 
     # Step 4: Baseline tests must also pass on reference solution (no regressions)
     print(f"  4. Checking reference solution preserves baseline seed tests ({exp_base} tests)... ", end="", flush=True)
-    res_ref_seed = run_pytest(ref_dir, [str(seed_dir / "tests")], timeout_s=timeout_s, min_passed_tests=exp_base)
+    res_ref_seed = run_pytest(
+        ref_dir,
+        [str(seed_dir / "tests")],
+        timeout_s=timeout_s,
+        expected_exact_tests=exp_base,
+    )
     if not res_ref_seed["passed"]:
         print(f"❌ FAILED (reference solution broke baseline tests)\n{res_ref_seed['stdout']}\n{res_ref_seed['stderr']}")
         return False
@@ -354,7 +415,7 @@ def evaluate_task(task_id: str, workdir: Path) -> dict[str, Any]:
         workdir,
         test_paths,
         timeout_s=timeout_s,
-        min_passed_tests=expected_tests,
+        expected_exact_tests=expected_tests,
     )
 
     if result["passed"]:

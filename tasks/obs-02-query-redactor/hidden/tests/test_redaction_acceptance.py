@@ -171,5 +171,16 @@ def test_numeric_and_repr_format_specifiers_in_template() -> None:
     assert "<redacted>" in rec2.getMessage()
 
 
+def test_parentheses_in_query_string_preserved_and_secrets_redacted() -> None:
+    out1 = _scrubbed("/search?filter=(a)&token=REVIEW_PROBE")
+    assert "REVIEW_PROBE" not in out1
+    assert "?filter=(a)&token=<redacted>" in out1
+
+    out2 = _scrubbed("/download?token=prefix(suffix)&state=REVIEW_PROBE")
+    assert "prefix(suffix)" not in out2
+    assert "REVIEW_PROBE" not in out2
+    assert "?token=<redacted>&state=<redacted>" in out2
+
+
 
 

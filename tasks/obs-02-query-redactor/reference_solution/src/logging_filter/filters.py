@@ -16,10 +16,10 @@ SENSITIVE_KEYS = {
     "signature",
 }
 
-# Regex to find URI query string in a string (allows internal commas, internal single quotes followed by word chars,
+# Regex to find URI query string in a string (allows internal commas, parentheses, internal single quotes,
 # includes <> for idempotent passes over <redacted>, but stops at boundaries between multiple URLs/data structures).
 _QUERY_PATTERN = re.compile(
-    r"(\?[a-zA-Z0-9_\-.~%!$&+=:;@/?,<>]*(?:\x27[a-zA-Z0-9_\-.~%!$&+=:;@?<>][a-zA-Z0-9_\-.~%!$&+=:;@/?,<>]*)*)"
+    r"(\?[a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()]*(?:\x27[a-zA-Z0-9_\-.~%!$&+=:;@?<>()][a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()]*)*)"
 )
 
 
