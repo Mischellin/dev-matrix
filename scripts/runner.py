@@ -4,10 +4,11 @@ DevMatrix Benchmark Suite Runner & Verifier.
 
 Commands:
   verify-suite: Verifies integrity of all anonymized benchmark tasks:
-    1. Seed baseline tests pass on initial seed.
+    1. Seed baseline tests pass on initial seed (exact expected count, no skips).
     2. Hidden tests fail on initial vulnerable/unimplemented seed.
-    3. Reference solution passes 100% of hidden acceptance tests.
-    4. Reference solution passes 100% of baseline seed tests (no regressions).
+    3. Reference solution passes 100% of hidden acceptance tests (exact count, no skips).
+    4. Reference solution passes 100% of baseline seed tests (no regressions, no skips).
+    5. Validates manifest.json and task.toml consistency.
   prepare: Copies anonymized seed + task prompt into target directory.
   evaluate: Runs baseline and hidden acceptance tests against agent's workdir.
 """
@@ -33,7 +34,7 @@ DEFAULT_TIMEOUT_S = 60.0
 
 
 def _parse_pytest_summary(stdout: str) -> dict[str, int]:
-    counts = {"passed": 0, "failed": 0, "deselected": 0, "errors": 0}
+    counts = {"passed": 0, "failed": 0, "deselected": 0, "skipped": 0, "errors": 0}
     m_pass = re.search(r"(\d+)\s+passed", stdout)
     if m_pass:
         counts["passed"] = int(m_pass.group(1))
@@ -43,6 +44,9 @@ def _parse_pytest_summary(stdout: str) -> dict[str, int]:
     m_desel = re.search(r"(\d+)\s+deselected", stdout)
     if m_desel:
         counts["deselected"] = int(m_desel.group(1))
+    m_skip = re.search(r"(\d+)\s+skipped", stdout)
+    if m_skip:
+        counts["skipped"] = int(m_skip.group(1))
     m_err = re.search(r"(\d+)\s+error", stdout)
     if m_err:
         counts["errors"] = int(m_err.group(1))
@@ -51,13 +55,25 @@ def _parse_pytest_summary(stdout: str) -> dict[str, int]:
 
 def get_task_meta(task_dir: Path) -> dict[str, Any]:
     task_toml = task_dir / "task.toml"
-    meta: dict[str, Any] = {"timeout_s": DEFAULT_TIMEOUT_S, "total_tests": 1}
+    meta: dict[str, Any] = {
+        "timeout_s": DEFAULT_TIMEOUT_S,
+        "baseline_tests": 1,
+        "hidden_tests": 1,
+        "total_tests": 2,
+    }
     if task_toml.exists():
         try:
             data = tomllib.loads(task_toml.read_text(encoding="utf-8"))
             verifier = data.get("verifier", {})
             meta["timeout_s"] = float(verifier.get("timeout_s", DEFAULT_TIMEOUT_S))
-            meta["total_tests"] = int(verifier.get("total_tests", 1))
+            meta["baseline_tests"] = int(verifier.get("baseline_tests", 1))
+            meta["hidden_tests"] = int(verifier.get("hidden_tests", 1))
+            meta["total_tests"] = int(
+                verifier.get(
+                    "total_tests",
+                    meta["baseline_tests"] + meta["hidden_tests"],
+                )
+            )
         except (tomllib.TOMLDecodeError, OSError, ValueError):
             pass
     return meta
@@ -78,7 +94,7 @@ def run_pytest(
     env.pop("PYTEST_CONFIG", None)
     env.pop("PYTEST_PLUGINS", None)
 
-    # Use fully controlled pytest config (-c /dev/null) to ignore arbitrary candidate pyproject.toml settings
+    # Use fully controlled pytest config (-c /dev/null) to ignore arbitrary candidate settings
     cmd = [
         "uv",
         "run",
@@ -128,6 +144,12 @@ def run_pytest(
                     f"Error: Mandatory tests were deselected ({counts['deselected']} deselected). "
                     f"All suite tests must be executed.\n{proc.stderr}"
                 )
+            elif counts["skipped"] > 0:
+                passed = False
+                err_msg = (
+                    f"Error: Tests were skipped ({counts['skipped']} skipped). "
+                    f"All suite tests must be executed without skipping.\n{proc.stderr}"
+                )
             elif counts["passed"] < min_passed_tests:
                 passed = False
                 err_msg = (
@@ -154,7 +176,7 @@ def run_pytest(
             "duration_s": round(duration, 3),
             "passed": False,
             "timed_out": True,
-            "counts": {"passed": 0, "failed": 0, "deselected": 0, "errors": 0},
+            "counts": {"passed": 0, "failed": 0, "deselected": 0, "skipped": 0, "errors": 0},
         }
 
 
@@ -162,6 +184,8 @@ def verify_task(task_dir: Path) -> bool:
     task_id = task_dir.name
     meta = get_task_meta(task_dir)
     timeout_s = meta["timeout_s"]
+    exp_base = meta["baseline_tests"]
+    exp_hidden = meta["hidden_tests"]
     print(f"\n👉 Verifying task: {task_id}")
 
     seed_dir = task_dir / "seed"
@@ -169,8 +193,8 @@ def verify_task(task_dir: Path) -> bool:
     ref_dir = task_dir / "reference_solution"
 
     # Step 1: Base seed must pass its baseline tests
-    print("  1. Checking seed baseline tests... ", end="", flush=True)
-    res_base = run_pytest(seed_dir, [str(seed_dir / "tests")], timeout_s=timeout_s)
+    print(f"  1. Checking seed baseline tests ({exp_base} tests)... ", end="", flush=True)
+    res_base = run_pytest(seed_dir, [str(seed_dir / "tests")], timeout_s=timeout_s, min_passed_tests=exp_base)
     if not res_base["passed"]:
         print(f"❌ FAILED (seed baseline tests should pass)\n{res_base['stdout']}\n{res_base['stderr']}")
         return False
@@ -185,16 +209,16 @@ def verify_task(task_dir: Path) -> bool:
     print("✅ Correctly rejected")
 
     # Step 3: Hidden tests must pass on reference solution
-    print("  3. Checking reference solution passes 100% of hidden tests... ", end="", flush=True)
-    res_ref_hidden = run_pytest(ref_dir, [str(hidden_dir / "tests")], timeout_s=timeout_s)
+    print(f"  3. Checking reference solution passes 100% of hidden tests ({exp_hidden} tests)... ", end="", flush=True)
+    res_ref_hidden = run_pytest(ref_dir, [str(hidden_dir / "tests")], timeout_s=timeout_s, min_passed_tests=exp_hidden)
     if not res_ref_hidden["passed"]:
         print(f"❌ FAILED (reference solution must pass all hidden tests)\n{res_ref_hidden['stdout']}\n{res_ref_hidden['stderr']}")
         return False
     print("✅ Passed")
 
     # Step 4: Baseline tests must also pass on reference solution (no regressions)
-    print("  4. Checking reference solution preserves baseline seed tests... ", end="", flush=True)
-    res_ref_seed = run_pytest(ref_dir, [str(seed_dir / "tests")], timeout_s=timeout_s)
+    print(f"  4. Checking reference solution preserves baseline seed tests ({exp_base} tests)... ", end="", flush=True)
+    res_ref_seed = run_pytest(ref_dir, [str(seed_dir / "tests")], timeout_s=timeout_s, min_passed_tests=exp_base)
     if not res_ref_seed["passed"]:
         print(f"❌ FAILED (reference solution broke baseline tests)\n{res_ref_seed['stdout']}\n{res_ref_seed['stderr']}")
         return False
@@ -217,6 +241,9 @@ def verify_suite() -> int:
     print("===========================================================")
 
     all_passed = True
+
+    # Validate metadata consistency first
+    print("\n📋 Checking manifest.json <-> task.toml consistency...")
     for item in tasks:
         t_id = item["id"]
         t_path = TASKS_DIR / t_id
@@ -225,6 +252,27 @@ def verify_suite() -> int:
             all_passed = False
             continue
 
+        meta = get_task_meta(t_path)
+        manifest_count = item.get("tests_count")
+        toml_count = meta.get("total_tests")
+        calculated_count = meta.get("baseline_tests", 0) + meta.get("hidden_tests", 0)
+
+        if manifest_count != toml_count or toml_count != calculated_count:
+            print(
+                f"❌ Count mismatch for {t_id}: manifest={manifest_count}, "
+                f"task.toml={toml_count}, baseline+hidden={calculated_count}"
+            )
+            all_passed = False
+        else:
+            print(f"  • {t_id}: {toml_count} tests consistent")
+
+    if not all_passed:
+        print("⚠️ METADATA INCONSISTENCY DETECTED.")
+        return 1
+
+    for item in tasks:
+        t_id = item["id"]
+        t_path = TASKS_DIR / t_id
         if not verify_task(t_path):
             all_passed = False
 

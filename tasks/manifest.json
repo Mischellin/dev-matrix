@@ -16,7 +16,7 @@
       "domain": "Python / Observability & Security",
       "difficulty": "S",
       "class": "security",
-      "tests_count": 12,
+      "tests_count": 19,
       "description": "Implement a Python logging.Filter that scrubs sensitive query tokens (dl, token, code, state, X-Amz-*) from access logs."
     },
     {
@@ -34,7 +34,7 @@
       "domain": "Python / Data Architecture & Security",
       "difficulty": "M",
       "class": "architecture",
-      "tests_count": 6,
+      "tests_count": 8,
       "description": "Implement an in-memory tag catalog featuring case-normalization, deduplication, alphabetical sorting, and fine-grained scope isolation."
     }
   ]

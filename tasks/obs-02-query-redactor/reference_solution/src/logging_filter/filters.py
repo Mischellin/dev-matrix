@@ -16,10 +16,10 @@ SENSITIVE_KEYS = {
     "signature",
 }
 
-# Regex to find URI query string in a string (allows internal single quotes per RFC 3986 sub-delims,
+# Regex to find URI query string in a string (allows internal commas, internal single quotes followed by word chars,
 # includes <> for idempotent passes over <redacted>, but stops at boundaries between multiple URLs/data structures).
 _QUERY_PATTERN = re.compile(
-    r"(\?[a-zA-Z0-9_\-.~%!$&+=:;@/?<>]*(?:\x27[a-zA-Z0-9_\-.~%!$&+=:;@/?<>]+)*)"
+    r"(\?[a-zA-Z0-9_\-.~%!$&+=:;@/?,<>]*(?:\x27[a-zA-Z0-9_\-.~%!$&+=:;@?<>][a-zA-Z0-9_\-.~%!$&+=:;@/?,<>]*)*)"
 )
 
 
@@ -64,9 +64,13 @@ class RedactQuerySecretsFilter(logging.Filter):
 
     def filter(self, record: logging.LogRecord) -> bool:
         try:
-            # Case A: If record.msg contains a query string with format placeholders (e.g. %s or %(key)s),
+            # Case A: If record.msg contains a query string with any format placeholders (e.g. %s, %d, %r, %(key)s),
             # we format message first so that stripping/replacing placeholders does not desync arguments.
-            if isinstance(record.msg, str) and "?" in record.msg and ("%s" in record.msg or "%(" in record.msg):
+            if (
+                isinstance(record.msg, str)
+                and "?" in record.msg
+                and "%" in record.msg.split("?", 1)[1]
+            ):
                 formatted = record.getMessage()
                 record.msg = redact_text(formatted)
                 record.args = () if isinstance(record.args, tuple) else {}

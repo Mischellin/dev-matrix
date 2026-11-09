@@ -149,4 +149,27 @@ def test_uvicorn_access_formatter_unpacking_compatibility() -> None:
     assert status_code == 200
 
 
+def test_comma_separated_filter_and_token_values() -> None:
+    out1 = _scrubbed("/search?filter=a,b&token=REVIEW_MARKER")
+    assert "REVIEW_MARKER" not in out1
+    assert "?filter=a,b&token=<redacted>" in out1
+
+    out2 = _scrubbed("/download?token=prefix,REVIEW_MARKER")
+    assert "prefix,REVIEW_MARKER" not in out2
+    assert "?token=<redacted>" in out2
+
+
+def test_numeric_and_repr_format_specifiers_in_template() -> None:
+    f = RedactQuerySecretsFilter()
+    rec1 = logging.LogRecord("test", logging.INFO, __file__, 1, "/docs?code=%d", (123,), None)
+    assert f.filter(rec1) is True
+    assert rec1.getMessage() == "/docs?code=<redacted>"
+
+    rec2 = logging.LogRecord("test", logging.INFO, __file__, 1, "/docs?token=%r", ("secret_token",), None)
+    assert f.filter(rec2) is True
+    assert "secret_token" not in rec2.getMessage()
+    assert "<redacted>" in rec2.getMessage()
+
+
+
 
