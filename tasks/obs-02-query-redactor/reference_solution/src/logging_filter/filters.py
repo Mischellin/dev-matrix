@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 import re
-from typing import Any
+import urllib.parse
 
 SENSITIVE_KEYS = {
     "dl",
@@ -20,8 +20,8 @@ _QUERY_PATTERN = re.compile(r"(\?[^ \t\r\n\"'\\]*)")
 
 
 def _is_sensitive_key(key: str) -> bool:
-    lk = key.lower()
-    return lk in SENSITIVE_KEYS or lk.startswith("x-amz-")
+    unquoted = urllib.parse.unquote(key).lower()
+    return unquoted in SENSITIVE_KEYS or unquoted.startswith("x-amz-")
 
 
 def redact_query_string(query_str: str) -> str:
@@ -60,28 +60,10 @@ class RedactQuerySecretsFilter(logging.Filter):
 
     def filter(self, record: logging.LogRecord) -> bool:
         try:
-            # If record.args is a mapping (e.g. named formatting %(key)s)
-            if isinstance(record.args, dict):
-                new_dict: dict[str, Any] = {}
-                for k, v in record.args.items():
-                    if isinstance(v, str):
-                        new_dict[k] = redact_text(v)
-                    else:
-                        new_dict[k] = v
-                record.args = new_dict
-            # If record.args is a tuple or list (positional formatting %s)
-            elif record.args:
-                new_args: list[Any] = []
-                for arg in record.args:
-                    if isinstance(arg, str):
-                        new_args.append(redact_text(arg))
-                    else:
-                        new_args.append(arg)
-                record.args = tuple(new_args) if isinstance(record.args, tuple) else new_args
-
-            # Also check record.msg if it's a string
-            if isinstance(record.msg, str):
-                record.msg = redact_text(record.msg)
+            # Format message with args first to prevent placeholder stripping collisions
+            formatted = record.getMessage()
+            record.msg = redact_text(formatted)
+            record.args = None
         except Exception:  # noqa: BLE001, S110
             # Filter contract: never raise, never drop record
             pass

@@ -86,3 +86,27 @@ def test_dict_args_formatting_supported() -> None:
     )
     assert f.filter(rec) is True
     assert rec.getMessage() == "User alice accessed /docs?dl=<redacted>&page=1"
+
+
+def test_template_placeholder_in_query_does_not_break_formatting() -> None:
+    f = RedactQuerySecretsFilter()
+    rec = logging.LogRecord(
+        name="test",
+        level=logging.INFO,
+        pathname=__file__,
+        lineno=1,
+        msg="/docs?token=%s",
+        args=("secret_session_token",),
+        exc_info=None,
+    )
+    assert f.filter(rec) is True
+    assert rec.getMessage() == "/docs?token=<redacted>"
+
+
+def test_percent_encoded_parameter_names_redacted() -> None:
+    # %74oken is 'token', %64l is 'dl'
+    out = _scrubbed("/download?%74oken=secret_probe&%64l=my_file_dl&other=123")
+    assert "secret_probe" not in out
+    assert "my_file_dl" not in out
+    assert "?%74oken=<redacted>&%64l=<redacted>&other=123" in out
+

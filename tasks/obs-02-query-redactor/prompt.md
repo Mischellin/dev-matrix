@@ -5,7 +5,7 @@ Web servers (such as Uvicorn, Gunicorn, Starlette, or FastAPI) frequently log in
 
 ## Requirements
 Implement `RedactQuerySecretsFilter` as a standard `logging.Filter` in `src/logging_filter/filters.py`:
-1. Replaces the values of the following sensitive query parameters with `<redacted>`:
+1. Replaces the values of the following sensitive query parameters (including URL percent-encoded names such as `%74oken` or `%64l`) with `<redacted>`:
    - `dl`
    - `token`
    - `access_token`
