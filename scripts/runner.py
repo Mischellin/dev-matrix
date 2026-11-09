@@ -23,6 +23,7 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 TASKS_DIR = ROOT / "tasks"
@@ -41,6 +42,7 @@ def run_pytest(cwd: Path, test_paths: list[str], pythonpath: str = "src") -> dic
         env=env,
         capture_output=True,
         text=True,
+        check=False,
     )
     duration = time.perf_counter() - start_t
 
@@ -79,11 +81,19 @@ def verify_task(task_dir: Path) -> bool:
 
     # Step 3: Hidden tests must pass on reference solution
     print("  3. Checking reference solution passes 100% of hidden tests... ", end="", flush=True)
-    res_ref = run_pytest(ref_dir, [str(hidden_dir / "tests")])
-    if not res_ref["passed"]:
-        print(f"❌ FAILED (reference solution must pass all hidden tests)\n{res_ref['stdout']}")
+    res_ref_hidden = run_pytest(ref_dir, [str(hidden_dir / "tests")])
+    if not res_ref_hidden["passed"]:
+        print(f"❌ FAILED (reference solution must pass all hidden tests)\n{res_ref_hidden['stdout']}")
         return False
-    print("✅ Passed (100% verifier pass)")
+    print("✅ Passed")
+
+    # Step 4: Baseline tests must also pass on reference solution (no regressions)
+    print("  4. Checking reference solution preserves baseline seed tests... ", end="", flush=True)
+    res_ref_seed = run_pytest(ref_dir, [str(seed_dir / "tests")])
+    if not res_ref_seed["passed"]:
+        print(f"❌ FAILED (reference solution broke baseline tests)\n{res_ref_seed['stdout']}")
+        return False
+    print("✅ Passed")
 
     return True
 
@@ -93,9 +103,9 @@ def verify_suite() -> int:
         manifest = json.load(f)
 
     tasks = manifest.get("tasks", [])
-    print(f"===========================================================")
+    print("===========================================================")
     print(f" DevMatrix Benchmark Suite Verification ({len(tasks)} tasks)")
-    print(f"===========================================================")
+    print("===========================================================")
 
     all_passed = True
     for item in tasks:
@@ -116,6 +126,9 @@ def verify_suite() -> int:
         return 1
 
 
+IGNORE_PATTERNS = {".venv", "__pycache__", ".pytest_cache"}
+
+
 def prepare_task(task_id: str, dest_dir: Path) -> None:
     task_dir = TASKS_DIR / task_id
     if not task_dir.is_dir():
@@ -125,13 +138,18 @@ def prepare_task(task_id: str, dest_dir: Path) -> None:
     seed_dir = task_dir / "seed"
     dest_dir.mkdir(parents=True, exist_ok=True)
 
-    # Copy seed files
+    # Copy seed files excluding caches
     for item in seed_dir.iterdir():
-        if item.name == ".venv":
+        if item.name in IGNORE_PATTERNS or item.name.endswith(".egg-info"):
             continue
         dest_item = dest_dir / item.name
         if item.is_dir():
-            shutil.copytree(item, dest_item, dirs_exist_ok=True)
+            shutil.copytree(
+                item,
+                dest_item,
+                dirs_exist_ok=True,
+                ignore=shutil.ignore_patterns("__pycache__", "*.pyc", ".pytest_cache", "*.egg-info"),
+            )
         else:
             shutil.copy2(item, dest_item)
 
@@ -149,7 +167,14 @@ def evaluate_task(task_id: str, workdir: Path) -> dict[str, Any]:
     hidden_tests = task_dir / "hidden" / "tests"
     print(f"Evaluating {workdir} against {task_id} hidden tests...")
     result = run_pytest(workdir, [str(hidden_tests)])
-    print(f"Status: {'PASS' if result['passed'] else 'FAIL'} in {result['duration_s']}s")
+    if result["passed"]:
+        print(f"Status: ✅ PASS in {result['duration_s']}s")
+    else:
+        print(f"Status: ❌ FAIL in {result['duration_s']}s")
+        if result["stdout"]:
+            print(result["stdout"])
+        if result["stderr"]:
+            print(result["stderr"], file=sys.stderr)
     return result
 
 

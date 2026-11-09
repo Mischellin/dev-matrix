@@ -1,4 +1,5 @@
 import logging
+
 from logging_filter.filters import RedactQuerySecretsFilter
 
 

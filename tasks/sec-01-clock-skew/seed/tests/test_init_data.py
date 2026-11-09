@@ -3,9 +3,9 @@ import hmac
 import json
 import time
 import urllib.parse
-import pytest
 
-from auth.init_data import verify_init_data, InitDataValidationError
+import pytest
+from auth.init_data import InitDataValidationError, verify_init_data
 
 BOT_TOKEN = "123456:ABC-DEF1234ghikl"
 USER = {"id": 12345, "first_name": "Test", "username": "testuser"}

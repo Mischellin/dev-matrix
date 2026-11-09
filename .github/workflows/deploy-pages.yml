@@ -30,6 +30,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "latest"
+
       - name: Verify Benchmark Suite Integrity
         run: |
           python3 scripts/runner.py verify-suite

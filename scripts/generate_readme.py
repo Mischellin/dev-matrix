@@ -25,8 +25,7 @@ def build_readme() -> str:
     executor_cells = [c for c in cells if c.get("role") == "executor"]
     
     # Unique models
-    model_keys = sorted(list({c["model"] for c in executor_cells}))
-    domains = ratings.get("domains", ["1С", "Python", "Web", "Infra", "Тексты"])
+    model_keys = sorted({c["model"] for c in executor_cells})
 
     # Build matrix map: model -> domain -> rating
     matrix = {}
@@ -87,7 +86,6 @@ def build_readme() -> str:
     task_rows.append("| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |")
     for t in benchmarks:
         t_id = t["id"]
-        t_title = t["title"]
         for r in t["runs"]:
             status_badge = "✅ PASS" if r["status"] == "PASS" else "❌ FAIL"
             time_str = f"{r['duration_min']:.1f}m"

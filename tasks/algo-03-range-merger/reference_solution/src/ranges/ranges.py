@@ -4,7 +4,7 @@ from __future__ import annotations
 def parse_ranges(text: str, max_value: int) -> list[tuple[int, int]]:
     """Parse comma-separated intervals and merge overlapping/adjacent bounds."""
     if not isinstance(text, str):
-        raise ValueError("text must be a string")
+        raise ValueError("text must be a string")  # noqa: TRY004
     if isinstance(max_value, bool) or not isinstance(max_value, int) or max_value < 1:
         raise ValueError("max_value must be a positive integer")
     if not text.strip():

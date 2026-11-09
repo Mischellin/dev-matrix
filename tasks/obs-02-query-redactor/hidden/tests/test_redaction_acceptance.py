@@ -1,4 +1,5 @@
 import logging
+
 import pytest
 from logging_filter.filters import RedactQuerySecretsFilter
 
@@ -70,3 +71,18 @@ def test_filter_is_idempotent() -> None:
     assert f.filter(rec) is True
     msg2 = rec.getMessage()
     assert msg1 == msg2
+
+
+def test_dict_args_formatting_supported() -> None:
+    f = RedactQuerySecretsFilter()
+    rec = logging.LogRecord(
+        name="test",
+        level=logging.INFO,
+        pathname=__file__,
+        lineno=1,
+        msg="User %(user)s accessed %(url)s",
+        args={"user": "alice", "url": "/docs?dl=secret_jwt&page=1"},
+        exc_info=None,
+    )
+    assert f.filter(rec) is True
+    assert rec.getMessage() == "User alice accessed /docs?dl=<redacted>&page=1"
