@@ -32,6 +32,16 @@ def test_list_recipes_filtering_case_insensitive() -> None:
     assert len(res_all) == 2
 
 
+def test_list_recipes_filtering_empty_and_whitespace_tag() -> None:
+    svc = RecipeTagService()
+    svc.save_recipe("r1", ["dinner"])
+    # Filtering by empty or whitespace string must return no recipes (empty tags do not exist)
+    assert svc.list_recipes(tag="") == []
+    assert svc.list_recipes(tag="   ") == []
+    # But None returns all recipes
+    assert len(svc.list_recipes(tag=None)) == 1
+
+
 def test_list_all_tags_sorted_and_cleaned() -> None:
     svc = RecipeTagService()
     svc.save_recipe("r1", ["soup", "dinner"])

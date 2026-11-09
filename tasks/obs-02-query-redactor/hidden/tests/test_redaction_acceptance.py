@@ -110,3 +110,16 @@ def test_percent_encoded_parameter_names_redacted() -> None:
     assert "my_file_dl" not in out
     assert "?%74oken=<redacted>&%64l=<redacted>&other=123" in out
 
+
+def test_apostrophe_does_not_break_subsequent_secrets() -> None:
+    # Query string with apostrophe before sensitive parameter
+    out = _scrubbed("/docs?token=first'SECOND&state=THIRD")
+    assert "first'SECOND" not in out
+    assert "THIRD" not in out
+    assert "?token=<redacted>&state=<redacted>" in out
+
+    out2 = _scrubbed("/search?filter=john's&token=my_secret")
+    assert "my_secret" not in out2
+    assert "?filter=john's&token=<redacted>" in out2
+
+

@@ -15,8 +15,8 @@ SENSITIVE_KEYS = {
     "signature",
 }
 
-# Regex to find URI query string in a string
-_QUERY_PATTERN = re.compile(r"(\?[^ \t\r\n\"'\\]*)")
+# Regex to find URI query string in a string (allows internal single quotes per RFC 3986 sub-delims)
+_QUERY_PATTERN = re.compile(r"(\?[^ \t\r\n\"`\\]*)")
 
 
 def _is_sensitive_key(key: str) -> bool:
@@ -50,7 +50,13 @@ def redact_query_string(query_str: str) -> str:
 def redact_text(text: str) -> str:
     """Find query strings inside text and redact them."""
     def _replace(match: re.Match) -> str:
-        return redact_query_string(match.group(1))
+        qs = match.group(1)
+        suffix = ""
+        # If the query string was enclosed in quotes like 'GET /path?x=y', strip trailing quote
+        if qs.endswith("'") and text[:match.start()].count("'") % 2 == 1:
+            qs = qs[:-1]
+            suffix = "'"
+        return redact_query_string(qs) + suffix
 
     return _QUERY_PATTERN.sub(_replace, text)
 

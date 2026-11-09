@@ -24,7 +24,13 @@ class RecipeTagService:
 
     def list_recipes(self, tag: str | None = None) -> list[dict]:
         out = []
-        target = _normalize_tag(tag) if tag else None
+        if tag is not None:
+            target = _normalize_tag(tag)
+            if not target:
+                return []
+        else:
+            target = None
+
         for rid, tags in self._recipes.items():
             if target is None or target in tags:
                 out.append({"id": rid, "tags": sorted(tags)})

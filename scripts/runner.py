@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -29,6 +30,23 @@ ROOT = Path(__file__).resolve().parent.parent
 TASKS_DIR = ROOT / "tasks"
 MANIFEST_PATH = TASKS_DIR / "manifest.json"
 DEFAULT_TIMEOUT_S = 60.0
+
+
+def _parse_pytest_summary(stdout: str) -> dict[str, int]:
+    counts = {"passed": 0, "failed": 0, "deselected": 0, "errors": 0}
+    m_pass = re.search(r"(\d+)\s+passed", stdout)
+    if m_pass:
+        counts["passed"] = int(m_pass.group(1))
+    m_fail = re.search(r"(\d+)\s+failed", stdout)
+    if m_fail:
+        counts["failed"] = int(m_fail.group(1))
+    m_desel = re.search(r"(\d+)\s+deselected", stdout)
+    if m_desel:
+        counts["deselected"] = int(m_desel.group(1))
+    m_err = re.search(r"(\d+)\s+error", stdout)
+    if m_err:
+        counts["errors"] = int(m_err.group(1))
+    return counts
 
 
 def get_task_timeout(task_dir: Path) -> float:
@@ -51,14 +69,29 @@ def run_pytest(
     env = os.environ.copy()
     src_path = str(cwd / "src")
     env["PYTHONPATH"] = src_path
+    # Prevent caller or external environment from filtering or tampering with acceptance tests
+    env.pop("PYTEST_ADDOPTS", None)
+    env.pop("PYTEST_CONFIG", None)
+    env.pop("PYTEST_PLUGINS", None)
 
-    cmd = ["uv", "run", "--no-project", "--with", "pytest", "pytest", "-q"]
+    cmd = [
+        "uv",
+        "run",
+        "--no-project",
+        "--with",
+        "pytest",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "-o",
+        f"pythonpath={src_path}",
+    ]
 
     # Explicitly configure pytest to use target workdir and pythonpath
     pyproject = cwd / "pyproject.toml"
     if pyproject.exists():
         cmd.extend(["-c", str(pyproject)])
-    cmd.extend(["-o", f"pythonpath={src_path}"])
     cmd.extend([str(Path(p).resolve()) for p in test_paths])
 
     start_t = time.perf_counter()
@@ -73,13 +106,29 @@ def run_pytest(
             timeout=timeout_s,
         )
         duration = time.perf_counter() - start_t
+        counts = _parse_pytest_summary(proc.stdout)
+        passed = proc.returncode == 0
+        err_msg = proc.stderr
+
+        if passed:
+            if counts["deselected"] > 0:
+                passed = False
+                err_msg = (
+                    f"Error: Mandatory tests were deselected ({counts['deselected']} deselected). "
+                    f"All suite tests must be executed.\n{proc.stderr}"
+                )
+            elif counts["passed"] == 0:
+                passed = False
+                err_msg = f"Error: No tests were executed/passed.\n{proc.stderr}"
+
         return {
-            "exit_code": proc.returncode,
+            "exit_code": proc.returncode if passed else (proc.returncode or 1),
             "stdout": proc.stdout,
-            "stderr": proc.stderr,
+            "stderr": err_msg,
             "duration_s": round(duration, 3),
-            "passed": proc.returncode == 0,
+            "passed": passed,
             "timed_out": False,
+            "counts": counts,
         }
     except subprocess.TimeoutExpired as e:
         duration = time.perf_counter() - start_t
