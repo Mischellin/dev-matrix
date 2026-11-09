@@ -88,6 +88,37 @@ Tested under identical isolated runtime conditions with full hidden test suites.
 
 ---
 
+## 📦 Anonymized Tasks Pool & Reproduction
+
+The benchmark repository contains fully anonymized, self-contained tasks in [`tasks/`](tasks/):
+- **Zero proprietary leakage:** All internal endpoints, credentials, and company identifiers replaced with generic domain contracts.
+- **Self-contained seed environments:** Clean project roots with dependencies and passing baseline unit tests.
+- **Deterministic acceptance suites:** Hidden test suites stored in `tasks/<id>/hidden/` that verify specific security, architectural, and algorithmic invariants.
+
+| Task ID | Title | Domain | Class | Tests |
+| :--- | :--- | :--- | :---: | :---: |
+| [`sec-01-clock-skew`](tasks/sec-01-clock-skew) | **Validate WebApp Auth Clock Skew and Reject Future Timestamps** | Python / Security & Crypto | `S` (security) | 6 assertions |
+| [`obs-02-query-redactor`](tasks/obs-02-query-redactor) | **Redact Sensitive Query Parameters from Server Access Logs** | Python / Observability & Security | `S` (security) | 12 assertions |
+| [`algo-03-range-merger`](tasks/algo-03-range-merger) | **Robust Interval String Parser and Overlap Merger** | Python / Algorithms | `S` (algorithm) | 23 assertions |
+| [`arch-04-tag-registry`](tasks/arch-04-tag-registry) | **Normalized Tag Registry with Alphabetical Ordering and Scope Protection** | Python / Data Architecture & Security | `M` (architecture) | 6 assertions |
+
+### Reproduce or Evaluate Locally:
+```bash
+# 1. Verify the entire benchmark suite and all reference solutions:
+python3 scripts/runner.py verify-suite
+
+# 2. Prepare an isolated workspace for your AI agent:
+python3 scripts/runner.py prepare --task sec-01-clock-skew --out /tmp/agent-workdir
+
+# 3. Point your coding agent (Claude Code, Codex, Antigravity, OpenCode) to /tmp/agent-workdir
+# Agent reads TASK_PROMPT.md, makes code edits and tests locally.
+
+# 4. Evaluate the agent's workdir against hidden acceptance assertions:
+python3 scripts/runner.py evaluate --task sec-01-clock-skew --workdir /tmp/agent-workdir
+```
+
+---
+
 ## 🔬 Methodology
 
 ```

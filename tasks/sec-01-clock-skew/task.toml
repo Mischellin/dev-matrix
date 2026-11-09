@@ -1,0 +1,11 @@
+id = "sec-01-clock-skew"
+title = "Validate WebApp Auth Clock Skew and Reject Future Timestamps"
+domain = "Python / Security & Crypto"
+difficulty = "S"
+class = "security"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+passing_threshold = 1.0

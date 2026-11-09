@@ -30,8 +30,9 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Regenerate Documentation and Validate
+      - name: Verify Benchmark Suite Integrity
         run: |
+          python3 scripts/runner.py verify-suite
           python3 scripts/generate_readme.py
 
       - name: Prepare Pages Artifact
@@ -40,6 +41,8 @@ jobs:
           cp -r web/* _site/
           mkdir -p _site/data
           cp -r data/* _site/data/
+          mkdir -p _site/tasks
+          cp tasks/manifest.json _site/tasks/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
