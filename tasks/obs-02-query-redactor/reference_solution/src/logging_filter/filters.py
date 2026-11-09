@@ -60,42 +60,47 @@ def redact_text(text: str) -> str:
     return _QUERY_PATTERN.sub(_replace, text)
 
 
+def _scrub_args_in_place(record: logging.LogRecord) -> None:
+    """Sanitize secrets inside record.args while strictly preserving collection structure."""
+    if isinstance(record.args, tuple):
+        record.args = tuple(
+            redact_text(a) if isinstance(a, str) else a for a in record.args
+        )
+    elif isinstance(record.args, list):
+        record.args = [
+            redact_text(a) if isinstance(a, str) else a for a in record.args
+        ]
+    elif isinstance(record.args, dict):
+        new_dict: dict[str, Any] = {}
+        for k, v in record.args.items():
+            new_dict[k] = redact_text(v) if isinstance(v, str) else v
+        record.args = new_dict
+
+
 class RedactQuerySecretsFilter(logging.Filter):
     """Filter that replaces sensitive query parameters with <redacted>."""
 
     def filter(self, record: logging.LogRecord) -> bool:
         try:
-            # Case A: If record.msg contains a query string with any format placeholders (e.g. %s, %d, %r, %(key)s),
-            # we format message first so that stripping/replacing placeholders does not desync arguments.
-            if (
-                isinstance(record.msg, str)
-                and "?" in record.msg
-                and "%" in record.msg.split("?", 1)[1]
-            ):
-                formatted = record.getMessage()
-                record.msg = redact_text(formatted)
-                record.args = () if isinstance(record.args, tuple) else {}
-            else:
-                # Case B: Standard logging and access logs (e.g. Uvicorn):
-                # 1. Redact args preserving exact tuple/list/dict structure so custom formatters
-                # (like Uvicorn's AccessFormatter) can unpack args.
-                if isinstance(record.args, tuple):
-                    record.args = tuple(
-                        redact_text(a) if isinstance(a, str) else a for a in record.args
-                    )
-                elif isinstance(record.args, list):
-                    record.args = [
-                        redact_text(a) if isinstance(a, str) else a for a in record.args
-                    ]
-                elif isinstance(record.args, dict):
-                    new_dict: dict[str, Any] = {}
-                    for k, v in record.args.items():
-                        new_dict[k] = redact_text(v) if isinstance(v, str) else v
-                    record.args = new_dict
+            # 1. Always scrub record.args first so secrets never leak even if template formatting fails
+            _scrub_args_in_place(record)
 
-                # 2. Redact record.msg if it is a string
-                if isinstance(record.msg, str):
+            # 2. If record.msg contains placeholders within query string, format and redact
+            if isinstance(record.msg, str) and "?" in record.msg:
+                # Protect literal URL percent-encodings like %20, %74, %2F from crashing printf formatters
+                escaped_msg = re.sub(r"%(?=[0-9a-fA-F]{2})", "%%", record.msg)
+                if "%" in escaped_msg.split("?", 1)[1]:
+                    try:
+                        formatted = escaped_msg % record.args if record.args else escaped_msg
+                        record.msg = redact_text(formatted)
+                        record.args = () if isinstance(record.args, tuple) else {}
+                    except Exception:  # noqa: BLE001
+                        # If printf formatting fails, still redact raw record.msg
+                        record.msg = redact_text(record.msg)
+                else:
                     record.msg = redact_text(record.msg)
+            elif isinstance(record.msg, str):
+                record.msg = redact_text(record.msg)
         except Exception:  # noqa: BLE001, S110
             # Filter contract: never raise, never drop record
             pass

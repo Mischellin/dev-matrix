@@ -110,13 +110,24 @@ def run_pytest(
     env.pop("PYTEST_PLUGINS", None)
 
     # Use fully controlled pytest config (-c /dev/null) to ignore arbitrary candidate settings
-    cmd = [
-        "uv",
-        "run",
-        "--no-project",
-        "--with",
-        "pytest",
-        "pytest",
+    uv_bin = shutil.which("uv")
+    if uv_bin:
+        cmd = [
+            uv_bin,
+            "run",
+            "--no-project",
+            "--with",
+            "pytest==8.3.4",
+            "pytest",
+        ]
+    else:
+        cmd = [
+            sys.executable,
+            "-m",
+            "pytest",
+        ]
+
+    cmd.extend([
         "-q",
         "-c",
         "/dev/null",
@@ -132,7 +143,7 @@ def run_pytest(
         "testpaths=",
         "-o",
         "addopts=",
-    ]
+    ])
 
     cmd.extend([str(Path(p).resolve()) for p in test_paths])
 

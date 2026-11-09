@@ -198,6 +198,24 @@ def test_empty_query_segments_and_delimiters_preserved() -> None:
     assert "?page=1&&limit=2&" in out
 
 
+def test_percent_encoding_and_literal_percent_in_template() -> None:
+    f = RedactQuerySecretsFilter()
+    rec = logging.LogRecord(
+        name="test",
+        level=logging.INFO,
+        pathname=__file__,
+        lineno=1,
+        msg="/docs?token=%s&q=%20x",
+        args=("SUPER_SECRET",),
+        exc_info=None,
+    )
+    assert f.filter(rec) is True
+    out = rec.getMessage()
+    assert "SUPER_SECRET" not in out
+    assert "?token=<redacted>&q=%20x" in out
+
+
+
 
 
 

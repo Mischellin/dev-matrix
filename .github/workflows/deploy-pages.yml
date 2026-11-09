@@ -33,10 +33,11 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v5
         with:
-          version: "latest"
+          version: "0.5.26"
 
       - name: Verify Benchmark Suite Integrity
         run: |
+          uv run --no-project --with pytest==8.3.4 pytest -q tests/
           python3 scripts/runner.py verify-suite
           python3 scripts/generate_readme.py
 

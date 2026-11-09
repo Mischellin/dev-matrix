@@ -176,6 +176,8 @@ The benchmark repository contains fully anonymized, self-contained tasks in [`ta
 {manifest_table}
 
 ### Reproduce or Evaluate Locally:
+> **Requirements**: Python `>= 3.11` and [`uv`](https://astral.sh/uv) (recommended) or `pytest >= 8.0`.
+
 ```bash
 # 1. Verify the entire benchmark suite and all reference solutions:
 python3 scripts/runner.py verify-suite
