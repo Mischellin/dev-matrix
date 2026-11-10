@@ -1,0 +1,14 @@
+id = "onec-06-payment-allocator"
+title = "1C:Enterprise BSL Payment Allocation and FIFO Order Matching"
+domain = "1С / Enterprise BSL & Accounting"
+difficulty = "M"
+class = "feature"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+baseline_tests = 3
+hidden_tests = 12
+total_tests = 15
+passing_threshold = 1.0

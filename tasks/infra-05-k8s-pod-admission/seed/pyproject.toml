@@ -1,0 +1,14 @@
+[project]
+name = "k8s-admission-mutator"
+version = "0.1.0"
+description = "Kubernetes Pod security and HA topology admission controller"
+requires-python = ">=3.10"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
