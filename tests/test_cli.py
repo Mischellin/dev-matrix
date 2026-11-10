@@ -95,3 +95,55 @@ def test_agent_timeout_kills_children(tmp_path) -> None:
     cli._run_agent(cmd, tmp_path, "x", 1)
     time.sleep(4)
     assert not marker.exists()
+
+
+def test_non_finite_and_unknown_keys_rejected(tmp_path) -> None:
+    p = _report(tmp_path)
+    p.write_text(p.read_text().replace('"agent_seconds": 1.0', '"agent_seconds": Infinity'))
+    assert cli.validate_report(p)
+    assert cli.validate_report(_report(tmp_path / "b", junk="x"))
+
+
+def test_unicode_digits_in_date_rejected(tmp_path) -> None:
+    assert cli.validate_report(_report(tmp_path, created_at="٢٠٢٦-١١-١٠T00:00:00Z"))
+
+
+def test_missing_dir_fails(tmp_path) -> None:
+    assert cli.cmd_check(type("A", (), {"dir": tmp_path / "nope"})()) == 1
+
+
+def test_symlink_rejected(tmp_path) -> None:
+    p = _report(tmp_path)
+    (p.parent / "link.json").symlink_to(p)
+    assert cli.cmd_check(type("A", (), {"dir": tmp_path})()) == 1
+
+
+def test_crlf_normalised_in_hash(tmp_path, monkeypatch) -> None:
+    import shutil
+
+    tid = "algo-03-range-merger"
+    expected = cli.task_hash(tid)
+    copy = tmp_path / "tasks"
+    shutil.copytree(cli.runner.TASKS_DIR, copy)
+    f = copy / tid / "prompt.md"
+    f.write_bytes(f.read_bytes().replace(b"\n", b"\r\n"))
+    monkeypatch.setattr(cli.runner, "TASKS_DIR", copy)
+    assert cli.task_hash(tid) == expected
+
+
+def test_run_end_to_end_with_noop_agent(tmp_path) -> None:
+    args = cli.argparse.Namespace(
+        task="algo-03-range-merger",
+        all=False,
+        agent="true",
+        agent_timeout=30,
+        keep=False,
+        model="Test Model",
+        provider=None,
+        tokens=None,
+        cost=None,
+        out=tmp_path,
+    )
+    assert cli.cmd_run(args) == 1  # заготовка не решает задачу
+    report = tmp_path / "test-model" / "algo-03-range-merger.json"
+    assert cli.validate_report(report) == []

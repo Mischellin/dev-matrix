@@ -31,6 +31,9 @@ jobs:
           if git diff --no-renames --name-only HEAD^1 HEAD | grep -v '^submissions/'; then
             echo "PR с результатами не должен менять ничего, кроме submissions/"; exit 1
           fi
+          if git diff --no-renames --name-status HEAD^1 HEAD | grep -v '^A'; then
+            echo "Можно только добавлять новые файлы, не менять и не удалять чужие"; exit 1
+          fi
       - name: Проверка отчётов
         working-directory: base
         run: PYTHONPATH=src python -m devmatrix.cli check-submissions ../pr/submissions

@@ -6,6 +6,7 @@ import argparse
 import contextlib
 import hashlib
 import json
+import math
 import os
 import re
 import shlex
@@ -30,6 +31,9 @@ UPSTREAM = "Mischellin/dev-matrix"
 SCHEMA = 1
 HASHED_PARTS = ("seed", "hidden", "prompt.md", "task.toml")
 SKIP_DIRS = {"__pycache__", ".pytest_cache", ".venv"}
+MAX_REPORT_BYTES = 10_000
+OPTIONAL_FIELDS = {"provider", "tokens", "cost_usd", "devmatrix_version", "claimed"}
+MODEL_RE = r"[\w.\- /:+()]{1,100}"
 REQUIRED_FIELDS = {
     "schema": int,
     "task_id": str,
@@ -41,6 +45,9 @@ REQUIRED_FIELDS = {
     "tasks_hash": str,
     "created_at": str,
 }
+
+
+ALLOWED_FIELDS = set(REQUIRED_FIELDS) | OPTIONAL_FIELDS
 
 
 def _version() -> str:
@@ -103,6 +110,12 @@ def _make_report(args: argparse.Namespace, task_id: str, res: dict[str, Any], ag
 
 
 def _save(report: dict[str, Any], out: Path) -> Path:
+    if model_slug(report["model"]) == "unknown":
+        print(
+            "⚠️ По имени модели не получилось собрать каталог (будет «unknown») — "
+            "используйте латиницу в --model.",
+            file=sys.stderr,
+        )
     path = out / model_slug(report["model"]) / f"{report['task_id']}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -163,11 +176,22 @@ def cmd_evaluate(args: argparse.Namespace) -> int:
 
 def validate_report(path: Path, root: Path | None = None) -> list[str]:
     """Возвращает список ошибок отчёта (пустой — отчёт годен)."""
+
+    def _reject_constant(name: str) -> None:
+        raise ValueError(f"недопустимое значение {name}")
+
     try:
-        r = json.loads(path.read_text(encoding="utf-8"))
+        if path.stat().st_size > MAX_REPORT_BYTES:
+            return [f"файл больше {MAX_REPORT_BYTES} байт"]
+        r = json.loads(path.read_text(encoding="utf-8"), parse_constant=_reject_constant)
     except (OSError, ValueError) as e:
         return [f"не читается JSON: {e}"]
+    if not isinstance(r, dict):
+        return ["отчёт должен быть JSON-объектом"]
     errs = []
+    unknown = set(r) - ALLOWED_FIELDS
+    if unknown:
+        errs.append(f"неизвестные поля: {', '.join(sorted(unknown))}")
     for key, typ in REQUIRED_FIELDS.items():
         if not isinstance(r.get(key), typ) or (typ is int and isinstance(r.get(key), bool)):
             errs.append(f"поле {key} отсутствует или неверного типа")
@@ -175,20 +199,26 @@ def validate_report(path: Path, root: Path | None = None) -> list[str]:
         return errs
     for key in ("tokens", "cost_usd"):
         v = r.get(key)
-        if v is not None and (isinstance(v, bool) or not isinstance(v, (int, float)) or not v >= 0):
+        if v is not None and (
+            isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0
+        ):
             errs.append(f"{key} должно быть неотрицательным числом или null")
     for key in ("provider", "devmatrix_version"):
         v = r.get(key)
         if v is not None and (not isinstance(v, str) or len(v) > 100):
             errs.append(f"{key} должно быть строкой до 100 символов или null")
-    if isinstance(r["agent_seconds"], bool) or not r["agent_seconds"] >= 0:
+    if (
+        isinstance(r["agent_seconds"], bool)
+        or not math.isfinite(r["agent_seconds"])
+        or r["agent_seconds"] < 0
+    ):
         errs.append("agent_seconds должно быть неотрицательным числом")
-    if not re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ", r["created_at"]):
+    if not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z", r["created_at"]):
         errs.append("created_at должно быть в формате YYYY-MM-DDTHH:MM:SSZ")
     if not re.fullmatch(r"[0-9a-f]{64}", r["tasks_hash"]):
         errs.append("tasks_hash должен быть sha256 в hex")
-    if len(r["model"]) > 100:
-        errs.append("model длиннее 100 символов")
+    if not re.fullmatch(MODEL_RE, r["model"]):
+        errs.append("model: до 100 символов из букв, цифр и . - _ / : + ( ) и пробела")
     if r["schema"] != SCHEMA:
         errs.append(f"схема {r['schema']} не поддерживается")
     if r["task_id"] not in task_ids():
@@ -210,6 +240,9 @@ def validate_report(path: Path, root: Path | None = None) -> list[str]:
 
 
 def cmd_check(args: argparse.Namespace) -> int:
+    if not args.dir.is_dir():
+        print(f"❌ Нет каталога {args.dir}", file=sys.stderr)
+        return 1
     files = sorted(f for f in args.dir.rglob("*") if f.is_file() or f.is_symlink())
     bad = 0
     for f in files:
