@@ -71,28 +71,19 @@ def _parse_pytest_summary(stdout: str) -> dict[str, int]:
 
 def get_task_meta(task_dir: Path) -> dict[str, Any]:
     task_toml = task_dir / "task.toml"
-    meta: dict[str, Any] = {
-        "timeout_s": DEFAULT_TIMEOUT_S,
-        "baseline_tests": 1,
-        "hidden_tests": 1,
-        "total_tests": 2,
+    if not task_toml.exists():
+        raise FileNotFoundError(f"Missing required task.toml in {task_dir}")
+    data = tomllib.loads(task_toml.read_text(encoding="utf-8"))
+    verifier = data.get("verifier", {})
+    baseline_tests = int(verifier.get("baseline_tests", 1))
+    hidden_tests = int(verifier.get("hidden_tests", 1))
+    total_tests = int(verifier.get("total_tests", baseline_tests + hidden_tests))
+    return {
+        "timeout_s": float(verifier.get("timeout_s", DEFAULT_TIMEOUT_S)),
+        "baseline_tests": baseline_tests,
+        "hidden_tests": hidden_tests,
+        "total_tests": total_tests,
     }
-    if task_toml.exists():
-        try:
-            data = tomllib.loads(task_toml.read_text(encoding="utf-8"))
-            verifier = data.get("verifier", {})
-            meta["timeout_s"] = float(verifier.get("timeout_s", DEFAULT_TIMEOUT_S))
-            meta["baseline_tests"] = int(verifier.get("baseline_tests", 1))
-            meta["hidden_tests"] = int(verifier.get("hidden_tests", 1))
-            meta["total_tests"] = int(
-                verifier.get(
-                    "total_tests",
-                    meta["baseline_tests"] + meta["hidden_tests"],
-                )
-            )
-        except (tomllib.TOMLDecodeError, OSError, ValueError):
-            pass
-    return meta
 
 
 def run_pytest(
@@ -142,6 +133,8 @@ def run_pytest(
             python_entry,
         ]
     else:
+        if sys.version_info < (3, 11):  # noqa: UP036
+            raise RuntimeError("Python >= 3.11 is required when running runner without uv.")
         cmd = [
             sys.executable,
             "-I",

@@ -302,13 +302,3 @@ def test_percent_literal_in_msg_does_not_corrupt_args() -> None:
     assert f.filter(rec) is True
     assert rec.getMessage() == "100%? done yes"
 
-
-
-
-
-
-
-
-
-
-
