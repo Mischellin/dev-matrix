@@ -36,6 +36,24 @@
       "class": "architecture",
       "tests_count": 8,
       "description": "Implement an in-memory tag catalog featuring case-normalization, deduplication, alphabetical sorting, and fine-grained scope isolation."
+    },
+    {
+      "id": "infra-05-k8s-pod-admission",
+      "title": "Kubernetes Pod Security and Topology Spread Admission Mutator",
+      "domain": "Infra / Kubernetes & Platform Engineering",
+      "difficulty": "M",
+      "class": "infrastructure",
+      "tests_count": 20,
+      "description": "Mutate and validate Kubernetes Pod and Deployment manifests to enforce Pod Security Standards, container quotas, and multi-zone topology spread."
+    },
+    {
+      "id": "onec-06-payment-allocator",
+      "title": "1C:Enterprise BSL Payment Allocation and FIFO Order Matching",
+      "domain": "1С / Enterprise BSL & Accounting",
+      "difficulty": "M",
+      "class": "feature",
+      "tests_count": 15,
+      "description": "Implement native 1C:Enterprise (BSL) logic to reconcile bank statements and allocate incoming payments across customer orders using strict FIFO and VAT calculation."
     }
   ]
 }
