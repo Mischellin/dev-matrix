@@ -105,7 +105,7 @@ def build_readme() -> str:
         manifest_rows.append("| Task ID | Title | Domain | Class | Tests |")
         manifest_rows.append("| :--- | :--- | :--- | :---: | :---: |")
         for t in manifest_data.get("tasks", []):
-            manifest_rows.append(f"| [`{t['id']}`](tasks/{t['id']}) | **{t['title']}** | {t['domain']} | `{t['difficulty']}` ({t['class']}) | {t['tests_count']} assertions |")
+            manifest_rows.append(f"| [`{t['id']}`](tasks/{t['id']}) | **{t['title']}** | {t['domain']} | `{t['difficulty']}` ({t['class']}) | {t['tests_count']} tests |")
     manifest_table = "\n".join(manifest_rows)
 
     readme_content = f"""<div align="center">

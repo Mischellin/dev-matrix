@@ -32,15 +32,15 @@ class SkipOne:
                 item.add_marker(pytest.mark.skip(reason="test skip probe"))
 sys.exit(pytest.main(sys.argv[1:], plugins=[SkipOne()]))
 """
-    original_run = runner.subprocess.run
+    original_popen = runner.subprocess.Popen
 
-    def mock_run(cmd, **kwargs):
+    def mock_popen(cmd, **kwargs):
         if kwargs.get("cwd", "").endswith("reference_solution") and "/hidden/tests" in cmd[-1]:
             changed = ["uv", "run", "--no-project", "--with", "pytest", "python", "-c", plugin_code] + cmd[6:]
-            return original_run(changed, **kwargs)
-        return original_run(cmd, **kwargs)
+            return original_popen(changed, **kwargs)
+        return original_popen(cmd, **kwargs)
 
-    monkeypatch.setattr(runner.subprocess, "run", mock_run)
+    monkeypatch.setattr(runner.subprocess, "Popen", mock_popen)
     assert runner.verify_task(runner.TASKS_DIR / "sec-01-clock-skew") is False
 
 
@@ -54,15 +54,15 @@ class XfailOne:
                 item.add_marker(pytest.mark.xfail(run=False, reason="test xfail probe"))
 sys.exit(pytest.main(sys.argv[1:], plugins=[XfailOne()]))
 """
-    original_run = runner.subprocess.run
+    original_popen = runner.subprocess.Popen
 
-    def mock_run(cmd, **kwargs):
+    def mock_popen(cmd, **kwargs):
         if kwargs.get("cwd", "").endswith("reference_solution") and "/hidden/tests" in cmd[-1]:
             changed = ["uv", "run", "--no-project", "--with", "pytest", "python", "-c", plugin_code] + cmd[6:]
-            return original_run(changed, **kwargs)
-        return original_run(cmd, **kwargs)
+            return original_popen(changed, **kwargs)
+        return original_popen(cmd, **kwargs)
 
-    monkeypatch.setattr(runner.subprocess, "run", mock_run)
+    monkeypatch.setattr(runner.subprocess, "Popen", mock_popen)
     assert runner.verify_task(runner.TASKS_DIR / "sec-01-clock-skew") is False
 
 

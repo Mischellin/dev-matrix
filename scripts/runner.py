@@ -20,6 +20,7 @@ import json
 import os
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
@@ -104,7 +105,8 @@ def run_pytest(
     cwd = cwd.resolve()
     env = os.environ.copy()
     src_path = str(cwd / "src")
-    env["PYTHONPATH"] = src_path
+    guard_dir = str(Path(__file__).resolve().parent)
+    env["PYTHONPATH"] = f"{src_path}{os.pathsep}{guard_dir}" if src_path else guard_dir
     # Prevent external environment or user flags from filtering/tampering with acceptance tests
     env.pop("PYTEST_ADDOPTS", None)
     env.pop("PYTEST_CONFIG", None)
@@ -140,6 +142,8 @@ def run_pytest(
         "--rootdir",
         str(cwd),
         "-p",
+        "pytest_guard",
+        "-p",
         "no:cacheprovider",
         "-o",
         f"pythonpath={src_path}",
@@ -159,84 +163,90 @@ def run_pytest(
 
     start_t = time.perf_counter()
     try:
-        proc = subprocess.run(
+        proc = subprocess.Popen(
             cmd,
             cwd=str(cwd),
             env=env,
-            capture_output=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
             text=True,
-            check=False,
-            timeout=timeout_s,
+            start_new_session=True,
         )
+        try:
+            stdout, stderr = proc.communicate(timeout=timeout_s)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(os.getpgid(proc.pid), signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            stdout, stderr = proc.communicate()
+            duration = time.perf_counter() - start_t
+            return {
+                "exit_code": 124,
+                "stdout": stdout or "",
+                "stderr": f"Execution timed out after {timeout_s}s\n{stderr or ''}",
+                "duration_s": round(duration, 3),
+                "passed": False,
+                "timed_out": True,
+                "counts": {
+                    "passed": 0,
+                    "failed": 0,
+                    "deselected": 0,
+                    "skipped": 0,
+                    "xfailed": 0,
+                    "xpassed": 0,
+                    "errors": 1,
+                },
+            }
+
         duration = time.perf_counter() - start_t
-        counts = _parse_pytest_summary(proc.stdout)
+        counts = _parse_pytest_summary(stdout)
         passed = proc.returncode == 0
-        err_msg = proc.stderr
+        err_msg = stderr
 
         if passed:
             if counts["deselected"] > 0:
                 passed = False
                 err_msg = (
                     f"Error: Mandatory tests were deselected ({counts['deselected']} deselected). "
-                    f"All suite tests must be executed.\n{proc.stderr}"
+                    f"All suite tests must be executed.\n{stderr}"
                 )
             elif counts["skipped"] > 0:
                 passed = False
                 err_msg = (
                     f"Error: Tests were skipped ({counts['skipped']} skipped). "
-                    f"All suite tests must be executed without skipping.\n{proc.stderr}"
+                    f"All suite tests must be executed without skipping.\n{stderr}"
                 )
             elif counts["xfailed"] > 0:
                 passed = False
                 err_msg = (
                     f"Error: Tests were xfailed ({counts['xfailed']} xfailed). "
-                    f"All suite tests must pass normally.\n{proc.stderr}"
+                    f"All suite tests must pass normally.\n{stderr}"
                 )
             elif counts["xpassed"] > 0:
                 passed = False
                 err_msg = (
-                    f"Error: Unexpected xpasses ({counts['xpassed']} xpassed).\n{proc.stderr}"
+                    f"Error: Unexpected xpasses ({counts['xpassed']} xpassed).\n{stderr}"
                 )
             elif expected_exact_tests is not None and counts["passed"] != expected_exact_tests:
                 passed = False
                 err_msg = (
-                    f"Error: Expected exactly {expected_exact_tests} tests to pass, but {counts['passed']} passed.\n{proc.stderr}"
+                    f"Error: Expected exactly {expected_exact_tests} tests to pass, but {counts['passed']} passed.\n{stderr}"
                 )
             elif counts["passed"] < min_passed_tests:
                 passed = False
                 err_msg = (
-                    f"Error: Expected at least {min_passed_tests} tests to pass, but only {counts['passed']} passed.\n{proc.stderr}"
+                    f"Error: Expected at least {min_passed_tests} tests to pass, but only {counts['passed']} passed.\n{stderr}"
                 )
 
         return {
             "exit_code": proc.returncode if passed else (proc.returncode or 1),
-            "stdout": proc.stdout,
+            "stdout": stdout,
             "stderr": err_msg,
             "duration_s": round(duration, 3),
             "passed": passed,
             "timed_out": False,
             "counts": counts,
-        }
-    except subprocess.TimeoutExpired as e:
-        duration = time.perf_counter() - start_t
-        out = e.stdout.decode() if isinstance(e.stdout, bytes) else (e.stdout or "")
-        err = e.stderr.decode() if isinstance(e.stderr, bytes) else (e.stderr or "")
-        return {
-            "exit_code": 124,
-            "stdout": out,
-            "stderr": f"Execution timed out after {timeout_s}s\n{err}",
-            "duration_s": round(duration, 3),
-            "passed": False,
-            "timed_out": True,
-            "counts": {
-                "passed": 0,
-                "failed": 0,
-                "deselected": 0,
-                "skipped": 0,
-                "xfailed": 0,
-                "xpassed": 0,
-                "errors": 1,
-            },
         }
     finally:
         try:

@@ -25,7 +25,7 @@
       "domain": "Python / Algorithms",
       "difficulty": "S",
       "class": "algorithm",
-      "tests_count": 23,
+      "tests_count": 27,
       "description": "Parse complex comma-separated interval strings, merge overlapping/adjacent bounds, and strictly validate bounds and types."
     },
     {
