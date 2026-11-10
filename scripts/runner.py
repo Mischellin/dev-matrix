@@ -22,6 +22,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 import tomllib
 from pathlib import Path
@@ -127,15 +128,15 @@ def run_pytest(
             "pytest",
         ]
 
-    # Ensure isolated empty pytest config exists to prevent loading candidate pyproject.toml
-    empty_ini = Path("/tmp/dev_matrix_empty.ini")
-    if not empty_ini.exists():
-        empty_ini.write_text("[pytest]\n", encoding="utf-8")
+    # Create unique isolated temporary pytest config for this run to avoid shared path collisions
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".ini", delete=False, encoding="utf-8") as tmp_ini:
+        tmp_ini.write("[pytest]\n")
+        empty_ini_path = Path(tmp_ini.name)
 
     cmd.extend([
         "-q",
         "-c",
-        str(empty_ini),
+        str(empty_ini_path),
         "--rootdir",
         str(cwd),
         "-p",
@@ -237,6 +238,11 @@ def run_pytest(
                 "errors": 1,
             },
         }
+    finally:
+        try:
+            empty_ini_path.unlink(missing_ok=True)
+        except OSError:
+            pass
 
 
 def verify_task(task_dir: Path) -> bool:
