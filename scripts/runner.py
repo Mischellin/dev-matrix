@@ -30,7 +30,9 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
-TASKS_DIR = ROOT / "tasks"
+# В установленном пакете задачи лежат рядом с модулем, в клоне репозитория — в корне.
+_PKG_TASKS = Path(__file__).resolve().parent / "tasks"
+TASKS_DIR = _PKG_TASKS if _PKG_TASKS.is_dir() else ROOT / "tasks"
 MANIFEST_PATH = TASKS_DIR / "manifest.json"
 DEFAULT_TIMEOUT_S = 60.0
 
