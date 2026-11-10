@@ -1,0 +1,14 @@
+[project]
+name = "logging-filter"
+version = "0.1.0"
+description = "Log record scrubber for sensitive query string parameters"
+requires-python = ">=3.10"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -1,0 +1,14 @@
+id = "obs-02-query-redactor"
+title = "Redact Sensitive Query Parameters from Server Access Logs"
+domain = "Python / Observability & Security"
+difficulty = "S"
+class = "security"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+baseline_tests = 1
+hidden_tests = 36
+total_tests = 37
+passing_threshold = 1.0

@@ -25,8 +25,7 @@ def build_readme() -> str:
     executor_cells = [c for c in cells if c.get("role") == "executor"]
     
     # Unique models
-    model_keys = sorted(list({c["model"] for c in executor_cells}))
-    domains = ratings.get("domains", ["1С", "Python", "Web", "Infra", "Тексты"])
+    model_keys = sorted({c["model"] for c in executor_cells})
 
     # Build matrix map: model -> domain -> rating
     matrix = {}
@@ -87,7 +86,6 @@ def build_readme() -> str:
     task_rows.append("| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |")
     for t in benchmarks:
         t_id = t["id"]
-        t_title = t["title"]
         for r in t["runs"]:
             status_badge = "✅ PASS" if r["status"] == "PASS" else "❌ FAIL"
             time_str = f"{r['duration_min']:.1f}m"
@@ -97,6 +95,18 @@ def build_readme() -> str:
             score_str = f"⭐ {r['review_score']:.1f}/5.0"
             task_rows.append(f"| `{t_id}` | **{r['model_name']}** | {status_badge} | {r['passed_tests']}/{r['total_tests']} | {time_str} | {tok_str} | {cost_str} | {diff_str} | {score_str} |")
     benchmark_table = "\n".join(task_rows)
+
+    # Load Tasks Manifest
+    manifest_file = ROOT / "tasks" / "manifest.json"
+    manifest_rows = []
+    if manifest_file.exists():
+        with open(manifest_file, encoding="utf-8") as f:
+            manifest_data = json.load(f)
+        manifest_rows.append("| Task ID | Title | Domain | Class | Tests |")
+        manifest_rows.append("| :--- | :--- | :--- | :---: | :---: |")
+        for t in manifest_data.get("tasks", []):
+            manifest_rows.append(f"| [`{t['id']}`](tasks/{t['id']}) | **{t['title']}** | {t['domain']} | `{t['difficulty']}` ({t['class']}) | {t['tests_count']} tests |")
+    manifest_table = "\n".join(manifest_rows)
 
     readme_content = f"""<div align="center">
 
@@ -153,6 +163,34 @@ How accurately does each model catch genuine bugs (P0/P1) without false-positive
 Tested under identical isolated runtime conditions with full hidden test suites.
 
 {benchmark_table}
+
+---
+
+## 📦 Anonymized Tasks Pool & Reproduction
+
+The benchmark repository contains fully anonymized, self-contained tasks in [`tasks/`](tasks/):
+- **Zero proprietary leakage:** All internal endpoints, credentials, and company identifiers replaced with generic domain contracts.
+- **Self-contained seed environments:** Clean project roots with dependencies and passing baseline unit tests.
+- **Deterministic acceptance suites:** Hidden test suites stored in `tasks/<id>/hidden/` that verify specific security, architectural, and algorithmic invariants.
+
+{manifest_table}
+
+### Reproduce or Evaluate Locally:
+> **Requirements**: Python `>= 3.11` and [`uv`](https://astral.sh/uv) (recommended) or `pytest >= 8.0`.
+
+```bash
+# 1. Verify the entire benchmark suite and all reference solutions:
+python3 scripts/runner.py verify-suite
+
+# 2. Prepare an isolated workspace for your AI agent:
+python3 scripts/runner.py prepare --task sec-01-clock-skew --out /tmp/agent-workdir
+
+# 3. Point your coding agent (Claude Code, Codex, Antigravity, OpenCode) to /tmp/agent-workdir
+# Agent reads TASK_PROMPT.md, makes code edits and tests locally.
+
+# 4. Evaluate the agent's workdir against hidden acceptance assertions:
+python3 scripts/runner.py evaluate --task sec-01-clock-skew --workdir /tmp/agent-workdir
+```
 
 ---
 

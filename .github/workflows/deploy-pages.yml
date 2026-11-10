@@ -30,9 +30,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Regenerate Documentation and Validate
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.5.26"
+
+      - name: Verify Benchmark Suite Integrity
         run: |
-          python3 scripts/generate_readme.py
+          uv run --no-project --python 3.12 --with pytest==8.3.4 pytest -q tests/
+          uv run --no-project --python 3.12 python3 scripts/runner.py verify-suite
+          uv run --no-project --python 3.12 python3 scripts/generate_readme.py
 
       - name: Prepare Pages Artifact
         run: |
@@ -40,6 +47,8 @@ jobs:
           cp -r web/* _site/
           mkdir -p _site/data
           cp -r data/* _site/data/
+          mkdir -p _site/tasks
+          cp tasks/manifest.json _site/tasks/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
