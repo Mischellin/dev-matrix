@@ -274,6 +274,29 @@ def test_uvicorn_access_tuple_with_apostrophe_in_path() -> None:
     assert rec.args[2] == "/search?filter=a',b&token=<redacted>"
 
 
+def test_token_value_with_spaces_or_unicode_redacted() -> None:
+    f = RedactQuerySecretsFilter()
+
+    # Space in token argument formatted into query
+    rec1 = logging.LogRecord("test", logging.INFO, __file__, 1, "/docs?token=%s", ("ab SECRET",), None)
+    assert f.filter(rec1) is True
+    assert "SECRET" not in rec1.getMessage()
+    assert rec1.getMessage() == "/docs?token=<redacted>"
+
+    # Unicode in token argument
+    rec2 = logging.LogRecord("test", logging.INFO, __file__, 1, "/docs?token=%s", ("привет",), None)
+    assert f.filter(rec2) is True
+    assert "привет" not in rec2.getMessage()
+    assert rec2.getMessage() == "/docs?token=<redacted>"
+
+
+def test_semicolon_delimited_query_parameters_redacted() -> None:
+    out = _scrubbed("/search?page=1;token=SECRET")
+    assert "SECRET" not in out
+    assert "?page=1;token=<redacted>" in out
+
+
+
 
 
 

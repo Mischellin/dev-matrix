@@ -98,7 +98,7 @@ The benchmark repository contains fully anonymized, self-contained tasks in [`ta
 | Task ID | Title | Domain | Class | Tests |
 | :--- | :--- | :--- | :---: | :---: |
 | [`sec-01-clock-skew`](tasks/sec-01-clock-skew) | **Validate WebApp Auth Clock Skew and Reject Future Timestamps** | Python / Security & Crypto | `S` (security) | 6 assertions |
-| [`obs-02-query-redactor`](tasks/obs-02-query-redactor) | **Redact Sensitive Query Parameters from Server Access Logs** | Python / Observability & Security | `S` (security) | 34 assertions |
+| [`obs-02-query-redactor`](tasks/obs-02-query-redactor) | **Redact Sensitive Query Parameters from Server Access Logs** | Python / Observability & Security | `S` (security) | 36 assertions |
 | [`algo-03-range-merger`](tasks/algo-03-range-merger) | **Robust Interval String Parser and Overlap Merger** | Python / Algorithms | `S` (algorithm) | 23 assertions |
 | [`arch-04-tag-registry`](tasks/arch-04-tag-registry) | **Normalized Tag Registry with Alphabetical Ordering and Scope Protection** | Python / Data Architecture & Security | `M` (architecture) | 8 assertions |
 

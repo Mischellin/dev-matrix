@@ -17,8 +17,9 @@ Implement `RedactQuerySecretsFilter` as a standard `logging.Filter` in `src/logg
    - Any parameter starting with `X-Amz-` (e.g. `X-Amz-Credential`, `X-Amz-Signature`, `X-Amz-Security-Token`).
 2. Parameter names may be single or recursively percent-encoded (e.g. `%74oken` or `%2564l` -> `%64l` -> `dl`). They must be unquoted recursively until stable before evaluating sensitivity.
 3. Harmless parameters (e.g. `page=`, `limit=`, `download=`, `status=`, `code_type=`, `dlx=`) must remain untouched.
-4. Path structure, parameter names, and order must be preserved.
-5. Filter contract:
+4. Supports standard `&` as well as matrix/semicolon `;` query parameter delimiters (e.g. `?page=1;token=SECRET`), Unicode (IRIs), and parameter values containing spaces or quotes.
+5. Path structure, parameter names, and order must be preserved.
+6. Filter contract:
    - `filter(record: logging.LogRecord) -> bool` must always return `True` (never drop logs).
    - Preserving `record.args` collection structure: when query parameters or URIs are passed inside `record.args` (e.g. Uvicorn 5-tuple `(client_addr, method, full_path, http_version, status_code)`), strings inside `record.args` must be sanitized in-place, preserving collection type and length for downstream formatters.
    - When `record.msg` contains query string formatting placeholders (e.g. `?code=%d` or `?token=%s`), format via `record.getMessage()`, redact the resulting query string into `record.msg`, and clear `record.args` (handling potential collisions between literal URL percent-encodings like `%20` and printf specifiers).

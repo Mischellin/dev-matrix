@@ -17,11 +17,12 @@ SENSITIVE_KEYS = {
 }
 
 # Regex to find URI query string in a string (allows RFC 3986 sub-delims including *, !, parentheses, commas,
-# square brackets (e.g. ids[]=1, filter[name]=a), quoted values (e.g. %r), internal single quotes,
-# and <> for idempotent passes, while respecting boundaries between multiple URLs/data structures).
-_CHARS = r"a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()*!\[\]"
+# square brackets (e.g. ids[]=1, filter[name]=a), quoted values with spaces/symbols (e.g. %r), Unicode/IRIs,
+# spaces inside query values not ending the URL, internal single quotes, and <> for idempotent passes,
+# while respecting boundaries between multiple URLs/data structures).
+_CHARS = r"a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()*!\[\]\u0080-\uffff"
 _QUERY_PATTERN = re.compile(
-    rf"(\?(?:=\x27[^\x27\s&]*\x27|[{_CHARS}]|(?!\x27(?:\s|$|,[\s\x27]|\]|\)|\"))[\x27])*)"
+    rf"(\?(?:=\x27[^\x27]*\x27|=\x22[^\x22]*\x22|[{_CHARS}]| (?!HTTP/|[0-9]{{3}}|\x27|\"|\)|\]|$)|(?!\x27(?:\s|$|,[\s\x27]|\]|\)|\"))[\x27])*)"
 )
 
 
@@ -42,22 +43,25 @@ def redact_query_string(query_str: str) -> str:
         return query_str
 
     raw_query = query_str[1:]
-    parts = raw_query.split("&")
-    new_parts = []
-    for part in parts:
-        if not part:
-            new_parts.append("")
+    tokens = re.split(r"([&;])", raw_query)
+    new_tokens = []
+    for token in tokens:
+        if token in ("&", ";"):
+            new_tokens.append(token)
             continue
-        if "=" in part:
-            k, _v = part.split("=", 1)
+        if not token:
+            new_tokens.append("")
+            continue
+        if "=" in token:
+            k, _v = token.split("=", 1)
             if _is_sensitive_key(k):
-                new_parts.append(f"{k}=<redacted>")
+                new_tokens.append(f"{k}=<redacted>")
             else:
-                new_parts.append(part)
+                new_tokens.append(token)
         else:
-            new_parts.append(part)
+            new_tokens.append(token)
 
-    return "?" + "&".join(new_parts)
+    return "?" + "".join(new_tokens)
 
 
 def redact_text(text: str) -> str:
