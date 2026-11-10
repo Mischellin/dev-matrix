@@ -13,8 +13,14 @@ from devmatrix import cli
 def _report(tmp_path: Path, **over) -> Path:
     tid = "algo-03-range-merger"
     r = {
-        "schema": 1, "task_id": tid, "model": "My Model", "passed": True, "passed_tests": 27,
-        "total_tests": 27, "agent_seconds": 1.0, "tasks_hash": cli.task_hash(tid),
+        "schema": 1,
+        "task_id": tid,
+        "model": "My Model",
+        "passed": True,
+        "passed_tests": 27,
+        "total_tests": 27,
+        "agent_seconds": 1.0,
+        "tasks_hash": cli.task_hash(tid),
         "created_at": "2026-11-10T00:00:00Z",
     }
     r.update(over)

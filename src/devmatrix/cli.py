@@ -28,8 +28,15 @@ SCHEMA = 1
 HASHED_PARTS = ("seed", "hidden", "prompt.md", "task.toml")
 SKIP_DIRS = {"__pycache__", ".pytest_cache", ".venv"}
 REQUIRED_FIELDS = {
-    "schema": int, "task_id": str, "model": str, "passed": bool, "passed_tests": int,
-    "total_tests": int, "agent_seconds": (int, float), "tasks_hash": str, "created_at": str,
+    "schema": int,
+    "task_id": str,
+    "model": str,
+    "passed": bool,
+    "passed_tests": int,
+    "total_tests": int,
+    "agent_seconds": (int, float),
+    "tasks_hash": str,
+    "created_at": str,
 }
 
 
@@ -100,7 +107,11 @@ def _save(report: dict[str, Any], out: Path) -> Path:
 def _run_agent(cmd: str, workdir: Path, task_id: str, timeout: float) -> float:
     prompt = workdir / "TASK_PROMPT.md"
     cmd = cmd.replace("{prompt_file}", shlex.quote(str(prompt)))
-    env = {**__import__("os").environ, "DEVMATRIX_TASK_ID": task_id, "DEVMATRIX_PROMPT": str(prompt)}
+    env = {
+        **__import__("os").environ,
+        "DEVMATRIX_TASK_ID": task_id,
+        "DEVMATRIX_PROMPT": str(prompt),
+    }
     start = time.monotonic()
     try:
         subprocess.run(cmd, shell=True, cwd=workdir, env=env, timeout=timeout, check=False)
@@ -160,7 +171,9 @@ def validate_report(path: Path, root: Path | None = None) -> list[str]:
     if r["task_id"] not in task_ids():
         return errs + [f"неизвестная задача {r['task_id']}"]
     if r["tasks_hash"] != task_hash(r["task_id"]):
-        errs.append("хеш задачи не совпадает с текущей версией набора — обновите devmatrix и повторите")
+        errs.append(
+            "хеш задачи не совпадает с текущей версией набора — обновите devmatrix и повторите"
+        )
     meta = runner.get_task_meta(runner.TASKS_DIR / r["task_id"])
     if r["total_tests"] != meta["total_tests"]:
         errs.append("total_tests не совпадает с задачей")
@@ -208,15 +221,19 @@ def cmd_submit(args: argparse.Namespace) -> int:
         reports.append((f, json.loads(f.read_text(encoding="utf-8"))))
     print("К отправке:")
     for f, r in reports:
-        print(f"  {'✅' if r['passed'] else '❌'} {r['model']:30} {r['task_id']:28} "
-              f"{r['passed_tests']}/{r['total_tests']}")
+        print(
+            f"  {'✅' if r['passed'] else '❌'} {r['model']:30} {r['task_id']:28} "
+            f"{r['passed_tests']}/{r['total_tests']}"
+        )
     print("Токены, цена и время указаны вами и в таблице помечаются как «заявлено автором».")
     if not args.yes and input("Отправить PR в публичный репозиторий? [y/N] ").lower() != "y":
         print("Отменено.")
         return 1
     if not shutil.which("gh"):
-        print(f"\nУстановите gh (https://cli.github.com) либо откройте PR вручную: положите файлы в "
-              f"submissions/ форка {UPSTREAM} и создайте pull request.")
+        print(
+            f"\nУстановите gh (https://cli.github.com) либо откройте PR вручную: положите файлы в "
+            f"submissions/ форка {UPSTREAM} и создайте pull request."
+        )
         return 1
     user = _gh("api", "user", "-q", ".login", capture=True)
     _gh("repo", "fork", UPSTREAM, "--clone=false")
@@ -233,13 +250,29 @@ def cmd_submit(args: argparse.Namespace) -> int:
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(f, dest)
         _git("add", "submissions", cwd=repo)
-        _git("commit", "-q", "-m", f"submission: {', '.join(sorted({r['model'] for _, r in reports}))}",
-             cwd=repo)
+        _git(
+            "commit",
+            "-q",
+            "-m",
+            f"submission: {', '.join(sorted({r['model'] for _, r in reports}))}",
+            cwd=repo,
+        )
         _git("push", "-q", "-u", "origin", branch, cwd=repo)
-        _gh("pr", "create", "--repo", UPSTREAM, "--head", f"{user}:{branch}", "--base", "main",
-            "--title", f"Результаты: {', '.join(sorted({r['model'] for _, r in reports}))}",
-            "--body", f"Отправлено через `devmatrix submit` (версия {_version()}). "
-            f"Файлов: {len(reports)}.", cwd=repo)
+        _gh(
+            "pr",
+            "create",
+            "--repo",
+            UPSTREAM,
+            "--head",
+            f"{user}:{branch}",
+            "--base",
+            "main",
+            "--title",
+            f"Результаты: {', '.join(sorted({r['model'] for _, r in reports}))}",
+            "--body",
+            f"Отправлено через `devmatrix submit` (версия {_version()}). Файлов: {len(reports)}.",
+            cwd=repo,
+        )
     finally:
         shutil.rmtree(work, ignore_errors=True)
     return 0
@@ -262,8 +295,11 @@ def main(argv: list[str] | None = None) -> None:
     r = sub.add_parser("run", help="запустить агента на задаче и проверить результат")
     r.add_argument("task", nargs="?")
     r.add_argument("--all", action="store_true", help="весь пул")
-    r.add_argument("--agent", required=True,
-                   help="команда запуска агента в рабочей папке; {prompt_file} — путь к заданию")
+    r.add_argument(
+        "--agent",
+        required=True,
+        help="команда запуска агента в рабочей папке; {prompt_file} — путь к заданию",
+    )
     r.add_argument("--agent-timeout", type=float, default=1800)
     r.add_argument("--keep", action="store_true", help="не удалять рабочие папки")
     common(r)

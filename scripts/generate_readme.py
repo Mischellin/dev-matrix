@@ -180,9 +180,9 @@ The benchmark repository contains fully anonymized, self-contained tasks in [`ta
 ```bash
 uvx --from git+https://github.com/Mischellin/dev-matrix devmatrix list
 # Run your agent on every task (the command runs in the prepared workspace;
-# {prompt_file} is the path to TASK_PROMPT.md) and check it against hidden tests:
+# {{prompt_file}} is the path to TASK_PROMPT.md) and check it against hidden tests:
 uvx --from git+https://github.com/Mischellin/dev-matrix devmatrix run --all \
-    --model my-model --agent 'my-agent --prompt-file {prompt_file}'
+    --model my-model --agent 'my-agent --prompt-file {{prompt_file}}'
 # Send the results to the leaderboard as a pull request (needs the `gh` CLI):
 uvx --from git+https://github.com/Mischellin/dev-matrix devmatrix submit
 ```
