@@ -95,6 +95,8 @@ def build_readme() -> str:
             score_str = f"⭐ {r['review_score']:.1f}/5.0"
             task_rows.append(f"| `{t_id}` | **{r['model_name']}** | {status_badge} | {r['passed_tests']}/{r['total_tests']} | {time_str} | {tok_str} | {cost_str} | {diff_str} | {score_str} |")
     benchmark_table = "\n".join(task_rows)
+    if not benchmarks:
+        benchmark_table = "_Per-task run results will be published after the public tasks are evaluated._"
 
     # Load Tasks Manifest
     manifest_file = ROOT / "tasks" / "manifest.json"
@@ -115,8 +117,7 @@ def build_readme() -> str:
 ### **Pragmatic Real-World AI Coding Agents Benchmark & Leaderboard**
 
 [![GitHub Pages](https://img.shields.io/badge/Live_Dashboard-GitHub_Pages-2563eb.svg?style=flat-square&logo=github)](https://mischellin.github.io/dev-matrix/)
-[![Models Evaluated](https://img.shields.io/badge/models_evaluated-10_frontier_models-8b5cf6.svg?style=flat-square)](data/models.json)
-[![Evaluation Engine](https://img.shields.io/badge/eval_engine-Dev_Harness-emerald.svg?style=flat-square)](https://github.com/SDKN-Digital/dev-harness)
+[![Models Evaluated](https://img.shields.io/badge/models_in_matrix-10-8b5cf6.svg?style=flat-square)](data/models.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE)
 [![Data Status](https://img.shields.io/badge/updated-November_2026-blue.svg?style=flat-square)](data/ratings.json)
 
@@ -133,7 +134,7 @@ def build_readme() -> str:
 Most existing LLM coding benchmarks evaluate models on isolated toy problems, synthetic unit puzzles, or single-file scripts. 
 
 **DevMatrix** measures what actually matters when deploying autonomous AI software engineers in production:
-1. **Real-World Software Engineering:** Multi-file repositories, real database migrations (Alembic/PostgreSQL), concurrency invariants, clock-skew security edge cases, and framework idioms.
+1. **Real-World Software Engineering:** Multi-file repositories, self-contained modules with hidden acceptance tests: security edge cases (clock skew, log redaction), algorithms, data architecture, Kubernetes admission policy and 1C:Enterprise BSL logic.
 2. **Deterministic Hard Verification:** Every task executes inside an isolated `git worktree`. Success requires passing 100% of hidden acceptance tests and preserving all existing suite assertions.
 3. **Multi-Agent Cross-Family Review:** Completed solutions are evaluated by an independent reviewer from an **entirely different model family** (e.g., Claude reviewed by Codex/GPT, Codex reviewed by Sonnet). Reviewers detect subtle regressions, rubric compliance, and overengineering.
 4. **True Economics (Tokens & Cost per Pass):** A cheap model with an 80% failure rate that takes 20 retries is vastly more expensive than a premium model that solves the problem on the first attempt. DevMatrix reports the **true expenditure per accepted task**.

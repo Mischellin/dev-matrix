@@ -12,10 +12,14 @@ import os
 from pathlib import Path
 from typing import Any
 
-SOURCE_RATINGS = Path("/home/mikhail/.config/dev-harness/ratings.json")
-RUNS_DIR = Path("/home/mikhail/.local/share/dev-harness/runs")
-BENCHES_DIR = Path("/home/mikhail/.local/share/dev-harness/benches")
-CORPUS_RUNS_DIR = Path("/home/mikhail/.local/share/dev-harness/corpus-runs")
+# Источники задаются переменными окружения; по умолчанию — стандартные каталоги Harness в домашней папке.
+SOURCE_RATINGS = Path(
+    os.environ.get("DEV_HARNESS_RATINGS", "~/.config/dev-harness/ratings.json")
+).expanduser()
+_DATA_HOME = Path(os.environ.get("DEV_HARNESS_DATA", "~/.local/share/dev-harness")).expanduser()
+RUNS_DIR = _DATA_HOME / "runs"
+BENCHES_DIR = _DATA_HOME / "benches"
+CORPUS_RUNS_DIR = _DATA_HOME / "corpus-runs"
 
 MODELS_INFO = {
     "sonnet": {
@@ -120,194 +124,9 @@ MODELS_INFO = {
     }
 }
 
-BENCHMARK_TASKS_SUMMARY = [
-    {
-        "id": "slottix-240",
-        "corpus": "hb-r",
-        "title": "Telegram Mini App Auth: Clock Skew & Far-Future Validation",
-        "domain": "Python / Security",
-        "class": "Security & Edge-Case",
-        "tests_count": 14,
-        "runs": [
-            {
-                "model_key": "sonnet",
-                "model_name": "Claude 3.7 Sonnet",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 5.1,
-                "total_tokens": 820000,
-                "cost_usd": 0.45,
-                "diff_stat": {"files": 2, "added": 62, "removed": 8},
-                "review_score": 4.8
-            },
-            {
-                "model_key": "codex-sol",
-                "model_name": "Codex Sol",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 6.4,
-                "total_tokens": 1150000,
-                "cost_usd": 0.52,
-                "diff_stat": {"files": 2, "added": 58, "removed": 6},
-                "review_score": 4.7
-            },
-            {
-                "model_key": "minimax",
-                "model_name": "MiniMax-M3.1-Flash",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 30.0,
-                "total_tokens": 15870000,
-                "cost_usd": 0.85,
-                "diff_stat": {"files": 2, "added": 44, "removed": 11},
-                "review_score": 4.2
-            },
-            {
-                "model_key": "glm-5",
-                "model_name": "GLM-5.3",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 18.2,
-                "total_tokens": 6400000,
-                "cost_usd": 0.70,
-                "diff_stat": {"files": 2, "added": 49, "removed": 9},
-                "review_score": 4.1
-            },
-            {
-                "model_key": "gemini-flash",
-                "model_name": "Gemini 3.8 Flash",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 12.5,
-                "total_tokens": 7450000,
-                "cost_usd": 0.22,
-                "diff_stat": {"files": 2, "added": 71, "removed": 14},
-                "review_score": 4.0
-            }
-        ]
-    },
-    {
-        "id": "pantry-8",
-        "corpus": "hb-r-hard",
-        "title": "Recipe Tag Management, Normalization & Permission Isolation",
-        "domain": "Python / Architecture",
-        "class": "Feature & DB Schema Migration",
-        "tests_count": 14,
-        "runs": [
-            {
-                "model_key": "sonnet",
-                "model_name": "Claude 3.7 Sonnet",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 7.3,
-                "total_tokens": 1200000,
-                "cost_usd": 0.75,
-                "diff_stat": {"files": 8, "added": 210, "removed": 25},
-                "review_score": 4.9
-            },
-            {
-                "model_key": "codex-sol",
-                "model_name": "Codex Sol",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 8.0,
-                "total_tokens": 1420000,
-                "cost_usd": 0.68,
-                "diff_stat": {"files": 7, "added": 195, "removed": 30},
-                "review_score": 4.8
-            },
-            {
-                "model_key": "minimax",
-                "model_name": "MiniMax-M3.1-Flash",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 23.9,
-                "total_tokens": 16517787,
-                "cost_usd": 0.95,
-                "diff_stat": {"files": 21, "added": 650, "removed": 51},
-                "review_score": 4.0
-            },
-            {
-                "model_key": "glm-5",
-                "model_name": "GLM-5.3",
-                "status": "PASS",
-                "passed_tests": 14,
-                "total_tests": 14,
-                "duration_min": 21.0,
-                "total_tokens": 8900000,
-                "cost_usd": 0.88,
-                "diff_stat": {"files": 9, "added": 280, "removed": 40},
-                "review_score": 4.3
-            }
-        ]
-    },
-    {
-        "id": "arbita-12",
-        "corpus": "hb-r",
-        "title": "Idempotent Webhook Event Deduplication & Invariant Validation",
-        "domain": "Web / Distributed",
-        "class": "Concurrency & Invariants",
-        "tests_count": 10,
-        "runs": [
-            {
-                "model_key": "sonnet",
-                "model_name": "Claude 3.7 Sonnet",
-                "status": "PASS",
-                "passed_tests": 10,
-                "total_tests": 10,
-                "duration_min": 3.8,
-                "total_tokens": 640000,
-                "cost_usd": 0.38,
-                "diff_stat": {"files": 3, "added": 85, "removed": 12},
-                "review_score": 4.9
-            },
-            {
-                "model_key": "codex-sol",
-                "model_name": "Codex Sol",
-                "status": "PASS",
-                "passed_tests": 10,
-                "total_tests": 10,
-                "duration_min": 4.5,
-                "total_tokens": 780000,
-                "cost_usd": 0.40,
-                "diff_stat": {"files": 3, "added": 78, "removed": 10},
-                "review_score": 4.8
-            },
-            {
-                "model_key": "gemini-4-argon",
-                "model_name": "Gemini 4 Argon",
-                "status": "PASS",
-                "passed_tests": 10,
-                "total_tests": 10,
-                "duration_min": 20.0,
-                "total_tokens": 4200000,
-                "cost_usd": 0.90,
-                "diff_stat": {"files": 4, "added": 95, "removed": 18},
-                "review_score": 4.5
-            },
-            {
-                "model_key": "qwen3.8-max",
-                "model_name": "Qwen 3.8 Max",
-                "status": "PASS",
-                "passed_tests": 10,
-                "total_tests": 10,
-                "duration_min": 17.0,
-                "total_tokens": 3800000,
-                "cost_usd": 0.65,
-                "diff_stat": {"files": 3, "added": 90, "removed": 14},
-                "review_score": 4.3
-            }
-        ]
-    }
-]
+# Результаты прогонов по опубликованным задачам из tasks/. Пока не заполнено: прогоны ещё не сделаны,
+# раньше здесь были вручную прописанные цифры по внутренним задачам — они убраны.
+BENCHMARK_TASKS_SUMMARY: list[dict[str, Any]] = []
 
 
 def export_ratings(dest_dir: Path) -> dict[str, Any]:

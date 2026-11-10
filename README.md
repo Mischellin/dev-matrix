@@ -5,8 +5,7 @@
 ### **Pragmatic Real-World AI Coding Agents Benchmark & Leaderboard**
 
 [![GitHub Pages](https://img.shields.io/badge/Live_Dashboard-GitHub_Pages-2563eb.svg?style=flat-square&logo=github)](https://mischellin.github.io/dev-matrix/)
-[![Models Evaluated](https://img.shields.io/badge/models_evaluated-10_frontier_models-8b5cf6.svg?style=flat-square)](data/models.json)
-[![Evaluation Engine](https://img.shields.io/badge/eval_engine-Dev_Harness-emerald.svg?style=flat-square)](https://github.com/SDKN-Digital/dev-harness)
+[![Models Evaluated](https://img.shields.io/badge/models_in_matrix-10-8b5cf6.svg?style=flat-square)](data/models.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE)
 [![Data Status](https://img.shields.io/badge/updated-November_2026-blue.svg?style=flat-square)](data/ratings.json)
 
@@ -23,7 +22,7 @@
 Most existing LLM coding benchmarks evaluate models on isolated toy problems, synthetic unit puzzles, or single-file scripts. 
 
 **DevMatrix** measures what actually matters when deploying autonomous AI software engineers in production:
-1. **Real-World Software Engineering:** Multi-file repositories, real database migrations (Alembic/PostgreSQL), concurrency invariants, clock-skew security edge cases, and framework idioms.
+1. **Real-World Software Engineering:** Multi-file repositories, self-contained modules with hidden acceptance tests: security edge cases (clock skew, log redaction), algorithms, data architecture, Kubernetes admission policy and 1C:Enterprise BSL logic.
 2. **Deterministic Hard Verification:** Every task executes inside an isolated `git worktree`. Success requires passing 100% of hidden acceptance tests and preserving all existing suite assertions.
 3. **Multi-Agent Cross-Family Review:** Completed solutions are evaluated by an independent reviewer from an **entirely different model family** (e.g., Claude reviewed by Codex/GPT, Codex reviewed by Sonnet). Reviewers detect subtle regressions, rubric compliance, and overengineering.
 4. **True Economics (Tokens & Cost per Pass):** A cheap model with an 80% failure rate that takes 20 retries is vastly more expensive than a premium model that solves the problem on the first attempt. DevMatrix reports the **true expenditure per accepted task**.
@@ -70,21 +69,7 @@ How accurately does each model catch genuine bugs (P0/P1) without false-positive
 
 Tested under identical isolated runtime conditions with full hidden test suites.
 
-| Task | Model | Status | Pass Rate | Time | Tokens | API Cost | Diff | Review Score |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `slottix-240` | **Claude 3.7 Sonnet** | ✅ PASS | 14/14 | 5.1m | 820k | $0.45 | +62/-8 | ⭐ 4.8/5.0 |
-| `slottix-240` | **Codex Sol** | ✅ PASS | 14/14 | 6.4m | 1.1M | $0.52 | +58/-6 | ⭐ 4.7/5.0 |
-| `slottix-240` | **MiniMax-M3.1-Flash** | ✅ PASS | 14/14 | 30.0m | 15.9M | $0.85 | +44/-11 | ⭐ 4.2/5.0 |
-| `slottix-240` | **GLM-5.3** | ✅ PASS | 14/14 | 18.2m | 6.4M | $0.70 | +49/-9 | ⭐ 4.1/5.0 |
-| `slottix-240` | **Gemini 3.8 Flash** | ✅ PASS | 14/14 | 12.5m | 7.5M | $0.22 | +71/-14 | ⭐ 4.0/5.0 |
-| `pantry-8` | **Claude 3.7 Sonnet** | ✅ PASS | 14/14 | 7.3m | 1.2M | $0.75 | +210/-25 | ⭐ 4.9/5.0 |
-| `pantry-8` | **Codex Sol** | ✅ PASS | 14/14 | 8.0m | 1.4M | $0.68 | +195/-30 | ⭐ 4.8/5.0 |
-| `pantry-8` | **MiniMax-M3.1-Flash** | ✅ PASS | 14/14 | 23.9m | 16.5M | $0.95 | +650/-51 | ⭐ 4.0/5.0 |
-| `pantry-8` | **GLM-5.3** | ✅ PASS | 14/14 | 21.0m | 8.9M | $0.88 | +280/-40 | ⭐ 4.3/5.0 |
-| `arbita-12` | **Claude 3.7 Sonnet** | ✅ PASS | 10/10 | 3.8m | 640k | $0.38 | +85/-12 | ⭐ 4.9/5.0 |
-| `arbita-12` | **Codex Sol** | ✅ PASS | 10/10 | 4.5m | 780k | $0.40 | +78/-10 | ⭐ 4.8/5.0 |
-| `arbita-12` | **Gemini 4 Argon** | ✅ PASS | 10/10 | 20.0m | 4.2M | $0.90 | +95/-18 | ⭐ 4.5/5.0 |
-| `arbita-12` | **Qwen 3.8 Max** | ✅ PASS | 10/10 | 17.0m | 3.8M | $0.65 | +90/-14 | ⭐ 4.3/5.0 |
+_Per-task run results will be published after the public tasks are evaluated._
 
 ---
 
