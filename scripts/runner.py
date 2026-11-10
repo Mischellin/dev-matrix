@@ -106,13 +106,21 @@ def run_pytest(
     env = os.environ.copy()
     src_path = str(cwd / "src")
     guard_dir = str(Path(__file__).resolve().parent)
-    env["PYTHONPATH"] = f"{src_path}{os.pathsep}{guard_dir}" if src_path else guard_dir
     # Prevent external environment or user flags from filtering/tampering with acceptance tests
+    env.pop("PYTHONPATH", None)
     env.pop("PYTEST_ADDOPTS", None)
     env.pop("PYTEST_CONFIG", None)
     env.pop("PYTEST_PLUGINS", None)
 
-    # Use fully controlled pytest config (-c /dev/null) to ignore arbitrary candidate settings
+    # Use isolated python (-I) with explicit plugin injection to prevent candidate spoofing of pytest
+    python_entry = (
+        f"import sys; "
+        f"sys.path.insert(0, {guard_dir!r}); "
+        f"import pytest_guard; "
+        f"import pytest; "
+        f"sys.exit(pytest.main(sys.argv[1:], plugins=[pytest_guard]))"
+    )
+
     uv_bin = shutil.which("uv")
     if uv_bin:
         cmd = [
@@ -121,13 +129,17 @@ def run_pytest(
             "--no-project",
             "--with",
             "pytest==8.3.4",
-            "pytest",
+            "python",
+            "-I",
+            "-c",
+            python_entry,
         ]
     else:
         cmd = [
             sys.executable,
-            "-m",
-            "pytest",
+            "-I",
+            "-c",
+            python_entry,
         ]
 
     # Create unique isolated temporary pytest config for this run to avoid shared path collisions
@@ -137,12 +149,11 @@ def run_pytest(
 
     cmd.extend([
         "-q",
+        "--noconftest",
         "-c",
         str(empty_ini_path),
         "--rootdir",
         str(cwd),
-        "-p",
-        "pytest_guard",
         "-p",
         "no:cacheprovider",
         "-o",

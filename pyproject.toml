@@ -12,3 +12,4 @@ norecursedirs = ["tasks", ".*", "build", "dist"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+exclude = ["scripts/export_metrics.py"]

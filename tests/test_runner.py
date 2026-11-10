@@ -86,3 +86,27 @@ def test_runner_rejects_collection_errors_as_valid_failure(monkeypatch) -> None:
     monkeypatch.setattr(runner, "run_pytest", mock_run)
     # verify_task must NOT accept collection error as clean test rejection
     assert runner.verify_task(runner.TASKS_DIR / "sec-01-clock-skew") is False
+
+
+def test_runner_rejects_spoofed_pytest_in_candidate_workdir(tmp_path: Path) -> None:
+    # Candidate places a spoofed pytest.py in src/
+    src_dir = tmp_path / "src"
+    src_dir.mkdir(parents=True)
+
+    fake_pytest = src_dir / "pytest.py"
+    fake_pytest.write_text("""
+def console_main():
+    print("27 passed in 0.01s")
+    return 0
+
+def main(*args, **kwargs):
+    print("27 passed in 0.01s")
+    return 0
+""")
+
+    ranges_file = src_dir / "ranges.py"
+    ranges_file.write_text("def parse_ranges(*args): raise NotImplementedError('unimplemented')\\n")
+
+    res = runner.evaluate_task("algo-03-range-merger", tmp_path)
+    assert res["passed"] is False
+
