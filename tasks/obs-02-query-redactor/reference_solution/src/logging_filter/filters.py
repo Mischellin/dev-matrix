@@ -24,8 +24,14 @@ _QUERY_PATTERN = re.compile(
 
 
 def _is_sensitive_key(key: str) -> bool:
-    unquoted = urllib.parse.unquote(key).lower()
-    return unquoted in SENSITIVE_KEYS or unquoted.startswith("x-amz-")
+    prev = key
+    while True:
+        unquoted = urllib.parse.unquote(prev)
+        if unquoted == prev:
+            break
+        prev = unquoted
+    lk = prev.lower()
+    return lk in SENSITIVE_KEYS or lk.startswith("x-amz-")
 
 
 def redact_query_string(query_str: str) -> str:
@@ -82,25 +88,32 @@ class RedactQuerySecretsFilter(logging.Filter):
 
     def filter(self, record: logging.LogRecord) -> bool:
         try:
-            # 1. Always scrub record.args first so secrets never leak even if template formatting fails
+            # 1. Always scrub record.args first so sensitive values never leak
             _scrub_args_in_place(record)
 
-            # 2. If record.msg contains placeholders within query string, format and redact
-            if isinstance(record.msg, str) and "?" in record.msg:
-                # Protect literal URL percent-encodings like %20, %74, %2F from crashing printf formatters
-                escaped_msg = re.sub(r"%(?=[0-9a-fA-F]{2})", "%%", record.msg)
-                if "%" in escaped_msg.split("?", 1)[1]:
+            # 2. Process record.msg
+            if isinstance(record.msg, str):
+                if "?" in record.msg and record.args:
+                    # If query string contains placeholders, merge them via getMessage()
                     try:
-                        formatted = escaped_msg % record.args if record.args else escaped_msg
+                        formatted = record.getMessage()
                         record.msg = redact_text(formatted)
                         record.args = () if isinstance(record.args, tuple) else {}
+                    except TypeError:
+                        # Collision between literal URL percent encodings (e.g. %20) and printf width specs
+                        try:
+                            tmp_msg = re.sub(r"%(?=[0-9a-fA-F]{2})", "%%", record.msg)
+                            formatted = tmp_msg % record.args
+                            record.msg = redact_text(formatted)
+                            record.args = () if isinstance(record.args, tuple) else {}
+                        except Exception:  # noqa: BLE001
+                            record.msg = redact_text(record.msg)
+                            record.args = () if isinstance(record.args, tuple) else {}
                     except Exception:  # noqa: BLE001
-                        # If printf formatting fails, still redact raw record.msg
                         record.msg = redact_text(record.msg)
+                        record.args = () if isinstance(record.args, tuple) else {}
                 else:
                     record.msg = redact_text(record.msg)
-            elif isinstance(record.msg, str):
-                record.msg = redact_text(record.msg)
         except Exception:  # noqa: BLE001, S110
             # Filter contract: never raise, never drop record
             pass

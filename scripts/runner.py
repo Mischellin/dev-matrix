@@ -127,10 +127,19 @@ def run_pytest(
             "pytest",
         ]
 
+    # Ensure isolated empty pytest config exists to prevent loading candidate pyproject.toml
+    empty_ini = Path("/tmp/dev_matrix_empty.ini")
+    if not empty_ini.exists():
+        empty_ini.write_text("[pytest]\n", encoding="utf-8")
+
     cmd.extend([
         "-q",
         "-c",
-        "/dev/null",
+        str(empty_ini),
+        "--rootdir",
+        str(cwd),
+        "-p",
+        "no:cacheprovider",
         "-o",
         f"pythonpath={src_path}",
         "-o",

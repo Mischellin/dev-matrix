@@ -213,6 +213,18 @@ def test_percent_encoding_and_literal_percent_in_template() -> None:
     out = rec.getMessage()
     assert "SUPER_SECRET" not in out
     assert "?token=<redacted>&q=%20x" in out
+    # Idempotent pass must not corrupt %20 into %%20
+    assert f.filter(rec) is True
+    assert rec.getMessage() == out
+
+
+def test_double_percent_encoded_parameter_names_redacted() -> None:
+    # %2564l decodes to %64l, then to dl; %2574oken decodes to %74oken, then to token
+    out = _scrubbed("/download?%2564l=my_file_dl&%2574oken=secret_probe&regular=123")
+    assert "my_file_dl" not in out
+    assert "secret_probe" not in out
+    assert "?%2564l=<redacted>&%2574oken=<redacted>&regular=123" in out
+
 
 
 
