@@ -48,6 +48,8 @@ def test_mixed_parameters_only_sensitive_redacted() -> None:
         ),
         ("?token=abc.def&page=2", "?token=<redacted>&page=2"),
         ("?access_token=secret1&refresh_token=secret2", "?access_token=<redacted>&refresh_token=<redacted>"),
+        ("?id_token=jwt_header.payload.sig&state=st123", "?id_token=<redacted>&state=<redacted>"),
+        ("?signature=hex_sig_987&timestamp=1700000", "?signature=<redacted>&timestamp=1700000"),
     ],
 )
 def test_other_secret_params_redacted(query: str, expected: str) -> None:
@@ -224,6 +226,21 @@ def test_double_percent_encoded_parameter_names_redacted() -> None:
     assert "my_file_dl" not in out
     assert "secret_probe" not in out
     assert "?%2564l=<redacted>&%2574oken=<redacted>&regular=123" in out
+
+
+def test_bracketed_parameters_and_secrets_redacted() -> None:
+    out1 = _scrubbed("/search?ids[]=1&token=SECRET_PROBE")
+    assert "SECRET_PROBE" not in out1
+    assert "?ids[]=1&token=<redacted>" in out1
+
+    out2 = _scrubbed("/search?filter[name]=a&X-Amz-Signature=SIG_PROBE")
+    assert "SIG_PROBE" not in out2
+    assert "?filter[name]=a&X-Amz-Signature=<redacted>" in out2
+
+    out3 = _scrubbed("/search?token=abc[0]")
+    assert "abc[0]" not in out3
+    assert "?token=<redacted>" in out3
+
 
 
 

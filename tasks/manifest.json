@@ -16,7 +16,7 @@
       "domain": "Python / Observability & Security",
       "difficulty": "S",
       "class": "security",
-      "tests_count": 25,
+      "tests_count": 28,
       "description": "Implement a Python logging.Filter that scrubs sensitive query tokens (dl, token, code, state, X-Amz-*) from access logs."
     },
     {
