@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import posixpath
 import re
 from typing import Any
 
@@ -95,9 +96,8 @@ def parse_memory_bytes(val: str | int) -> int:
 
 def _normalize_host_path(path: str) -> str:
     cleaned = re.sub(r"/+", "/", path.strip())
-    if cleaned != "/" and cleaned.endswith("/"):
-        cleaned = cleaned[:-1]
-    return cleaned
+    # Схлопываем «..» и «.», иначе /tmp/../etc обходит запрет.
+    return posixpath.normpath(cleaned) if cleaned else cleaned
 
 
 def _validate_and_mutate_container(c: dict[str, Any]) -> None:
