@@ -348,3 +348,30 @@ def test_order_with_prior_partial_payment(bsl_module) -> None:
     assert res.ОстатокАванса == 3000.0
     assert res.ТаблицаРаспределения[0].СуммаОплаты == 2000.0
     assert res.ТаблицаРаспределения[0].ДолгПослеОплаты == 0.0
+
+
+def test_float_noise_is_rounded_to_kopecks(bsl_module) -> None:
+    runtime, module = bsl_module
+    params = runtime.new_structure(
+        СуммаПлатежа=0.3,
+        Контрагент="ООО Клиент",
+        Договор="Д-1",
+        ДатаПлатежа="2026-11-10",
+    )
+    orders = runtime.new_value_table(
+        ["НомерЗаказа", "ДатаЗаказа", "СуммаЗаказа", "ОплаченоРанее", "СтавкаНДС"]
+    )
+    for num, day, total in (("ЗК-01", "2026-11-01", 0.1), ("ЗК-02", "2026-11-02", 0.2)):
+        r = orders.Добавить()
+        r.НомерЗаказа = num
+        r.ДатаЗаказа = day
+        r.СуммаЗаказа = total
+        r.ОплаченоРанее = 0.0
+        r.СтавкаНДС = "Без НДС"
+
+    res = module.РазнестиОплатуПоЗаказам(params, orders)
+    assert res.ТаблицаРаспределения[0].СуммаОплаты == 0.1
+    assert res.ТаблицаРаспределения[1].СуммаОплаты == 0.2
+    assert res.ТаблицаРаспределения[1].ДолгПослеОплаты == 0.0
+    assert res.ВсегоРаспределено == 0.3
+    assert res.ОстатокАванса == 0.0
