@@ -1,0 +1,14 @@
+id = "arch-04-tag-registry"
+title = "Normalized Tag Registry with Alphabetical Ordering and Scope Protection"
+domain = "Python / Data Architecture & Security"
+difficulty = "M"
+class = "architecture"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+baseline_tests = 1
+hidden_tests = 7
+total_tests = 8
+passing_threshold = 1.0

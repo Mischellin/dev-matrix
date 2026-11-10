@@ -1,0 +1,63 @@
+name: Deploy DevMatrix Leaderboard to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          version: "0.5.26"
+
+      - name: Verify Benchmark Suite Integrity
+        run: |
+          uv run --no-project --python 3.12 --with pytest==8.3.4 pytest -q tests/
+          uv run --no-project --python 3.12 python3 scripts/runner.py verify-suite
+          uv run --no-project --python 3.12 python3 scripts/generate_readme.py
+
+      - name: Prepare Pages Artifact
+        run: |
+          mkdir -p _site
+          cp -r web/* _site/
+          mkdir -p _site/data
+          cp -r data/* _site/data/
+          mkdir -p _site/tasks
+          cp tasks/manifest.json _site/tasks/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

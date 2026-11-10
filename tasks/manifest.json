@@ -1,0 +1,59 @@
+{
+  "version": "1.0",
+  "tasks": [
+    {
+      "id": "sec-01-clock-skew",
+      "title": "Validate WebApp Auth Clock Skew and Reject Future Timestamps",
+      "domain": "Python / Security & Crypto",
+      "difficulty": "S",
+      "class": "security",
+      "tests_count": 6,
+      "description": "Fix HMAC-signed Telegram WebApp initData validation allowing far-future timestamps to bypass freshness windows."
+    },
+    {
+      "id": "obs-02-query-redactor",
+      "title": "Redact Sensitive Query Parameters from Server Access Logs",
+      "domain": "Python / Observability & Security",
+      "difficulty": "S",
+      "class": "security",
+      "tests_count": 37,
+      "description": "Implement a Python logging.Filter that scrubs sensitive query tokens (dl, token, code, state, X-Amz-*) from access logs."
+    },
+    {
+      "id": "algo-03-range-merger",
+      "title": "Robust Interval String Parser and Overlap Merger",
+      "domain": "Python / Algorithms",
+      "difficulty": "S",
+      "class": "algorithm",
+      "tests_count": 27,
+      "description": "Parse complex comma-separated interval strings, merge overlapping/adjacent bounds, and strictly validate bounds and types."
+    },
+    {
+      "id": "arch-04-tag-registry",
+      "title": "Normalized Tag Registry with Alphabetical Ordering and Scope Protection",
+      "domain": "Python / Data Architecture & Security",
+      "difficulty": "M",
+      "class": "architecture",
+      "tests_count": 8,
+      "description": "Implement an in-memory tag catalog featuring case-normalization, deduplication, alphabetical sorting, and fine-grained scope isolation."
+    },
+    {
+      "id": "infra-05-k8s-pod-admission",
+      "title": "Kubernetes Pod Security and Topology Spread Admission Mutator",
+      "domain": "Infra / Kubernetes & Platform Engineering",
+      "difficulty": "M",
+      "class": "infrastructure",
+      "tests_count": 20,
+      "description": "Mutate and validate Kubernetes Pod and Deployment manifests to enforce Pod Security Standards, container quotas, and multi-zone topology spread."
+    },
+    {
+      "id": "onec-06-payment-allocator",
+      "title": "1C:Enterprise BSL Payment Allocation and FIFO Order Matching",
+      "domain": "1С / Enterprise BSL & Accounting",
+      "difficulty": "M",
+      "class": "feature",
+      "tests_count": 16,
+      "description": "Implement native 1C:Enterprise (BSL) logic to reconcile bank statements and allocate incoming payments across customer orders using strict FIFO and VAT calculation."
+    }
+  ]
+}

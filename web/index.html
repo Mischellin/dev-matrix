@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevMatrix · Pragmatic Real-World AI Coding Benchmark & Leaderboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    code, .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800/80 sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="text-2xl">📊</span>
+        <div>
+          <span class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+            DevMatrix
+            <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 font-semibold border border-indigo-500/30">v1.0 Public</span>
+          </span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 text-sm font-medium">
+        <a href="#matrix" class="text-slate-400 hover:text-white transition">Matrix</a>
+        <a href="#head-to-head" class="text-slate-400 hover:text-white transition">Head-to-Head</a>
+        <a href="#methodology" class="text-slate-400 hover:text-white transition">Methodology</a>
+        <a href="https://github.com/Mischellin/dev-matrix" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pt-12 pb-10 border-b border-slate-800/60 bg-gradient-to-b from-indigo-950/20 via-slate-950 to-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+          Real-World AI Coding Agents <br/><span class="bg-gradient-to-r from-indigo-400 via-sky-300 to-emerald-400 bg-clip-text text-transparent">Benchmark & Leaderboard</span>
+        </h1>
+        <p class="text-slate-400 text-base sm:text-lg">
+          Moving beyond synthetic LeetCode puzzles. Measuring autonomous software engineers on genuine production tasks with isolated worktrees, hidden acceptance tests, cross-model multi-agent code reviews, and token economics.
+        </p>
+      </div>
+
+      <!-- KPI Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+        <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400">10</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Frontier Models</div>
+        </div>
+        <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Deterministic Verifier</div>
+        </div>
+        <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-sky-400">4 Roles × 5 Domains</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Evaluation Dimensions</div>
+        </div>
+        <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">Tokens/Pass</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">True Cost Economics</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Leaderboard Section -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-12" id="matrix">
+    
+    <!-- Controls Bar -->
+    <div class="space-y-4">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <!-- Role Tabs -->
+        <div class="inline-flex rounded-xl bg-slate-900 p-1 border border-slate-800" id="role-tabs">
+          <button data-role="executor" class="role-btn px-4 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 text-white shadow-sm">
+            💻 Executor (Кодинг)
+          </button>
+          <button data-role="reviewer" class="role-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
+            🔍 Reviewer (Ревью)
+          </button>
+          <button data-role="analyst" class="role-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
+            📐 Analyst (Анализ & ТЗ)
+          </button>
+          <button data-role="quick" class="role-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
+            ⚡ Quick Fixes (Мелочи)
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full md:w-64">
+          <input type="text" id="model-search" placeholder="Filter models..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+          <span class="absolute right-3 top-2.5 text-slate-500 text-xs">⌘K</span>
+        </div>
+      </div>
+
+      <!-- Domain Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 pt-1" id="domain-filters">
+        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider mr-2">Sort by Domain:</span>
+        <button data-domain="All" class="domain-pill px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">All</button>
+        <button data-domain="Python" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Python</button>
+        <button data-domain="Web" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Web</button>
+        <button data-domain="Infra" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Infra</button>
+        <button data-domain="1С" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">1C / Enterprise</button>
+        <button data-domain="Тексты" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Text & Specs</button>
+      </div>
+    </div>
+
+    <!-- Leaderboard Table Container -->
+    <div class="glass-card rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-slate-900/90 border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider font-semibold">
+              <th class="py-4 px-6">Model & Provider</th>
+              <th class="py-4 px-4 text-center">Score (Scale 1-5)</th>
+              <th class="py-4 px-4 text-center">Python</th>
+              <th class="py-4 px-4 text-center">Web</th>
+              <th class="py-4 px-4 text-center">Infra</th>
+              <th class="py-4 px-4 text-center">1C / Logic</th>
+              <th class="py-4 px-4 text-center">Texts</th>
+              <th class="py-4 px-4 text-center">Context</th>
+              <th class="py-4 px-6 text-right">Details</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-tbody" class="divide-y divide-slate-800/60 font-medium">
+            <!-- Rows injected by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Head-to-Head Comparison Section -->
+    <section class="space-y-6 pt-6" id="head-to-head">
+      <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+            ⚡ Direct Validation Suite (Head-to-Head)
+          </h2>
+          <p class="text-sm text-slate-400 mt-1">
+            Exact tasks executed in identical sandboxes with hidden assertions and cross-family review.
+          </p>
+        </div>
+        <span class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20 font-mono">100% Deterministic</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="tasks-container">
+        <!-- Task cards injected by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="space-y-6 pt-6" id="methodology">
+      <div class="border-b border-slate-800 pb-3">
+        <h2 class="text-2xl font-bold text-white">🔬 Evaluation Methodology & Principles</h2>
+        <p class="text-sm text-slate-400 mt-1">Built to prevent benchmark gaming and evaluate true autonomous software engineering.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card rounded-xl p-6 space-y-3">
+          <div class="text-indigo-400 text-xl font-bold">1. Zero-Leakage Verifier</div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Models never receive the acceptance tests in their context. Acceptance tests are mounted into an isolated git worktree only during evaluation phase. A score of 100% test pass is mandatory.
+          </p>
+        </div>
+        <div class="glass-card rounded-xl p-6 space-y-3">
+          <div class="text-sky-400 text-xl font-bold">2. Cross-Family Review</div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Solutions written by Claude are reviewed by Codex or GPT; solutions by Codex are reviewed by Sonnet. Reviewers are calibrated for strictness bias and accuracy against human verification.
+          </p>
+        </div>
+        <div class="glass-card rounded-xl p-6 space-y-3">
+          <div class="text-emerald-400 text-xl font-bold">3. True Cost-per-Pass</div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Measuring total expenditure across both successful and failed attempts:
+            <code class="block mt-2 p-2 bg-slate-900 rounded text-xs font-mono text-emerald-300">Cost/Pass = Total API USD / Successful Runs</code>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Model Detail Modal -->
+  <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+    <div class="glass-card bg-slate-900 border border-slate-700 max-w-xl w-full rounded-2xl p-6 space-y-5 shadow-2xl relative">
+      <button id="modal-close" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">✕</button>
+      <div id="modal-content">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-xs text-slate-500">
+    <p>DevMatrix · Open Evaluation Framework · Maintained by <a href="https://github.com/Mischellin" class="text-indigo-400 hover:underline">Mischellin</a></p>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    let currentRole = 'executor';
+    let currentDomain = 'All';
+    let ratingsData = null;
+    let modelsData = null;
+    let benchmarksData = null;
+
+    // Embedded fallback datasets ensuring offline file:// works perfectly
+    const fallbackRatings = {
+      cells: [
+        { model: "codex-sol", name: "Codex Sol (GPT-SWE)", provider: "OpenAI", role: "executor", domain: "Python", rating: 4.42, prior: 3.0, observations: 1 },
+        { model: "codex-sol", name: "Codex Sol (GPT-SWE)", provider: "OpenAI", role: "executor", domain: "Infra", rating: 4.50, prior: 3.0, observations: 0 },
+        { model: "codex-sol", name: "Codex Sol (GPT-SWE)", provider: "OpenAI", role: "executor", domain: "Web", rating: 4.00, prior: 3.0, observations: 0 },
+        { model: "codex-sol", name: "Codex Sol (GPT-SWE)", provider: "OpenAI", role: "executor", domain: "1С", rating: 3.50, prior: 3.0, observations: 0 },
+        { model: "codex-sol", name: "Codex Sol (GPT-SWE)", provider: "OpenAI", role: "executor", domain: "Тексты", rating: 3.50, prior: 3.0, observations: 0 },
+
+        { model: "minimax", name: "MiniMax-M3.1-Flash", provider: "MiniMax", role: "executor", domain: "Python", rating: 4.20, prior: 3.0, observations: 2 },
+        { model: "minimax", name: "MiniMax-M3.1-Flash", provider: "MiniMax", role: "executor", domain: "Infra", rating: 4.00, prior: 3.0, observations: 2 },
+        { model: "minimax", name: "MiniMax-M3.1-Flash", provider: "MiniMax", role: "executor", domain: "Web", rating: 3.80, prior: 3.0, observations: 2 },
+        { model: "minimax", name: "MiniMax-M3.1-Flash", provider: "MiniMax", role: "executor", domain: "1С", rating: 3.00, prior: 3.0, observations: 2 },
+        { model: "minimax", name: "MiniMax-M3.1-Flash", provider: "MiniMax", role: "executor", domain: "Тексты", rating: 3.50, prior: 3.0, observations: 2 },
+
+        { model: "grok", name: "Grok 4.7", provider: "xAI", role: "executor", domain: "Python", rating: 4.17, prior: 3.0, observations: 4 },
+        { model: "grok", name: "Grok 4.7", provider: "xAI", role: "executor", domain: "Infra", rating: 3.82, prior: 3.0, observations: 1 },
+        { model: "grok", name: "Grok 4.7", provider: "xAI", role: "executor", domain: "Web", rating: 3.50, prior: 3.0, observations: 0 },
+        { model: "grok", name: "Grok 4.7", provider: "xAI", role: "executor", domain: "1С", rating: 2.50, prior: 3.0, observations: 0 },
+        { model: "grok", name: "Grok 4.7", provider: "xAI", role: "executor", domain: "Тексты", rating: 3.00, prior: 3.0, observations: 0 },
+
+        { model: "glm-5", name: "GLM-5.3", provider: "Zhipu AI", role: "executor", domain: "Python", rating: 4.10, prior: 3.0, observations: 2 },
+        { model: "glm-5", name: "GLM-5.3", provider: "Zhipu AI", role: "executor", domain: "Web", rating: 3.90, prior: 3.0, observations: 2 },
+        { model: "glm-5", name: "GLM-5.3", provider: "Zhipu AI", role: "executor", domain: "Infra", rating: 3.70, prior: 3.0, observations: 2 },
+        { model: "glm-5", name: "GLM-5.3", provider: "Zhipu AI", role: "executor", domain: "1С", rating: 3.00, prior: 3.0, observations: 2 },
+        { model: "glm-5", name: "GLM-5.3", provider: "Zhipu AI", role: "executor", domain: "Тексты", rating: 3.80, prior: 3.0, observations: 2 },
+
+        { model: "sonnet", name: "Claude 3.7 Sonnet", provider: "Anthropic", role: "executor", domain: "1С", rating: 4.50, prior: 3.0, observations: 0 },
+        { model: "sonnet", name: "Claude 3.7 Sonnet", provider: "Anthropic", role: "executor", domain: "Web", rating: 4.00, prior: 3.0, observations: 0 },
+        { model: "sonnet", name: "Claude 3.7 Sonnet", provider: "Anthropic", role: "executor", domain: "Infra", rating: 4.00, prior: 3.0, observations: 0 },
+        { model: "sonnet", name: "Claude 3.7 Sonnet", provider: "Anthropic", role: "executor", domain: "Тексты", rating: 4.50, prior: 3.0, observations: 0 },
+        { model: "sonnet", name: "Claude 3.7 Sonnet", provider: "Anthropic", role: "executor", domain: "Python", rating: 3.55, prior: 3.0, observations: 2 },
+
+        { model: "codex-luna", name: "Codex Luna", provider: "OpenAI", role: "executor", domain: "Python", rating: 3.63, prior: 3.0, observations: 1 },
+        { model: "codex-luna", name: "Codex Luna", provider: "OpenAI", role: "executor", domain: "Web", rating: 3.50, prior: 3.0, observations: 0 },
+        { model: "codex-luna", name: "Codex Luna", provider: "OpenAI", role: "executor", domain: "Infra", rating: 3.50, prior: 3.0, observations: 0 },
+        { model: "codex-luna", name: "Codex Luna", provider: "OpenAI", role: "executor", domain: "1С", rating: 3.00, prior: 3.0, observations: 0 },
+        { model: "codex-luna", name: "Codex Luna", provider: "OpenAI", role: "executor", domain: "Тексты", rating: 3.00, prior: 3.0, observations: 0 },
+
+        { model: "gemini-flash", name: "Gemini 3.8 Flash", provider: "Google", role: "executor", domain: "Python", rating: 3.31, prior: 3.0, observations: 1 },
+        { model: "gemini-flash", name: "Gemini 3.8 Flash", provider: "Google", role: "executor", domain: "Web", rating: 3.50, prior: 3.0, observations: 0 },
+        { model: "gemini-flash", name: "Gemini 3.8 Flash", provider: "Google", role: "executor", domain: "Infra", rating: 3.00, prior: 3.0, observations: 0 },
+        { model: "gemini-flash", name: "Gemini 3.8 Flash", provider: "Google", role: "executor", domain: "1С", rating: 2.50, prior: 3.0, observations: 0 },
+        { model: "gemini-flash", name: "Gemini 3.8 Flash", provider: "Google", role: "executor", domain: "Тексты", rating: 3.50, prior: 3.0, observations: 0 }
+      ]
+    };
+
+    const fallbackModels = {
+      "sonnet": { name: "Claude 3.7 Sonnet", provider: "Anthropic", context_window: 200000, description: "High reasoning density and strict adherence to software rules." },
+      "codex-sol": { name: "Codex Sol (GPT-SWE)", provider: "OpenAI", context_window: 128000, description: "Top-tier engineering agent with deep static analysis." },
+      "minimax": { name: "MiniMax-M3.1-Flash", provider: "MiniMax", context_window: 128000, description: "Exceptional speed and 100% pass rate across historical tests." },
+      "grok": { name: "Grok 4.7", provider: "xAI", context_window: 131072, description: "Sharp architectural reasoning excelling at complex decomposition." },
+      "glm-5": { name: "GLM-5.3", provider: "Zhipu AI", context_window: 128000, description: "Balanced coding model with strong token reasoning." },
+      "codex-luna": { name: "Codex Luna", provider: "OpenAI", context_window: 128000, description: "Fast-turnaround agent for bugfixes and CRUD." },
+      "gemini-flash": { name: "Gemini 3.8 Flash", provider: "Google", context_window: 1000000, description: "Massive context, cost-effective orchestrator." }
+    };
+
+    const fallbackBenchmarks = [];
+
+    async function init() {
+      try {
+        const [rRes, mRes, bRes] = await Promise.all([
+          fetch('data/ratings.json').then(r => r.json()).catch(() => fallbackRatings),
+          fetch('data/models.json').then(r => r.json()).catch(() => fallbackModels),
+          fetch('data/benchmark_runs.json').then(r => r.json()).catch(() => fallbackBenchmarks)
+        ]);
+        ratingsData = rRes || fallbackRatings;
+        modelsData = mRes || fallbackModels;
+        benchmarksData = bRes || fallbackBenchmarks;
+      } catch (e) {
+        ratingsData = fallbackRatings;
+        modelsData = fallbackModels;
+        benchmarksData = fallbackBenchmarks;
+      }
+      renderMatrix();
+      renderTasks();
+      setupEventListeners();
+    }
+
+    function renderMatrix() {
+      const tbody = document.getElementById('matrix-tbody');
+      tbody.innerHTML = '';
+
+      const cells = ratingsData.cells.filter(c => c.role === currentRole);
+      const modelMap = {};
+
+      cells.forEach(c => {
+        if (!modelMap[c.model]) {
+          modelMap[c.model] = {
+            id: c.model,
+            name: c.name || c.label,
+            provider: c.provider || '—',
+            domains: {}
+          };
+        }
+        modelMap[c.model].domains[c.domain] = c.rating;
+      });
+
+      let models = Object.values(modelMap);
+
+      // Search filter
+      const searchVal = document.getElementById('model-search').value.toLowerCase();
+      if (searchVal) {
+        models = models.filter(m => m.name.toLowerCase().includes(searchVal) || m.provider.toLowerCase().includes(searchVal));
+      }
+
+      // Sort models
+      models.sort((a, b) => {
+        if (currentDomain === 'All') {
+          const avgA = Object.values(a.domains).reduce((acc, v) => acc + v, 0) / (Object.values(a.domains).length || 1);
+          const avgB = Object.values(b.domains).reduce((acc, v) => acc + v, 0) / (Object.values(b.domains).length || 1);
+          return avgB - avgA;
+        } else {
+          return (b.domains[currentDomain] || 3.0) - (a.domains[currentDomain] || 3.0);
+        }
+      });
+
+      models.forEach((m, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-900/60 transition group cursor-pointer';
+        tr.onclick = () => openModal(m.id);
+
+        const avgScore = (Object.values(m.domains).reduce((acc, v) => acc + v, 0) / (Object.values(m.domains).length || 1)).toFixed(2);
+        const meta = modelsData[m.id] || {};
+        const ctxStr = meta.context_window ? (meta.context_window >= 1000000 ? `${meta.context_window/1000000}M` : `${meta.context_window/1000}k`) : '128k';
+
+        function badge(score) {
+          if (!score) return '<span class="text-slate-600">—</span>';
+          let color = 'text-slate-300';
+          if (score >= 4.2) color = 'text-emerald-400 font-bold';
+          else if (score >= 3.8) color = 'text-indigo-400 font-semibold';
+          else if (score < 3.2) color = 'text-slate-400';
+          return `<span class="${color}">${score.toFixed(2)}</span>`;
+        }
+
+        tr.innerHTML = `
+          <td class="py-4 px-6">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-mono text-slate-500 w-4">${idx + 1}</span>
+              <div>
+                <div class="font-bold text-white group-hover:text-indigo-400 transition">${m.name}</div>
+                <div class="text-xs text-slate-400">${m.provider}</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-4 px-4 text-center">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              ${avgScore}
+            </span>
+          </td>
+          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['Python'])}</td>
+          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['Web'])}</td>
+          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['Infra'])}</td>
+          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['1С'])}</td>
+          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['Тексты'])}</td>
+          <td class="py-4 px-4 text-center text-xs font-mono text-slate-400">${ctxStr}</td>
+          <td class="py-4 px-6 text-right">
+            <span class="text-xs text-indigo-400 hover:text-indigo-300 underline font-semibold">Inspect →</span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderTasks() {
+      const container = document.getElementById('tasks-container');
+      container.innerHTML = '';
+
+      benchmarksData.forEach(task => {
+        const card = document.createElement('div');
+        card.className = 'glass-card rounded-2xl p-5 space-y-4 flex flex-col justify-between';
+
+        let rowsHtml = task.runs.map(r => `
+          <div class="flex items-center justify-between py-2 border-b border-slate-800/60 last:border-0 text-xs">
+            <div>
+              <div class="font-semibold text-slate-200">${r.model_name}</div>
+              <div class="text-slate-500">${r.duration_min} min · ${(r.total_tokens/1000000).toFixed(1)}M tok</div>
+            </div>
+            <div class="text-right">
+              <span class="font-mono font-bold ${r.status === 'PASS' ? 'text-emerald-400' : 'text-rose-400'}">${r.passed_tests}/${r.total_tests} PASS</span>
+              <div class="text-slate-400 font-mono">$${r.cost_usd.toFixed(2)}</div>
+            </div>
+          </div>
+        `).join('');
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+              <span class="font-mono text-indigo-400">${task.id}</span>
+              <span>${task.domain}</span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-3">${task.title}</h3>
+            <div class="space-y-1">
+              ${rowsHtml}
+            </div>
+          </div>
+          <div class="pt-2 text-right">
+            <span class="text-xs text-slate-500 font-mono">14 hidden tests applied</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function openModal(modelId) {
+      const meta = modelsData[modelId] || {};
+      const cells = ratingsData.cells.filter(c => c.model === modelId && c.role === currentRole);
+      const modal = document.getElementById('modal');
+      const content = document.getElementById('modal-content');
+
+      let domainScores = cells.map(c => `
+        <div class="flex justify-between items-center py-1 text-sm border-b border-slate-800 last:border-0">
+          <span class="text-slate-400">${c.domain}</span>
+          <span class="font-mono font-bold text-indigo-400">${c.rating.toFixed(2)} (obs: ${c.observations})</span>
+        </div>
+      `).join('');
+
+      content.innerHTML = `
+        <div class="space-y-4">
+          <div>
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">${meta.provider || 'Provider'}</span>
+            <h2 class="text-2xl font-bold text-white mt-2">${meta.name || modelId}</h2>
+            <p class="text-sm text-slate-400 mt-1">${meta.description || 'Frontier software engineering agent.'}</p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-xs font-mono bg-slate-950 p-3 rounded-xl border border-slate-800">
+            <div><span class="text-slate-500">Context:</span> <span class="text-white">${meta.context_window ? meta.context_window.toLocaleString() : '128,000'} tokens</span></div>
+            <div><span class="text-slate-500">Input Price:</span> <span class="text-white">$${meta.input_price_per_m || 2.0} / 1M</span></div>
+            <div><span class="text-slate-500">Output Price:</span> <span class="text-white">$${meta.output_price_per_m || 8.0} / 1M</span></div>
+            <div><span class="text-slate-500">Evaluation Role:</span> <span class="text-white uppercase">${currentRole}</span></div>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Scores by Domain:</h4>
+            <div class="glass-card rounded-xl p-3 bg-slate-950/60">
+              ${domainScores || '<p class="text-xs text-slate-500">No domain ratings registered.</p>'}
+            </div>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+    }
+
+    function setupEventListeners() {
+      // Role Switcher
+      document.querySelectorAll('.role-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.role-btn').forEach(b => {
+            b.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+            b.classList.add('text-slate-400');
+          });
+          btn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+          btn.classList.remove('text-slate-400');
+          currentRole = btn.dataset.role;
+          renderMatrix();
+        });
+      });
+
+      // Domain Pills
+      document.querySelectorAll('.domain-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.domain-pill').forEach(b => {
+            b.classList.remove('bg-indigo-500/20', 'text-indigo-300', 'border-indigo-500/30');
+            b.classList.add('bg-slate-900', 'text-slate-400', 'border-slate-800');
+          });
+          btn.classList.add('bg-indigo-500/20', 'text-indigo-300', 'border-indigo-500/30');
+          btn.classList.remove('bg-slate-900', 'text-slate-400', 'border-slate-800');
+          currentDomain = btn.dataset.domain;
+          renderMatrix();
+        });
+      });
+
+      // Search
+      document.getElementById('model-search').addEventListener('input', () => {
+        renderMatrix();
+      });
+
+      // Modal Close
+      document.getElementById('modal-close').addEventListener('click', () => {
+        document.getElementById('modal').classList.add('hidden');
+      });
+      document.getElementById('modal').addEventListener('click', (e) => {
+        if (e.target.id === 'modal') document.getElementById('modal').classList.add('hidden');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
