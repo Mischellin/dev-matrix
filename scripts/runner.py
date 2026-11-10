@@ -121,12 +121,19 @@ def run_pytest(
         f"sys.exit(pytest.main(sys.argv[1:], plugins=[pytest_guard]))"
     )
 
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False, encoding="utf-8") as tmp_rep:
+        report_path = Path(tmp_rep.name)
+
+    env["DEV_MATRIX_REPORT_FILE"] = str(report_path)
+
     uv_bin = shutil.which("uv")
     if uv_bin:
         cmd = [
             uv_bin,
             "run",
             "--no-project",
+            "--python",
+            "3.12",
             "--with",
             "pytest==8.3.4",
             "python",
@@ -250,6 +257,29 @@ def run_pytest(
                     f"Error: Expected at least {min_passed_tests} tests to pass, but only {counts['passed']} passed.\n{stderr}"
                 )
 
+        # Validate structured report from pytest_guard plugin
+        if passed:
+            try:
+                rep_data = json.loads(report_path.read_text(encoding="utf-8"))
+                calls = rep_data.get("calls", [])
+                actual_passed = sum(1 for c in calls if c.get("outcome") == "passed")
+                if rep_data.get("exitstatus") != 0:
+                    passed = False
+                    err_msg = f"Error: Test session exited with non-zero exitstatus {rep_data.get('exitstatus')}.\n{stderr}"
+                elif expected_exact_tests is not None and actual_passed != expected_exact_tests:
+                    passed = False
+                    err_msg = (
+                        f"Error: Expected exactly {expected_exact_tests} tests to execute and pass, but {actual_passed} passed.\n{stderr}"
+                    )
+                elif actual_passed < min_passed_tests:
+                    passed = False
+                    err_msg = (
+                        f"Error: Expected at least {min_passed_tests} tests to execute and pass, but only {actual_passed} passed.\n{stderr}"
+                    )
+            except Exception as e:  # noqa: BLE001
+                passed = False
+                err_msg = f"Error: Test runner report was missing or corrupt ({e}).\n{stderr}"
+
         return {
             "exit_code": proc.returncode if passed else (proc.returncode or 1),
             "stdout": stdout,
@@ -262,6 +292,7 @@ def run_pytest(
     finally:
         try:
             empty_ini_path.unlink(missing_ok=True)
+            report_path.unlink(missing_ok=True)
         except OSError:
             pass
 

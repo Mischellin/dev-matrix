@@ -37,9 +37,9 @@ jobs:
 
       - name: Verify Benchmark Suite Integrity
         run: |
-          uv run --no-project --with pytest==8.3.4 pytest -q tests/
-          python3 scripts/runner.py verify-suite
-          python3 scripts/generate_readme.py
+          uv run --no-project --python 3.12 --with pytest==8.3.4 pytest -q tests/
+          uv run --no-project --python 3.12 python3 scripts/runner.py verify-suite
+          uv run --no-project --python 3.12 python3 scripts/generate_readme.py
 
       - name: Prepare Pages Artifact
         run: |

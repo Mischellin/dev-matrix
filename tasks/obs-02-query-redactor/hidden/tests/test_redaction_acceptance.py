@@ -296,6 +296,14 @@ def test_semicolon_delimited_query_parameters_redacted() -> None:
     assert "?page=1;token=<redacted>" in out
 
 
+def test_percent_literal_in_msg_does_not_corrupt_args() -> None:
+    f = RedactQuerySecretsFilter()
+    rec = logging.LogRecord("test", logging.INFO, __file__, 1, "100%? done %s", ("yes",), None)
+    assert f.filter(rec) is True
+    assert rec.getMessage() == "100%? done yes"
+
+
+
 
 
 

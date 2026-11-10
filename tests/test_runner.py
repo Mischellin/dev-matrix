@@ -23,20 +23,27 @@ def test_manifest_consistency_matches_task_toml() -> None:
 
 
 def test_runner_rejects_skipped_tests(monkeypatch) -> None:
-    plugin_code = """
-import sys, pytest
+    guard_dir = str(ROOT / "scripts")
+    plugin_code = f"""
+import sys
+sys.path.insert(0, {guard_dir!r})
+import pytest_guard, pytest
+
 class SkipOne:
     def pytest_collection_modifyitems(self, items):
         for item in items:
             if item.name == "test_far_future_auth_date_fails":
                 item.add_marker(pytest.mark.skip(reason="test skip probe"))
-sys.exit(pytest.main(sys.argv[1:], plugins=[SkipOne()]))
+
+sys.exit(pytest.main(sys.argv[1:], plugins=[pytest_guard, SkipOne()]))
 """
     original_popen = runner.subprocess.Popen
 
     def mock_popen(cmd, **kwargs):
-        if kwargs.get("cwd", "").endswith("reference_solution") and "/hidden/tests" in cmd[-1]:
-            changed = ["uv", "run", "--no-project", "--with", "pytest", "python", "-c", plugin_code] + cmd[6:]
+        if kwargs.get("cwd", "").endswith("reference_solution") and any("/hidden/tests" in arg for arg in cmd):
+            changed = list(cmd)
+            c_idx = changed.index("-c")
+            changed[c_idx + 1] = plugin_code
             return original_popen(changed, **kwargs)
         return original_popen(cmd, **kwargs)
 
@@ -45,20 +52,27 @@ sys.exit(pytest.main(sys.argv[1:], plugins=[SkipOne()]))
 
 
 def test_runner_rejects_xfailed_tests(monkeypatch) -> None:
-    plugin_code = """
-import sys, pytest
+    guard_dir = str(ROOT / "scripts")
+    plugin_code = f"""
+import sys
+sys.path.insert(0, {guard_dir!r})
+import pytest_guard, pytest
+
 class XfailOne:
     def pytest_collection_modifyitems(self, items):
         for item in items:
             if item.name == "test_far_future_auth_date_fails":
                 item.add_marker(pytest.mark.xfail(run=False, reason="test xfail probe"))
-sys.exit(pytest.main(sys.argv[1:], plugins=[XfailOne()]))
+
+sys.exit(pytest.main(sys.argv[1:], plugins=[pytest_guard, XfailOne()]))
 """
     original_popen = runner.subprocess.Popen
 
     def mock_popen(cmd, **kwargs):
-        if kwargs.get("cwd", "").endswith("reference_solution") and "/hidden/tests" in cmd[-1]:
-            changed = ["uv", "run", "--no-project", "--with", "pytest", "python", "-c", plugin_code] + cmd[6:]
+        if kwargs.get("cwd", "").endswith("reference_solution") and any("/hidden/tests" in arg for arg in cmd):
+            changed = list(cmd)
+            c_idx = changed.index("-c")
+            changed[c_idx + 1] = plugin_code
             return original_popen(changed, **kwargs)
         return original_popen(cmd, **kwargs)
 

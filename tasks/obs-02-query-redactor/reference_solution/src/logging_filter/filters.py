@@ -105,19 +105,25 @@ class RedactQuerySecretsFilter(logging.Filter):
                         formatted = record.getMessage()
                         record.msg = redact_text(formatted)
                         record.args = () if isinstance(record.args, tuple) else {}
-                    except TypeError:
-                        # Collision between literal URL percent encodings (e.g. %20) and printf width specs
+                    except Exception:  # noqa: BLE001
+                        # Collision between literal percent symbols (e.g. %20 or 100%?) and format specifiers
+                        formatted = None
                         try:
                             tmp_msg = re.sub(r"%(?=[0-9a-fA-F]{2})", "%%", record.msg)
                             formatted = tmp_msg % record.args
+                        except Exception:  # noqa: BLE001
+                            try:
+                                tmp_msg = re.sub(r"%(?![sdrioxXfFeEgGcrba%])", "%%", record.msg)
+                                formatted = tmp_msg % record.args
+                            except Exception:  # noqa: BLE001, S110
+                                pass
+
+                        if formatted is not None:
                             record.msg = redact_text(formatted)
                             record.args = () if isinstance(record.args, tuple) else {}
-                        except Exception:  # noqa: BLE001
+                        else:
+                            # If formatting still fails, preserve record.args intact so arguments are not lost
                             record.msg = redact_text(record.msg)
-                            record.args = () if isinstance(record.args, tuple) else {}
-                    except Exception:  # noqa: BLE001
-                        record.msg = redact_text(record.msg)
-                        record.args = () if isinstance(record.args, tuple) else {}
                 else:
                     record.msg = redact_text(record.msg)
         except Exception:  # noqa: BLE001, S110
