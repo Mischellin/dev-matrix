@@ -169,8 +169,7 @@ def test_numeric_and_repr_format_specifiers_in_template() -> None:
 
     rec2 = logging.LogRecord("test", logging.INFO, __file__, 1, "/docs?token=%r", ("secret_token",), None)
     assert f.filter(rec2) is True
-    assert "secret_token" not in rec2.getMessage()
-    assert "<redacted>" in rec2.getMessage()
+    assert rec2.getMessage() == "/docs?token=<redacted>"
 
 
 def test_parentheses_in_query_string_preserved_and_secrets_redacted() -> None:
@@ -240,6 +239,40 @@ def test_bracketed_parameters_and_secrets_redacted() -> None:
     out3 = _scrubbed("/search?token=abc[0]")
     assert "abc[0]" not in out3
     assert "?token=<redacted>" in out3
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected_suffix"),
+    [
+        ("GET /search?filter=a',b&token=SECRET_PROBE HTTP/1.1", "?filter=a',b&token=<redacted> HTTP/1.1"),
+        ("GET /search?filter=john'/doe&token=SECRET_PROBE HTTP/1.1", "?filter=john'/doe&token=<redacted> HTTP/1.1"),
+        ("GET /search?filter=a'/b&token=SECRET_PROBE HTTP/1.1", "?filter=a'/b&token=<redacted> HTTP/1.1"),
+        ("GET /search?filter=a''b&token=SECRET_PROBE HTTP/1.1", "?filter=a''b&token=<redacted> HTTP/1.1"),
+        ("GET /search?filter=a'[0]&token=SECRET_PROBE HTTP/1.1", "?filter=a'[0]&token=<redacted> HTTP/1.1"),
+    ],
+)
+def test_apostrophe_followed_by_query_chars_preserves_subsequent_secrets(raw: str, expected_suffix: str) -> None:
+    out = _scrubbed(raw)
+    assert "SECRET_PROBE" not in out
+    assert expected_suffix in out
+
+
+def test_uvicorn_access_tuple_with_apostrophe_in_path() -> None:
+    f = RedactQuerySecretsFilter()
+    rec = logging.LogRecord(
+        "uvicorn.access",
+        logging.INFO,
+        __file__,
+        1,
+        '%s - "%s %s HTTP/%s" %d',
+        ("10.0.0.1:0", "GET", "/search?filter=a',b&token=SECRET_UVICORN", "1.1", 200),
+        None,
+    )
+    assert f.filter(rec) is True
+    assert "SECRET_UVICORN" not in rec.getMessage()
+    assert isinstance(rec.args, tuple)
+    assert rec.args[2] == "/search?filter=a',b&token=<redacted>"
+
 
 
 

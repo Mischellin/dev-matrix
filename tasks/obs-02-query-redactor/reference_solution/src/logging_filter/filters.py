@@ -17,10 +17,11 @@ SENSITIVE_KEYS = {
 }
 
 # Regex to find URI query string in a string (allows RFC 3986 sub-delims including *, !, parentheses, commas,
-# square brackets (e.g. ids[]=1, filter[name]=a), internal single quotes, and <> for idempotent passes,
-# while respecting boundaries between multiple URLs/data structures).
+# square brackets (e.g. ids[]=1, filter[name]=a), quoted values (e.g. %r), internal single quotes,
+# and <> for idempotent passes, while respecting boundaries between multiple URLs/data structures).
+_CHARS = r"a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()*!\[\]"
 _QUERY_PATTERN = re.compile(
-    r"(\?[a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()*!\[\]]*(?:\x27[a-zA-Z0-9_\-.~%!$&+=:;@?<>()*!][a-zA-Z0-9_\-.~%!$&+=:;@/?,<>()*!\[\]]*)*)"
+    rf"(\?(?:=\x27[^\x27\s&]*\x27|[{_CHARS}]|(?!\x27(?:\s|$|,[\s\x27]|\]|\)|\"))[\x27])*)"
 )
 
 
