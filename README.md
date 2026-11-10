@@ -102,7 +102,7 @@ The benchmark repository contains fully anonymized, self-contained tasks in [`ta
 | [`algo-03-range-merger`](tasks/algo-03-range-merger) | **Robust Interval String Parser and Overlap Merger** | Python / Algorithms | `S` (algorithm) | 27 tests |
 | [`arch-04-tag-registry`](tasks/arch-04-tag-registry) | **Normalized Tag Registry with Alphabetical Ordering and Scope Protection** | Python / Data Architecture & Security | `M` (architecture) | 8 tests |
 | [`infra-05-k8s-pod-admission`](tasks/infra-05-k8s-pod-admission) | **Kubernetes Pod Security and Topology Spread Admission Mutator** | Infra / Kubernetes & Platform Engineering | `M` (infrastructure) | 20 tests |
-| [`onec-06-payment-allocator`](tasks/onec-06-payment-allocator) | **1C:Enterprise BSL Payment Allocation and FIFO Order Matching** | 1С / Enterprise BSL & Accounting | `M` (feature) | 15 tests |
+| [`onec-06-payment-allocator`](tasks/onec-06-payment-allocator) | **1C:Enterprise BSL Payment Allocation and FIFO Order Matching** | 1С / Enterprise BSL & Accounting | `M` (feature) | 16 tests |
 
 ### Reproduce or Evaluate Locally:
 > **Requirements**: Python `>= 3.11` and [`uv`](https://astral.sh/uv) (recommended) or `pytest >= 8.0`.
