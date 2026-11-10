@@ -12,15 +12,25 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Код проверки берём из базовой ветки, а не из PR
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+      - name: Содержимое PR
+        uses: actions/checkout@v4
+        with:
+          path: pr
+          fetch-depth: 2
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Только файлы в submissions/
+        working-directory: pr
         run: |
-          git fetch -q origin "${{ github.base_ref }}"
-          if git diff --name-only "origin/${{ github.base_ref }}...HEAD" | grep -v '^submissions/'; then
+          if git diff --no-renames --name-only HEAD^1 HEAD | grep -v '^submissions/'; then
             echo "PR с результатами не должен менять ничего, кроме submissions/"; exit 1
           fi
       - name: Проверка отчётов
-        run: PYTHONPATH=src python -m devmatrix.cli check-submissions submissions
+        working-directory: base
+        run: PYTHONPATH=src python -m devmatrix.cli check-submissions ../pr/submissions

@@ -49,3 +49,49 @@ def test_unknown_task_rejected(tmp_path) -> None:
 
 def test_model_slug() -> None:
     assert cli.model_slug("Claude Sonnet 5.5") == "claude-sonnet-5.5"
+
+
+def test_hash_independent_of_dot_venv_path(tmp_path, monkeypatch) -> None:
+    import shutil
+
+    tid = "algo-03-range-merger"
+    expected = cli.task_hash(tid)
+    copy = tmp_path / ".venv" / "tasks"
+    shutil.copytree(cli.runner.TASKS_DIR, copy)
+    monkeypatch.setattr(cli.runner, "TASKS_DIR", copy)
+    assert cli.task_hash(tid) == expected
+    assert expected != "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+
+
+def test_dot_slug_is_not_path_traversal() -> None:
+    assert cli.model_slug("..") == "unknown"
+    assert cli.model_slug(".hidden") == "hidden"
+
+
+def test_extra_files_rejected(tmp_path) -> None:
+    _report(tmp_path)
+    (tmp_path / "evil.sh").write_text("x")
+    args = type("A", (), {"dir": tmp_path})()
+    assert cli.cmd_check(args) == 1
+
+
+def test_bad_optional_fields_rejected(tmp_path) -> None:
+    assert cli.validate_report(_report(tmp_path, tokens=-5))
+
+
+def test_wrong_path_rejected(tmp_path) -> None:
+    p = _report(tmp_path)
+    moved = p.parent.parent / "other" / p.name
+    moved.parent.mkdir()
+    p.rename(moved)
+    assert any("путь" in e for e in cli.validate_report(moved))
+
+
+def test_agent_timeout_kills_children(tmp_path) -> None:
+    import time
+
+    marker = tmp_path / "late"
+    cmd = f"(python3 -c 'import time; time.sleep(3); open({str(marker)!r}, \"w\")' &) ; wait"
+    cli._run_agent(cmd, tmp_path, "x", 1)
+    time.sleep(4)
+    assert not marker.exists()

@@ -3,11 +3,14 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
 import json
+import os
 import re
 import shlex
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
@@ -48,7 +51,8 @@ def _version() -> str:
 
 
 def model_slug(model: str) -> str:
-    return re.sub(r"[^a-z0-9._-]+", "-", model.lower()).strip("-") or "unknown"
+    slug = re.sub(r"[^a-z0-9._-]+", "-", model.lower()).strip("-.")
+    return slug or "unknown"
 
 
 def task_hash(task_id: str) -> str:
@@ -59,10 +63,11 @@ def task_hash(task_id: str) -> str:
         p = base / part
         files = [p] if p.is_file() else sorted(f for f in p.rglob("*") if f.is_file())
         for f in files:
-            if SKIP_DIRS & set(f.parts) or f.suffix == ".pyc":
+            rel = f.relative_to(base)
+            if SKIP_DIRS & set(rel.parts) or f.suffix == ".pyc":
                 continue
-            h.update(str(f.relative_to(base)).encode())
-            h.update(f.read_bytes())
+            h.update(rel.as_posix().encode())
+            h.update(f.read_bytes().replace(b"\r\n", b"\n"))
     return h.hexdigest()
 
 
@@ -107,24 +112,26 @@ def _save(report: dict[str, Any], out: Path) -> Path:
 def _run_agent(cmd: str, workdir: Path, task_id: str, timeout: float) -> float:
     prompt = workdir / "TASK_PROMPT.md"
     cmd = cmd.replace("{prompt_file}", shlex.quote(str(prompt)))
-    env = {
-        **__import__("os").environ,
-        "DEVMATRIX_TASK_ID": task_id,
-        "DEVMATRIX_PROMPT": str(prompt),
-    }
+    env = {**os.environ, "DEVMATRIX_TASK_ID": task_id, "DEVMATRIX_PROMPT": str(prompt)}
     start = time.monotonic()
+    # Своя группа процессов: по таймауту убиваем и потомков агента, иначе они правят папку при проверке.
+    proc = subprocess.Popen(cmd, shell=True, cwd=workdir, env=env, start_new_session=True)
     try:
-        subprocess.run(cmd, shell=True, cwd=workdir, env=env, timeout=timeout, check=False)
+        proc.wait(timeout=timeout)
     except subprocess.TimeoutExpired:
         print(f"⚠️ Агент превысил лимит {timeout:.0f} с — проверяем то, что есть.")
+    finally:
+        with contextlib.suppress(ProcessLookupError):
+            os.killpg(proc.pid, signal.SIGKILL)
+        proc.wait()
     return time.monotonic() - start
 
 
 def cmd_run(args: argparse.Namespace) -> int:
-    ids = task_ids() if args.all else [args.task]
-    if not args.all and not args.task:
-        print("Укажите задачу или --all", file=sys.stderr)
+    if args.all == bool(args.task):
+        print("Укажите либо задачу, либо --all", file=sys.stderr)
         return 2
+    ids = task_ids() if args.all else [args.task]
     failed = 0
     rows = []
     for tid in ids:
@@ -166,6 +173,22 @@ def validate_report(path: Path, root: Path | None = None) -> list[str]:
             errs.append(f"поле {key} отсутствует или неверного типа")
     if errs:
         return errs
+    for key in ("tokens", "cost_usd"):
+        v = r.get(key)
+        if v is not None and (isinstance(v, bool) or not isinstance(v, (int, float)) or not v >= 0):
+            errs.append(f"{key} должно быть неотрицательным числом или null")
+    for key in ("provider", "devmatrix_version"):
+        v = r.get(key)
+        if v is not None and (not isinstance(v, str) or len(v) > 100):
+            errs.append(f"{key} должно быть строкой до 100 символов или null")
+    if isinstance(r["agent_seconds"], bool) or not r["agent_seconds"] >= 0:
+        errs.append("agent_seconds должно быть неотрицательным числом")
+    if not re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ", r["created_at"]):
+        errs.append("created_at должно быть в формате YYYY-MM-DDTHH:MM:SSZ")
+    if not re.fullmatch(r"[0-9a-f]{64}", r["tasks_hash"]):
+        errs.append("tasks_hash должен быть sha256 в hex")
+    if len(r["model"]) > 100:
+        errs.append("model длиннее 100 символов")
     if r["schema"] != SCHEMA:
         errs.append(f"схема {r['schema']} не поддерживается")
     if r["task_id"] not in task_ids():
@@ -187,9 +210,16 @@ def validate_report(path: Path, root: Path | None = None) -> list[str]:
 
 
 def cmd_check(args: argparse.Namespace) -> int:
-    files = sorted(args.dir.rglob("*.json"))
+    files = sorted(f for f in args.dir.rglob("*") if f.is_file() or f.is_symlink())
     bad = 0
     for f in files:
+        rel = f.relative_to(args.dir)
+        if rel.as_posix() == "README.md":
+            continue
+        if f.is_symlink() or f.suffix != ".json" or len(rel.parts) != 2:
+            print(f"❌ {f}: допустимы только submissions/<модель>/<задача>.json")
+            bad += 1
+            continue
         errs = validate_report(f)
         for e in errs:
             print(f"❌ {f}: {e}")
@@ -226,6 +256,9 @@ def cmd_submit(args: argparse.Namespace) -> int:
             f"{r['passed_tests']}/{r['total_tests']}"
         )
     print("Токены, цена и время указаны вами и в таблице помечаются как «заявлено автором».")
+    if not args.yes and not sys.stdin.isatty():
+        print("Нет терминала для подтверждения: запустите с --yes.", file=sys.stderr)
+        return 1
     if not args.yes and input("Отправить PR в публичный репозиторий? [y/N] ").lower() != "y":
         print("Отменено.")
         return 1
@@ -239,7 +272,17 @@ def cmd_submit(args: argparse.Namespace) -> int:
     _gh("repo", "fork", UPSTREAM, "--clone=false")
     work = Path(tempfile.mkdtemp(prefix="devmatrix-submit-"))
     try:
-        _gh("repo", "clone", f"{user}/{UPSTREAM.split('/')[1]}", str(work / "repo"))
+        fork = _gh(
+            "repo",
+            "view",
+            f"{user}/{UPSTREAM.split('/')[1]}",
+            "--json",
+            "nameWithOwner",
+            "-q",
+            ".nameWithOwner",
+            capture=True,
+        )
+        _gh("repo", "clone", fork, str(work / "repo"))
         repo = work / "repo"
         _git("remote", "add", "upstream", f"https://github.com/{UPSTREAM}.git", cwd=repo)
         _git("fetch", "-q", "upstream", "main", cwd=repo)
@@ -251,6 +294,10 @@ def cmd_submit(args: argparse.Namespace) -> int:
             shutil.copy2(f, dest)
         _git("add", "submissions", cwd=repo)
         _git(
+            "-c",
+            "user.name=devmatrix",
+            "-c",
+            f"user.email={user}@users.noreply.github.com",
             "commit",
             "-q",
             "-m",
