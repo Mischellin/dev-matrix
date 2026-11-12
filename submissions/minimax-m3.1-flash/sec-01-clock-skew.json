@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "sec-01-clock-skew",
+  "model": "MiniMax M3.1 Flash",
+  "provider": "MiniMax",
+  "passed": true,
+  "passed_tests": 6,
+  "total_tests": 6,
+  "agent_seconds": 427.8,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "cb48532a893a58d19bd2285eae113a39e28a6e446344ac47dbcb764a7704ddc7",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-12T05:17:44Z",
+  "claimed": true
+}
