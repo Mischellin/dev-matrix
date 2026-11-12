@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BENCH = ROOT / "docker" / "vast-bench"
 
 sys.dont_write_bytecode = True
+sys.path.insert(0, str(ROOT / "src"))  # devmatrix без установки пакета, как в test_cli.py
 
 
 @pytest.fixture
@@ -189,3 +190,98 @@ def test_fill_claims_negative_delta_and_marker_pass_validate_report(tmp_path) ->
     assert moved.is_file()
     assert json.loads(moved.read_text())["tokens"] is None
     assert json.loads(info.read_text())["invalid_tasks"] == [t_bad]
+
+
+def test_agent_marks_opencode_crash_without_generation(env, tmp_path) -> None:
+    _script(Path(env["PATH"].split(":")[0]) / "opencode", "exit 2\n")
+    r = _run_agent(env, tmp_path)
+    assert r.returncode == 3
+    assert (tmp_path / "out" / "metrics" / "t1.invalid").read_text().startswith("t1: opencode_failed")
+    assert not (tmp_path / "out" / "metrics" / "t1.json").exists()
+
+
+def test_agent_keeps_opencode_timeout_and_crash_with_generation(env, tmp_path) -> None:
+    fake = Path(env["PATH"].split(":")[0])
+    _script(fake / "opencode", "exit 124\n")  # таймаут — результат модели
+    assert _run_agent(env, tmp_path).returncode == 0
+    # упал, но токены генерировались: это уже работа модели
+    _script(fake / "opencode", 'echo "vllm:generation_tokens_total 50" >> "$FAKE_METRICS"; exit 2\n')
+    assert _run_agent(env, tmp_path).returncode == 0
+    assert not (tmp_path / "out" / "metrics" / "t1.invalid").exists()
+
+
+@pytest.mark.parametrize(
+    ("markers", "agent_failed", "healthy", "status"),
+    [
+        (4, 4, 1, "agent_failed"),  # из 6 задач большинство — упавший OpenCode
+        (2, 2, 1, "done"),  # меньшинство: прогон жив, задачи в invalid/
+        (3, 2, 1, "vllm_died"),  # есть и маркеры мёртвого сервера
+        (4, 4, 0, "vllm_died"),  # сервер мёртв в конце — важнее
+    ],
+)
+def test_classify_run_agent_failed(env, markers, agent_failed, healthy, status) -> None:
+    r = _bash(f"classify_run 0 6 6 {markers} {healthy} {agent_failed}", env)
+    assert r.stdout.strip() == status, r.stderr
+
+
+def test_main_refuses_opencode_timeout_close_to_agent_timeout(env) -> None:
+    r = _bash("OPENCODE_TIMEOUT=1500 AGENT_TIMEOUT=1600 main gpt-oss-20b; echo rc=$?", env)
+    assert "rc=2" in r.stdout
+    assert "OPENCODE_TIMEOUT" in r.stderr
+
+
+def test_env_defaults_without_image_env(env) -> None:
+    clean = {k: v for k, v in env.items() if not k.startswith(("UV_PYTHON", "VLLM_TAG", "IMAGE_REVISION"))}
+    r = _bash("echo $UV_PYTHON_INSTALL_DIR $UV_PYTHON_PREFERENCE $VLLM_TAG $IMAGE_REVISION", clean)
+    assert r.stdout.split() == ["/opt/uv-python", "only-managed", "unknown", "unknown"], r.stderr
+
+
+# Прогон run_model целиком на поддельных hf/vllm/devmatrix: пока «идёт» текущая модель, hf качает следующую.
+def _prefetch_env(env: dict[str, str], tmp_path: Path, **extra: str) -> dict[str, str]:
+    fake = Path(env["PATH"].split(":")[0])
+    _script(fake / "vllm", '[[ ${1:-} == serve ]] && exec sleep 60\necho "vllm 0.0"\n')
+    _script(
+        fake / "hf",
+        'echo "$*" >>"$FAKE_HF_LOG"\n'
+        'if [[ -n ${FAKE_HF_FAIL_ONCE:-} && "$*" == *"$FAKE_HF_FAIL_ONCE"* && ! -f $FAKE_HF_LOG.failed ]]; then\n'
+        '  touch "$FAKE_HF_LOG.failed"; echo "сеть недоступна" >&2; exit 1\n'
+        "fi\n",
+    )
+    _script(
+        fake / "devmatrix",
+        'if [[ $1 == list ]]; then echo t1; exit 0; fi\n'
+        # пока «идёт» модель, ждём, что hf позвали за следующей
+        'for _ in $(seq 100); do\n'
+        '  grep -q "${FAKE_WAIT_FOR:-.}" "$FAKE_HF_LOG" 2>/dev/null && break; sleep 0.1\n'
+        "done\n"
+        'grep -q "${FAKE_WAIT_FOR:-.}" "$FAKE_HF_LOG" 2>/dev/null && echo seen >"$FAKE_SEEN"\n',
+    )
+    return {
+        **env,
+        "MODELS_TOML": str(BENCH / "models.toml"),
+        "FAKE_HF_LOG": str(tmp_path / "hf.log"),
+        "FAKE_SEEN": str(tmp_path / "seen"),
+        **extra,
+    }
+
+
+def test_prefetch_calls_hf_for_next_model_while_current_runs(env, tmp_path) -> None:
+    e = _prefetch_env(env, tmp_path, FAKE_WAIT_FOR="Devstral-Small-2")
+    r = _bash("run_model gpt-oss-20b devstral-small-2; echo rc=$?", e)
+    log = (tmp_path / "hf.log").read_text()
+    assert "openai/gpt-oss-20b" in log, r.stderr
+    assert "Devstral-Small-2" in log, r.stderr
+    # devmatrix «увидел» докачку следующей модели ещё до своего завершения
+    assert (tmp_path / "seen").read_text().strip() == "seen", r.stderr
+    assert (tmp_path / "results" / "devstral-small-2" / "download.prefetch.log").is_file()
+
+
+def test_prefetch_failure_is_reported_and_log_kept(env, tmp_path) -> None:
+    e = _prefetch_env(env, tmp_path, FAKE_WAIT_FOR="Devstral-Small-2", FAKE_HF_FAIL_ONCE="Devstral-Small-2")
+    r = _bash("run_model gpt-oss-20b devstral-small-2; run_model devstral-small-2; echo end", e)
+    assert "фоновая докачка не удалась" in r.stderr
+    res = tmp_path / "results" / "devstral-small-2"
+    assert "сеть недоступна" in (res / "download.prefetch.log").read_text()
+    # основной путь скачал заново в отдельный лог
+    assert (res / "download.log").is_file()
+    assert (tmp_path / "hf.log").read_text().count("Devstral-Small-2") == 2

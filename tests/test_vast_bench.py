@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BENCH = ROOT / "docker" / "vast-bench"
 SCRIPTS = sorted(BENCH.glob("*.sh"))
 
+sys.path.insert(0, str(ROOT / "src"))  # devmatrix без установки пакета, как в test_cli.py
 sys.dont_write_bytecode = True  # не создавать __pycache__ в docker/vast-bench
 spec = importlib.util.spec_from_file_location("vast_preset", BENCH / "preset.py")
 preset = importlib.util.module_from_spec(spec)
@@ -111,3 +112,16 @@ def test_dockerfile_has_no_weights_or_secret_args() -> None:
     assert re.search(r"^ARG OPENCODE_VERSION=\d+\.\d+\.\d+", text, re.MULTILINE)
     code = "\n".join(ln for ln in text.splitlines() if not ln.lstrip().startswith("#"))
     assert not re.search(r"HF_TOKEN|GITHUB_TOKEN|huggingface-cli download|hf download", code)
+
+
+def test_run_info_running_starts_fresh(tmp_path) -> None:
+    path = tmp_path / "run-info.json"
+    path.write_text(json.dumps({"started_at": "old", "invalid_tasks": ["x"], "finished_at": "old"}))
+    preset.run_info("gpt-oss-20b", path, "running")
+    info = json.loads(path.read_text())
+    assert info["started_at"] != "old"
+    assert "invalid_tasks" not in info
+    assert "finished_at" not in info
+    started = info["started_at"]
+    preset.run_info("gpt-oss-20b", path, "done")
+    assert json.loads(path.read_text())["started_at"] == started
