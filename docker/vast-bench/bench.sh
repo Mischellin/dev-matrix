@@ -2,9 +2,10 @@
 # bench.sh <пресет>...  — прогон DevMatrix для каждой модели подряд, пока идёт одна, следующая докачивается.
 # Результаты: $RESULTS_DIR/<пресет>/ (submissions/, vllm.log, opencode/, metrics/, run-info.json).
 # Окружение: HF_TOKEN (если нужен), GPU_PRICE_USD_HOUR (цена инстанса за час, для cost_usd),
-# VLLM_START_TIMEOUT (с, по умолчанию 1800), AGENT_TIMEOUT (с на задачу, 1800), OPENCODE_TIMEOUT (1500),
+# VLLM_START_TIMEOUT (с, по умолчанию 1800), AGENT_TIMEOUT (с на задачу, 1800), OPENCODE_TIMEOUT (1500;
+# обязан быть меньше AGENT_TIMEOUT минимум на 120),
 # PURGE_WEIGHTS=1 (удалять веса модели после прогона, если не хватает диска), IMAGE_DIGEST.
-# Статусы run-info.json: done, download_failed, vllm_failed (не поднялся), vllm_died (упал или был нездоров
+# Статусы run-info.json: done, agent_failed (OpenCode упал на большинстве задач при здоровом vLLM), download_failed, vllm_failed (не поднялся), vllm_died (упал или был нездоров
 # во время прогона — затронутые задачи убраны в invalid/), devmatrix_failed (сбой самого запуска или не все отчёты).
 set -uo pipefail
 
@@ -19,6 +20,8 @@ AGENT_TIMEOUT="${AGENT_TIMEOUT:-1800}"
 export OPENCODE_TIMEOUT="${OPENCODE_TIMEOUT:-1500}"
 VLLM_PID=""
 PREFETCH_PID=""
+PREFETCH_KEY=""
+DEVMATRIX_PID=""
 failed=0
 
 log() { printf '[%s] %s\n' "$(date -u +%H:%M:%S)" "$*" >&2; }
@@ -26,19 +29,6 @@ log() { printf '[%s] %s\n' "$(date -u +%H:%M:%S)" "$*" >&2; }
 usage() {
     echo "Использование: bench.sh <пресет>...   (список: bench.sh --list)" >&2
     $PRESET list >&2
-}
-
-# Скачивание весов в $HF_HOME (идемпотентно: готовые файлы hf пропускает).
-download() {
-    local key=$1 hf_id pat cli
-    hf_id=$($PRESET get "$key" hf_id)
-    local args=()
-    while IFS= read -r pat; do
-        [[ -n $pat ]] && args+=(--exclude "$pat")
-    done < <($PRESET get "$key" download_exclude)
-    if command -v hf >/dev/null 2>&1; then cli=hf; else cli=huggingface-cli; fi
-    log "скачиваю $hf_id"
-    "$cli" download "$hf_id" "${args[@]}" >/dev/null
 }
 
 # Ждём здоровый сервер; условие ловит и успех, и падение процесса, и таймаут.
@@ -58,13 +48,17 @@ vllm_healthy() {
         && curl -fsS -m 5 "$VLLM_URL/health" >/dev/null 2>&1
 }
 
-# Итоговый статус прогона по коду devmatrix: classify_run <код> <отчётов> <задач> <маркеров> <vllm здоров: 1|0>.
+# Итоговый статус прогона по коду devmatrix:
+# classify_run <код> <отчётов> <задач> <маркеров> <vllm здоров: 1|0> [<из маркеров — упавший OpenCode>].
 # Нормальны только 0 (все пройдены) и 1 (часть не пройдена), и то лишь пока vLLM оставался здоровым и отчётов
 # столько же, сколько задач: traceback Python тоже даёт код 1, но оставляет неполный набор отчётов.
+# OpenCode упал на большинстве задач при здоровом vLLM (плохой конфиг, имя модели) — agent_failed.
 classify_run() {
-    local rc=$1 submitted=$2 expected=$3 markers=$4 healthy=$5
-    if ((healthy != 1 || markers > 0)); then
+    local rc=$1 submitted=$2 expected=$3 markers=$4 healthy=$5 agent_failed=${6:-0}
+    if ((healthy != 1 || markers - agent_failed > 0)); then
         echo vllm_died
+    elif ((agent_failed * 2 > expected)); then
+        echo agent_failed
     elif ((rc > 1 || submitted != expected)); then
         echo devmatrix_failed
     else
@@ -91,6 +85,7 @@ gpu_used_mib() {
 }
 
 cleanup() {
+    [[ -n $DEVMATRIX_PID ]] && kill -TERM -- "-$DEVMATRIX_PID" 2>/dev/null
     stop_vllm
     [[ -n $PREFETCH_PID ]] && kill -TERM -- "-$PREFETCH_PID" 2>/dev/null
 }
@@ -106,12 +101,18 @@ run_model() {
     rm -rf "$out/submissions" "$out/metrics" "$out/opencode" "$out/invalid"
     $PRESET run-info "$key" "$out/run-info.json" running
 
-    # Свои веса: ждём фоновую докачку, если она была запущена на прошлом шаге, иначе качаем сами.
+    # Свои веса: ждём фоновую докачку, если она была запущена на прошлом шаге. Её лог остаётся в
+    # download.prefetch.log; сбой докачки не молчит, а основной путь пробует скачать заново в download.log.
     if [[ -n $PREFETCH_PID ]]; then
         wait "$PREFETCH_PID" 2>/dev/null
+        local prc=$?
+        if [[ $PREFETCH_KEY == "$key" ]] && ((prc != 0)); then
+            log "$key: фоновая докачка не удалась (код $prc), см. $out/download.prefetch.log; качаю заново"
+        fi
         PREFETCH_PID=""
+        PREFETCH_KEY=""
     fi
-    if ! download "$key" >"$out/download.log" 2>&1; then
+    if ! "$BENCH_DIR/download.sh" "$key" >"$out/download.log" 2>&1; then
         log "$key: не скачались веса, см. $out/download.log"
         $PRESET run-info "$key" "$out/run-info.json" download_failed
         return 1
@@ -121,8 +122,9 @@ run_model() {
     if [[ -n $next ]]; then
         mkdir -p "$RESULTS_DIR/$next"
         # Своя группа процессов (setsid): cleanup убивает hf вместе с потомками.
-        setsid bash -c 'download "$1" >"$2" 2>&1' _ "$next" "$RESULTS_DIR/$next/download.log" &
+        setsid "$BENCH_DIR/download.sh" "$next" >"$RESULTS_DIR/$next/download.prefetch.log" 2>&1 &
         PREFETCH_PID=$!
+        PREFETCH_KEY=$next
     fi
 
     local serve_args=()
@@ -146,24 +148,29 @@ run_model() {
 
     log "$key: devmatrix run --all"
     export BENCH_MODEL=$served BENCH_OUT=$out
-    (cd "$out" && devmatrix run --all --model "$served" --provider "vLLM self-hosted" \
+    # В фоне и в своей группе процессов + wait: INT/TERM срабатывают сразу, а trap убивает всю группу.
+    (cd "$out" && exec setsid devmatrix run --all --model "$served" --provider "vLLM self-hosted" \
         --out "$out/submissions" --agent-timeout "$AGENT_TIMEOUT" \
         --agent "$BENCH_DIR/agent-opencode.sh {prompt_file}") \
-        >"$out/devmatrix.log" 2>&1
+        >"$out/devmatrix.log" 2>&1 &
+    DEVMATRIX_PID=$!
+    wait "$DEVMATRIX_PID"
     local rc=$?
+    DEVMATRIX_PID=""
     local healthy=0
     vllm_healthy && healthy=1
 
     # devmatrix сам код агента не смотрит: при мёртвом vLLM он сохранит «чистый ноль». Такие задачи агент
     # пометил файлом metrics/<задача>.invalid; fill-claims убирает их отчёты в invalid/ и пишет в run-info.json.
-    local expected submitted markers
+    local expected submitted markers agent_failed
     expected=$(devmatrix list | wc -l)
     submitted=$(find "$out/submissions" -name '*.json' 2>/dev/null | wc -l)
     markers=$(find "$out/metrics" -name '*.invalid' 2>/dev/null | wc -l)
+    agent_failed=$(grep -l '^opencode_failed' "$out"/metrics/*.invalid 2>/dev/null | wc -l)
     $PRESET fill-claims "$out/submissions" "$out/metrics" "${GPU_PRICE_USD_HOUR:--}" "vLLM self-hosted" \
         "$out/run-info.json" >>"$out/devmatrix.log" 2>&1
     local status
-    status=$(classify_run "$rc" "$submitted" "$expected" "$markers" "$healthy")
+    status=$(classify_run "$rc" "$submitted" "$expected" "$markers" "$healthy" "$agent_failed")
     stop_vllm
     $PRESET run-info "$key" "$out/run-info.json" "$status"
     if [[ ${PURGE_WEIGHTS:-0} == 1 ]]; then
@@ -179,6 +186,7 @@ main() {
         [[ $# -eq 0 ]] && return 2
         return 0
     fi
+    check_timeouts || return 2
     local keys=("$@") k
     for k in "${keys[@]}"; do
         $PRESET get "$k" hf_id >/dev/null || return 2
@@ -191,6 +199,15 @@ main() {
     done
     log "готово, моделей с ошибкой: $failed. Забрать: rsync -av <инстанс>:$RESULTS_DIR/ ./vast-results/"
     ((failed == 0))
+}
+
+# GNU timeout агента живёт в своей группе процессов и переживает killpg devmatrix: лимит OpenCode обязан
+# закончиться раньше лимита devmatrix с запасом.
+check_timeouts() {
+    if ((OPENCODE_TIMEOUT + 120 >= AGENT_TIMEOUT)); then
+        log "OPENCODE_TIMEOUT ($OPENCODE_TIMEOUT) + 120 с должен быть меньше AGENT_TIMEOUT ($AGENT_TIMEOUT)"
+        return 2
+    fi
 }
 
 # Подключение через source (тесты) функции не запускает.

@@ -5,7 +5,8 @@
 # (запросы идут строго по одному, так что дельта относится только к этой задаче).
 # Мёртвый vLLM — не провал модели: если /health не отвечает до или после запуска OpenCode, пишем маркер
 # $BENCH_OUT/metrics/<задача>.invalid и выходим с кодом 3. devmatrix код агента не смотрит и всё равно сохранит
-# отчёт, поэтому bench.sh по маркеру убирает такой отчёт из submissions/.
+# отчёт, поэтому bench.sh по маркеру убирает такой отчёт из submissions/. Так же помечается упавший OpenCode
+# (код не 0 и не 124) без единого сгенерированного токена.
 set -uo pipefail
 
 # shellcheck source=env.sh
@@ -56,6 +57,12 @@ healthy || invalid "vLLM не отвечает на /health после запу�
 p1=$(counter vllm:prompt_tokens_total)
 g1=$(counter vllm:generation_tokens_total)
 c1=$(counter vllm:prompt_tokens_cached_total)
+
+# OpenCode упал (не 0 и не таймаут 124), а vLLM ничего не сгенерировал: плохой конфиг или имя модели,
+# это не результат модели. Маркер начинается с opencode_failed — по нему bench.sh считает такие задачи.
+if [[ $rc != 0 && $rc != 124 ]] && (( g1 - g0 == 0 )); then
+    invalid "opencode_failed: OpenCode завершился с кодом $rc, vLLM не сгенерировал токенов (см. opencode/$task.err)"
+fi
 
 cat >"$BENCH_OUT/metrics/$task.json" <<JSON
 {"task_id": "$task", "opencode_exit": $rc, "prompt_tokens": $((p1 - p0)), "completion_tokens": $((g1 - g0)), "prompt_tokens_cached": $((c1 - c0))}

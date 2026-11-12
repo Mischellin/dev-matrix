@@ -55,6 +55,9 @@ RUN uv tool install --python 3.12 /opt/dev-matrix \
 
 COPY docker/vast-bench/ /opt/vast-bench/
 RUN chmod +x /opt/vast-bench/*.sh /opt/vast-bench/preset.py \
+    # ssh-сессии не наследуют ENV образа: env.sh подхватывает эти значения из image.env
+    && printf ': "${VLLM_TAG:=%s}"\n: "${IMAGE_REVISION:=%s}"\n: "${UV_PYTHON_INSTALL_DIR:=%s}"\n: "${UV_PYTHON_PREFERENCE:=%s}"\n' \
+        "$VLLM_TAG" "$IMAGE_REVISION" "$UV_PYTHON_INSTALL_DIR" "$UV_PYTHON_PREFERENCE" >/opt/vast-bench/image.env \
     && ln -s /opt/vast-bench/bench.sh /usr/local/bin/bench.sh \
     && ln -s /opt/vast-bench/agent-opencode.sh /usr/local/bin/agent-opencode.sh \
     && mkdir -p /workspace /results

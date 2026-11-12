@@ -108,7 +108,8 @@ def _out(cmd: list[str]) -> str:
 
 def run_info(key: str, path: Path, status: str) -> None:
     m = preset(key)
-    info = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    # Новый прогон начинает с чистого листа: ни старого started_at, ни invalid_* от прошлого запуска.
+    info = json.loads(path.read_text(encoding="utf-8")) if path.exists() and status != "running" else {}
     now = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     gpu = _out(["nvidia-smi", "--query-gpu=name,memory.total,driver_version", "--format=csv,noheader"])
     info.update(
@@ -175,7 +176,7 @@ def fill_claims(
         info = json.loads(info_path.read_text(encoding="utf-8"))
         info["invalid_tasks"] = invalid
         info["invalid_note"] = (
-            "vLLM не отвечал на /health во время этих задач: отчёты перенесены в invalid/, не отправлять"
+            "vLLM не отвечал на /health или OpenCode упал без генерации в этих задачах: отчёты перенесены в invalid/, не отправлять"
             if invalid
             else ""
         )
