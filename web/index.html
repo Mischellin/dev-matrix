@@ -404,15 +404,25 @@
       });
     }
 
-    function renderTasks() {
+    async function renderTasks() {
       const container = document.getElementById('tasks-container');
       container.innerHTML = '';
 
-      benchmarksData.forEach(task => {
+      // Список задач берём из манифеста; результаты прогонов (если есть) — из benchmark_runs.json.
+      let tasks = [];
+      try {
+        tasks = (await fetch('tasks/manifest.json').then(r => r.json())).tasks || [];
+      } catch (e) {
+        tasks = [];
+      }
+      const runsById = Object.fromEntries((benchmarksData || []).map(t => [t.id, t.runs || []]));
+
+      tasks.forEach(task => {
         const card = document.createElement('div');
         card.className = 'glass-card rounded-2xl p-5 space-y-4 flex flex-col justify-between';
 
-        let rowsHtml = task.runs.map(r => `
+        const runs = runsById[task.id] || [];
+        let rowsHtml = runs.map(r => `
           <div class="flex items-center justify-between py-2 border-b border-slate-800/60 last:border-0 text-xs">
             <div>
               <div class="font-semibold text-slate-200">${r.model_name}</div>
@@ -424,6 +434,9 @@
             </div>
           </div>
         `).join('');
+        if (!rowsHtml) {
+          rowsHtml = '<div class="text-xs text-slate-500 py-2">Results pending: no runs published yet.</div>';
+        }
 
         card.innerHTML = `
           <div>
@@ -437,7 +450,7 @@
             </div>
           </div>
           <div class="pt-2 text-right">
-            <span class="text-xs text-slate-500 font-mono">14 hidden tests applied</span>
+            <span class="text-xs text-slate-500 font-mono">${task.difficulty} · ${task.tests_count} tests incl. hidden</span>
           </div>
         `;
         container.appendChild(card);
