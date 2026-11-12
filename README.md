@@ -88,6 +88,13 @@ The benchmark repository contains fully anonymized, self-contained tasks in [`ta
 | [`arch-04-tag-registry`](tasks/arch-04-tag-registry) | **Normalized Tag Registry with Alphabetical Ordering and Scope Protection** | Python / Data Architecture & Security | `M` (architecture) | 8 tests |
 | [`infra-05-k8s-pod-admission`](tasks/infra-05-k8s-pod-admission) | **Kubernetes Pod Security and Topology Spread Admission Mutator** | Infra / Kubernetes & Platform Engineering | `M` (infrastructure) | 20 tests |
 | [`onec-06-payment-allocator`](tasks/onec-06-payment-allocator) | **1C:Enterprise BSL Payment Allocation and FIFO Order Matching** | 1С / Enterprise BSL & Accounting | `M` (feature) | 16 tests |
+| [`auth-07-claim-roles`](tasks/auth-07-claim-roles) | **Derive Gateway Permissions from Role Claims Instead of OAuth Scope** | Python / Authorization & Identity | `M` (bugfix) | 14 tests |
+| [`authz-12-uniform-404`](tasks/authz-12-uniform-404) | **Uniform NotFound for Missing and Unauthorized Documents** | Python / Security & Access Control | `M` (security) | 15 tests |
+| [`flag-10-feature-flag-router`](tasks/flag-10-feature-flag-router) | **Mount a Sub-API Only When a Feature Flag Is Enabled** | Python / Feature Flags & Routing | `M` (feature) | 16 tests |
+| [`host-08-host-header-guard`](tasks/host-08-host-header-guard) | **Host Header Allow-List for a DNS-Rebinding Guard** | Python / Web Security | `M` (bugfix) | 15 tests |
+| [`idem-13-idempotent-signup`](tasks/idem-13-idempotent-signup) | **Idempotent, Retry-Safe Business Self-Registration** | Python / Idempotency & Distributed Consistency | `M` (bugfix) | 17 tests |
+| [`scrub-09-metadata-scrubber`](tasks/scrub-09-metadata-scrubber) | **Redact Sensitive Event Metadata Recursively** | Python / Security & Data Privacy | `M` (security) | 15 tests |
+| [`tenant-11-scoped-listing`](tasks/tenant-11-scoped-listing) | **Scope Document Listing and Total Count by Role and Client Assignment** | Python / Multi-tenant Access Control | `M` (security) | 16 tests |
 
 ### Quick start with the `devmatrix` CLI:
 ```bash

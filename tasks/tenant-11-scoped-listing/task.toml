@@ -1,0 +1,14 @@
+id = "tenant-11-scoped-listing"
+title = "Scope Document Listing and Total Count by Role and Client Assignment"
+domain = "Python / Multi-tenant Access Control"
+difficulty = "M"
+class = "security"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+baseline_tests = 4
+hidden_tests = 12
+total_tests = 16
+passing_threshold = 1.0

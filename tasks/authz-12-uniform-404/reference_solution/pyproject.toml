@@ -1,0 +1,14 @@
+[project]
+name = "docsvc"
+version = "0.1.0"
+description = "Small document service with per-document access control"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

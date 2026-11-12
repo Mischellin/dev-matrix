@@ -1,0 +1,14 @@
+id = "host-08-host-header-guard"
+title = "Host Header Allow-List for a DNS-Rebinding Guard"
+domain = "Python / Web Security"
+difficulty = "M"
+class = "bugfix"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+baseline_tests = 3
+hidden_tests = 12
+total_tests = 15
+passing_threshold = 1.0

@@ -1,0 +1,14 @@
+[project]
+name = "api-gateway-authz"
+version = "0.1.0"
+description = "Permission derivation for an API gateway"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

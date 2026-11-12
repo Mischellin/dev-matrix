@@ -1,0 +1,14 @@
+[project]
+name = "toolserver"
+version = "0.1.0"
+description = "HTTP transport for a tool server with DNS-rebinding protection"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

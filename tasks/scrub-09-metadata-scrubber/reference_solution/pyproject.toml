@@ -1,0 +1,14 @@
+[project]
+name = "event-pipeline"
+version = "0.1.0"
+description = "Analytics event pipeline with metadata scrubbing"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -1,0 +1,14 @@
+id = "idem-13-idempotent-signup"
+title = "Idempotent, Retry-Safe Business Self-Registration"
+domain = "Python / Idempotency & Distributed Consistency"
+difficulty = "M"
+class = "bugfix"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+baseline_tests = 3
+hidden_tests = 14
+total_tests = 17
+passing_threshold = 1.0

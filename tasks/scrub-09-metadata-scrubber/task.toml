@@ -1,0 +1,14 @@
+id = "scrub-09-metadata-scrubber"
+title = "Redact Sensitive Event Metadata Recursively"
+domain = "Python / Security & Data Privacy"
+difficulty = "M"
+class = "security"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+baseline_tests = 3
+hidden_tests = 12
+total_tests = 15
+passing_threshold = 1.0

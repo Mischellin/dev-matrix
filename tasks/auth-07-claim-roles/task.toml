@@ -1,0 +1,14 @@
+id = "auth-07-claim-roles"
+title = "Derive Gateway Permissions from Role Claims Instead of OAuth Scope"
+domain = "Python / Authorization & Identity"
+difficulty = "M"
+class = "bugfix"
+check_cmd = "pytest tests/"
+
+[verifier]
+type = "pytest"
+timeout_s = 60
+baseline_tests = 3
+hidden_tests = 11
+total_tests = 14
+passing_threshold = 1.0

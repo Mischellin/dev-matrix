@@ -54,6 +54,69 @@
       "class": "feature",
       "tests_count": 16,
       "description": "Implement native 1C:Enterprise (BSL) logic to reconcile bank statements and allocate incoming payments across customer orders using strict FIFO and VAT calculation."
+    },
+    {
+      "id": "auth-07-claim-roles",
+      "title": "Derive Gateway Permissions from Role Claims Instead of OAuth Scope",
+      "domain": "Python / Authorization & Identity",
+      "difficulty": "M",
+      "class": "bugfix",
+      "tests_count": 14,
+      "description": "An API gateway derives permissions from the OAuth `scope` string. It must use identity-provider role claims instead: nested `project_roles` per project, with a flat `roles` fallback. Requirements: a role-to-permission table, unknown roles ignored, scope never grants anything, malformed claim shapes tolerated, and sorted, deduplicated output."
+    },
+    {
+      "id": "authz-12-uniform-404",
+      "title": "Uniform NotFound for Missing and Unauthorized Documents",
+      "domain": "Python / Security & Access Control",
+      "difficulty": "M",
+      "class": "security",
+      "tests_count": 15,
+      "description": "Close an existence oracle in a document service. Update, delete and transition must raise the same `NotFound` for missing and unauthorized documents. Authorization must run before version and workflow checks, denied calls must leave no side effects, and only successful actions may be audited."
+    },
+    {
+      "id": "flag-10-feature-flag-router",
+      "title": "Mount a Sub-API Only When a Feature Flag Is Enabled",
+      "domain": "Python / Feature Flags & Routing",
+      "difficulty": "M",
+      "class": "feature",
+      "tests_count": 16,
+      "description": "Fictional in-process router (`create_app(env)`) whose `/signing/*` sub-API must be mounted only when `SIGNING_ENABLED` is truthy. It is read from an injected env at construction, with per-app state. Disabled means 404 and the routes are absent from `routes()` and `describe()`. The enabled handlers must validate input and return the specified 201/400/404/422 codes."
+    },
+    {
+      "id": "host-08-host-header-guard",
+      "title": "Host Header Allow-List for a DNS-Rebinding Guard",
+      "domain": "Python / Web Security",
+      "difficulty": "M",
+      "class": "bugfix",
+      "tests_count": 15,
+      "description": "The Host-header guard of a tool-server HTTP transport accepts only the literal `localhost:PORT` and answers 421 to every real deployment host. The fix adds a configurable allow-list. It supports exact hosts, `host:port`, wildcard subdomains, bracketed IPv6 literals, case-insensitivity and default-port normalisation. It rejects userinfo, paths and a missing Host header with 400, and rebinding hosts with 421. The checks are pure functions returning `(status, reason)`."
+    },
+    {
+      "id": "idem-13-idempotent-signup",
+      "title": "Idempotent, Retry-Safe Business Self-Registration",
+      "domain": "Python / Idempotency & Distributed Consistency",
+      "difficulty": "M",
+      "class": "bugfix",
+      "tests_count": 17,
+      "description": "Fix a multi-step SaaS business signup (account, owner membership, subscription) so it is idempotent per normalised (email, tax id). A retry after a failure at any step must complete only the missing steps. Conflicting business data must raise `ConflictError`, and a request that loses a race must not fail or create duplicates."
+    },
+    {
+      "id": "scrub-09-metadata-scrubber",
+      "title": "Redact Sensitive Event Metadata Recursively",
+      "domain": "Python / Security & Data Privacy",
+      "difficulty": "M",
+      "class": "security",
+      "tests_count": 15,
+      "description": "Fix an analytics pipeline's metadata scrubber so it redacts credentials at any depth. It must handle nested dicts, lists and tuples, case-insensitive substring key matching, non-string keys, input non-mutation, cycle safety and a depth limit. It must also preserve non-sensitive data and types."
+    },
+    {
+      "id": "tenant-11-scoped-listing",
+      "title": "Scope Document Listing and Total Count by Role and Client Assignment",
+      "domain": "Python / Multi-tenant Access Control",
+      "difficulty": "M",
+      "class": "security",
+      "tests_count": 16,
+      "description": "A multi-client document service lists documents for admins, managers (team clients) and employees (assigned clients). The seed filters the page but counts all documents, lets managers and unknown roles see everything, orders unstably, skips pagination validation and leaks the owner client id in a `get_document` error."
     }
   ]
 }

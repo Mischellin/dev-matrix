@@ -1,0 +1,14 @@
+[project]
+name = "gateway"
+version = "0.1.0"
+description = "Tiny in-process request router with an optional signing sub-API"
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
