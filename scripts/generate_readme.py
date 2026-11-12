@@ -208,6 +208,29 @@ python3 scripts/runner.py evaluate --task sec-01-clock-skew --workdir /tmp/agent
 
 ---
 
+## 🐳 Контейнер для vast.ai
+
+Образ `ghcr.io/mischellin/dev-matrix-vast-bench` (сборка — `docker/vast-bench/`, workflow `vast-bench-image.yml`, запуск вручную или тегом `vast-bench-*`) содержит vLLM, OpenCode и `devmatrix`. Весов и секретов в нём нет: репозиторий публичный, токены GitHub не нужны. Только модели, которые помещаются на **одну** карту (без tensor parallel).
+
+1. Арендуйте инстанс с этим образом (GPU по `min_gpu_gb` из [`models.toml`](docker/vast-bench/models.toml), диск от 200 ГБ), дайте ему свою метку, например `devmatrix-bench`. **После прогона удалите инстанс**, иначе аренда идёт дальше.
+2. Переменные окружения: `HF_TOKEN` (если репозиторий модели требует вход), `GPU_PRICE_USD_HOUR` (цена инстанса за час из vast.ai — для `cost_usd`), по желанию `PURGE_WEIGHTS=1` (удалять веса готовой модели, если мало диска).
+3. На инстансе по ssh:
+   ```bash
+   /opt/vast-bench/entrypoint.sh list                       # пресеты
+   /opt/vast-bench/entrypoint.sh bench gpt-oss-20b devstral-small-2   # модели подряд
+   ```
+   Пока идёт одна модель, следующая докачивается в фоне. Для каждой: скачивание → `vllm serve` → `devmatrix run --all` с агентом OpenCode → остановка vLLM.
+4. Забрать результаты и отправить их со своей машины, где есть `gh` (в контейнере токена нет):
+   ```bash
+   rsync -av -e 'ssh -p <порт>' root@<хост>:/results/ ./vast-results/
+   devmatrix submit --dir vast-results/<пресет>/submissions
+   ```
+   В `/results/<пресет>/`: `submissions/` (отчёты devmatrix), `vllm.log`, `opencode/`, `metrics/`, `run-info.json` (тег vLLM, версии, GPU, флаги, ревизия образа).
+
+**Оговорки.** Результаты получены на FP8/MXFP4-квантовании vLLM (для North Mini Code и KAT-Coder — онлайн-квантовании `--quantization fp8` из BF16) и несопоставимы с другими квантованиями и с API-версиями тех же моделей. Токены — сумма дельт счётчиков `vllm:prompt_tokens` и `vllm:generation_tokens` за задачу; `cost_usd` = `agent_seconds / 3600 × GPU_PRICE_USD_HOUR` (только время работы агента, без скачивания и загрузки модели). Как и всё остальное в `devmatrix submit`, эти значения — «заявлено автором». Не проверено запуском: парсеры tool-call/reasoning для моделей, где карточка их не называет (пометки — в `notes` пресетов), и сборка образа.
+
+---
+
 ## 🔬 Methodology
 
 ```

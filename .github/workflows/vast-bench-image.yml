@@ -1,0 +1,54 @@
+name: Образ vast-bench
+
+on:
+  workflow_dispatch:
+    inputs:
+      vllm_tag:
+        description: "Тег vllm/vllm-openai (пусто — значение по умолчанию из Dockerfile)"
+        required: false
+        default: ""
+  push:
+    tags:
+      - "vast-bench-*"
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/mischellin/dev-matrix-vast-bench
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Теги образа
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=ref,event=tag
+            type=sha,prefix=sha-
+            type=raw,value=latest,enable=${{ github.event_name == 'workflow_dispatch' }}
+      - name: Сборка и публикация
+        id: build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/vast-bench/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            IMAGE_REVISION=${{ github.sha }}
+            ${{ inputs.vllm_tag != '' && format('VLLM_TAG={0}', inputs.vllm_tag) || '' }}
+      - name: Дайджест образа
+        run: echo "Образ ${IMAGE}@${{ steps.build.outputs.digest }}" | tee -a "$GITHUB_STEP_SUMMARY"
