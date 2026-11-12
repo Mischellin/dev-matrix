@@ -4,13 +4,17 @@
 # Окружение: HF_TOKEN (если нужен), GPU_PRICE_USD_HOUR (цена инстанса за час, для cost_usd),
 # VLLM_START_TIMEOUT (с, по умолчанию 1800), AGENT_TIMEOUT (с на задачу, 1800), OPENCODE_TIMEOUT (1500),
 # PURGE_WEIGHTS=1 (удалять веса модели после прогона, если не хватает диска), IMAGE_DIGEST.
+# Статусы run-info.json: done, download_failed, vllm_failed (не поднялся), vllm_died (упал или был нездоров
+# во время прогона — затронутые задачи убраны в invalid/), devmatrix_failed (сбой самого запуска или не все отчёты).
 set -uo pipefail
 
+BENCH_DIR="${VAST_BENCH_DIR:-/opt/vast-bench}"
 # shellcheck source=env.sh
-source /opt/vast-bench/env.sh
+source "$BENCH_DIR/env.sh"
 
-PRESET="python3 /opt/vast-bench/preset.py"
+export PRESET="python3 $BENCH_DIR/preset.py"
 START_TIMEOUT="${VLLM_START_TIMEOUT:-1800}"
+HEALTH_POLL="${HEALTH_POLL:-5}"
 AGENT_TIMEOUT="${AGENT_TIMEOUT:-1800}"
 export OPENCODE_TIMEOUT="${OPENCODE_TIMEOUT:-1500}"
 VLLM_PID=""
@@ -44,8 +48,28 @@ wait_health() {
     until curl -fsS -m 3 "$VLLM_URL/health" >/dev/null 2>&1; do
         kill -0 "$pid" 2>/dev/null || return 1
         ((SECONDS < deadline)) || return 2
-        sleep 5
+        sleep "$HEALTH_POLL"
     done
+}
+
+# vLLM жив и отвечает на /health.
+vllm_healthy() {
+    [[ -n $VLLM_PID ]] && kill -0 "$VLLM_PID" 2>/dev/null \
+        && curl -fsS -m 5 "$VLLM_URL/health" >/dev/null 2>&1
+}
+
+# Итоговый статус прогона по коду devmatrix: classify_run <код> <отчётов> <задач> <маркеров> <vllm здоров: 1|0>.
+# Нормальны только 0 (все пройдены) и 1 (часть не пройдена), и то лишь пока vLLM оставался здоровым и отчётов
+# столько же, сколько задач: traceback Python тоже даёт код 1, но оставляет неполный набор отчётов.
+classify_run() {
+    local rc=$1 submitted=$2 expected=$3 markers=$4 healthy=$5
+    if ((healthy != 1 || markers > 0)); then
+        echo vllm_died
+    elif ((rc > 1 || submitted != expected)); then
+        echo devmatrix_failed
+    else
+        echo done
+    fi
 }
 
 # Останавливаем vLLM вместе с дочерними процессами и ждём, пока освободится видеопамять.
@@ -68,7 +92,7 @@ gpu_used_mib() {
 
 cleanup() {
     stop_vllm
-    [[ -n $PREFETCH_PID ]] && kill "$PREFETCH_PID" 2>/dev/null
+    [[ -n $PREFETCH_PID ]] && kill -TERM -- "-$PREFETCH_PID" 2>/dev/null
 }
 trap cleanup EXIT
 trap 'exit 130' INT TERM
@@ -79,7 +103,7 @@ run_model() {
     hf_id=$($PRESET get "$key" hf_id)
     served=$($PRESET get "$key" served_name)
     mkdir -p "$out"
-    rm -rf "$out/submissions" "$out/metrics" "$out/opencode"
+    rm -rf "$out/submissions" "$out/metrics" "$out/opencode" "$out/invalid"
     $PRESET run-info "$key" "$out/run-info.json" running
 
     # Свои веса: ждём фоновую докачку, если она была запущена на прошлом шаге, иначе качаем сами.
@@ -96,7 +120,8 @@ run_model() {
     # Пока идёт эта модель, качаем следующую.
     if [[ -n $next ]]; then
         mkdir -p "$RESULTS_DIR/$next"
-        (download "$next" >"$RESULTS_DIR/$next/download.log" 2>&1) &
+        # Своя группа процессов (setsid): cleanup убивает hf вместе с потомками.
+        setsid bash -c 'download "$1" >"$2" 2>&1' _ "$next" "$RESULTS_DIR/$next/download.log" &
         PREFETCH_PID=$!
     fi
 
@@ -123,15 +148,22 @@ run_model() {
     export BENCH_MODEL=$served BENCH_OUT=$out
     (cd "$out" && devmatrix run --all --model "$served" --provider "vLLM self-hosted" \
         --out "$out/submissions" --agent-timeout "$AGENT_TIMEOUT" \
-        --agent "/opt/vast-bench/agent-opencode.sh {prompt_file}") \
+        --agent "$BENCH_DIR/agent-opencode.sh {prompt_file}") \
         >"$out/devmatrix.log" 2>&1
     local rc=$?
-    # 0 — все задачи пройдены, 1 — часть не пройдена (это нормальный итог), остальное — сбой самого запуска.
-    local status=done
-    if ((rc > 1)); then status=devmatrix_failed; fi
+    local healthy=0
+    vllm_healthy && healthy=1
 
+    # devmatrix сам код агента не смотрит: при мёртвом vLLM он сохранит «чистый ноль». Такие задачи агент
+    # пометил файлом metrics/<задача>.invalid; fill-claims убирает их отчёты в invalid/ и пишет в run-info.json.
+    local expected submitted markers
+    expected=$(devmatrix list | wc -l)
+    submitted=$(find "$out/submissions" -name '*.json' 2>/dev/null | wc -l)
+    markers=$(find "$out/metrics" -name '*.invalid' 2>/dev/null | wc -l)
     $PRESET fill-claims "$out/submissions" "$out/metrics" "${GPU_PRICE_USD_HOUR:--}" "vLLM self-hosted" \
-        >>"$out/devmatrix.log" 2>&1
+        "$out/run-info.json" >>"$out/devmatrix.log" 2>&1
+    local status
+    status=$(classify_run "$rc" "$submitted" "$expected" "$markers" "$healthy")
     stop_vllm
     $PRESET run-info "$key" "$out/run-info.json" "$status"
     if [[ ${PURGE_WEIGHTS:-0} == 1 ]]; then
@@ -161,4 +193,7 @@ main() {
     ((failed == 0))
 }
 
-main "$@"
+# Подключение через source (тесты) функции не запускает.
+if [[ ${BASH_SOURCE[0]} == "$0" ]]; then
+    main "$@"
+fi

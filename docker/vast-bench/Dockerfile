@@ -28,7 +28,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     RESULTS_DIR=/results
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends git curl ca-certificates xz-utils jq procps \
+    && apt-get install -y --no-install-recommends git curl ca-certificates xz-utils jq procps rsync \
     && rm -rf /var/lib/apt/lists/*
 
 # uv: из релиза GitHub, версия закреплена.

@@ -76,8 +76,12 @@ def opencode_config(m: dict, base_url: str) -> dict:
         "name": m["served_name"],
         "limit": {"context": m["max_model_len"], "output": min(16384, m["max_model_len"] // 4)},
     }
-    if m.get("interleaved_field"):
-        model["interleaved"] = {"field": m["interleaved_field"]}
+    # OpenCode (provider/transform.ts) кладёт рассуждения прошлых ходов обратно в это поле сообщения. vLLM v0.33.0
+    # отдаёт рассуждения в поле `reasoning` (раньше было `reasoning_content`, docs/features/reasoning_outputs.md),
+    # значит для любой модели с reasoning_parser по умолчанию — `reasoning`; interleaved_field переопределяет.
+    field = m.get("interleaved_field") or ("reasoning" if m.get("reasoning_parser") else None)
+    if field:
+        model["interleaved"] = {"field": field}
     return {
         "$schema": "https://opencode.ai/config.json",
         "model": f"{PROVIDER_ID}/{m['served_name']}",
@@ -130,20 +134,52 @@ def run_info(key: str, path: Path, status: str) -> None:
     path.write_text(json.dumps(info, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def fill_claims(sub_dir: Path, metrics_dir: Path, price: float | None, provider: str) -> int:
-    """Дописывает в отчёты devmatrix токены (из дельт /metrics vLLM) и цену GPU-часов."""
+def fill_claims(
+    sub_dir: Path, metrics_dir: Path, price: float | None, provider: str, info_path: Path | None = None
+) -> int:
+    """Дописывает в отчёты devmatrix токены (из дельт /metrics vLLM) и цену GPU-часов.
+
+    Задачи с маркером metrics/<задача>.invalid (vLLM не отвечал) уходят из submissions/ в соседний invalid/:
+    это не результат модели, отправлять их нельзя. Отрицательная дельта (счётчики vLLM сбросились) — tokens null.
+    """
     n = 0
+    invalid: list[str] = []
     for f in sorted(sub_dir.rglob("*.json")):
         r = json.loads(f.read_text(encoding="utf-8"))
         r["provider"] = provider
+        marker = metrics_dir / f"{r['task_id']}.invalid"
         mf = metrics_dir / f"{r['task_id']}.json"
-        if mf.is_file():
+        if marker.exists():
+            r["tokens"] = None
+        elif mf.is_file():
             t = json.loads(mf.read_text(encoding="utf-8"))
-            r["tokens"] = int(t["prompt_tokens"]) + int(t["completion_tokens"])
+            prompt, completion = int(t["prompt_tokens"]), int(t["completion_tokens"])
+            r["tokens"] = prompt + completion if prompt >= 0 and completion >= 0 else None
         if price is not None:
             r["cost_usd"] = round(r["agent_seconds"] / 3600 * price, 4)
-        f.write_text(json.dumps(r, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        text = json.dumps(r, indent=2, ensure_ascii=False) + "\n"
+        if marker.exists():
+            dest = sub_dir.parent / "invalid" / f.relative_to(sub_dir)
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_text(text, encoding="utf-8")
+            f.unlink()
+            invalid.append(r["task_id"])
+            continue
+        f.write_text(text, encoding="utf-8")
         n += 1
+    # Маркер без отчёта (devmatrix упал до сохранения) тоже фиксируем.
+    for marker in sorted(metrics_dir.glob("*.invalid")):
+        if marker.stem not in invalid:
+            invalid.append(marker.stem)
+    if info_path is not None and info_path.exists():
+        info = json.loads(info_path.read_text(encoding="utf-8"))
+        info["invalid_tasks"] = invalid
+        info["invalid_note"] = (
+            "vLLM не отвечал на /health во время этих задач: отчёты перенесены в invalid/, не отправлять"
+            if invalid
+            else ""
+        )
+        info_path.write_text(json.dumps(info, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return n
 
 
@@ -161,9 +197,10 @@ def main(argv: list[str]) -> int:
         print(json.dumps(opencode_config(preset(a[0]), a[1]), indent=2, ensure_ascii=False))
     elif cmd == "run-info":  # run-info <key> <file> <status>
         run_info(a[0], Path(a[1]), a[2])
-    elif cmd == "fill-claims":  # fill-claims <submissions> <metrics> <price|-> <provider>
+    elif cmd == "fill-claims":  # fill-claims <submissions> <metrics> <price|-> <provider> [run-info.json]
         price = None if a[2] in ("", "-") else float(a[2])
-        print(f"Отчётов дополнено: {fill_claims(Path(a[0]), Path(a[1]), price, a[3])}")
+        info = Path(a[4]) if len(a) > 4 else None
+        print(f"Отчётов дополнено: {fill_claims(Path(a[0]), Path(a[1]), price, a[3], info)}")
     elif cmd == "check":
         errs = problems(load())
         print("\n".join(errs) or "ok")
