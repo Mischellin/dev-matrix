@@ -1,0 +1,97 @@
+# Пресеты моделей для bench.sh. Только модели, которые помещаются на ОДНУ карту (без tensor parallel).
+# Значения сверены 2026-11-13 с карточками на huggingface.co (README, config.json) и исходниками vLLM v0.33.0.
+#
+# Поля:
+#   hf_id               — репозиторий Hugging Face
+#   served_name         — имя для vLLM (--served-model-name) и для devmatrix --model; квантование зашито в имя
+#   max_model_len       — --max-model-len; задачи небольшие, длиннее 64k агенту не нужно
+#   gpu_memory_utilization — --gpu-memory-utilization
+#   min_gpu_gb          — сколько видеопамяти нужно (веса + KV-кэш на max_model_len); ориентир, не измерение
+#   dtype               — --dtype
+#   quantization        — --quantization (необязательно); для готовых FP8/MXFP4 чекпойнтов не нужно
+#   tool_call_parser    — --tool-call-parser (вместе с --enable-auto-tool-choice)
+#   reasoning_parser    — --reasoning-parser (необязательно)
+#   extra_args          — прочие флаги vllm serve
+#   download_exclude    — маски файлов репозитория, которые не качаем (дубликаты весов в других форматах)
+#   interleaved_field   — поле с рассуждениями для провайдера OpenCode (необязательно)
+#   notes               — что проверено и что нет
+#
+# Имена парсеров найдены в vllm/tool_parsers/__init__.py и vllm/reasoning/__init__.py тега v0.33.0.
+# «Из карточки» — команда взята из README модели; «по аналогии» — в карточке парсер не указан.
+
+[models.gpt-oss-20b]
+hf_id = "openai/gpt-oss-20b"
+served_name = "gpt-oss-20b"
+max_model_len = 65536
+gpu_memory_utilization = 0.90
+min_gpu_gb = 24
+dtype = "auto"
+tool_call_parser = "openai"
+reasoning_parser = "openai_gptoss"
+extra_args = []
+download_exclude = ["original/*", "metal/*"]
+notes = """MXFP4 из коробки (quant_method=mxfp4 в config.json), веса ~14 ГБ; в репозитории ещё original/ и metal/ — не качаем (весь репозиторий 41 ГБ). \
+Парсеры openai/openai_gptoss есть в v0.33.0, но в карточке модели указана только команда `vllm serve openai/gpt-oss-20b`, поэтому связка парсеров НЕ проверена запуском. \
+Нативная Mxfp4-ядра быстрее на Hopper/Blackwell; на Ampere/Ada vLLM может падать на запасной путь."""
+
+[models.devstral-small-2]
+hf_id = "mistralai/Devstral-Small-2-24B-Instruct-2512"
+served_name = "devstral-small-2-24b-fp8"
+max_model_len = 65536
+gpu_memory_utilization = 0.90
+min_gpu_gb = 48
+dtype = "auto"
+tool_call_parser = "mistral"
+extra_args = []
+download_exclude = ["consolidated*"]
+notes = """FP8-чекпойнт (quant_method=fp8), веса ~25 ГБ. Из карточки: --tool-call-parser mistral --enable-auto-tool-choice (карточка даёт tensor-parallel 2 и 262144, здесь одна карта и 65536). \
+Модель не reasoning — reasoning_parser не задан. Файлы consolidated* (формат Mistral, дубль весов) не качаем: НЕ проверено, что vLLM без них выбирает токенизатор tekken сам; \
+если сервер не стартует, уберите download_exclude и добавьте extra_args = ["--tokenizer-mode", "mistral", "--config-format", "mistral", "--load-format", "mistral"]."""
+
+[models.qwen3-8-27b]
+hf_id = "Qwen/Qwen3.8-27B-FP8"
+served_name = "qwen3.8-27b-fp8"
+max_model_len = 65536
+gpu_memory_utilization = 0.90
+min_gpu_gb = 48
+dtype = "auto"
+tool_call_parser = "qwen3_coder"
+reasoning_parser = "qwen3"
+extra_args = []
+download_exclude = []
+notes = """Dense, FP8 (quant_method=fp8), веса ~31 ГБ по размеру файлов; архитектура Qwen3_5ForConditionalGeneration (есть в реестре vLLM v0.33.0). \
+Парсеры qwen3_coder + qwen3 — ПО АНАЛОГИИ с Kwaipilot/KAT-Coder-V2.5-Dev (тот же qwen3_5): в карточке Qwen3.8 команды vllm serve с парсерами нет, не проверено. \
+Мультимодальная модель; для текстовых задач можно добавить extra_args = ["--language-model-only"] (флаг есть в v0.33.0), не проверено на этом чекпойнте."""
+
+[models.north-mini-code]
+hf_id = "CohereLabs/North-Mini-Code-1.0"
+served_name = "north-mini-code-1.0-fp8"
+max_model_len = 65536
+gpu_memory_utilization = 0.90
+min_gpu_gb = 48
+dtype = "bfloat16"
+quantization = "fp8"
+tool_call_parser = "cohere_command4"
+reasoning_parser = "cohere_command4"
+extra_args = []
+download_exclude = []
+interleaved_field = "reasoning"
+notes = """30B MoE, чекпойнт BF16 61 ГБ — на одну карту <80 ГБ не влезает, поэтому ОНЛАЙН-квантование vLLM `--quantization fp8` (~31 ГБ в памяти); результаты — это FP8-квантование vLLM, а не веса автора. \
+На карте 80 ГБ можно без квантования: уберите quantization и поставьте served_name без «-fp8». Парсеры cohere_command4 — из карточки (там tensor-parallel 2 и 320000). \
+Карточка просит для OpenCode конфиг с interleaved.field = reasoning и ветку main OpenCode «до выхода релиза» — на закреплённой версии это НЕ проверено."""
+
+[models.kat-coder-v2-5-dev]
+hf_id = "Kwaipilot/KAT-Coder-V2.5-Dev"
+served_name = "kat-coder-v2.5-dev-fp8"
+max_model_len = 65536
+gpu_memory_utilization = 0.90
+min_gpu_gb = 48
+dtype = "bfloat16"
+quantization = "fp8"
+tool_call_parser = "qwen3_coder"
+reasoning_parser = "qwen3"
+extra_args = ["--language-model-only"]
+download_exclude = []
+notes = """35B MoE (qwen3_5_moe), чекпойнт BF16 69 ГБ: на одну карту <80 ГБ — онлайн-квантование `--quantization fp8` (результаты — FP8 от vLLM). \
+Из карточки: --reasoning-parser qwen3 --tool-call-parser qwen3_coder --enable-auto-tool-choice и обязательный --language-model-only (в чекпойнте нет весов vision-башни); карточка даёт tensor-parallel 8 и 262144. \
+Карточка рекомендует vllm>=0.19.0."""
