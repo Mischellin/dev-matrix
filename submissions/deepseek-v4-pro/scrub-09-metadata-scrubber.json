@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "scrub-09-metadata-scrubber",
+  "model": "deepseek-v4-pro",
+  "provider": "DeepSeek",
+  "passed": true,
+  "passed_tests": 15,
+  "total_tests": 15,
+  "agent_seconds": 361.8,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "5c240e8bed6c7fb4d6678057850d752b853ce909bddda0f9c3cdfaea62261d1d",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-12T23:59:25Z",
+  "claimed": true
+}

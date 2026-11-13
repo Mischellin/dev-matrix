@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "authz-12-uniform-404",
+  "model": "deepseek-v4-pro",
+  "provider": "DeepSeek",
+  "passed": true,
+  "passed_tests": 15,
+  "total_tests": 15,
+  "agent_seconds": 208.9,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "40bbecaa81293351248c42406ddf049307057c0f37409eb0d3e47e4e8386fe99",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-12T23:41:28Z",
+  "claimed": true
+}

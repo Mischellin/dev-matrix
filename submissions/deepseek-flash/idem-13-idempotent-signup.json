@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "idem-13-idempotent-signup",
+  "model": "deepseek-flash",
+  "provider": "DeepSeek",
+  "passed": true,
+  "passed_tests": 17,
+  "total_tests": 17,
+  "agent_seconds": 77.7,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "05d1ed2494d09eb21b1915c6ecf17840fce34f97aeb650daa2639bd1018dc6af",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-12T23:25:17Z",
+  "claimed": true
+}

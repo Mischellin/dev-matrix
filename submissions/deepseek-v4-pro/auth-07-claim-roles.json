@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "auth-07-claim-roles",
+  "model": "deepseek-v4-pro",
+  "provider": "DeepSeek",
+  "passed": true,
+  "passed_tests": 14,
+  "total_tests": 14,
+  "agent_seconds": 142.0,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "ca752719c4f02d68ac7733344791c8ae4f74d9e759205bea8de9dc3bc803f63d",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-12T23:37:58Z",
+  "claimed": true
+}

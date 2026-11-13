@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "algo-03-range-merger",
+  "model": "deepseek-v4-pro",
+  "provider": "DeepSeek",
+  "passed": true,
+  "passed_tests": 27,
+  "total_tests": 27,
+  "agent_seconds": 153.9,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "9cbf0c12a0ceb893627eed4640aa4d6ed134d2f4bc31e189cfd87ddf725701ec",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-12T23:24:15Z",
+  "claimed": true
+}
