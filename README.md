@@ -75,6 +75,13 @@ Tested under identical isolated runtime conditions with full hidden test suites.
 | **deepseek-v4-pro** | 13/13 | 222/222 |
 | **devstral-small-2-24b-fp8** | 7/13 | 156/161 |
 | **gpt-oss-20b** | 7/13 | 114/161 |
+| **Kimi for Coding** | 3/13 | 53/53 |
+| **Kimi for Coding HighSpeed** | 2/13 | 52/53 |
+| **MiniMax M3.1 Flash** | 2/13 | 51/53 |
+| **GLM 5.3** | 2/13 | 50/53 |
+| **Kimi K3.1 Pro** | 2/13 | 50/53 |
+| **GigaChat 3.5 Ultra** | 2/13 | 40/53 |
+| **GLM 5.3 Flash** | 0/13 | 24/53 |
 
 _Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task and are not counted in the summary. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks && python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._
 
@@ -83,7 +90,14 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `algo-03-range-merger` | **deepseek-flash** | ✅ PASS | 27/27 | 0.7m | — | — |
 | `algo-03-range-merger` | **deepseek-v4-pro** | ✅ PASS | 27/27 | 2.6m | — | — |
 | `algo-03-range-merger` | **devstral-small-2-24b-fp8** | ❌ FAIL | 26/27 | 25.0m | 14.3M | $0.23 |
+| `algo-03-range-merger` | **GigaChat 3.5 Ultra** | ✅ PASS | 27/27 | 5.0m | — | — |
+| `algo-03-range-merger` | **GLM 5.3** | ✅ PASS | 27/27 | 8.3m | — | — |
+| `algo-03-range-merger` | **GLM 5.3 Flash** | ❌ FAIL | 1/27 | 30.0m | — | — |
 | `algo-03-range-merger` | **gpt-oss-20b** | ✅ PASS | 27/27 | 0.3m | 72k | $0.00 |
+| `algo-03-range-merger` | **Kimi for Coding** | ✅ PASS | 27/27 | 1.2m | — | — |
+| `algo-03-range-merger` | **Kimi for Coding HighSpeed** | ✅ PASS | 27/27 | 3.0m | — | — |
+| `algo-03-range-merger` | **Kimi K3.1 Pro** | ✅ PASS | 27/27 | 10.0m | — | — |
+| `algo-03-range-merger` | **MiniMax M3.1 Flash** | ✅ PASS | 27/27 | 3.7m | — | — |
 | `arch-04-tag-registry` | **deepseek-flash** | ✅ PASS | 8/8 | 1.2m | — | — |
 | `arch-04-tag-registry` | **deepseek-v4-pro** | ✅ PASS | 8/8 | 2.6m | — | — |
 | `auth-07-claim-roles` | **deepseek-flash** | ✅ PASS | 14/14 | 1.1m | — | — |
@@ -109,7 +123,14 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `infra-05-k8s-pod-admission` | **deepseek-flash** | ✅ PASS | 20/20 | 1.7m | — | — |
 | `infra-05-k8s-pod-admission` | **deepseek-v4-pro** | ✅ PASS | 20/20 | 4.5m | — | — |
 | `infra-05-k8s-pod-admission` | **devstral-small-2-24b-fp8** | ❌ FAIL | 17/20 | 6.5m | 372k | $0.06 |
+| `infra-05-k8s-pod-admission` | **GigaChat 3.5 Ultra** | ❌ FAIL | 7/20 | 2.9m | — | — |
+| `infra-05-k8s-pod-admission` | **GLM 5.3** | ❌ FAIL | 17/20 | 7.8m | — | — |
+| `infra-05-k8s-pod-admission` | **GLM 5.3 Flash** | ❌ FAIL | 19/20 | 11.4m | — | — |
 | `infra-05-k8s-pod-admission` | **gpt-oss-20b** | ❌ FAIL | 0/20 | 1.2m | 135k | $0.01 |
+| `infra-05-k8s-pod-admission` | **Kimi for Coding** | ✅ PASS | 20/20 | 3.2m | — | — |
+| `infra-05-k8s-pod-admission` | **Kimi for Coding HighSpeed** | ❌ FAIL | 19/20 | 11.7m | — | — |
+| `infra-05-k8s-pod-admission` | **Kimi K3.1 Pro** | ❌ FAIL | 17/20 | 20.2m | — | — |
+| `infra-05-k8s-pod-admission` | **MiniMax M3.1 Flash** | ❌ FAIL | 18/20 | 24.0m | — | — |
 | `obs-02-query-redactor` | **deepseek-flash** | ✅ PASS | 37/37 | 2.4m | — | — |
 | `obs-02-query-redactor` | **deepseek-v4-pro** | ✅ PASS | 37/37 | 15.0m | — | — |
 | `onec-06-payment-allocator` | **deepseek-flash** | ✅ PASS | 16/16 | 1.5m | — | — |
@@ -121,7 +142,14 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `sec-01-clock-skew` | **deepseek-flash** | ✅ PASS | 6/6 | 0.8m | — | — |
 | `sec-01-clock-skew` | **deepseek-v4-pro** | ✅ PASS | 6/6 | 1.3m | — | — |
 | `sec-01-clock-skew` | **devstral-small-2-24b-fp8** | ✅ PASS | 6/6 | 0.8m | 95k | $0.01 |
+| `sec-01-clock-skew` | **GigaChat 3.5 Ultra** | ✅ PASS | 6/6 | 1.8m | — | — |
+| `sec-01-clock-skew` | **GLM 5.3** | ✅ PASS | 6/6 | 5.2m | — | — |
+| `sec-01-clock-skew` | **GLM 5.3 Flash** | ❌ FAIL | 4/6 | 30.0m | — | — |
 | `sec-01-clock-skew` | **gpt-oss-20b** | ✅ PASS | 6/6 | 0.3m | 90k | $0.00 |
+| `sec-01-clock-skew` | **Kimi for Coding** | ✅ PASS | 6/6 | 1.4m | — | — |
+| `sec-01-clock-skew` | **Kimi for Coding HighSpeed** | ✅ PASS | 6/6 | 1.5m | — | — |
+| `sec-01-clock-skew` | **Kimi K3.1 Pro** | ✅ PASS | 6/6 | 7.7m | — | — |
+| `sec-01-clock-skew` | **MiniMax M3.1 Flash** | ✅ PASS | 6/6 | 7.1m | — | — |
 | `tenant-11-scoped-listing` | **deepseek-flash** | ✅ PASS | 16/16 | 1.1m | — | — |
 | `tenant-11-scoped-listing` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 4.1m | — | — |
 | `tenant-11-scoped-listing` | **devstral-small-2-24b-fp8** | ✅ PASS | 16/16 | 5.7m | 414k | $0.05 |

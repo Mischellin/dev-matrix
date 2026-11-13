@@ -39,6 +39,42 @@
         "outdated": false
       },
       {
+        "model_name": "GigaChat 3.5 Ultra",
+        "provider": "Sber",
+        "status": "PASS",
+        "passed_tests": 27,
+        "total_tests": 27,
+        "duration_min": 5.0,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "GLM 5.3",
+        "provider": "Zhipu AI",
+        "status": "PASS",
+        "passed_tests": 27,
+        "total_tests": 27,
+        "duration_min": 8.3,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "GLM 5.3 Flash",
+        "provider": "Zhipu AI",
+        "status": "FAIL",
+        "passed_tests": 1,
+        "total_tests": 27,
+        "duration_min": 30.0,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "gpt-oss-20b",
         "provider": "vLLM self-hosted",
         "status": "PASS",
@@ -47,6 +83,54 @@
         "duration_min": 0.3,
         "total_tokens": 72180,
         "cost_usd": 0.0028,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi for Coding",
+        "provider": "Moonshot",
+        "status": "PASS",
+        "passed_tests": 27,
+        "total_tests": 27,
+        "duration_min": 1.2,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi for Coding HighSpeed",
+        "provider": "Moonshot",
+        "status": "PASS",
+        "passed_tests": 27,
+        "total_tests": 27,
+        "duration_min": 3.0,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi K3.1 Pro",
+        "provider": "Moonshot",
+        "status": "PASS",
+        "passed_tests": 27,
+        "total_tests": 27,
+        "duration_min": 10.0,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "MiniMax M3.1 Flash",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 27,
+        "total_tests": 27,
+        "duration_min": 3.7,
+        "total_tokens": null,
+        "cost_usd": null,
         "claimed": true,
         "outdated": false
       }
@@ -386,6 +470,42 @@
         "outdated": false
       },
       {
+        "model_name": "GigaChat 3.5 Ultra",
+        "provider": "Sber",
+        "status": "FAIL",
+        "passed_tests": 7,
+        "total_tests": 20,
+        "duration_min": 2.9,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "GLM 5.3",
+        "provider": "Zhipu AI",
+        "status": "FAIL",
+        "passed_tests": 17,
+        "total_tests": 20,
+        "duration_min": 7.8,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "GLM 5.3 Flash",
+        "provider": "Zhipu AI",
+        "status": "FAIL",
+        "passed_tests": 19,
+        "total_tests": 20,
+        "duration_min": 11.4,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "gpt-oss-20b",
         "provider": "vLLM self-hosted",
         "status": "FAIL",
@@ -394,6 +514,54 @@
         "duration_min": 1.2,
         "total_tokens": 135154,
         "cost_usd": 0.0104,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi for Coding",
+        "provider": "Moonshot",
+        "status": "PASS",
+        "passed_tests": 20,
+        "total_tests": 20,
+        "duration_min": 3.2,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi for Coding HighSpeed",
+        "provider": "Moonshot",
+        "status": "FAIL",
+        "passed_tests": 19,
+        "total_tests": 20,
+        "duration_min": 11.7,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi K3.1 Pro",
+        "provider": "Moonshot",
+        "status": "FAIL",
+        "passed_tests": 17,
+        "total_tests": 20,
+        "duration_min": 20.2,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "MiniMax M3.1 Flash",
+        "provider": "MiniMax",
+        "status": "FAIL",
+        "passed_tests": 18,
+        "total_tests": 20,
+        "duration_min": 24.0,
+        "total_tokens": null,
+        "cost_usd": null,
         "claimed": true,
         "outdated": false
       }
@@ -550,6 +718,42 @@
         "outdated": false
       },
       {
+        "model_name": "GigaChat 3.5 Ultra",
+        "provider": "Sber",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 1.8,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "GLM 5.3",
+        "provider": "Zhipu AI",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 5.2,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "GLM 5.3 Flash",
+        "provider": "Zhipu AI",
+        "status": "FAIL",
+        "passed_tests": 4,
+        "total_tests": 6,
+        "duration_min": 30.0,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "gpt-oss-20b",
         "provider": "vLLM self-hosted",
         "status": "PASS",
@@ -558,6 +762,54 @@
         "duration_min": 0.3,
         "total_tokens": 89979,
         "cost_usd": 0.0029,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi for Coding",
+        "provider": "Moonshot",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 1.4,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi for Coding HighSpeed",
+        "provider": "Moonshot",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 1.5,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "Kimi K3.1 Pro",
+        "provider": "Moonshot",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 7.7,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "MiniMax M3.1 Flash",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 7.1,
+        "total_tokens": null,
+        "cost_usd": null,
         "claimed": true,
         "outdated": false
       }
