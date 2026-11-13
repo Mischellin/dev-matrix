@@ -13,6 +13,7 @@ In `src/tags/service.py`, implement an in-memory `RecipeTagService` that manages
    - Calling `get_recipe(recipe_id: str)` returns `{"id": recipe_id, "tags": [...]}` with tags sorted alphabetically in ascending order.
 3. **Filtering & Cataloging:**
    - `list_recipes(tag: str | None = None) -> list[dict]` returns all recipes. If `tag` is provided, filters for recipes containing the tag (case-insensitively).
+   - Only `tag=None` means "no filter". An empty or whitespace-only `tag` (`""`, `"   "`) matches nothing, because empty tags never exist (requirement 1): `list_recipes(tag="")` and `list_recipes(tag="   ")` return `[]`.
    - `list_all_tags() -> list[str]` returns all unique tags currently associated with any existing recipe, sorted alphabetically. If a recipe is deleted, its unreferenced tags must no longer appear in `list_all_tags()`.
 4. **Security & Permission Separation:**
    - `delete_recipe(recipe_id: str, scopes: list[str]) -> None`:
