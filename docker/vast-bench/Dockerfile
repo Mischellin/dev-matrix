@@ -47,6 +47,15 @@ RUN uv pip install --system hf_transfer || echo "hf_transfer не установ
 # Парсеры tool-call/reasoning North-Mini-Code (cohere_command4) работают через cohere_melody (по карточке модели).
 RUN uv pip install --system "cohere_melody>=0.9.0" || echo "cohere_melody не установлен: пресет north-mini-code не заработает"
 
+# Базовый образ vllm/vllm-openai:v0.33.0 несёт mistral_common 1.13.0, несовместимый с этим vLLM:
+# vllm/parser/mistral.py вызывает GrammarFactory.get_lark_from_jinja() без нового обязательного аргумента
+# force_tool_names, и каждый chat-запрос с tools к Devstral отвечает 400. Закрепляем 1.12.0.
+# Убрать пин, когда vLLM начнёт передавать force_tool_names (проверять при подъёме VLLM_TAG).
+# uv pip check печатает конфликты требований, если пин что-то нарушил (не валит сборку: в базовом образе
+# конфликты могут быть и без нас, смотрите вывод сборки). Сборка образа не запускалась.
+RUN uv pip install --system "mistral_common==1.12.0" \
+    && { uv pip check --system || echo "ВНИМАНИЕ: uv pip check нашёл конфликты после пина mistral_common"; }
+
 # CLI devmatrix: отдельное окружение на Python 3.12 от uv, чтобы не трогать Python vLLM.
 COPY . /opt/dev-matrix
 RUN uv tool install --python 3.12 /opt/dev-matrix \

@@ -125,3 +125,16 @@ def test_run_info_running_starts_fresh(tmp_path) -> None:
     started = info["started_at"]
     preset.run_info("gpt-oss-20b", path, "done")
     assert json.loads(path.read_text())["started_at"] == started
+
+
+def test_run_info_image_digest_falls_back_to_revision(tmp_path, monkeypatch) -> None:
+    path = tmp_path / "run-info.json"
+    monkeypatch.delenv("IMAGE_DIGEST", raising=False)
+    monkeypatch.setenv("IMAGE_REVISION", "abc123")
+    preset.run_info("gpt-oss-20b", path, "done")
+    info = json.loads(path.read_text())
+    assert info["image_digest"] == "abc123"
+    assert "IMAGE_REVISION" in info["image_digest_source"]
+    monkeypatch.setenv("IMAGE_DIGEST", "sha256:dead")
+    preset.run_info("gpt-oss-20b", path, "done")
+    assert json.loads(path.read_text())["image_digest"] == "sha256:dead"
