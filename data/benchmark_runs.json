@@ -25,6 +25,30 @@
         "cost_usd": null,
         "claimed": true,
         "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "FAIL",
+        "passed_tests": 26,
+        "total_tests": 27,
+        "duration_min": 25.0,
+        "total_tokens": 14265907,
+        "cost_usd": 0.2292,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 27,
+        "total_tests": 27,
+        "duration_min": 0.3,
+        "total_tokens": 72180,
+        "cost_usd": 0.0028,
+        "claimed": true,
+        "outdated": false
       }
     ]
   },
@@ -83,6 +107,30 @@
         "cost_usd": null,
         "claimed": true,
         "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 14,
+        "total_tests": 14,
+        "duration_min": 3.0,
+        "total_tokens": 192926,
+        "cost_usd": 0.0278,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 14,
+        "total_tests": 14,
+        "duration_min": 0.4,
+        "total_tokens": 120657,
+        "cost_usd": 0.0033,
+        "claimed": true,
+        "outdated": false
       }
     ]
   },
@@ -110,6 +158,30 @@
         "duration_min": 3.5,
         "total_tokens": null,
         "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 15,
+        "total_tests": 15,
+        "duration_min": 3.8,
+        "total_tokens": 153400,
+        "cost_usd": 0.0349,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 15,
+        "total_tests": 15,
+        "duration_min": 0.7,
+        "total_tokens": 179526,
+        "cost_usd": 0.0057,
         "claimed": true,
         "outdated": false
       }
@@ -141,6 +213,30 @@
         "cost_usd": null,
         "claimed": true,
         "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "FAIL",
+        "passed_tests": 15,
+        "total_tests": 16,
+        "duration_min": 1.4,
+        "total_tokens": 203750,
+        "cost_usd": 0.0127,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 16,
+        "total_tests": 16,
+        "duration_min": 0.8,
+        "total_tokens": 308002,
+        "cost_usd": 0.0069,
+        "claimed": true,
+        "outdated": false
       }
     ]
   },
@@ -168,6 +264,30 @@
         "duration_min": 4.7,
         "total_tokens": null,
         "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 15,
+        "total_tests": 15,
+        "duration_min": 12.6,
+        "total_tokens": 1132581,
+        "cost_usd": 0.1154,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "FAIL",
+        "passed_tests": 0,
+        "total_tests": 15,
+        "duration_min": 2.3,
+        "total_tokens": 686042,
+        "cost_usd": 0.0198,
         "claimed": true,
         "outdated": false
       }
@@ -199,6 +319,30 @@
         "cost_usd": null,
         "claimed": true,
         "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 17,
+        "total_tests": 17,
+        "duration_min": 7.4,
+        "total_tokens": 600635,
+        "cost_usd": 0.0675,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 17,
+        "total_tests": 17,
+        "duration_min": 0.7,
+        "total_tokens": 127721,
+        "cost_usd": 0.0062,
+        "claimed": true,
+        "outdated": false
       }
     ]
   },
@@ -226,6 +370,30 @@
         "duration_min": 4.5,
         "total_tokens": null,
         "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "FAIL",
+        "passed_tests": 17,
+        "total_tests": 20,
+        "duration_min": 6.5,
+        "total_tokens": 371975,
+        "cost_usd": 0.0595,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "FAIL",
+        "passed_tests": 0,
+        "total_tests": 20,
+        "duration_min": 1.2,
+        "total_tokens": 135154,
+        "cost_usd": 0.0104,
         "claimed": true,
         "outdated": false
       }
@@ -315,6 +483,30 @@
         "cost_usd": null,
         "claimed": true,
         "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 15,
+        "total_tests": 15,
+        "duration_min": 14.8,
+        "total_tokens": 1518413,
+        "cost_usd": 0.1353,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 15,
+        "total_tests": 15,
+        "duration_min": 0.8,
+        "total_tokens": 107538,
+        "cost_usd": 0.0068,
+        "claimed": true,
+        "outdated": false
       }
     ]
   },
@@ -344,6 +536,30 @@
         "cost_usd": null,
         "claimed": true,
         "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 0.8,
+        "total_tokens": 94789,
+        "cost_usd": 0.0077,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 0.3,
+        "total_tokens": 89979,
+        "cost_usd": 0.0029,
+        "claimed": true,
+        "outdated": false
       }
     ]
   },
@@ -371,6 +587,30 @@
         "duration_min": 4.1,
         "total_tokens": null,
         "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "devstral-small-2-24b-fp8",
+        "provider": "vLLM self-hosted",
+        "status": "PASS",
+        "passed_tests": 16,
+        "total_tests": 16,
+        "duration_min": 5.7,
+        "total_tokens": 414167,
+        "cost_usd": 0.052,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "gpt-oss-20b",
+        "provider": "vLLM self-hosted",
+        "status": "FAIL",
+        "passed_tests": 4,
+        "total_tests": 16,
+        "duration_min": 0.1,
+        "total_tokens": 32324,
+        "cost_usd": 0.0007,
         "claimed": true,
         "outdated": false
       }

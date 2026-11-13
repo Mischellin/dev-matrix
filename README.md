@@ -73,6 +73,8 @@ Tested under identical isolated runtime conditions with full hidden test suites.
 | :--- | :---: | :---: |
 | **deepseek-flash** | 13/13 | 222/222 |
 | **deepseek-v4-pro** | 13/13 | 222/222 |
+| **devstral-small-2-24b-fp8** | 7/13 | 156/161 |
+| **gpt-oss-20b** | 7/13 | 114/161 |
 
 _Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task and are not counted in the summary. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks && python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._
 
@@ -80,30 +82,50 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
 | `algo-03-range-merger` | **deepseek-flash** | ✅ PASS | 27/27 | 0.7m | — | — |
 | `algo-03-range-merger` | **deepseek-v4-pro** | ✅ PASS | 27/27 | 2.6m | — | — |
+| `algo-03-range-merger` | **devstral-small-2-24b-fp8** | ❌ FAIL | 26/27 | 25.0m | 14.3M | $0.23 |
+| `algo-03-range-merger` | **gpt-oss-20b** | ✅ PASS | 27/27 | 0.3m | 72k | $0.00 |
 | `arch-04-tag-registry` | **deepseek-flash** | ✅ PASS | 8/8 | 1.2m | — | — |
 | `arch-04-tag-registry` | **deepseek-v4-pro** | ✅ PASS | 8/8 | 2.6m | — | — |
 | `auth-07-claim-roles` | **deepseek-flash** | ✅ PASS | 14/14 | 1.1m | — | — |
 | `auth-07-claim-roles` | **deepseek-v4-pro** | ✅ PASS | 14/14 | 2.4m | — | — |
+| `auth-07-claim-roles` | **devstral-small-2-24b-fp8** | ✅ PASS | 14/14 | 3.0m | 193k | $0.03 |
+| `auth-07-claim-roles` | **gpt-oss-20b** | ✅ PASS | 14/14 | 0.4m | 121k | $0.00 |
 | `authz-12-uniform-404` | **deepseek-flash** | ✅ PASS | 15/15 | 1.1m | — | — |
 | `authz-12-uniform-404` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 3.5m | — | — |
+| `authz-12-uniform-404` | **devstral-small-2-24b-fp8** | ✅ PASS | 15/15 | 3.8m | 153k | $0.03 |
+| `authz-12-uniform-404` | **gpt-oss-20b** | ✅ PASS | 15/15 | 0.7m | 180k | $0.01 |
 | `flag-10-feature-flag-router` | **deepseek-flash** | ✅ PASS | 16/16 | 0.8m | — | — |
 | `flag-10-feature-flag-router` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 3.1m | — | — |
+| `flag-10-feature-flag-router` | **devstral-small-2-24b-fp8** | ❌ FAIL | 15/16 | 1.4m | 204k | $0.01 |
+| `flag-10-feature-flag-router` | **gpt-oss-20b** | ✅ PASS | 16/16 | 0.8m | 308k | $0.01 |
 | `host-08-host-header-guard` | **deepseek-flash** | ✅ PASS | 15/15 | 1.4m | — | — |
 | `host-08-host-header-guard` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 4.7m | — | — |
+| `host-08-host-header-guard` | **devstral-small-2-24b-fp8** | ✅ PASS | 15/15 | 12.6m | 1.1M | $0.12 |
+| `host-08-host-header-guard` | **gpt-oss-20b** | ❌ FAIL | 0/15 | 2.3m | 686k | $0.02 |
 | `idem-13-idempotent-signup` | **deepseek-flash** | ✅ PASS | 17/17 | 1.3m | — | — |
 | `idem-13-idempotent-signup` | **deepseek-v4-pro** | ✅ PASS | 17/17 | 4.0m | — | — |
+| `idem-13-idempotent-signup` | **devstral-small-2-24b-fp8** | ✅ PASS | 17/17 | 7.4m | 601k | $0.07 |
+| `idem-13-idempotent-signup` | **gpt-oss-20b** | ✅ PASS | 17/17 | 0.7m | 128k | $0.01 |
 | `infra-05-k8s-pod-admission` | **deepseek-flash** | ✅ PASS | 20/20 | 1.7m | — | — |
 | `infra-05-k8s-pod-admission` | **deepseek-v4-pro** | ✅ PASS | 20/20 | 4.5m | — | — |
+| `infra-05-k8s-pod-admission` | **devstral-small-2-24b-fp8** | ❌ FAIL | 17/20 | 6.5m | 372k | $0.06 |
+| `infra-05-k8s-pod-admission` | **gpt-oss-20b** | ❌ FAIL | 0/20 | 1.2m | 135k | $0.01 |
 | `obs-02-query-redactor` | **deepseek-flash** | ✅ PASS | 37/37 | 2.4m | — | — |
 | `obs-02-query-redactor` | **deepseek-v4-pro** | ✅ PASS | 37/37 | 15.0m | — | — |
 | `onec-06-payment-allocator` | **deepseek-flash** | ✅ PASS | 16/16 | 1.5m | — | — |
 | `onec-06-payment-allocator` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 3.9m | — | — |
 | `scrub-09-metadata-scrubber` | **deepseek-flash** | ✅ PASS | 15/15 | 1.3m | — | — |
 | `scrub-09-metadata-scrubber` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 6.0m | — | — |
+| `scrub-09-metadata-scrubber` | **devstral-small-2-24b-fp8** | ✅ PASS | 15/15 | 14.8m | 1.5M | $0.14 |
+| `scrub-09-metadata-scrubber` | **gpt-oss-20b** | ✅ PASS | 15/15 | 0.8m | 108k | $0.01 |
 | `sec-01-clock-skew` | **deepseek-flash** | ✅ PASS | 6/6 | 0.8m | — | — |
 | `sec-01-clock-skew` | **deepseek-v4-pro** | ✅ PASS | 6/6 | 1.3m | — | — |
+| `sec-01-clock-skew` | **devstral-small-2-24b-fp8** | ✅ PASS | 6/6 | 0.8m | 95k | $0.01 |
+| `sec-01-clock-skew` | **gpt-oss-20b** | ✅ PASS | 6/6 | 0.3m | 90k | $0.00 |
 | `tenant-11-scoped-listing` | **deepseek-flash** | ✅ PASS | 16/16 | 1.1m | — | — |
 | `tenant-11-scoped-listing` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 4.1m | — | — |
+| `tenant-11-scoped-listing` | **devstral-small-2-24b-fp8** | ✅ PASS | 16/16 | 5.7m | 414k | $0.05 |
+| `tenant-11-scoped-listing` | **gpt-oss-20b** | ❌ FAIL | 4/16 | 0.1m | 32k | $0.00 |
 
 ---
 
