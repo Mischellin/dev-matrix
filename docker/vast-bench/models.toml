@@ -68,24 +68,24 @@ notes = """Dense, FP8 (quant_method=fp8), веса ~31 ГБ по размеру 
 Мультимодальная модель; для текстовых задач можно добавить extra_args = ["--language-model-only"] (флаг есть в v0.33.0), не проверено на этом чекпойнте."""
 
 [models.north-mini-code]
-hf_id = "CohereLabs/North-Mini-Code-1.0"
-served_name = "north-mini-code-1.0-fp8-online"
+hf_id = "CohereLabs/North-Mini-Code-1.0-fp8"
+served_name = "north-mini-code-1.0-fp8"
 max_model_len = 65536
 gpu_memory_utilization = 0.90
-min_gpu_gb = 80
-dtype = "bfloat16"
-quantization = "fp8_per_tensor"
+min_gpu_gb = 40
+dtype = "auto"
 tool_call_parser = "cohere_command4"
 reasoning_parser = "cohere_command4"
-extra_args = []
+extra_args = ["--moe-backend", "triton"]
 download_exclude = []
 interleaved_field = "reasoning"
-notes = """30B MoE, чекпойнт BF16 61 ГБ — на одну карту <80 ГБ не влезает, поэтому ОНЛАЙН-квантование vLLM `--quantization fp8_per_tensor` (в v0.33.0 просто `fp8` для BF16 падает: fp8.py, «no longer supports online quantization»); \
-результаты — это FP8-квантование vLLM, а не веса автора. Схема per_tensor, а не per_block: именно её называет сообщение об ошибке vLLM и в документации online.md она идёт первой, \
-она не требует блочных FP8-ядер (на A100 без аппаратного FP8 вероятнее рабочий запасной путь); per_block точнее, но на не-Hopper картах не проверялся. \
-min_gpu_gb = 80: документация online.md НЕ говорит, квантуются ли веса послойно при загрузке, поэтому закладываем худший случай — BF16 61 ГБ целиком в видеопамяти до сжатия. Карта <80 ГБ для этой модели не годится. \
-На карте 80 ГБ без квантования BF16 (61 ГБ) оставляет мало места под KV-кэш: для него нужна карта побольше (уберите quantization, served_name без «-fp8-online»). \
-Парсеры cohere_command4 — из карточки (там tensor-parallel 2 и 320000). \
+notes = """ОФИЦИАЛЬНЫЙ FP8-чекпойнт Cohere (compressed-tensors, float-quantized: веса FP8 по каналам, активации динамически по токенам), 30B-A3B MoE, лицензия Apache 2.0. \
+Проверено по HF API и карточке 2026-11-13: 7 файлов model-*.safetensors, всего ~32 ГБ (с токенизатором), онлайн-квантование не нужно, поэтому `--quantization` не задан (vLLM берёт схему из quantization_config). \
+Из карточки: --tool-call-parser cohere_command4 --reasoning-parser cohere_command4 --enable-auto-tool-choice --moe-backend triton (карточка даёт -tp 1 и --max-model-len 320000, здесь 65536). \
+Карточка просит vLLM main «до выхода релиза», а точный тег не называет; в исходниках v0.33.0 есть Cohere2MoeForCausalLM (registry.py, models/cohere2_moe.py), парсеры cohere_command4 (tool_parsers и reasoning), флаг --moe-backend и CompressedTensorsW8A8Fp8MoEMethod (compressed_tensors_moe.py), \
+то есть загрузка compressed-tensors FP8 для cohere2_moe по коду возможна, но запуском НЕ проверена. Парсеры работают через пакет cohere_melody>=0.9.0 (карточка: `uv pip install cohere_melody>=0.9.0`): в Dockerfile он не установлен — НЕ проверено, что он есть в образе vllm/vllm-openai:v0.33.0. \
+min_gpu_gb = 40 — ОЦЕНКА, не измерение: веса ~32 ГБ + KV-кэш на 65536 токенов. Полное внимание только в 13 из 49 слоёв (остальные — скользящее окно 4096), 4 KV-головы по 128 → ~26 КБ на токен в BF16, ~1,7 ГБ на 65536 токенов; даже если vLLM выделит кэш скользящих слоёв без экономии, это ещё до ~5 ГБ. \
+С запасом на активации и граф CUDA выходит около 40 ГБ; на карте 40 ГБ при gpu_memory_utilization 0.90 (36 ГБ) впритык — при нехватке снизьте max_model_len или возьмите 48 ГБ. \
 Карточка просит для OpenCode конфиг с interleaved.field = reasoning и ветку main OpenCode «до выхода релиза» — на закреплённой версии это НЕ проверено."""
 
 [models.kat-coder-v2-5-dev]
@@ -100,7 +100,9 @@ tool_call_parser = "qwen3_coder"
 reasoning_parser = "qwen3"
 extra_args = ["--language-model-only"]
 download_exclude = []
-notes = """35B MoE (qwen3_5_moe), чекпойнт BF16 69 ГБ: на одну карту <80 ГБ — онлайн-квантование `--quantization fp8_per_tensor` (результаты — FP8 от vLLM; почему per_tensor и не `fp8` — см. North Mini Code). \
+notes = """35B MoE (qwen3_5_moe), чекпойнт BF16 69 ГБ: на одну карту <80 ГБ — онлайн-квантование `--quantization fp8_per_tensor` (результаты — FP8 от vLLM; почему per_tensor, а не `fp8`: в v0.33.0 `fp8` для BF16 падает, fp8.py — «no longer supports online quantization»). \
+Официального FP8/AWQ-чекпойнта от Kwaipilot нет (поиск по HF 2026-11-13); есть только сторонние (GGUF, MLX, а также неофициальные FP8/AWQ/NVFP4, например debackerl/KAT-Coder-V2.5-Dev-FP8, cyankiwi/KAT-Coder-V2.5-Dev-AWQ-INT4) — их не берём: не от автора, качество и совместимость с vLLM не проверялись. Поэтому онлайн-квантование из официального BF16. \
+Это единственный пресет, которому нужна карта 80 ГБ; для дешёвых прогонов его можно пропустить. \
 min_gpu_gb = 80: BF16 69 ГБ может целиком лечь в видеопамять до сжатия (послойную загрузку документация не обещает), поэтому карта 80 ГБ — минимум, и это впритык: НЕ проверено, что хватит; при нехватке — карта 96+ ГБ. \
 Из карточки: --reasoning-parser qwen3 --tool-call-parser qwen3_coder --enable-auto-tool-choice и обязательный --language-model-only (в чекпойнте нет весов vision-башни); карточка даёт tensor-parallel 8 и 262144. \
 Карточка рекомендует vllm>=0.19.0."""

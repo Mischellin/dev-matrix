@@ -26,7 +26,7 @@ EXPECTED_HF_IDS = {
     "openai/gpt-oss-20b",
     "mistralai/Devstral-Small-2-24B-Instruct-2512",
     "Qwen/Qwen3.8-27B-FP8",
-    "CohereLabs/North-Mini-Code-1.0",
+    "CohereLabs/North-Mini-Code-1.0-fp8",
     "Kwaipilot/KAT-Coder-V2.5-Dev",
 }
 
