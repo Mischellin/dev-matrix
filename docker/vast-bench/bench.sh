@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 # bench.sh <пресет>...  — прогон DevMatrix для каждой модели подряд, пока идёт одна, следующая докачивается.
 # Результаты: $RESULTS_DIR/<пресет>/ (submissions/, vllm.log, opencode/, metrics/, run-info.json).
-# Окружение: HF_TOKEN (если нужен), GPU_PRICE_USD_HOUR (цена инстанса за час, для cost_usd),
+# Окружение: HF_TOKEN (если нужен; не в /etc/environment — оно читается всеми, включая агента; либо export в сессии,
+# либо root-only файл 0600, путь в BENCH_ENV_FILE: bench.sh подключит его через source), GPU_PRICE_USD_HOUR (цена инстанса за час, для cost_usd),
 # VLLM_START_TIMEOUT (с, по умолчанию 1800), AGENT_TIMEOUT (с на задачу, 1800), OPENCODE_TIMEOUT (1500;
 # обязан быть меньше AGENT_TIMEOUT минимум на 120),
 # PURGE_WEIGHTS=1 (удалять веса модели после прогона, если не хватает диска), IMAGE_DIGEST (иначе в run-info.json берётся IMAGE_REVISION).
-# Статусы run-info.json: done, done_partial (всё прошло, но часть задач невалидна — отчёты в invalid/, их надо повторить;
+# Коды выхода: 0 — все модели done; 1 — есть модели с ошибкой (любой статус кроме done/done_partial); 2 — неверные
+# аргументы/окружение; 3 — нет GPU; 4 — ошибок нет, но у части моделей done_partial (отчёты в invalid/, задачи повторить);
+# 130 — остановлен INT/TERM.
+# Статусы run-info.json: done, integrity_failed (после devmatrix изменился установленный пакет в $UV_TOOL_DIR или
+# результаты уже завершённых моделей: проверка запускает код агента от root, отчёты перенесены в integrity_failed/,
+# не отправлять), done_partial (всё прошло, но часть задач невалидна — отчёты в invalid/, их надо повторить;
 # vLLM здоров и OpenCode упал не на большинстве), interrupted (bench.sh остановлен INT/TERM во время модели), agent_failed (OpenCode упал на большинстве задач при здоровом vLLM), download_failed, vllm_failed (не поднялся), vllm_died (упал или был нездоров
 # во время прогона — затронутые задачи убраны в invalid/), devmatrix_failed (сбой самого запуска или не все отчёты).
 set -uo pipefail
@@ -73,16 +79,17 @@ classify_run() {
 }
 
 # Останавливаем vLLM вместе с дочерними процессами и ждём, пока освободится видеопамять.
+# stop_vllm [<с на TERM, 60>] [<с ждать видеопамять, 90>]: при остановке по INT/TERM ждать нельзя (docker stop — 10 с).
 stop_vllm() {
     [[ -n $VLLM_PID ]] || return 0
     kill -TERM -- "-$VLLM_PID" 2>/dev/null
-    local deadline=$((SECONDS + 60))
+    local deadline=$((SECONDS + ${1:-60}))
     until ! kill -0 "$VLLM_PID" 2>/dev/null || ((SECONDS >= deadline)); do sleep 2; done
     kill -KILL -- "-$VLLM_PID" 2>/dev/null
     wait "$VLLM_PID" 2>/dev/null
     VLLM_PID=""
-    deadline=$((SECONDS + 90))
-    until [[ $(gpu_used_mib) -lt 1024 ]] || ((SECONDS >= deadline)); do sleep 3; done
+    deadline=$((SECONDS + ${2:-90}))
+    until ((${2:-90} == 0)) || [[ $(gpu_used_mib) -lt 1024 ]] || ((SECONDS >= deadline)); do sleep 3; done
 }
 
 gpu_used_mib() {
@@ -90,15 +97,41 @@ gpu_used_mib() {
         | awk '{ if ($1 > m) m = $1 } END { print m + 0 }'
 }
 
+# Убить всё, что запустил агент (пользователь agent), и стереть его HOME на задачу.
+kill_agent() {
+    local user=${AGENT_USER-agent}
+    [[ -n $user && $(id -u) == 0 ]] && id -u "$user" >/dev/null 2>&1 && pkill -KILL -u "$user" 2>/dev/null
+    [[ -n ${AGENT_HOMES:-} ]] && rm -rf -- "${AGENT_HOMES:?}"/task.* 2>/dev/null
+    return 0
+}
+
+# Хэш установленного devmatrix (пакет и его окружение без байткода) и отчётов уже завершённых моделей:
+# проверка запускает код агента от root, и эти файлы он не должен менять. Каталоги текущей и следующей модели
+# пропускаем (пишутся по ходу). Нет каталога — пустая строка, но не ошибка.
+integrity_snapshot() {
+    local skip1=${1:-} skip2=${2:-}
+    {
+        [[ -d $UV_TOOL_DIR/devmatrix ]] && find "$UV_TOOL_DIR/devmatrix" -type f -not -path '*/__pycache__/*' -not -name '*.pyc' -print0
+        [[ -d $RESULTS_DIR ]] && find "$RESULTS_DIR" -mindepth 2 -type f \( -path '*/submissions/*' -o -name run-info.json \) \
+            -not -path "$RESULTS_DIR/$skip1/*" -not -path "$RESULTS_DIR/$skip2/*" -print0
+    } 2>/dev/null | sort -z | xargs -0 -r sha256sum 2>/dev/null | sha256sum | cut -d' ' -f1
+}
+
 cleanup() {
-    # Остановка посреди модели (INT/TERM, сбой): статус «running» в run-info.json не оставляем.
+    # Остановка посреди модели (INT/TERM, сбой). Укладываемся в 10 с docker stop: сначала быстро гасим devmatrix, агента
+    # и vLLM, потом убираем невалидные отчёты и пишем статус — без `vllm --version` и nvidia-smi (см. preset.py).
+    [[ -n $DEVMATRIX_PID ]] && kill -TERM -- "-$DEVMATRIX_PID" 2>/dev/null
+    kill_agent
+    [[ -n $DEVMATRIX_PID ]] && kill -KILL -- "-$DEVMATRIX_PID" 2>/dev/null
+    stop_vllm 3 0
+    [[ -n $PREFETCH_PID ]] && kill -TERM -- "-$PREFETCH_PID" 2>/dev/null
     if [[ -n $CURRENT_KEY ]]; then
-        $PRESET run-info "$CURRENT_KEY" "$RESULTS_DIR/$CURRENT_KEY/run-info.json" interrupted 2>/dev/null
+        local out="$RESULTS_DIR/$CURRENT_KEY"
+        # Отчёты прерванной модели неполны (часть может быть «нулём» от убитого агента): отправлять нельзя.
+        [[ -d $out/submissions ]] && mv "$out/submissions" "$out/interrupted" 2>/dev/null
+        $PRESET run-info "$CURRENT_KEY" "$out/run-info.json" interrupted 2>/dev/null
         CURRENT_KEY=""
     fi
-    [[ -n $DEVMATRIX_PID ]] && kill -TERM -- "-$DEVMATRIX_PID" 2>/dev/null
-    stop_vllm
-    [[ -n $PREFETCH_PID ]] && kill -TERM -- "-$PREFETCH_PID" 2>/dev/null
 }
 trap cleanup EXIT
 trap 'exit 130' INT TERM
@@ -118,7 +151,8 @@ run_model() {
     served=$($PRESET get "$key" served_name)
     mkdir -p "$out"
     CURRENT_KEY=$key
-    rm -rf "$out/submissions" "$out/metrics" "$out/opencode" "$out/invalid"
+    rm -rf "$out/submissions" "$out/metrics" "$out/opencode" "$out/invalid" "$out/interrupted" "$out/integrity_failed"
+    kill_agent
     $PRESET run-info "$key" "$out/run-info.json" running
 
     # Свои веса: ждём фоновую докачку, если она была запущена на прошлом шаге. Её лог остаётся в
@@ -169,6 +203,8 @@ run_model() {
     $PRESET opencode-config "$key" "$VLLM_URL/v1" >"$XDG_CONFIG_HOME/opencode/opencode.json"
 
     log "$key: devmatrix run --all"
+    local snap_before
+    snap_before=$(integrity_snapshot "$key" "$next")
     export BENCH_MODEL=$served BENCH_OUT=$out
     # В фоне и в своей группе процессов + wait: INT/TERM срабатывают сразу, а trap убивает всю группу.
     (cd "$out" && exec setsid devmatrix run --all --model "$served" --provider "vLLM self-hosted" \
@@ -179,6 +215,7 @@ run_model() {
     wait "$DEVMATRIX_PID"
     local rc=$?
     DEVMATRIX_PID=""
+    kill_agent
     local healthy=0
     vllm_healthy && healthy=1
 
@@ -189,16 +226,27 @@ run_model() {
     submitted=$(find "$out/submissions" -name '*.json' 2>/dev/null | wc -l)
     markers=$(find "$out/metrics" -name '*.invalid' 2>/dev/null | wc -l)
     agent_failed=$(grep -lE '^[^:]+: opencode_failed' "$out"/metrics/*.invalid 2>/dev/null | wc -l)
-    $PRESET fill-claims "$out/submissions" "$out/metrics" "${GPU_PRICE_USD_HOUR:--}" "vLLM self-hosted" \
-        "$out/run-info.json" >>"$out/devmatrix.log" 2>&1
     local status
-    status=$(classify_run "$rc" "$submitted" "$expected" "$markers" "$healthy" "$agent_failed")
+    if [[ $(integrity_snapshot "$key" "$next") != "$snap_before" ]]; then
+        log "$key: после devmatrix изменились установленный пакет или результаты других моделей; отчёты убраны в integrity_failed/"
+        [[ -d $out/submissions ]] && mv "$out/submissions" "$out/integrity_failed"
+        status=integrity_failed
+    else
+        $PRESET fill-claims "$out/submissions" "$out/metrics" "${GPU_PRICE_USD_HOUR:--}" "vLLM self-hosted" \
+            "$out/run-info.json" >>"$out/devmatrix.log" 2>&1
+        status=$(classify_run "$rc" "$submitted" "$expected" "$markers" "$healthy" "$agent_failed")
+    fi
     stop_vllm
     $PRESET run-info "$key" "$out/run-info.json" "$status"
     finish_model "$hf_id"
     log "$key: $status (devmatrix код $rc), результаты в $out"
     [[ $status == done_partial ]] && log "$key: часть задач невалидна (см. invalid/ и run-info.json), их надо повторить"
-    [[ $status == done || $status == done_partial ]]
+    # 0 — done, 4 — done_partial (отдельный код выхода bench.sh), 1 — остальное.
+    case $status in
+        done) return 0 ;;
+        done_partial) return 4 ;;
+        *) return 1 ;;
+    esac
 }
 
 main() {
@@ -208,18 +256,45 @@ main() {
         return 0
     fi
     check_timeouts || return 2
+    load_env_file || return 2
     local keys=("$@") k
     for k in "${keys[@]}"; do
         $PRESET get "$k" hf_id >/dev/null || return 2
     done
     command -v nvidia-smi >/dev/null || { log "нет nvidia-smi: контейнер запущен без GPU"; return 3; }
 
-    local i
+    local i rc partial=0
     for i in "${!keys[@]}"; do
-        run_model "${keys[$i]}" "${keys[$((i + 1))]:-}" || failed=$((failed + 1))
+        run_model "${keys[$i]}" "${keys[$((i + 1))]:-}"
+        rc=$?
+        case $rc in
+            0) ;;
+            4) partial=$((partial + 1)) ;;
+            *) failed=$((failed + 1)) ;;
+        esac
     done
-    log "готово, моделей с ошибкой: $failed. Забрать: rsync -av <инстанс>:$RESULTS_DIR/ ./vast-results/"
-    ((failed == 0))
+    log "готово, моделей с ошибкой: $failed, с частично невалидными задачами (done_partial): $partial. Забрать: rsync -av <инстанс>:$RESULTS_DIR/ ./vast-results/"
+    ((failed == 0)) || return 1
+    ((partial == 0)) || return 4
+}
+
+# BENCH_ENV_FILE: файл с секретами (HF_TOKEN=… и т. п.) только для root, режим без доступа группе и остальным.
+load_env_file() {
+    [[ -n ${BENCH_ENV_FILE:-} ]] || return 0
+    if [[ ! -f $BENCH_ENV_FILE ]]; then
+        log "BENCH_ENV_FILE=$BENCH_ENV_FILE не найден"
+        return 1
+    fi
+    local mode owner
+    mode=$(stat -c %a "$BENCH_ENV_FILE") owner=$(stat -c %u "$BENCH_ENV_FILE")
+    if [[ $owner != "$(id -u)" ]] || ((8#$mode & 8#077)); then
+        log "$BENCH_ENV_FILE должен принадлежать запускающему и иметь режим 0600 (сейчас $mode)"
+        return 1
+    fi
+    set -a
+    # shellcheck disable=SC1090
+    source "$BENCH_ENV_FILE"
+    set +a
 }
 
 # GNU timeout агента живёт в своей группе процессов и переживает killpg devmatrix: лимит OpenCode обязан

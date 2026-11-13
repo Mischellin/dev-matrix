@@ -31,7 +31,7 @@ def env(tmp_path: Path) -> dict[str, str]:
         'url="${*: -1}"\n'
         'case "$url" in\n'
         '  */health) [[ -f $FAKE_HEALTH ]] ;;\n'
-        '  */metrics) cat "$FAKE_METRICS" ;;\n'
+        '  */metrics) [[ -n ${FAKE_ORDER_LOG:-} ]] && echo metrics >>"$FAKE_ORDER_LOG"; cat "$FAKE_METRICS" ;;\n'
         "esac\n",
     )
     # «Агент»: по FAKE_KILL_DURING гасит сервер во время работы, как упавший vLLM.
@@ -41,11 +41,17 @@ def env(tmp_path: Path) -> dict[str, str]:
     health.touch()
     metrics = tmp_path / "metrics.txt"
     metrics.write_text("vllm:prompt_tokens_total 100\nvllm:generation_tokens_total 20\n")
+    cfg = tmp_path / "home" / ".config" / "opencode"
+    cfg.mkdir(parents=True)
+    (cfg / "opencode.json").write_text("{}")
     return {
         **os.environ,
         "PATH": f"{fake}:{os.environ['PATH']}",
         "VAST_BENCH_DIR": str(BENCH),
         "BENCH_HOME": str(tmp_path / "home"),
+        "AGENT_HOMES": str(tmp_path / "agent-homes"),
+        "AGENT_UV_CACHE_SRC": str(tmp_path / "agent-uv-cache"),
+        "UV_TOOL_DIR": str(tmp_path / "uv-tools"),
         "RESULTS_DIR": str(tmp_path / "results"),
         "HF_HOME": str(tmp_path / "hf"),
         "FAKE_HEALTH": str(health),
@@ -329,6 +335,8 @@ def _fake_privileged_env(env: dict[str, str], tmp_path: Path) -> Path:
     _script(fake / "id", '[[ $# -ge 2 ]] && echo 1000 || echo 0\n')
     _script(fake / "setpriv", 'echo "setpriv $*" >>"$FAKE_PRIV_LOG"\nshift 4\nexec "$@"\n')
     _script(fake / "chown", 'echo "chown $*" >>"$FAKE_PRIV_LOG"\n')
+    _script(fake / "pkill", "exit 0\n")  # настоящие pkill/ps по пользователю agent на машине разработчика не зовём
+    _script(fake / "ps", "exit 1\n")
     return log
 
 
@@ -337,7 +345,14 @@ def test_agent_runs_opencode_as_unprivileged_user(env, tmp_path) -> None:
     r = _run_agent(env, tmp_path, FAKE_PRIV_LOG=str(log))
     assert r.returncode == 0, r.stderr
     lines = log.read_text().splitlines()
-    assert any(ln.startswith("chown -R agent: ") and str(tmp_path) in ln for ln in lines), lines
+    # рекурсивный chown — ровно рабочая папка задачи и свежий кэш в HOME; ни BENCH_HOME, ни общий каталог HOMEs
+    recursive = [ln for ln in lines if ln.startswith("chown -R ")]
+    assert f"chown -R agent: {tmp_path.resolve()}" in recursive, lines
+    assert all(
+        ln == f"chown -R agent: {tmp_path.resolve()}" or ln.startswith(f"chown -R agent: {tmp_path / 'agent-homes'}/task.")
+        for ln in recursive
+    ), lines
+    assert not any(str(tmp_path / "home") in ln for ln in lines), lines
     assert any(ln.startswith("setpriv --reuid=agent --regid=agent") and "--no-new-privs" in ln for ln in lines)
     assert json.loads((tmp_path / "out" / "metrics" / "t1.json").read_text())["opencode_exit"] == 0
 
@@ -411,3 +426,216 @@ def test_download_passes_all_excludes_to_legacy_cli(env, tmp_path) -> None:
     r = subprocess.run([str(BENCH / "download.sh"), "gpt-oss-20b"], env=e, capture_output=True, text=True, check=False)
     assert r.returncode == 0, r.stderr
     assert log.read_text().strip() == "download openai/gpt-oss-20b --exclude original/* metal/*"
+
+
+def test_agent_gets_fresh_home_per_task_and_it_is_removed(env, tmp_path) -> None:
+    fake = Path(env["PATH"].split(":")[0])
+    _script(fake / "opencode", 'echo "$HOME" >>"$FAKE_HOME_LOG"; ls -A "$HOME/.local/share" >>"$FAKE_HOME_LOG"; touch "$HOME/.local/share/opencode-session"\n')
+    cache = tmp_path / "agent-uv-cache"
+    cache.mkdir()
+    (cache / "pytest-wheel").write_text("w")
+    log = tmp_path / "home.log"
+    for task in ("t1", "t2"):
+        assert _run_agent(env, tmp_path, FAKE_HOME_LOG=str(log), DEVMATRIX_TASK_ID=task).returncode == 0
+    lines = log.read_text().splitlines()
+    # вторая задача не видит сессию первой: в её HOME пусто, а каталоги разные
+    assert lines[0] != lines[1]
+    assert lines[0].startswith(str(tmp_path / "agent-homes") + "/task.")
+    assert len(lines) == 2, lines
+    assert list((tmp_path / "agent-homes").iterdir()) == []
+    assert (tmp_path / "home" / ".local" / "share").is_dir()
+    assert not list((tmp_path / "home" / ".local" / "share").iterdir())
+
+
+def test_agent_home_gets_readonly_config_and_uv_cache_copy(env, tmp_path) -> None:
+    fake = Path(env["PATH"].split(":")[0])
+    _script(
+        fake / "opencode",
+        'cp "$HOME/.config/opencode/opencode.json" "$FAKE_DUMP"; stat -c %a "$HOME/.config/opencode/opencode.json" >"$FAKE_DUMP.mode"; '
+        'ls "$UV_CACHE_DIR" >"$FAKE_DUMP.cache"\n',
+    )
+    (tmp_path / "home" / ".config" / "opencode" / "opencode.json").write_text('{"x": 1}')
+    cache = tmp_path / "agent-uv-cache"
+    cache.mkdir()
+    (cache / "pytest-wheel").write_text("w")
+    dump = tmp_path / "dump"
+    assert _run_agent(env, tmp_path, FAKE_DUMP=str(dump)).returncode == 0
+    assert dump.read_text() == '{"x": 1}'
+    assert Path(f"{dump}.mode").read_text().strip() == "644"
+    assert Path(f"{dump}.cache").read_text().split() == ["pytest-wheel"]
+
+
+def test_agent_removes_home_even_when_server_dies(env, tmp_path) -> None:
+    assert _run_agent(env, tmp_path, FAKE_KILL_DURING="1").returncode == 3
+    assert list((tmp_path / "agent-homes").iterdir()) == []
+
+
+def test_agent_aborts_task_when_chown_fails(env, tmp_path) -> None:
+    log = _fake_privileged_env(env, tmp_path)
+    _script(Path(env["PATH"].split(":")[0]) / "chown", 'echo "chown $*" >>"$FAKE_PRIV_LOG"; exit 1\n')
+    marker_run = _run_agent(env, tmp_path, FAKE_PRIV_LOG=str(log))
+    assert marker_run.returncode == 3
+    assert "agent_setup_failed" in (tmp_path / "out" / "metrics" / "t1.invalid").read_text()
+    assert not (tmp_path / "out" / "metrics" / "t1.json").exists()
+    assert not any(ln.startswith("setpriv") for ln in log.read_text().splitlines())
+    assert list((tmp_path / "agent-homes").iterdir()) == []
+
+
+def test_agent_env_for_opencode(env, tmp_path) -> None:
+    fake = Path(env["PATH"].split(":")[0])
+    _script(fake / "opencode", 'env >"$FAKE_ENV_DUMP"\n')
+    dump = tmp_path / "opencode.env"
+    extra = {"UV_TOOL_DIR": "/opt/uv-tools", "UV_TOOL_BIN_DIR": "/usr/local/bin", "HF_HOME": "/workspace/hf"}
+    r = _run_agent(env, tmp_path, FAKE_ENV_DUMP=str(dump), **extra)
+    assert r.returncode == 0, r.stderr
+    got = dict(ln.split("=", 1) for ln in dump.read_text().splitlines() if "=" in ln)
+    home = got["HOME"]
+    assert home.startswith(str(tmp_path / "agent-homes") + "/task.")
+    assert got["XDG_CONFIG_HOME"] == f"{home}/.config"
+    assert got["XDG_DATA_HOME"] == f"{home}/.local/share"
+    assert got["XDG_STATE_HOME"] == f"{home}/.local/state"
+    assert got["XDG_CACHE_HOME"] == f"{home}/.cache"
+    # свой кэш uv в HOME, а не root-овый /opt/uv-cache; каталоги инструментов root агенту не отдаются
+    assert got["UV_CACHE_DIR"] == f"{home}/.cache/uv"
+    assert not {"UV_TOOL_DIR", "UV_TOOL_BIN_DIR", "BENCH_HOME", "BENCH_OUT", "RESULTS_DIR", "HF_HOME"} & got.keys()
+
+
+def test_env_sh_sets_uv_no_config_and_closes_root_dirs(env, tmp_path) -> None:
+    r = _bash('echo "$UV_NO_CONFIG $(stat -c %a "$BENCH_HOME" "$HF_HOME" | tr "\\n" " ")"', env)
+    assert r.stdout.split() == ["1", "700", "700"], r.stderr
+
+
+def _leftover_env(env: dict[str, str], tmp_path: Path) -> Path:
+    """Агент оставляет долгий дочерний процесс; поддельные ps/pkill знают его по pid-файлу."""
+    _fake_privileged_env(env, tmp_path)
+    fake = Path(env["PATH"].split(":")[0])
+    pidfile = tmp_path / "child.pid"
+    order = tmp_path / "order.log"
+    _script(fake / "opencode", 'setsid sleep 300 >/dev/null 2>&1 & echo $! >"$FAKE_CHILD_PID"\n')
+    # живой (не зомби) потомок — «процесс пользователя агента» для agent_procs_alive
+    _script(
+        fake / "ps",
+        'st=$(/bin/ps -o stat= -p "$(cat "$FAKE_CHILD_PID")" 2>/dev/null); [[ -n $st && $st != Z* ]] && echo "$st"\nexit 0\n',
+    )
+    _script(fake / "pkill", 'echo "pkill $*" >>"$FAKE_ORDER_LOG"\nkill -KILL "$(cat "$FAKE_CHILD_PID")" 2>/dev/null\nexit 0\n')
+    env["FAKE_CHILD_PID"] = str(pidfile)
+    env["FAKE_ORDER_LOG"] = str(order)
+    env["FAKE_PRIV_LOG"] = str(tmp_path / "priv.log")
+    return pidfile
+
+
+def test_agent_kills_leftover_processes_before_reading_metrics(env, tmp_path) -> None:
+    pidfile = _leftover_env(env, tmp_path)
+    assert _run_agent(env, tmp_path).returncode == 0
+    pid = int(pidfile.read_text())
+    # убит (зомби без подбирающего родителя в песочнице тоже считается мёртвым)
+    stat = Path(f"/proc/{pid}/stat")
+    assert not stat.exists() or stat.read_text().rsplit(")", 1)[1].split()[0] == "Z"
+    order = (tmp_path / "order.log").read_text().split()
+    assert "pkill" in order
+    # счётчики /metrics: два чтения до запуска, оставшиеся после pkill
+    first_pkill = order.index("pkill")
+    assert order[:first_pkill].count("metrics") == 3
+    assert order[first_pkill:].count("metrics") == 3
+    assert "pkill -KILL -u agent" in (tmp_path / "order.log").read_text()
+
+
+def test_agent_marks_task_invalid_when_leftovers_survive(env, tmp_path) -> None:
+    _leftover_env(env, tmp_path)
+    fake = Path(env["PATH"].split(":")[0])
+    _script(fake / "ps", "echo S\n")  # процессы «не умирают»
+    r = _run_agent(env, tmp_path, AGENT_KILL_WAIT="1")
+    assert r.returncode == 3
+    assert "процессы" in (tmp_path / "out" / "metrics" / "t1.invalid").read_text()
+
+
+def _fake_devmatrix(env: dict[str, str], body: str) -> None:
+    """devmatrix с тремя задачами t1..t3: list печатает их, run выполняет body (cwd — каталог модели)."""
+    _script(
+        Path(env["PATH"].split(":")[0]) / "devmatrix",
+        'if [[ $1 == list ]]; then printf "t%s\\n" 1 2 3; exit 0; fi\n'
+        'mkdir -p "$BENCH_OUT/submissions/m" "$BENCH_OUT/metrics"\n'
+        'for t in t1 t2 t3; do echo "{\\"task_id\\": \\"$t\\"}" >"$BENCH_OUT/submissions/m/$t.json"; done\n' + body,
+    )
+
+
+def test_done_partial_has_its_own_exit_code(env, tmp_path) -> None:
+    e = _prefetch_env(env, tmp_path)
+    _fake_devmatrix(
+        e,
+        'printf "t1: opencode_failed: упал\\n" >"$BENCH_OUT/metrics/t1.invalid"\n',
+    )
+    r = _bash("run_model gpt-oss-20b; echo rc=$?", e)
+    assert "rc=4" in r.stdout, r.stderr
+    assert json.loads((tmp_path / "results" / "gpt-oss-20b" / "run-info.json").read_text())["status"] == "done_partial"
+    # main: ни одной ошибки, но есть done_partial — код 4, а не 0 и не 1
+    r = _bash("main gpt-oss-20b; echo rc=$?", e)
+    assert "rc=4" in r.stdout, r.stderr
+    _fake_devmatrix(e, "")
+    r = _bash("main gpt-oss-20b; echo rc=$?", e)
+    assert "rc=0" in r.stdout, r.stderr
+
+
+def test_integrity_change_of_installed_package_fails_run(env, tmp_path) -> None:
+    pkg = tmp_path / "uv-tools" / "devmatrix"
+    pkg.mkdir(parents=True)
+    (pkg / "runner.py").write_text("ok")
+    e = _prefetch_env(env, tmp_path)
+    _fake_devmatrix(e, 'echo "# patched" >>"$UV_TOOL_DIR/devmatrix/runner.py"\n')
+    r = _bash("run_model gpt-oss-20b; echo rc=$?", e)
+    res = tmp_path / "results" / "gpt-oss-20b"
+    assert "rc=1" in r.stdout, r.stderr
+    assert json.loads((res / "run-info.json").read_text())["status"] == "integrity_failed"
+    assert not (res / "submissions").exists()
+    assert (res / "integrity_failed" / "m" / "t1.json").is_file()
+
+
+def test_integrity_change_of_other_model_results_fails_run(env, tmp_path) -> None:
+    other = tmp_path / "results" / "devstral-small-2"
+    (other / "submissions").mkdir(parents=True)
+    (other / "submissions" / "t1.json").write_text("{}")
+    e = _prefetch_env(env, tmp_path)
+    _fake_devmatrix(e, f'echo changed >"{other}/submissions/t1.json"\n')
+    r = _bash("run_model gpt-oss-20b; echo rc=$?", e)
+    assert json.loads((tmp_path / "results" / "gpt-oss-20b" / "run-info.json").read_text())["status"] == "integrity_failed", r.stderr
+
+
+def test_sigterm_moves_reports_and_skips_slow_probes(env, tmp_path) -> None:
+    e = _prefetch_env(env, tmp_path)
+    ver_log = tmp_path / "vllm-version.log"
+    _script(
+        Path(env["PATH"].split(":")[0]) / "vllm",
+        f'if [[ ${{1:-}} == serve ]]; then exec sleep 60; fi\necho x >>"{ver_log}"\necho "vllm 1.2.3"\n',
+    )
+    _fake_devmatrix(e, "exec sleep 60\n")
+    proc = subprocess.Popen(
+        ["bash", "-c", f'source "{BENCH}/bench.sh"\ntrap cleanup EXIT\ntrap "exit 130" INT TERM\nrun_model gpt-oss-20b'],
+        env=e, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+    )  # fmt: skip
+    res = tmp_path / "results" / "gpt-oss-20b"
+    for _ in range(100):
+        if (res / "submissions" / "m" / "t3.json").exists():
+            break
+        time.sleep(0.1)
+    time.sleep(0.3)
+    started = time.monotonic()
+    proc.terminate()
+    proc.wait(timeout=30)
+    assert time.monotonic() - started < 8  # docker stop ждёт 10 с
+    info = json.loads((res / "run-info.json").read_text())
+    assert info["status"] == "interrupted"
+    assert info["vllm_version"] == "vllm 1.2.3"  # из записи при старте модели
+    assert ver_log.read_text().count("x") == 1  # vllm --version при остановке не вызывался
+    assert not (res / "submissions").exists()
+    assert (res / "interrupted" / "m" / "t1.json").is_file()
+
+
+def test_env_file_must_be_private(env, tmp_path) -> None:
+    f = tmp_path / "bench.env"
+    f.write_text("HF_TOKEN=abc\n")
+    f.chmod(0o644)
+    r = _bash(f'BENCH_ENV_FILE="{f}" load_env_file; echo rc=$?', env)
+    assert "rc=1" in r.stdout and "0600" in r.stderr
+    f.chmod(0o600)
+    r = _bash(f'BENCH_ENV_FILE="{f}" load_env_file; echo "rc=$? ${{HF_TOKEN:+set}}"', env)
+    assert "rc=0 set" in r.stdout, r.stderr

@@ -111,7 +111,12 @@ def run_info(key: str, path: Path, status: str) -> None:
     # Новый прогон начинает с чистого листа: ни старого started_at, ни invalid_* от прошлого запуска.
     info = json.loads(path.read_text(encoding="utf-8")) if path.exists() and status != "running" else {}
     now = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
-    gpu = _out(["nvidia-smi", "--query-gpu=name,memory.total,driver_version", "--format=csv,noheader"])
+    # Остановка по INT/TERM укладывается в 10 с docker stop: vllm --version и nvidia-smi не зовём, берём значения
+    # из run-info.json, записанного при старте модели (статус running).
+    cached = status == "interrupted"
+    gpu = "\n".join(info.get("gpu", [])) if cached else _out(["nvidia-smi", "--query-gpu=name,memory.total,driver_version", "--format=csv,noheader"])
+    vllm_version = info.get("vllm_version", "unknown") if cached else (_out(["vllm", "--version"]).splitlines() or ["unknown"])[-1]
+    opencode_version = info.get("opencode_version", "") if cached else _out(["opencode", "--version"])
     # В контейнере IMAGE_DIGEST обычно не задан: тогда берём IMAGE_REVISION (sha коммита сборки) и говорим об этом.
     if os.environ.get("IMAGE_DIGEST"):
         image_digest, digest_source = os.environ["IMAGE_DIGEST"], "IMAGE_DIGEST"
@@ -127,8 +132,8 @@ def run_info(key: str, path: Path, status: str) -> None:
             "served_name": m["served_name"],
             "vllm_args": serve_args(m),
             "vllm_tag": os.environ.get("VLLM_TAG", "unknown"),
-            "vllm_version": (_out(["vllm", "--version"]).splitlines() or ["unknown"])[-1],
-            "opencode_version": _out(["opencode", "--version"]),
+            "vllm_version": vllm_version,
+            "opencode_version": opencode_version,
             "image_revision": os.environ.get("IMAGE_REVISION", "unknown"),
             "image_digest": image_digest,
             "image_digest_source": digest_source,
