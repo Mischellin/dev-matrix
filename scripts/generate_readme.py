@@ -81,22 +81,39 @@ def build_readme() -> str:
     reviewer_table = "\n".join(rev_rows)
 
     # Tasks Benchmark Table
+    # Токены, цена и время в отчётах из submissions/ заявлены авторами и могут отсутствовать — тогда «—».
     task_rows = []
-    task_rows.append("| Task | Model | Status | Pass Rate | Time | Tokens | API Cost | Diff | Review Score |")
-    task_rows.append("| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |")
+    task_rows.append("| Task | Model | Status | Tests | Time | Tokens | API Cost |")
+    task_rows.append("| :--- | :--- | :---: | :---: | :---: | :---: | :---: |")
+    per_model: dict[str, list[int]] = {}
     for t in benchmarks:
         t_id = t["id"]
         for r in t["runs"]:
             status_badge = "✅ PASS" if r["status"] == "PASS" else "❌ FAIL"
-            time_str = f"{r['duration_min']:.1f}m"
-            tok_str = f"{r['total_tokens'] / 1_000_000:.1f}M" if r['total_tokens'] >= 1_000_000 else f"{r['total_tokens'] / 1_000:.0f}k"
-            cost_str = f"${r['cost_usd']:.2f}"
-            diff_str = f"+{r['diff_stat']['added']}/-{r['diff_stat']['removed']}"
-            score_str = f"⭐ {r['review_score']:.1f}/5.0"
-            task_rows.append(f"| `{t_id}` | **{r['model_name']}** | {status_badge} | {r['passed_tests']}/{r['total_tests']} | {time_str} | {tok_str} | {cost_str} | {diff_str} | {score_str} |")
+            time_str = f"{r['duration_min']:.1f}m" if r.get("duration_min") is not None else "—"
+            tokens = r.get("total_tokens")
+            tok_str = "—" if tokens is None else (f"{tokens / 1_000_000:.1f}M" if tokens >= 1_000_000 else f"{tokens / 1_000:.0f}k")
+            cost_str = f"${r['cost_usd']:.2f}" if r.get("cost_usd") is not None else "—"
+            task_rows.append(f"| `{t_id}` | **{r['model_name']}** | {status_badge} | {r['passed_tests']}/{r['total_tests']} | {time_str} | {tok_str} | {cost_str} |")
+            stat = per_model.setdefault(r["model_name"], [0, 0, 0, 0])
+            stat[0] += r["status"] == "PASS"
+            stat[1] += 1
+            stat[2] += r["passed_tests"]
+            stat[3] += r["total_tests"]
     benchmark_table = "\n".join(task_rows)
     if not benchmarks:
         benchmark_table = "_Per-task run results will be published after the public tasks are evaluated._"
+    else:
+        summary_rows = ["| Model | Tasks passed | Hidden tests passed |", "| :--- | :---: | :---: |"]
+        for name, (ok, n, tests_ok, tests_all) in sorted(per_model.items(), key=lambda kv: (-kv[1][0] / kv[1][1], -kv[1][2] / kv[1][3], kv[0])):
+            summary_rows.append(f"| **{name}** | {ok}/{n} | {tests_ok}/{tests_all} |")
+        benchmark_table = (
+            "\n".join(summary_rows)
+            + "\n\n_Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter (\"claimed by author\"). "
+            "The hidden tests are public, so this is not a trusted ranking. Statements of three tasks were clarified on 2026-11-13, "
+            "so runs made before that date are not comparable._\n\n"
+            + benchmark_table
+        )
 
     # Load Tasks Manifest
     manifest_file = ROOT / "tasks" / "manifest.json"

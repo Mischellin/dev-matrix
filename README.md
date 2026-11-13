@@ -69,7 +69,41 @@ How accurately does each model catch genuine bugs (P0/P1) without false-positive
 
 Tested under identical isolated runtime conditions with full hidden test suites.
 
-_Per-task run results will be published after the public tasks are evaluated._
+| Model | Tasks passed | Hidden tests passed |
+| :--- | :---: | :---: |
+| **deepseek-flash** | 13/13 | 222/222 |
+| **deepseek-v4-pro** | 13/13 | 222/222 |
+
+_Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Statements of three tasks were clarified on 2026-11-13, so runs made before that date are not comparable._
+
+| Task | Model | Status | Tests | Time | Tokens | API Cost |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| `algo-03-range-merger` | **deepseek-flash** | ✅ PASS | 27/27 | 0.7m | — | — |
+| `algo-03-range-merger` | **deepseek-v4-pro** | ✅ PASS | 27/27 | 2.6m | — | — |
+| `arch-04-tag-registry` | **deepseek-flash** | ✅ PASS | 8/8 | 1.2m | — | — |
+| `arch-04-tag-registry` | **deepseek-v4-pro** | ✅ PASS | 8/8 | 2.6m | — | — |
+| `auth-07-claim-roles` | **deepseek-flash** | ✅ PASS | 14/14 | 1.1m | — | — |
+| `auth-07-claim-roles` | **deepseek-v4-pro** | ✅ PASS | 14/14 | 2.4m | — | — |
+| `authz-12-uniform-404` | **deepseek-flash** | ✅ PASS | 15/15 | 1.1m | — | — |
+| `authz-12-uniform-404` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 3.5m | — | — |
+| `flag-10-feature-flag-router` | **deepseek-flash** | ✅ PASS | 16/16 | 0.8m | — | — |
+| `flag-10-feature-flag-router` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 3.1m | — | — |
+| `host-08-host-header-guard` | **deepseek-flash** | ✅ PASS | 15/15 | 1.4m | — | — |
+| `host-08-host-header-guard` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 4.7m | — | — |
+| `idem-13-idempotent-signup` | **deepseek-flash** | ✅ PASS | 17/17 | 1.3m | — | — |
+| `idem-13-idempotent-signup` | **deepseek-v4-pro** | ✅ PASS | 17/17 | 4.0m | — | — |
+| `infra-05-k8s-pod-admission` | **deepseek-flash** | ✅ PASS | 20/20 | 1.7m | — | — |
+| `infra-05-k8s-pod-admission` | **deepseek-v4-pro** | ✅ PASS | 20/20 | 4.5m | — | — |
+| `obs-02-query-redactor` | **deepseek-flash** | ✅ PASS | 37/37 | 2.4m | — | — |
+| `obs-02-query-redactor` | **deepseek-v4-pro** | ✅ PASS | 37/37 | 15.0m | — | — |
+| `onec-06-payment-allocator` | **deepseek-flash** | ✅ PASS | 16/16 | 1.5m | — | — |
+| `onec-06-payment-allocator` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 3.9m | — | — |
+| `scrub-09-metadata-scrubber` | **deepseek-flash** | ✅ PASS | 15/15 | 1.3m | — | — |
+| `scrub-09-metadata-scrubber` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 6.0m | — | — |
+| `sec-01-clock-skew` | **deepseek-flash** | ✅ PASS | 6/6 | 0.8m | — | — |
+| `sec-01-clock-skew` | **deepseek-v4-pro** | ✅ PASS | 6/6 | 1.3m | — | — |
+| `tenant-11-scoped-listing` | **deepseek-flash** | ✅ PASS | 16/16 | 1.1m | — | — |
+| `tenant-11-scoped-listing` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 4.1m | — | — |
 
 ---
 

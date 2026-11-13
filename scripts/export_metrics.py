@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -124,9 +125,28 @@ MODELS_INFO = {
     }
 }
 
-# Результаты прогонов по опубликованным задачам из tasks/. Пока не заполнено: прогоны ещё не сделаны,
-# раньше здесь были вручную прописанные цифры по внутренним задачам — они убраны.
-BENCHMARK_TASKS_SUMMARY: list[dict[str, Any]] = []
+# Результаты прогонов по опубликованным задачам из tasks/ берутся из submissions/<модель>/<задача>.json
+# (отчёты `devmatrix run`, поля заявлены авторами: токены, цена и время не проверяются).
+SUBMISSIONS_DIR = Path(__file__).resolve().parent.parent / "submissions"
+
+
+def build_benchmark_runs(submissions_dir: Path = SUBMISSIONS_DIR) -> list[dict[str, Any]]:
+    """Сворачивает отчёты из submissions/ в список {id: задача, runs: [...]} для страницы и README."""
+    by_task: dict[str, list[dict[str, Any]]] = {}
+    for f in sorted(submissions_dir.glob("*/*.json")):
+        r = json.loads(f.read_text(encoding="utf-8"))
+        by_task.setdefault(r["task_id"], []).append({
+            "model_name": r["model"],
+            "provider": r.get("provider"),
+            "status": "PASS" if r["passed"] else "FAIL",
+            "passed_tests": r["passed_tests"],
+            "total_tests": r["total_tests"],
+            "duration_min": round(r["agent_seconds"] / 60, 1) if r.get("agent_seconds") is not None else None,
+            "total_tokens": r.get("tokens"),
+            "cost_usd": r.get("cost_usd"),
+            "claimed": bool(r.get("claimed", True)),
+        })
+    return [{"id": task_id, "runs": runs} for task_id, runs in sorted(by_task.items())]
 
 
 def export_ratings(dest_dir: Path) -> dict[str, Any]:
@@ -217,7 +237,7 @@ def export_models(dest_dir: Path) -> None:
 def export_benchmarks(dest_dir: Path) -> None:
     out_file = dest_dir / "benchmark_runs.json"
     with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(BENCHMARK_TASKS_SUMMARY, f, indent=2, ensure_ascii=False)
+        json.dump(build_benchmark_runs(), f, indent=2, ensure_ascii=False)
     print(f"Exported benchmark summary to {out_file}")
 
 
@@ -225,7 +245,11 @@ def main() -> None:
     root = Path(__file__).resolve().parent.parent
     data_dir = root / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
-    
+
+    # В CI нет рейтингов Harness: там пересобираются только результаты из submissions/.
+    if "--only-benchmarks" in sys.argv[1:]:
+        export_benchmarks(data_dir)
+        return
     export_ratings(data_dir)
     export_models(data_dir)
     export_benchmarks(data_dir)
