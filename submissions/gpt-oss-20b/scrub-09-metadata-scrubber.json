@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "scrub-09-metadata-scrubber",
+  "model": "gpt-oss-20b",
+  "provider": "vLLM self-hosted",
+  "passed": true,
+  "passed_tests": 15,
+  "total_tests": 15,
+  "agent_seconds": 47.4,
+  "tokens": 107538,
+  "cost_usd": 0.0068,
+  "tasks_hash": "5c240e8bed6c7fb4d6678057850d752b853ce909bddda0f9c3cdfaea62261d1d",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-13T00:59:15Z",
+  "claimed": true
+}

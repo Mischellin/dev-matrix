@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "idem-13-idempotent-signup",
+  "model": "gpt-oss-20b",
+  "provider": "vLLM self-hosted",
+  "passed": true,
+  "passed_tests": 17,
+  "total_tests": 17,
+  "agent_seconds": 42.9,
+  "tokens": 127721,
+  "cost_usd": 0.0062,
+  "tasks_hash": "05d1ed2494d09eb21b1915c6ecf17840fce34f97aeb650daa2639bd1018dc6af",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-13T00:58:28Z",
+  "claimed": true
+}

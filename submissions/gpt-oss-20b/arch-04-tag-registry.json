@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "arch-04-tag-registry",
+  "model": "gpt-oss-20b",
+  "provider": "vLLM self-hosted",
+  "passed": true,
+  "passed_tests": 8,
+  "total_tests": 8,
+  "agent_seconds": 25.3,
+  "tokens": 84484,
+  "cost_usd": 0.0037,
+  "tasks_hash": "bb711450079cdfb3a95694ab08d39b0d060a69c1886e15135c499922edb68913",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-13T00:51:43Z",
+  "claimed": true
+}

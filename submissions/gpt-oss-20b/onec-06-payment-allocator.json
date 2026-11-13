@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "onec-06-payment-allocator",
+  "model": "gpt-oss-20b",
+  "provider": "vLLM self-hosted",
+  "passed": false,
+  "passed_tests": 13,
+  "total_tests": 16,
+  "agent_seconds": 39.2,
+  "tokens": 137739,
+  "cost_usd": 0.0057,
+  "tasks_hash": "1ef0b02105bd793417adaa9d9aa6a03b9b262126e61b89963ea4e76085b1a056",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-13T00:53:36Z",
+  "claimed": true
+}

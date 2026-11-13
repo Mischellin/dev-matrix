@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "scrub-09-metadata-scrubber",
+  "model": "devstral-small-2-24b-fp8",
+  "provider": "vLLM self-hosted",
+  "passed": true,
+  "passed_tests": 15,
+  "total_tests": 15,
+  "agent_seconds": 885.4,
+  "tokens": 1518413,
+  "cost_usd": 0.1353,
+  "tasks_hash": "5c240e8bed6c7fb4d6678057850d752b853ce909bddda0f9c3cdfaea62261d1d",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-13T03:09:16Z",
+  "claimed": true
+}
