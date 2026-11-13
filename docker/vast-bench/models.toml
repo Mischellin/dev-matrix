@@ -61,11 +61,13 @@ min_gpu_gb = 48
 dtype = "auto"
 tool_call_parser = "qwen3_coder"
 reasoning_parser = "qwen3"
-extra_args = []
+extra_args = ["--max-num-seqs", "32"]
 download_exclude = []
 notes = """Dense, FP8 (quant_method=fp8), веса ~31 ГБ по размеру файлов; архитектура Qwen3_5ForConditionalGeneration (есть в реестре vLLM v0.33.0). \
 Парсеры qwen3_coder + qwen3 — ПО АНАЛОГИИ с Kwaipilot/KAT-Coder-V2.5-Dev (тот же qwen3_5): в карточке Qwen3.8 команды vllm serve с парсерами нет, не проверено. \
-Мультимодальная модель; для текстовых задач можно добавить extra_args = ["--language-model-only"] (флаг есть в v0.33.0), не проверено на этом чекпойнте."""
+Мультимодальная модель; для текстовых задач можно добавить extra_args = ["--language-model-only"] (флаг есть в v0.33.0), не проверено на этом чекпойнте. \
+--max-num-seqs 32: без него vLLM падал с «max_num_seqs (256) exceeds available Mamba cache blocks (226)»; агент гоняет задачи по одной, 32 одновременных запросов с запасом. \
+Проверено: с этим флагом vLLM поднялся на RTX A6000 48 ГБ; прогон задач до конца НЕ выполнялся."""
 
 [models.north-mini-code]
 hf_id = "CohereLabs/North-Mini-Code-1.0-fp8"
@@ -76,17 +78,19 @@ min_gpu_gb = 40
 dtype = "auto"
 tool_call_parser = "cohere_command4"
 reasoning_parser = "cohere_command4"
-extra_args = ["--moe-backend", "triton"]
+extra_args = []
 download_exclude = []
 interleaved_field = "reasoning"
 notes = """ОФИЦИАЛЬНЫЙ FP8-чекпойнт Cohere (compressed-tensors, float-quantized: веса FP8 по каналам, активации динамически по токенам), 30B-A3B MoE, лицензия Apache 2.0. \
 Проверено по HF API и карточке 2026-11-13: 7 файлов model-*.safetensors, всего ~32 ГБ (с токенизатором), онлайн-квантование не нужно, поэтому `--quantization` не задан (vLLM берёт схему из quantization_config). \
-Из карточки: --tool-call-parser cohere_command4 --reasoning-parser cohere_command4 --enable-auto-tool-choice --moe-backend triton (карточка даёт -tp 1 и --max-model-len 320000, здесь 65536). \
+Из карточки: --tool-call-parser cohere_command4 --reasoning-parser cohere_command4 --enable-auto-tool-choice --moe-backend triton (флаг --moe-backend triton здесь НЕ используется, см. ниже; карточка даёт -tp 1 и --max-model-len 320000, здесь 65536). \
 Карточка просит vLLM main «до выхода релиза», а точный тег не называет; в исходниках v0.33.0 есть Cohere2MoeForCausalLM (registry.py, models/cohere2_moe.py), парсеры cohere_command4 (tool_parsers и reasoning), флаг --moe-backend и CompressedTensorsW8A8Fp8MoEMethod (compressed_tensors_moe.py), \
 то есть загрузка compressed-tensors FP8 для cohere2_moe по коду возможна, но запуском НЕ проверена. Парсеры работают через пакет cohere_melody>=0.9.0 (карточка: `uv pip install cohere_melody>=0.9.0`): в Dockerfile он не установлен — НЕ проверено, что он есть в образе vllm/vllm-openai:v0.33.0. \
 min_gpu_gb = 40 — ОЦЕНКА, не измерение: веса ~32 ГБ + KV-кэш на 65536 токенов. Полное внимание только в 13 из 49 слоёв (остальные — скользящее окно 4096), 4 KV-головы по 128 → ~26 КБ на токен в BF16, ~1,7 ГБ на 65536 токенов; даже если vLLM выделит кэш скользящих слоёв без экономии, это ещё до ~5 ГБ. \
 С запасом на активации и граф CUDA выходит около 40 ГБ; на карте 40 ГБ при gpu_memory_utilization 0.90 (36 ГБ) впритык — при нехватке снизьте max_model_len или возьмите 48 ГБ. \
-Карточка просит для OpenCode конфиг с interleaved.field = reasoning и ветку main OpenCode «до выхода релиза» — на закреплённой версии это НЕ проверено."""
+Карточка просит для OpenCode конфиг с interleaved.field = reasoning и ветку main OpenCode «до выхода релиза» — на закреплённой версии это НЕ проверено. \
+--moe-backend triton из карточки убран: на Ampere (RTX A6000) vLLM падал с «FP8 MoE backend TRITON does not support ... W8A8 per-channel». Проверено: без флага vLLM поднялся на RTX A6000 48 ГБ (Ampere). \
+Как ведут себя Ada/Hopper с флагом из карточки — НЕ проверено."""
 
 [models.kat-coder-v2-5-dev]
 hf_id = "Kwaipilot/KAT-Coder-V2.5-Dev"

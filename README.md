@@ -132,7 +132,7 @@ python3 scripts/runner.py evaluate --task sec-01-clock-skew --workdir /tmp/agent
 
 Образ `ghcr.io/mischellin/dev-matrix-vast-bench` (сборка — `docker/vast-bench/`, workflow `vast-bench-image.yml`, запуск вручную или тегом `vast-bench-*`) содержит vLLM, OpenCode и `devmatrix`. Весов и секретов в нём нет. Новый пакет ghcr по умолчанию **приватный**: после первой сборки один раз откройте GitHub → Packages → `dev-matrix-vast-bench` → Package settings → Change visibility → Public, иначе vast.ai не сможет скачать образ без токена. Только модели, которые помещаются на **одну** карту (без tensor parallel).
 
-1. Арендуйте инстанс с этим образом (GPU по `min_gpu_gb` из [`models.toml`](docker/vast-bench/models.toml), диск от 200 ГБ), дайте ему свою метку, например `devmatrix-bench`. **После прогона удалите инстанс**, иначе аренда идёт дальше.
+1. Арендуйте инстанс с этим образом (GPU по `min_gpu_gb` из [`models.toml`](docker/vast-bench/models.toml), диск от 200 ГБ), дайте ему свою метку, например `devmatrix-bench`. **Сначала скопируйте результаты (шаг 4), затем удалите инстанс** — иначе аренда идёт дальше, а при удалении без копии результаты пропадут.
 2. Переменные окружения: `HF_TOKEN` (если репозиторий модели требует вход), `GPU_PRICE_USD_HOUR` (цена инстанса за час из vast.ai — для `cost_usd`), по желанию `PURGE_WEIGHTS=1` (удалять веса готовой модели, если мало диска). Переменные, заданные в настройках инстанса vast.ai, в ssh-сессии могут быть не видны: проверьте `echo "${GPU_PRICE_USD_HOUR:-нет}"`, при необходимости выполните `export GPU_PRICE_USD_HOUR=… HF_TOKEN=…` в сессии (не вписывайте значение токена в команду, которая попадёт в историю общего журнала) или добавьте их в `/etc/environment`.
 3. На инстансе по ssh запускайте прогон внутри `tmux` (или `nohup … &`): прогон идёт часами, обрыв ssh иначе убьёт его вместе с vLLM.
    ```bash
@@ -163,6 +163,22 @@ python3 scripts/runner.py evaluate --task sec-01-clock-skew --workdir /tmp/agent
 Порядок для небольшого бюджета: `gpt-oss-20b`, `devstral-small-2`, `qwen3-8-27b`, `north-mini-code`, затем `kat-coder-v2-5-dev`.
 
 **Оговорки.** Результаты получены на квантованных моделях: готовые MXFP4/FP8-чекпойнты (gpt-oss-20b, Devstral, Qwen3.8, North Mini Code) и онлайн-квантование vLLM `--quantization fp8_per_tensor` из BF16 для KAT-Coder (для него нужна карта класса 80 ГБ: BF16-чекпойнт 69 ГБ может целиком лечь в видеопамять до сжатия). Они несопоставимы с другими квантованиями и с API-версиями тех же моделей. North Mini Code по коду vLLM v0.33.0 загружается, но запуском не проверен, и пакет `cohere_melody` для его парсеров в образ не установлен. Токены — сумма дельт счётчиков `vllm:prompt_tokens` и `vllm:generation_tokens` за задачу; `cost_usd` = `agent_seconds / 3600 × GPU_PRICE_USD_HOUR` (только время работы агента, без скачивания и загрузки модели). Как и всё остальное в `devmatrix submit`, эти значения — «заявлено автором». Не проверено запуском: парсеры tool-call/reasoning для моделей, где карточка их не называет (пометки — в `notes` пресетов), и сборка образа.
+
+**Что измерено на первых прогонах** (vast.ai, vLLM v0.33.0, OpenCode 1.19.5):
+- `gpt-oss-20b` на RTX 4090: 13 задач за ~9 мин; прогон обошёлся в ~$0,5 при $0,5/ч, считая скачивание и запуск (~15 мин).
+- `devstral-small-2` (FP8) на RTX A6000: 1 ч 53 мин; две задачи упёрлись в лимит OpenCode 1500 с (14 млн и 1,8 млн токенов). Для плотных моделей от 24B на A6000 закладывайте бюджет времени и денег в 2–3 раза больше, чем для `gpt-oss-20b`.
+- `qwen3-8-27b` до конца не прогонялся (vLLM поднимался на A6000 с `--max-num-seqs 32`, см. ниже).
+- `devstral-small-2` и `qwen3-8-27b` требуют карт от 40–48 ГБ.
+
+**Грабли.**
+- **`mistral_common` 1.13.0 в базовом образе несовместим с vLLM 0.33.0**: `vllm/parser/mistral.py` вызывает `GrammarFactory.get_lark_from_jinja()` без нового обязательного аргумента `force_tool_names`, и каждый chat-запрос с tools к Devstral получает 400. В `Dockerfile` закреплён `mistral_common==1.12.0`; пин можно снять, когда vLLM начнёт передавать аргумент.
+- **`qwen3-8-27b`**: без `--max-num-seqs 32` vLLM падает с «max_num_seqs (256) exceeds available Mamba cache blocks (226)». Флаг добавлен в `extra_args`, агент гоняет задачи по одной.
+- **`north-mini-code`**: `--moe-backend triton` из карточки на Ampere падает («FP8 MoE backend TRITON does not support ... W8A8 per-channel»), из `extra_args` убран; без него vLLM поднялся на A6000. Поведение на Ada/Hopper с флагом из карточки не проверено.
+- На рабочей станции может не быть `rsync` — копируйте результаты через `scp -r -P <порт> root@<хост>:/results/ ./vast-results/`.
+- В `run-info.json` поле `image_digest` берётся из `IMAGE_DIGEST`, а если он не задан — из `IMAGE_REVISION` (источник указан в `image_digest_source`).
+- Статус `vllm_died` при здоровом vLLM и упавшем на всех задачах OpenCode был ошибкой подсчёта маркеров; теперь такой прогон получает `agent_failed`.
+
+**Результаты — с инстанса до удаления.** Сначала скопируйте `/results/` к себе (`scp`/`rsync`) и убедитесь, что файлы на месте, и только потом удаляйте инстанс. Не настраивайте автоуничтожение по бюджетному предохранителю без шага копирования: иначе прогон за деньги пропадёт вместе с диском.
 
 ---
 

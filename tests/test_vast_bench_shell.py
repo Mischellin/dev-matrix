@@ -285,3 +285,20 @@ def test_prefetch_failure_is_reported_and_log_kept(env, tmp_path) -> None:
     # основной путь скачал заново в отдельный лог
     assert (res / "download.log").is_file()
     assert (tmp_path / "hf.log").read_text().count("Devstral-Small-2") == 2
+
+
+def test_run_model_all_opencode_failed_with_healthy_vllm_is_agent_failed(env, tmp_path) -> None:
+    # Сценарий Devstral: vLLM здоров, на всех задачах маркеры «<задача>: opencode_failed …» в реальном формате агента.
+    e = _prefetch_env(env, tmp_path)
+    _script(
+        Path(env["PATH"].split(":")[0]) / "devmatrix",
+        'if [[ $1 == list ]]; then printf "t%s\\n" 1 2 3; exit 0; fi\n'
+        'mkdir -p "$BENCH_OUT/metrics"\n'
+        'for t in t1 t2 t3; do\n'
+        '  printf "%s: opencode_failed: OpenCode завершился с кодом 2, vLLM не сгенерировал токенов (см. opencode/%s.err)\\n"'
+        ' "$t" "$t" >"$BENCH_OUT/metrics/$t.invalid"\n'
+        "done\n",
+    )
+    r = _bash("run_model gpt-oss-20b; echo rc=$?", e)
+    info = json.loads((tmp_path / "results" / "gpt-oss-20b" / "run-info.json").read_text())
+    assert info["status"] == "agent_failed", r.stderr

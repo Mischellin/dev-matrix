@@ -112,6 +112,13 @@ def run_info(key: str, path: Path, status: str) -> None:
     info = json.loads(path.read_text(encoding="utf-8")) if path.exists() and status != "running" else {}
     now = datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     gpu = _out(["nvidia-smi", "--query-gpu=name,memory.total,driver_version", "--format=csv,noheader"])
+    # В контейнере IMAGE_DIGEST обычно не задан: тогда берём IMAGE_REVISION (sha коммита сборки) и говорим об этом.
+    if os.environ.get("IMAGE_DIGEST"):
+        image_digest, digest_source = os.environ["IMAGE_DIGEST"], "IMAGE_DIGEST"
+    elif os.environ.get("IMAGE_REVISION", "unknown") != "unknown":
+        image_digest, digest_source = os.environ["IMAGE_REVISION"], "IMAGE_REVISION (дайджеста образа в окружении нет)"
+    else:
+        image_digest, digest_source = "unknown", "не задан ни IMAGE_DIGEST, ни IMAGE_REVISION"
     info.update(
         {
             "preset": key,
@@ -123,7 +130,8 @@ def run_info(key: str, path: Path, status: str) -> None:
             "vllm_version": (_out(["vllm", "--version"]).splitlines() or ["unknown"])[-1],
             "opencode_version": _out(["opencode", "--version"]),
             "image_revision": os.environ.get("IMAGE_REVISION", "unknown"),
-            "image_digest": os.environ.get("IMAGE_DIGEST", "unknown"),
+            "image_digest": image_digest,
+            "image_digest_source": digest_source,
             "gpu": gpu.splitlines(),
             "gpu_price_usd_hour": os.environ.get("GPU_PRICE_USD_HOUR") or None,
             "model_notes": m["notes"],

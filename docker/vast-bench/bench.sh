@@ -4,7 +4,7 @@
 # Окружение: HF_TOKEN (если нужен), GPU_PRICE_USD_HOUR (цена инстанса за час, для cost_usd),
 # VLLM_START_TIMEOUT (с, по умолчанию 1800), AGENT_TIMEOUT (с на задачу, 1800), OPENCODE_TIMEOUT (1500;
 # обязан быть меньше AGENT_TIMEOUT минимум на 120),
-# PURGE_WEIGHTS=1 (удалять веса модели после прогона, если не хватает диска), IMAGE_DIGEST.
+# PURGE_WEIGHTS=1 (удалять веса модели после прогона, если не хватает диска), IMAGE_DIGEST (иначе в run-info.json берётся IMAGE_REVISION).
 # Статусы run-info.json: done, agent_failed (OpenCode упал на большинстве задач при здоровом vLLM), download_failed, vllm_failed (не поднялся), vllm_died (упал или был нездоров
 # во время прогона — затронутые задачи убраны в invalid/), devmatrix_failed (сбой самого запуска или не все отчёты).
 set -uo pipefail
@@ -50,6 +50,7 @@ vllm_healthy() {
 
 # Итоговый статус прогона по коду devmatrix:
 # classify_run <код> <отчётов> <задач> <маркеров> <vllm здоров: 1|0> [<из маркеров — упавший OpenCode>].
+# Маркер пишет agent-opencode.sh в виде «<задача>: opencode_failed: …», по этому префиксу его и считаем.
 # Нормальны только 0 (все пройдены) и 1 (часть не пройдена), и то лишь пока vLLM оставался здоровым и отчётов
 # столько же, сколько задач: traceback Python тоже даёт код 1, но оставляет неполный набор отчётов.
 # OpenCode упал на большинстве задач при здоровом vLLM (плохой конфиг, имя модели) — agent_failed.
@@ -166,7 +167,7 @@ run_model() {
     expected=$(devmatrix list | wc -l)
     submitted=$(find "$out/submissions" -name '*.json' 2>/dev/null | wc -l)
     markers=$(find "$out/metrics" -name '*.invalid' 2>/dev/null | wc -l)
-    agent_failed=$(grep -l '^opencode_failed' "$out"/metrics/*.invalid 2>/dev/null | wc -l)
+    agent_failed=$(grep -lE '^[^:]+: opencode_failed' "$out"/metrics/*.invalid 2>/dev/null | wc -l)
     $PRESET fill-claims "$out/submissions" "$out/metrics" "${GPU_PRICE_USD_HOUR:--}" "vLLM self-hosted" \
         "$out/run-info.json" >>"$out/devmatrix.log" 2>&1
     local status
