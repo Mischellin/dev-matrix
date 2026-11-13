@@ -1,0 +1,42 @@
+name: Refresh leaderboard data
+
+# После мержа результатов (submissions/) или правки задач пересобирает data/benchmark_runs.json и README.md
+# и коммитит их в main. Страницу Pages отдельно пересобирает deploy-pages.yml.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "submissions/**"
+      - "tasks/**"
+      - "scripts/export_metrics.py"
+      - "scripts/generate_readme.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-leaderboard
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Пересобрать данные и README
+        run: |
+          python3 scripts/export_metrics.py --only-benchmarks
+          python3 scripts/generate_readme.py
+      - name: Закоммитить, если что-то изменилось
+        run: |
+          git add README.md data/benchmark_runs.json
+          if git diff --cached --quiet; then
+            echo "Без изменений"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: обновить README и data/benchmark_runs.json из submissions/"
+          git push

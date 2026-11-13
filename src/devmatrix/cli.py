@@ -245,6 +245,7 @@ def cmd_check(args: argparse.Namespace) -> int:
         return 1
     files = sorted(f for f in args.dir.rglob("*") if f.is_file() or f.is_symlink())
     bad = 0
+    skipped = 0
     for f in files:
         rel = f.relative_to(args.dir)
         if rel.as_posix() == "README.md":
@@ -253,11 +254,17 @@ def cmd_check(args: argparse.Namespace) -> int:
             print(f"❌ {f}: допустимы только submissions/<модель>/<задача>.json")
             bad += 1
             continue
+        # Файл, уже лежащий в базовой ветке без изменений, проверили при его добавлении. Иначе после
+        # любой правки задания (меняется tasks_hash) красными стали бы все новые PR из-за старых отчётов.
+        base = getattr(args, "base", None)
+        if base is not None and (base / rel).is_file() and (base / rel).read_bytes() == f.read_bytes():
+            skipped += 1
+            continue
         errs = validate_report(f)
         for e in errs:
             print(f"❌ {f}: {e}")
         bad += bool(errs)
-    print(f"Проверено файлов: {len(files)}, с ошибками: {bad}")
+    print(f"Проверено файлов: {len(files) - skipped}, без изменений относительно базы: {skipped}, с ошибками: {bad}")
     return 1 if bad else 0
 
 
@@ -399,6 +406,7 @@ def main(argv: list[str] | None = None) -> None:
 
     c = sub.add_parser("check-submissions", help="проверить отчёты (используется в CI)")
     c.add_argument("dir", type=Path, nargs="?", default=Path("submissions"))
+    c.add_argument("--base", type=Path, default=None, help="submissions/ базовой ветки: неизменённые файлы пропускаются")
     c.set_defaults(fn=cmd_check)
 
     args = p.parse_args(argv)

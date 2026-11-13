@@ -58,6 +58,7 @@
       </div>
       <div class="flex items-center space-x-4 text-sm font-medium">
         <a href="#matrix" class="text-slate-400 hover:text-white transition">Matrix</a>
+        <a href="#submissions" class="text-slate-400 hover:text-white transition">Submissions</a>
         <a href="#head-to-head" class="text-slate-400 hover:text-white transition">Head-to-Head</a>
         <a href="#methodology" class="text-slate-400 hover:text-white transition">Methodology</a>
         <a href="https://github.com/Mischellin/dev-matrix" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 transition">
@@ -166,6 +167,17 @@
         </table>
       </div>
     </div>
+
+    <!-- Public Submissions Section -->
+    <section class="space-y-4 pt-6" id="submissions">
+      <div class="border-b border-slate-800 pb-3">
+        <h2 class="text-2xl font-bold text-white">🏁 Public Submissions</h2>
+        <p class="text-sm text-slate-400 mt-1">
+          Models run by contributors through the <code>devmatrix</code> CLI on the public task pool. Time is reported by the submitter ("claimed by author"); the hidden tests are public, so this is not a trusted ranking.
+        </p>
+      </div>
+      <div class="glass-card rounded-2xl p-5 overflow-x-auto" id="submissions-container"></div>
+    </section>
 
     <!-- Head-to-Head Comparison Section -->
     <section class="space-y-6 pt-6" id="head-to-head">
@@ -316,6 +328,7 @@
       }
       renderMatrix();
       renderTasks();
+      renderSubmissions();
       setupEventListeners();
     }
 
@@ -404,6 +417,49 @@
       });
     }
 
+    // Названия моделей приходят из PR с результатами, поэтому в разметку попадают только экранированными.
+    const esc = v => String(v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+    const fmtTok = n => n >= 1000000 ? (n / 1000000).toFixed(1) + 'M tok' : Math.round(n / 1000) + 'k tok';
+
+    async function renderSubmissions() {
+      const box = document.getElementById('submissions-container');
+      let suite = 0;
+      try {
+        suite = ((await fetch('tasks/manifest.json').then(r => r.json())).tasks || []).length;
+      } catch (e) {}
+      // Сводка по моделям из submissions/: устаревшие прогоны (задача с тех пор менялась) не считаются.
+      const byModel = {};
+      (benchmarksData || []).forEach(t => (t.runs || []).forEach(r => {
+        if (r.outdated) return;
+        const m = byModel[r.model_name] || (byModel[r.model_name] = {provider: r.provider, ok: 0, n: 0, tests: 0, all: 0, min: 0});
+        m.ok += r.status === 'PASS' ? 1 : 0;
+        m.n += 1;
+        m.tests += r.passed_tests;
+        m.all += r.total_tests;
+        m.min += r.duration_min || 0;
+      }));
+      const rows = Object.entries(byModel).sort((a, b) => b[1].ok - a[1].ok || b[1].tests - a[1].tests || a[0].localeCompare(b[0]));
+      if (!rows.length) {
+        box.innerHTML = '<div class="text-sm text-slate-500 py-4">No public submissions yet.</div>';
+        return;
+      }
+      box.innerHTML = `
+        <table class="w-full text-left text-sm">
+          <thead class="text-xs uppercase text-slate-400 border-b border-slate-800">
+            <tr><th class="py-2 pr-4">#</th><th class="py-2 pr-4">Model</th><th class="py-2 pr-4">Tasks passed</th><th class="py-2 pr-4">Tests passed</th><th class="py-2 pr-4">Agent time</th></tr>
+          </thead>
+          <tbody>${rows.map(([name, m], i) => `
+            <tr class="border-b border-slate-800/60 last:border-0">
+              <td class="py-2 pr-4 text-slate-500">${i + 1}</td>
+              <td class="py-2 pr-4"><span class="font-semibold text-slate-200">${esc(name)}</span>${m.provider ? ` <span class="text-slate-500">${esc(m.provider)}</span>` : ''}</td>
+              <td class="py-2 pr-4 font-mono font-bold ${m.ok === (suite || m.n) ? 'text-emerald-400' : 'text-slate-200'}">${m.ok}/${suite || m.n}</td>
+              <td class="py-2 pr-4 font-mono text-slate-300">${m.tests}/${m.all}</td>
+              <td class="py-2 pr-4 font-mono text-slate-400">${m.min.toFixed(1)} min</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>`;
+    }
+
     async function renderTasks() {
       const container = document.getElementById('tasks-container');
       container.innerHTML = '';
@@ -416,10 +472,6 @@
         tasks = [];
       }
       const runsById = Object.fromEntries((benchmarksData || []).map(t => [t.id, t.runs || []]));
-
-      // Названия моделей приходят из PR с результатами, поэтому в разметку попадают только экранированными.
-      const esc = v => String(v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
-      const fmtTok = n => n >= 1000000 ? (n / 1000000).toFixed(1) + 'M tok' : Math.round(n / 1000) + 'k tok';
 
       tasks.forEach(task => {
         const card = document.createElement('div');

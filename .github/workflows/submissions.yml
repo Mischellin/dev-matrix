@@ -36,4 +36,4 @@ jobs:
           fi
       - name: Проверка отчётов
         working-directory: base
-        run: PYTHONPATH=src python -m devmatrix.cli check-submissions ../pr/submissions
+        run: PYTHONPATH=src python -m devmatrix.cli check-submissions ../pr/submissions --base submissions

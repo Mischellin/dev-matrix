@@ -147,3 +147,21 @@ def test_run_end_to_end_with_noop_agent(tmp_path) -> None:
     assert cli.cmd_run(args) == 1  # заготовка не решает задачу
     report = tmp_path / "test-model" / "algo-03-range-merger.json"
     assert cli.validate_report(report) == []
+
+
+def test_unchanged_old_report_is_skipped_but_new_stale_one_is_not(tmp_path) -> None:
+    """Старый отчёт с устаревшим хешем, лежащий в базе без изменений, не валит проверку; новый — валит."""
+    import shutil
+
+    pr, base = tmp_path / "pr", tmp_path / "base"
+    old = _report(pr, tasks_hash="0" * 64)
+    shutil.copytree(pr, base)  # тот же файл уже лежит в базовой ветке
+    args = type("A", (), {"dir": pr, "base": base})()
+    assert cli.cmd_check(args) == 0
+
+    # такой же устаревший отчёт, но новый (в базе его нет) — ошибка
+    _report(pr, model="Other Model", tasks_hash="0" * 64)
+    assert cli.cmd_check(args) == 1
+    # а без --base проверяется всё, включая старый
+    assert cli.cmd_check(type("A", (), {"dir": base})()) == 1
+    assert old.exists()
