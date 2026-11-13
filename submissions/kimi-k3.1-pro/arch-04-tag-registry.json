@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "arch-04-tag-registry",
+  "model": "Kimi K3.1 Pro",
+  "provider": "Moonshot",
+  "passed": true,
+  "passed_tests": 8,
+  "total_tests": 8,
+  "agent_seconds": 273.7,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "40de2bf31669ca4aa1300946d21def7927e1a311b81a6067418470aa23746539",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-13T13:12:30Z",
+  "claimed": true
+}
