@@ -5,7 +5,8 @@
 # VLLM_START_TIMEOUT (с, по умолчанию 1800), AGENT_TIMEOUT (с на задачу, 1800), OPENCODE_TIMEOUT (1500;
 # обязан быть меньше AGENT_TIMEOUT минимум на 120),
 # PURGE_WEIGHTS=1 (удалять веса модели после прогона, если не хватает диска), IMAGE_DIGEST (иначе в run-info.json берётся IMAGE_REVISION).
-# Статусы run-info.json: done, agent_failed (OpenCode упал на большинстве задач при здоровом vLLM), download_failed, vllm_failed (не поднялся), vllm_died (упал или был нездоров
+# Статусы run-info.json: done, done_partial (всё прошло, но часть задач невалидна — отчёты в invalid/, их надо повторить;
+# vLLM здоров и OpenCode упал не на большинстве), interrupted (bench.sh остановлен INT/TERM во время модели), agent_failed (OpenCode упал на большинстве задач при здоровом vLLM), download_failed, vllm_failed (не поднялся), vllm_died (упал или был нездоров
 # во время прогона — затронутые задачи убраны в invalid/), devmatrix_failed (сбой самого запуска или не все отчёты).
 set -uo pipefail
 
@@ -22,6 +23,7 @@ VLLM_PID=""
 PREFETCH_PID=""
 PREFETCH_KEY=""
 DEVMATRIX_PID=""
+CURRENT_KEY=""
 failed=0
 
 log() { printf '[%s] %s\n' "$(date -u +%H:%M:%S)" "$*" >&2; }
@@ -54,6 +56,7 @@ vllm_healthy() {
 # Нормальны только 0 (все пройдены) и 1 (часть не пройдена), и то лишь пока vLLM оставался здоровым и отчётов
 # столько же, сколько задач: traceback Python тоже даёт код 1, но оставляет неполный набор отчётов.
 # OpenCode упал на большинстве задач при здоровом vLLM (плохой конфиг, имя модели) — agent_failed.
+# Если же невалидны лишь некоторые задачи (упавший OpenCode, vLLM здоров) — done_partial, а не done.
 classify_run() {
     local rc=$1 submitted=$2 expected=$3 markers=$4 healthy=$5 agent_failed=${6:-0}
     if ((healthy != 1 || markers - agent_failed > 0)); then
@@ -62,6 +65,8 @@ classify_run() {
         echo agent_failed
     elif ((rc > 1 || submitted != expected)); then
         echo devmatrix_failed
+    elif ((markers > 0)); then
+        echo done_partial
     else
         echo done
     fi
@@ -86,6 +91,11 @@ gpu_used_mib() {
 }
 
 cleanup() {
+    # Остановка посреди модели (INT/TERM, сбой): статус «running» в run-info.json не оставляем.
+    if [[ -n $CURRENT_KEY ]]; then
+        $PRESET run-info "$CURRENT_KEY" "$RESULTS_DIR/$CURRENT_KEY/run-info.json" interrupted 2>/dev/null
+        CURRENT_KEY=""
+    fi
     [[ -n $DEVMATRIX_PID ]] && kill -TERM -- "-$DEVMATRIX_PID" 2>/dev/null
     stop_vllm
     [[ -n $PREFETCH_PID ]] && kill -TERM -- "-$PREFETCH_PID" 2>/dev/null
@@ -93,12 +103,21 @@ cleanup() {
 trap cleanup EXIT
 trap 'exit 130' INT TERM
 
+# Конец модели на любом пути: PURGE_WEIGHTS=1 удаляет веса (в том числе недокачанные) и после сбоя тоже.
+finish_model() {
+    CURRENT_KEY=""
+    if [[ ${PURGE_WEIGHTS:-0} == 1 ]]; then
+        rm -rf "$HF_HOME/hub/models--${1//\//--}"
+    fi
+}
+
 run_model() {
     local key=$1 next=${2:-} out hf_id served
     out="$RESULTS_DIR/$key"
     hf_id=$($PRESET get "$key" hf_id)
     served=$($PRESET get "$key" served_name)
     mkdir -p "$out"
+    CURRENT_KEY=$key
     rm -rf "$out/submissions" "$out/metrics" "$out/opencode" "$out/invalid"
     $PRESET run-info "$key" "$out/run-info.json" running
 
@@ -116,6 +135,7 @@ run_model() {
     if ! "$BENCH_DIR/download.sh" "$key" >"$out/download.log" 2>&1; then
         log "$key: не скачались веса, см. $out/download.log"
         $PRESET run-info "$key" "$out/run-info.json" download_failed
+        finish_model "$hf_id"
         return 1
     fi
 
@@ -140,6 +160,7 @@ run_model() {
         log "$key: vLLM не поднялся (код $health: 1 — упал, 2 — таймаут ${START_TIMEOUT} с), см. $out/vllm.log"
         stop_vllm
         $PRESET run-info "$key" "$out/run-info.json" vllm_failed
+        finish_model "$hf_id"
         return 1
     fi
 
@@ -174,11 +195,10 @@ run_model() {
     status=$(classify_run "$rc" "$submitted" "$expected" "$markers" "$healthy" "$agent_failed")
     stop_vllm
     $PRESET run-info "$key" "$out/run-info.json" "$status"
-    if [[ ${PURGE_WEIGHTS:-0} == 1 ]]; then
-        rm -rf "$HF_HOME/hub/models--${hf_id//\//--}"
-    fi
+    finish_model "$hf_id"
     log "$key: $status (devmatrix код $rc), результаты в $out"
-    [[ $status == done ]]
+    [[ $status == done_partial ]] && log "$key: часть задач невалидна (см. invalid/ и run-info.json), их надо повторить"
+    [[ $status == done || $status == done_partial ]]
 }
 
 main() {

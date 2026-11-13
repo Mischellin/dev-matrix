@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -214,7 +216,8 @@ def test_agent_keeps_opencode_timeout_and_crash_with_generation(env, tmp_path) -
     ("markers", "agent_failed", "healthy", "status"),
     [
         (4, 4, 1, "agent_failed"),  # из 6 задач большинство — упавший OpenCode
-        (2, 2, 1, "done"),  # меньшинство: прогон жив, задачи в invalid/
+        (2, 2, 1, "done_partial"),  # меньшинство: прогон жив, задачи в invalid/
+        (0, 0, 1, "done"),
         (3, 2, 1, "vllm_died"),  # есть и маркеры мёртвого сервера
         (4, 4, 0, "vllm_died"),  # сервер мёртв в конце — важнее
     ],
@@ -302,3 +305,109 @@ def test_run_model_all_opencode_failed_with_healthy_vllm_is_agent_failed(env, tm
     r = _bash("run_model gpt-oss-20b; echo rc=$?", e)
     info = json.loads((tmp_path / "results" / "gpt-oss-20b" / "run-info.json").read_text())
     assert info["status"] == "agent_failed", r.stderr
+
+
+def test_agent_does_not_pass_secrets_to_opencode(env, tmp_path) -> None:
+    fake = Path(env["PATH"].split(":")[0])
+    _script(fake / "opencode", 'env >"$FAKE_ENV_DUMP"\n')
+    dump = tmp_path / "opencode.env"
+    secrets = {
+        "HF_TOKEN": "x", "HUGGING_FACE_HUB_TOKEN": "x", "VAST_API_KEY": "x", "GITHUB_TOKEN": "x",
+        "MY_SECRET": "x", "DB_PASSWORD": "x",
+    }  # fmt: skip
+    r = _run_agent(env, tmp_path, FAKE_ENV_DUMP=str(dump), **secrets)
+    assert r.returncode == 0, r.stderr
+    names = {ln.split("=", 1)[0] for ln in dump.read_text().splitlines()}
+    assert not names & set(secrets)
+    assert {"HOME", "XDG_CONFIG_HOME", "PATH"} <= names
+
+
+def _fake_privileged_env(env: dict[str, str], tmp_path: Path) -> Path:
+    """Поддельные id (root для `id -u`, 1000 для `id -u agent`), setpriv и chown: пишут вызовы в журнал."""
+    fake = Path(env["PATH"].split(":")[0])
+    log = tmp_path / "priv.log"
+    _script(fake / "id", '[[ $# -ge 2 ]] && echo 1000 || echo 0\n')
+    _script(fake / "setpriv", 'echo "setpriv $*" >>"$FAKE_PRIV_LOG"\nshift 4\nexec "$@"\n')
+    _script(fake / "chown", 'echo "chown $*" >>"$FAKE_PRIV_LOG"\n')
+    return log
+
+
+def test_agent_runs_opencode_as_unprivileged_user(env, tmp_path) -> None:
+    log = _fake_privileged_env(env, tmp_path)
+    r = _run_agent(env, tmp_path, FAKE_PRIV_LOG=str(log))
+    assert r.returncode == 0, r.stderr
+    lines = log.read_text().splitlines()
+    assert any(ln.startswith("chown -R agent: ") and str(tmp_path) in ln for ln in lines), lines
+    assert any(ln.startswith("setpriv --reuid=agent --regid=agent") and "--no-new-privs" in ln for ln in lines)
+    assert json.loads((tmp_path / "out" / "metrics" / "t1.json").read_text())["opencode_exit"] == 0
+
+
+def test_agent_stays_as_is_without_agent_user_or_when_not_root(env, tmp_path) -> None:
+    log = _fake_privileged_env(env, tmp_path)
+    assert _run_agent(env, tmp_path, FAKE_PRIV_LOG=str(log), AGENT_USER="").returncode == 0
+    assert not log.exists()
+    # не root: id -u даёт 1000 и без пользователя
+    _script(Path(env["PATH"].split(":")[0]) / "id", "echo 1000\n")
+    assert _run_agent(env, tmp_path, FAKE_PRIV_LOG=str(log)).returncode == 0
+    assert not log.exists()
+
+
+def _purge_env(env: dict[str, str], tmp_path: Path, **extra: str) -> dict[str, str]:
+    e = _prefetch_env(env, tmp_path, PURGE_WEIGHTS="1", **extra)
+    model_dir = tmp_path / "hf" / "hub" / "models--openai--gpt-oss-20b"
+    model_dir.mkdir(parents=True)
+    (model_dir / "weights").write_text("x")
+    return e
+
+
+def test_purge_weights_after_download_failure(env, tmp_path) -> None:
+    e = _purge_env(env, tmp_path)
+    _script(Path(env["PATH"].split(":")[0]) / "hf", "exit 1\n")
+    r = _bash("run_model gpt-oss-20b; echo rc=$?", e)
+    assert "rc=1" in r.stdout, r.stderr
+    assert not (tmp_path / "hf" / "hub" / "models--openai--gpt-oss-20b").exists()
+    info = json.loads((tmp_path / "results" / "gpt-oss-20b" / "run-info.json").read_text())
+    assert info["status"] == "download_failed"
+
+
+def test_purge_weights_after_vllm_failure(env, tmp_path) -> None:
+    e = _purge_env(env, tmp_path)
+    _script(Path(env["PATH"].split(":")[0]) / "vllm", "exit 1\n")
+    Path(env["FAKE_HEALTH"]).unlink()  # сервер не отвечает, процесс сразу умер
+    r = _bash("run_model gpt-oss-20b; echo rc=$?", e)
+    assert "rc=1" in r.stdout, r.stderr
+    assert not (tmp_path / "hf" / "hub" / "models--openai--gpt-oss-20b").exists()
+    info = json.loads((tmp_path / "results" / "gpt-oss-20b" / "run-info.json").read_text())
+    assert info["status"] == "vllm_failed"
+
+
+def test_sigterm_marks_current_model_interrupted(env, tmp_path) -> None:
+    e = _prefetch_env(env, tmp_path)
+    _script(Path(env["PATH"].split(":")[0]) / "devmatrix", 'if [[ $1 == list ]]; then echo t1; exit 0; fi\nexec sleep 60\n')
+    proc = subprocess.Popen(
+        ["bash", "-c", f'source "{BENCH}/bench.sh"\ntrap cleanup EXIT\ntrap "exit 130" INT TERM\nrun_model gpt-oss-20b'],
+        env=e, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+    )  # fmt: skip
+    info_path = tmp_path / "results" / "gpt-oss-20b" / "run-info.json"
+    for _ in range(100):
+        if info_path.exists() and (tmp_path / "results" / "gpt-oss-20b" / "devmatrix.log").exists():
+            break
+        time.sleep(0.1)
+    time.sleep(0.5)
+    proc.terminate()
+    proc.wait(timeout=30)
+    assert json.loads(info_path.read_text())["status"] == "interrupted"
+
+
+def test_download_passes_all_excludes_to_legacy_cli(env, tmp_path) -> None:
+    fake = Path(env["PATH"].split(":")[0])
+    log = tmp_path / "cli.log"
+    _script(fake / "huggingface-cli", 'echo "$*" >>"$FAKE_CLI_LOG"\n')
+    # без hf в PATH: подменяем command -v через PATH, где hf нет (системного hf в fake нет)
+    e = {**env, "MODELS_TOML": str(BENCH / "models.toml"), "FAKE_CLI_LOG": str(log)}
+    e["PATH"] = f"{fake}:/usr/bin:/bin"
+    if shutil.which("hf", path=e["PATH"]):
+        pytest.skip("в PATH есть hf")
+    r = subprocess.run([str(BENCH / "download.sh"), "gpt-oss-20b"], env=e, capture_output=True, text=True, check=False)
+    assert r.returncode == 0, r.stderr
+    assert log.read_text().strip() == "download openai/gpt-oss-20b --exclude original/* metal/*"

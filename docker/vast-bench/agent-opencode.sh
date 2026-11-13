@@ -7,6 +7,10 @@
 # $BENCH_OUT/metrics/<задача>.invalid и выходим с кодом 3. devmatrix код агента не смотрит и всё равно сохранит
 # отчёт, поэтому bench.sh по маркеру убирает такой отчёт из submissions/. Так же помечается упавший OpenCode
 # (код не 0 и не 124) без единого сгенерированного токена.
+# Изоляция: из-под root (в образе) OpenCode запускается от пользователя $AGENT_USER (по умолчанию agent) через
+# setpriv; ему отдаются только рабочая папка задачи ($PWD) и HOME. Скрытые тесты, эталоны и /results закрыты
+# правами 0700 для root (см. Dockerfile). Вне образа (нет пользователя или не root) запуск остаётся прежним.
+# Переменные с секретами (HF_TOKEN и всё, что похоже на токен/пароль/ключ) OpenCode не получает.
 set -uo pipefail
 
 # shellcheck source=env.sh
@@ -45,8 +49,29 @@ p0=$(counter vllm:prompt_tokens_total)
 g0=$(counter vllm:generation_tokens_total)
 c0=$(counter vllm:prompt_tokens_cached_total)
 
+# Имена переменных, которые нельзя отдавать агенту: известные токены и всё, что похоже на секрет.
+secret_unsets() {
+    local v
+    for v in HF_TOKEN HUGGING_FACE_HUB_TOKEN $(compgen -e | grep -iE 'TOKEN|SECRET|PASSWORD|PASSWD|API_?KEY|CREDENTIAL|PRIVATE_KEY'); do
+        printf '%s\n' "$v"
+    done | sort -u | sed 's/^/-u\n/'
+}
+
+# Приставка запуска: setpriv для непривилегированного пользователя, если есть кого и откуда ронять права.
+agent_prefix() {
+    local user=${AGENT_USER-agent}
+    [[ -n $user && $(id -u) == 0 ]] && id -u "$user" >/dev/null 2>&1 || return 0
+    chown -R "$user": "$PWD" "$BENCH_HOME"
+    printf '%s\n' setpriv "--reuid=$user" "--regid=$user" --init-groups --no-new-privs
+}
+
+env_unsets=()
+mapfile -t env_unsets < <(secret_unsets)
+prefix=()
+mapfile -t prefix < <(agent_prefix)
+
 # --auto: без интерактивных подтверждений прав (внутри одноразового контейнера); модель — provider/model.
-timeout -k 15 "$limit" opencode run \
+timeout -k 15 "$limit" "${prefix[@]}" env "${env_unsets[@]}" opencode run \
     --model "vllm/$BENCH_MODEL" --format json --auto --print-logs --dir "$PWD" \
     "$(cat "$prompt_file")" \
     >"$BENCH_OUT/opencode/$task.jsonl" 2>"$BENCH_OUT/opencode/$task.err"

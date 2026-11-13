@@ -4,3 +4,10 @@ __pycache__
 .pytest_cache
 _site
 devmatrix-results
+# Образ vast-bench: бенчмаркируемый агент не должен найти эталоны в файловой системе.
+# reference_solution в колесо и так не попадает (hatch_build.py), но COPY . положил бы их в /opt/dev-matrix.
+# tasks/*/hidden исключать нельзя: скрытые тесты нужны devmatrix при проверке и ставятся в колесо; от агента они
+# закрыты правами (см. docker/vast-bench/Dockerfile).
+tasks/*/reference_solution
+submissions
+tests
