@@ -17,7 +17,10 @@
 #    /opt/uv-tools (колесо без reference_solution); /opt/dev-matrix после установки удаляется;
 #  - /opt/uv-tools, /opt/uv-cache и /results закрыты правами 0700 для root, а OpenCode запускается от
 #    непривилегированного пользователя agent (agent-opencode.sh через setpriv), владеющего только рабочей папкой
-#    задачи и своим HOME. Проверяет devmatrix и пишет результаты root, агент их не видит.
+#    задачи и своим HOME на эту задачу (удаляется после неё). Проверяет devmatrix и пишет результаты root, агент их
+#    не видит. Проверка запускает код агента от root (scripts/runner.py не меняем): см. README, раздел про изоляцию.
+#  - pytest 8.3.4 стоит системно, и рядом лежит прогретый кэш uv только с pytest (/opt/agent-uv-cache, читается
+#    всеми): агент гоняет тесты без root-кэша /opt/uv-cache, где колесо со скрытыми тестами.
 # Агент по-прежнему читает всё остальное в образе (vLLM, исходники публичного репозитория не секрет), но не
 # решения и не скрытые тесты. Публичный репозиторий задач в сети доступен всем — защита от поиска по
 # файловой системе, не от доступа в интернет.
@@ -58,6 +61,9 @@ RUN curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-l
 # hf_transfer ускоряет скачивание весов (если пакета нет — bench.sh работает без него).
 RUN uv pip install --system hf_transfer || echo "hf_transfer не установлен, скачивание будет обычным"
 
+# pytest для агента: `python -m pytest` на системном Python vLLM (версия та же, что у runner).
+RUN uv pip install --system "pytest==8.3.4" && python3 -m pytest --version
+
 # Парсеры tool-call/reasoning North-Mini-Code (cohere_command4) работают через cohere_melody (по карточке модели).
 RUN uv pip install --system "cohere_melody>=0.9.0" \
     && python3 -c "import cohere_melody"
@@ -80,7 +86,12 @@ RUN uv tool install --python 3.12 /opt/dev-matrix \
     && uv run --no-project --python 3.12 --with pytest==8.3.4 python -c "import pytest" \
     && python3 -c "import tomllib" \
     # исходники не нужны: пакет (с hidden, без reference_solution) уже установлен в /opt/uv-tools
-    && rm -rf /opt/dev-matrix
+    && rm -rf /opt/dev-matrix \
+    # прогретый кэш uv только с pytest для агента (отдельный от /opt/uv-cache, где колесо с hidden); агент копирует его
+    # в свой HOME на задачу, окружения-симлинки не нужны
+    && UV_CACHE_DIR=/opt/agent-uv-cache uv run --no-project --python 3.12 --with pytest==8.3.4 python -c "import pytest" \
+    && find /opt/agent-uv-cache -maxdepth 1 -name 'environments*' -exec rm -rf {} + \
+    && chmod -R a+rX /opt/agent-uv-cache /opt/uv-python
 
 COPY docker/vast-bench/ /opt/vast-bench/
 RUN chmod +x /opt/vast-bench/*.sh /opt/vast-bench/preset.py \
