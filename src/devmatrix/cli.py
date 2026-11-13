@@ -245,7 +245,7 @@ def cmd_check(args: argparse.Namespace) -> int:
         return 1
     files = sorted(f for f in args.dir.rglob("*") if f.is_file() or f.is_symlink())
     bad = 0
-    skipped = 0
+    skipped = checked = 0
     for f in files:
         rel = f.relative_to(args.dir)
         if rel.as_posix() == "README.md":
@@ -253,6 +253,7 @@ def cmd_check(args: argparse.Namespace) -> int:
         if f.is_symlink() or f.suffix != ".json" or len(rel.parts) != 2:
             print(f"❌ {f}: допустимы только submissions/<модель>/<задача>.json")
             bad += 1
+            checked += 1
             continue
         # Файл, уже лежащий в базовой ветке без изменений, проверили при его добавлении. Иначе после
         # любой правки задания (меняется tasks_hash) красными стали бы все новые PR из-за старых отчётов.
@@ -260,11 +261,12 @@ def cmd_check(args: argparse.Namespace) -> int:
         if base is not None and (base / rel).is_file() and (base / rel).read_bytes() == f.read_bytes():
             skipped += 1
             continue
+        checked += 1
         errs = validate_report(f)
         for e in errs:
             print(f"❌ {f}: {e}")
         bad += bool(errs)
-    print(f"Проверено файлов: {len(files) - skipped}, без изменений относительно базы: {skipped}, с ошибками: {bad}")
+    print(f"Проверено файлов: {checked}, без изменений относительно базы: {skipped}, с ошибками: {bad}")
     return 1 if bad else 0
 
 

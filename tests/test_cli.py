@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import sys
+
+import pytest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -154,7 +156,7 @@ def test_unchanged_old_report_is_skipped_but_new_stale_one_is_not(tmp_path) -> N
     import shutil
 
     pr, base = tmp_path / "pr", tmp_path / "base"
-    old = _report(pr, tasks_hash="0" * 64)
+    _report(pr, tasks_hash="0" * 64)
     shutil.copytree(pr, base)  # тот же файл уже лежит в базовой ветке
     args = type("A", (), {"dir": pr, "base": base})()
     assert cli.cmd_check(args) == 0
@@ -164,4 +166,29 @@ def test_unchanged_old_report_is_skipped_but_new_stale_one_is_not(tmp_path) -> N
     assert cli.cmd_check(args) == 1
     # а без --base проверяется всё, включая старый
     assert cli.cmd_check(type("A", (), {"dir": base})()) == 1
-    assert old.exists()
+
+
+def test_changed_old_report_is_not_skipped(tmp_path) -> None:
+    """Пропуск только при побайтовом совпадении с базой: тот же путь с другим содержимым проверяется."""
+    import shutil
+
+    pr, base = tmp_path / "pr", tmp_path / "base"
+    p = _report(pr, tasks_hash="0" * 64)
+    shutil.copytree(pr, base)
+    p.write_text(p.read_text(encoding="utf-8") + "\n", encoding="utf-8")  # лишний перевод строки
+    assert cli.cmd_check(type("A", (), {"dir": pr, "base": base})()) == 1
+
+
+def test_base_option_is_wired_in_cli(tmp_path, capsys) -> None:
+    import shutil
+
+    pr, base = tmp_path / "pr", tmp_path / "base"
+    _report(pr, tasks_hash="0" * 64)
+    shutil.copytree(pr, base)
+    with pytest.raises(SystemExit) as ok:
+        cli.main(["check-submissions", str(pr), "--base", str(base)])
+    assert ok.value.code == 0
+    with pytest.raises(SystemExit) as bad:
+        cli.main(["check-submissions", str(pr)])
+    assert bad.value.code == 1
+    assert "без изменений относительно базы" in capsys.readouterr().out

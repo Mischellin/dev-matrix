@@ -428,7 +428,7 @@
         suite = ((await fetch('tasks/manifest.json').then(r => r.json())).tasks || []).length;
       } catch (e) {}
       // Сводка по моделям из submissions/: устаревшие прогоны (задача с тех пор менялась) не считаются.
-      const byModel = {};
+      const byModel = Object.create(null); // имена вроде constructor или __proto__ не должны попадать в прототип
       (benchmarksData || []).forEach(t => (t.runs || []).forEach(r => {
         if (r.outdated) return;
         const m = byModel[r.model_name] || (byModel[r.model_name] = {provider: r.provider, ok: 0, n: 0, tests: 0, all: 0, min: 0});
