@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "tenant-11-scoped-listing",
+  "model": "gpt-oss-20b",
+  "provider": "vLLM self-hosted",
+  "passed": false,
+  "passed_tests": 4,
+  "total_tests": 16,
+  "agent_seconds": 4.9,
+  "tokens": 32324,
+  "cost_usd": 0.0007,
+  "tasks_hash": "e682ed5f08a6dd617a24b2d7183d48fda0b392e14716d46242905f6cc8a6275d",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-13T00:59:21Z",
+  "claimed": true
+}
