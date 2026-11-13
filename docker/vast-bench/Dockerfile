@@ -44,6 +44,9 @@ RUN curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-l
 # hf_transfer ускоряет скачивание весов (если пакета нет — bench.sh работает без него).
 RUN uv pip install --system hf_transfer || echo "hf_transfer не установлен, скачивание будет обычным"
 
+# Парсеры tool-call/reasoning North-Mini-Code (cohere_command4) работают через cohere_melody (по карточке модели).
+RUN uv pip install --system "cohere_melody>=0.9.0" || echo "cohere_melody не установлен: пресет north-mini-code не заработает"
+
 # CLI devmatrix: отдельное окружение на Python 3.12 от uv, чтобы не трогать Python vLLM.
 COPY . /opt/dev-matrix
 RUN uv tool install --python 3.12 /opt/dev-matrix \
