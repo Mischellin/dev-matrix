@@ -11,10 +11,20 @@ source "$BENCH_DIR/env.sh"
 key=${1:?нужен ключ пресета}
 PRESET="python3 $BENCH_DIR/preset.py"
 hf_id=$($PRESET get "$key" hf_id) || exit 2
-args=()
+pats=()
 while IFS= read -r pat; do
-    [[ -n $pat ]] && args+=(--exclude "$pat")
+    [[ -n $pat ]] && pats+=("$pat")
 done < <($PRESET get "$key" download_exclude)
+# hf принимает --exclude несколько раз, а старый huggingface-cli хранит только последний: у него все маски
+# идут после одного --exclude.
+args=()
+if ((${#pats[@]})); then
+    if command -v hf >/dev/null 2>&1; then
+        for pat in "${pats[@]}"; do args+=(--exclude "$pat"); done
+    else
+        args+=(--exclude "${pats[@]}")
+    fi
+fi
 if command -v hf >/dev/null 2>&1; then cli=hf; else cli=huggingface-cli; fi
 printf '[%s] скачиваю %s\n' "$(date -u +%H:%M:%S)" "$hf_id" >&2
 exec "$cli" download "$hf_id" "${args[@]}" >/dev/null

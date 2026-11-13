@@ -138,3 +138,18 @@ def test_run_info_image_digest_falls_back_to_revision(tmp_path, monkeypatch) -> 
     monkeypatch.setenv("IMAGE_DIGEST", "sha256:dead")
     preset.run_info("gpt-oss-20b", path, "done")
     assert json.loads(path.read_text())["image_digest"] == "sha256:dead"
+
+
+def test_dockerignore_hides_reference_solutions_but_keeps_hidden_tests() -> None:
+    lines = {
+        ln.strip() for ln in (ROOT / ".dockerignore").read_text(encoding="utf-8").splitlines()
+        if ln.strip() and not ln.startswith("#")
+    }  # fmt: skip
+    assert {"tasks/*/reference_solution", "submissions", "tests"} <= lines
+    # hidden нужен devmatrix при проверке и едет в колесо: от агента его закрывают права, а не контекст сборки
+    assert "tasks/*/hidden" not in lines
+    text = (BENCH / "Dockerfile").read_text(encoding="utf-8")
+    assert "rm -rf /opt/dev-matrix" in text
+    assert "chmod 700 /opt/uv-tools" in text
+    assert 'python3 -c "import cohere_melody"' in text
+    assert "|| echo" not in "\n".join(ln for ln in text.splitlines() if "cohere_melody" in ln)

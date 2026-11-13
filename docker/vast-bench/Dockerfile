@@ -6,7 +6,21 @@
 #
 # Тег vLLM: проверены по Docker Hub v0.31.0, v0.32.0, v0.33.0 (существуют); архитектуры из models.toml
 # (GptOss, Mistral3, Qwen3_5, Qwen3_5Moe, Cohere2Moe) и парсеры найдены в исходниках v0.33.0.
-# Для более новых архитектур поднимите тег: --build-arg VLLM_TAG=<тег>. Сборка образа не запускалась.
+# Для более новых архитектур поднимите тег: --build-arg VLLM_TAG=<тег>.
+# Образ собирает workflow vast-bench-image.yml. Первые реальные прогоны шли на образе из этого Dockerfile с тегом
+# vast-bench-rc1 (до пина mistral_common и правок models.toml: их тогда внесли руками на инстансе); сборки rc2/rc3
+# и новее содержат всё это в Dockerfile и models.toml.
+#
+# Защита эталонов. Агент (OpenCode) читает файловую систему контейнера, поэтому:
+#  - .dockerignore не пускает в контекст tasks/*/reference_solution, submissions и tests;
+#  - скрытые тесты (tasks/*/hidden) devmatrix нужны при проверке, они лежат в установленном пакете
+#    /opt/uv-tools (колесо без reference_solution); /opt/dev-matrix после установки удаляется;
+#  - /opt/uv-tools, /opt/uv-cache и /results закрыты правами 0700 для root, а OpenCode запускается от
+#    непривилегированного пользователя agent (agent-opencode.sh через setpriv), владеющего только рабочей папкой
+#    задачи и своим HOME. Проверяет devmatrix и пишет результаты root, агент их не видит.
+# Агент по-прежнему читает всё остальное в образе (vLLM, исходники публичного репозитория не секрет), но не
+# решения и не скрытые тесты. Публичный репозиторий задач в сети доступен всем — защита от поиска по
+# файловой системе, не от доступа в интернет.
 ARG VLLM_TAG=v0.33.0
 FROM vllm/vllm-openai:${VLLM_TAG}
 
@@ -45,14 +59,15 @@ RUN curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-l
 RUN uv pip install --system hf_transfer || echo "hf_transfer не установлен, скачивание будет обычным"
 
 # Парсеры tool-call/reasoning North-Mini-Code (cohere_command4) работают через cohere_melody (по карточке модели).
-RUN uv pip install --system "cohere_melody>=0.9.0" || echo "cohere_melody не установлен: пресет north-mini-code не заработает"
+RUN uv pip install --system "cohere_melody>=0.9.0" \
+    && python3 -c "import cohere_melody"
 
 # Базовый образ vllm/vllm-openai:v0.33.0 несёт mistral_common 1.13.0, несовместимый с этим vLLM:
 # vllm/parser/mistral.py вызывает GrammarFactory.get_lark_from_jinja() без нового обязательного аргумента
 # force_tool_names, и каждый chat-запрос с tools к Devstral отвечает 400. Закрепляем 1.12.0.
 # Убрать пин, когда vLLM начнёт передавать force_tool_names (проверять при подъёме VLLM_TAG).
 # uv pip check печатает конфликты требований, если пин что-то нарушил (не валит сборку: в базовом образе
-# конфликты могут быть и без нас, смотрите вывод сборки). Сборка образа не запускалась.
+# конфликты могут быть и без нас, смотрите вывод сборки).
 RUN uv pip install --system "mistral_common==1.12.0" \
     && { uv pip check --system || echo "ВНИМАНИЕ: uv pip check нашёл конфликты после пина mistral_common"; }
 
@@ -63,7 +78,9 @@ RUN uv tool install --python 3.12 /opt/dev-matrix \
     && devmatrix list | head -3 \
     # runner проверяет задачи через uv run --with pytest: прогреваем кэш, чтобы не качать на инстансе
     && uv run --no-project --python 3.12 --with pytest==8.3.4 python -c "import pytest" \
-    && python3 -c "import tomllib"
+    && python3 -c "import tomllib" \
+    # исходники не нужны: пакет (с hidden, без reference_solution) уже установлен в /opt/uv-tools
+    && rm -rf /opt/dev-matrix
 
 COPY docker/vast-bench/ /opt/vast-bench/
 RUN chmod +x /opt/vast-bench/*.sh /opt/vast-bench/preset.py \
@@ -72,7 +89,10 @@ RUN chmod +x /opt/vast-bench/*.sh /opt/vast-bench/preset.py \
         "$VLLM_TAG" "$IMAGE_REVISION" "$UV_PYTHON_INSTALL_DIR" "$UV_PYTHON_PREFERENCE" >/opt/vast-bench/image.env \
     && ln -s /opt/vast-bench/bench.sh /usr/local/bin/bench.sh \
     && ln -s /opt/vast-bench/agent-opencode.sh /usr/local/bin/agent-opencode.sh \
-    && mkdir -p /workspace /results
+    && mkdir -p /workspace /results \
+    # непривилегированный пользователь для OpenCode; скрытые тесты и результаты закрыты от него
+    && useradd --create-home --home-dir /home/agent --shell /bin/bash agent \
+    && chmod 700 /opt/uv-tools /opt/uv-cache /results
 
 WORKDIR /workspace
 # Базовый образ задаёт ENTRYPOINT ["vllm", "serve"], его заменяем.
