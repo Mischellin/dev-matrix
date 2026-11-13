@@ -69,12 +69,12 @@ How accurately does each model catch genuine bugs (P0/P1) without false-positive
 
 Tested under identical isolated runtime conditions with full hidden test suites.
 
-| Model | Tasks passed | Hidden tests passed |
+| Model | Tasks passed | Tests passed |
 | :--- | :---: | :---: |
 | **deepseek-flash** | 13/13 | 222/222 |
 | **deepseek-v4-pro** | 13/13 | 222/222 |
 
-_Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Statements of three tasks were clarified on 2026-11-13, so runs made before that date are not comparable._
+_Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task and are not counted in the summary. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks && python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._
 
 | Task | Model | Status | Tests | Time | Tokens | API Cost |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |

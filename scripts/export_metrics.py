@@ -127,25 +127,50 @@ MODELS_INFO = {
 
 # Результаты прогонов по опубликованным задачам из tasks/ берутся из submissions/<модель>/<задача>.json
 # (отчёты `devmatrix run`, поля заявлены авторами: токены, цена и время не проверяются).
-SUBMISSIONS_DIR = Path(__file__).resolve().parent.parent / "submissions"
+ROOT = Path(__file__).resolve().parent.parent
+SUBMISSIONS_DIR = ROOT / "submissions"
 
 
-def build_benchmark_runs(submissions_dir: Path = SUBMISSIONS_DIR) -> list[dict[str, Any]]:
-    """Сворачивает отчёты из submissions/ в список {id: задача, runs: [...]} для страницы и README."""
+def _current_task_hash(task_id: str) -> str | None:
+    """Хеш условия и тестов задачи на текущем main; None, если задачи нет."""
+    sys.path.insert(0, str(ROOT / "src"))
+    from devmatrix import cli
+
+    try:
+        return cli.task_hash(task_id)
+    except OSError:
+        return None
+
+
+def build_benchmark_runs(
+    submissions_dir: Path = SUBMISSIONS_DIR, hash_of=_current_task_hash
+) -> list[dict[str, Any]]:
+    """Сворачивает отчёты из submissions/ в список {id: задача, runs: [...]} для страницы и README.
+
+    Отчёт, полученный на старой версии задачи (tasks_hash не совпадает с текущим), помечается outdated:
+    он остаётся в списке, но в сводку по моделям не входит.
+    """
     by_task: dict[str, list[dict[str, Any]]] = {}
     for f in sorted(submissions_dir.glob("*/*.json")):
-        r = json.loads(f.read_text(encoding="utf-8"))
-        by_task.setdefault(r["task_id"], []).append({
-            "model_name": r["model"],
-            "provider": r.get("provider"),
-            "status": "PASS" if r["passed"] else "FAIL",
-            "passed_tests": r["passed_tests"],
-            "total_tests": r["total_tests"],
-            "duration_min": round(r["agent_seconds"] / 60, 1) if r.get("agent_seconds") is not None else None,
-            "total_tokens": r.get("tokens"),
-            "cost_usd": r.get("cost_usd"),
-            "claimed": bool(r.get("claimed", True)),
-        })
+        try:
+            r = json.loads(f.read_text(encoding="utf-8"))
+            run = {
+                "model_name": r["model"],
+                "provider": r.get("provider"),
+                "status": "PASS" if r["passed"] else "FAIL",
+                "passed_tests": r["passed_tests"],
+                "total_tests": r["total_tests"],
+                "duration_min": round(r["agent_seconds"] / 60, 1) if r.get("agent_seconds") is not None else None,
+                "total_tokens": r.get("tokens"),
+                "cost_usd": r.get("cost_usd"),
+                # Всё из submissions/ заявлено самими авторами, поэтому флаг не берём из файла.
+                "claimed": True,
+                "outdated": r.get("tasks_hash") != hash_of(r["task_id"]),
+            }
+            task_id = r["task_id"]
+        except (KeyError, TypeError, ValueError) as e:
+            raise SystemExit(f"{f}: неверный отчёт ({type(e).__name__}: {e})") from e
+        by_task.setdefault(task_id, []).append(run)
     return [{"id": task_id, "runs": runs} for task_id, runs in sorted(by_task.items())]
 
 

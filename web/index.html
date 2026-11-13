@@ -417,6 +417,10 @@
       }
       const runsById = Object.fromEntries((benchmarksData || []).map(t => [t.id, t.runs || []]));
 
+      // Названия моделей приходят из PR с результатами, поэтому в разметку попадают только экранированными.
+      const esc = v => String(v).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+      const fmtTok = n => n >= 1000000 ? (n / 1000000).toFixed(1) + 'M tok' : Math.round(n / 1000) + 'k tok';
+
       tasks.forEach(task => {
         const card = document.createElement('div');
         card.className = 'glass-card rounded-2xl p-5 space-y-4 flex flex-col justify-between';
@@ -425,8 +429,8 @@
         let rowsHtml = runs.map(r => `
           <div class="flex items-center justify-between py-2 border-b border-slate-800/60 last:border-0 text-xs">
             <div>
-              <div class="font-semibold text-slate-200">${r.model_name}</div>
-              <div class="text-slate-500">${r.duration_min == null ? '—' : r.duration_min + ' min'} · ${r.total_tokens == null ? '—' : (r.total_tokens/1000000).toFixed(1) + 'M tok'}${r.claimed ? ' · claimed by author' : ''}</div>
+              <div class="font-semibold text-slate-200">${esc(r.model_name)}${r.outdated ? ' <span class="text-amber-400">⚠ outdated</span>' : ''}</div>
+              <div class="text-slate-500">${r.duration_min == null ? '—' : r.duration_min + ' min'} · ${r.total_tokens == null ? '—' : fmtTok(r.total_tokens)}${r.claimed ? ' · claimed by author' : ''}</div>
             </div>
             <div class="text-right">
               <span class="font-mono font-bold ${r.status === 'PASS' ? 'text-emerald-400' : 'text-rose-400'}">${r.passed_tests}/${r.total_tests} ${r.status}</span>

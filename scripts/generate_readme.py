@@ -86,6 +86,8 @@ def build_readme() -> str:
     task_rows.append("| Task | Model | Status | Tests | Time | Tokens | API Cost |")
     task_rows.append("| :--- | :--- | :---: | :---: | :---: | :---: | :---: |")
     per_model: dict[str, list[int]] = {}
+    manifest_path = ROOT / "tasks" / "manifest.json"
+    suite_size = len(json.loads(manifest_path.read_text(encoding="utf-8")).get("tasks", [])) if manifest_path.exists() else 0
     for t in benchmarks:
         t_id = t["id"]
         for r in t["runs"]:
@@ -94,7 +96,11 @@ def build_readme() -> str:
             tokens = r.get("total_tokens")
             tok_str = "—" if tokens is None else (f"{tokens / 1_000_000:.1f}M" if tokens >= 1_000_000 else f"{tokens / 1_000:.0f}k")
             cost_str = f"${r['cost_usd']:.2f}" if r.get("cost_usd") is not None else "—"
+            if r.get("outdated"):
+                status_badge += " ⚠️ outdated"
             task_rows.append(f"| `{t_id}` | **{r['model_name']}** | {status_badge} | {r['passed_tests']}/{r['total_tests']} | {time_str} | {tok_str} | {cost_str} |")
+            if r.get("outdated"):
+                continue
             stat = per_model.setdefault(r["model_name"], [0, 0, 0, 0])
             stat[0] += r["status"] == "PASS"
             stat[1] += 1
@@ -104,14 +110,16 @@ def build_readme() -> str:
     if not benchmarks:
         benchmark_table = "_Per-task run results will be published after the public tasks are evaluated._"
     else:
-        summary_rows = ["| Model | Tasks passed | Hidden tests passed |", "| :--- | :---: | :---: |"]
-        for name, (ok, n, tests_ok, tests_all) in sorted(per_model.items(), key=lambda kv: (-kv[1][0] / kv[1][1], -kv[1][2] / kv[1][3], kv[0])):
-            summary_rows.append(f"| **{name}** | {ok}/{n} | {tests_ok}/{tests_all} |")
+        summary_rows = ["| Model | Tasks passed | Tests passed |", "| :--- | :---: | :---: |"]
+        # Рейтинг по числу пройденных задач из всего пула: частичная отправка не должна обгонять полную.
+        for name, (ok, n, tests_ok, tests_all) in sorted(per_model.items(), key=lambda kv: (-kv[1][0], -kv[1][2], kv[0])):
+            summary_rows.append(f"| **{name}** | {ok}/{suite_size or n} | {tests_ok}/{tests_all} |")
         benchmark_table = (
             "\n".join(summary_rows)
             + "\n\n_Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter (\"claimed by author\"). "
-            "The hidden tests are public, so this is not a trusted ranking. Statements of three tasks were clarified on 2026-11-13, "
-            "so runs made before that date are not comparable._\n\n"
+            "The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task "
+            "and are not counted in the summary. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks "
+            "&& python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._\n\n"
             + benchmark_table
         )
 
