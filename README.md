@@ -75,13 +75,16 @@ Tested under identical isolated runtime conditions with full hidden test suites.
 | **deepseek-v4-pro** | 13/13 | 222/222 |
 | **devstral-small-2-24b-fp8** | 7/13 | 156/161 |
 | **gpt-oss-20b** | 7/13 | 114/161 |
-| **Kimi for Coding** | 3/13 | 53/53 |
+| **Kimi for Coding** | 6/13 | 114/114 |
+| **MiniMax M3.1 Flash** | 5/13 | 112/114 |
+| **Kimi K3.1 Pro** | 5/13 | 111/114 |
+| **Iceman Free** | 4/13 | 111/114 |
+| **Kimi K3** | 4/13 | 111/114 |
+| **GLM 5.3** | 4/13 | 110/114 |
+| **Nemotron 3.5 Lightning Free** | 3/13 | 88/114 |
+| **GLM 5.3 Flash** | 3/13 | 85/114 |
+| **GigaChat 3.5 Ultra** | 3/13 | 61/114 |
 | **Kimi for Coding HighSpeed** | 2/13 | 52/53 |
-| **MiniMax M3.1 Flash** | 2/13 | 51/53 |
-| **GLM 5.3** | 2/13 | 50/53 |
-| **Kimi K3.1 Pro** | 2/13 | 50/53 |
-| **GigaChat 3.5 Ultra** | 2/13 | 40/53 |
-| **GLM 5.3 Flash** | 0/13 | 24/53 |
 
 _Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task and are not counted in the summary. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks && python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._
 
@@ -94,12 +97,24 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `algo-03-range-merger` | **GLM 5.3** | ✅ PASS | 27/27 | 8.3m | — | — |
 | `algo-03-range-merger` | **GLM 5.3 Flash** | ❌ FAIL | 1/27 | 30.0m | — | — |
 | `algo-03-range-merger` | **gpt-oss-20b** | ✅ PASS | 27/27 | 0.3m | 72k | $0.00 |
+| `algo-03-range-merger` | **Iceman Free** | ✅ PASS | 27/27 | 0.9m | — | — |
 | `algo-03-range-merger` | **Kimi for Coding** | ✅ PASS | 27/27 | 1.2m | — | — |
 | `algo-03-range-merger` | **Kimi for Coding HighSpeed** | ✅ PASS | 27/27 | 3.0m | — | — |
+| `algo-03-range-merger` | **Kimi K3** | ✅ PASS | 27/27 | 9.1m | — | — |
 | `algo-03-range-merger` | **Kimi K3.1 Pro** | ✅ PASS | 27/27 | 10.0m | — | — |
 | `algo-03-range-merger` | **MiniMax M3.1 Flash** | ✅ PASS | 27/27 | 3.7m | — | — |
+| `algo-03-range-merger` | **Nemotron 3.5 Lightning Free** | ✅ PASS | 27/27 | 1.2m | — | — |
 | `arch-04-tag-registry` | **deepseek-flash** | ✅ PASS | 8/8 | 1.2m | — | — |
 | `arch-04-tag-registry` | **deepseek-v4-pro** | ✅ PASS | 8/8 | 2.6m | — | — |
+| `arch-04-tag-registry` | **GigaChat 3.5 Ultra** | ✅ PASS | 8/8 | 2.4m | — | — |
+| `arch-04-tag-registry` | **GLM 5.3** | ✅ PASS | 8/8 | 3.2m | — | — |
+| `arch-04-tag-registry` | **GLM 5.3 Flash** | ✅ PASS | 8/8 | 1.4m | — | — |
+| `arch-04-tag-registry` | **Iceman Free** | ✅ PASS | 8/8 | 1.0m | — | — |
+| `arch-04-tag-registry` | **Kimi for Coding** | ✅ PASS | 8/8 | 1.0m | — | — |
+| `arch-04-tag-registry` | **Kimi K3** | ✅ PASS | 8/8 | 1.0m | — | — |
+| `arch-04-tag-registry` | **Kimi K3.1 Pro** | ✅ PASS | 8/8 | 4.6m | — | — |
+| `arch-04-tag-registry` | **MiniMax M3.1 Flash** | ✅ PASS | 8/8 | 2.6m | — | — |
+| `arch-04-tag-registry` | **Nemotron 3.5 Lightning Free** | ✅ PASS | 8/8 | 2.2m | — | — |
 | `auth-07-claim-roles` | **deepseek-flash** | ✅ PASS | 14/14 | 1.1m | — | — |
 | `auth-07-claim-roles` | **deepseek-v4-pro** | ✅ PASS | 14/14 | 2.4m | — | — |
 | `auth-07-claim-roles` | **devstral-small-2-24b-fp8** | ✅ PASS | 14/14 | 3.0m | 193k | $0.03 |
@@ -127,14 +142,35 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `infra-05-k8s-pod-admission` | **GLM 5.3** | ❌ FAIL | 17/20 | 7.8m | — | — |
 | `infra-05-k8s-pod-admission` | **GLM 5.3 Flash** | ❌ FAIL | 19/20 | 11.4m | — | — |
 | `infra-05-k8s-pod-admission` | **gpt-oss-20b** | ❌ FAIL | 0/20 | 1.2m | 135k | $0.01 |
+| `infra-05-k8s-pod-admission` | **Iceman Free** | ❌ FAIL | 18/20 | 1.9m | — | — |
 | `infra-05-k8s-pod-admission` | **Kimi for Coding** | ✅ PASS | 20/20 | 3.2m | — | — |
 | `infra-05-k8s-pod-admission` | **Kimi for Coding HighSpeed** | ❌ FAIL | 19/20 | 11.7m | — | — |
+| `infra-05-k8s-pod-admission` | **Kimi K3** | ❌ FAIL | 18/20 | 3.1m | — | — |
 | `infra-05-k8s-pod-admission` | **Kimi K3.1 Pro** | ❌ FAIL | 17/20 | 20.2m | — | — |
 | `infra-05-k8s-pod-admission` | **MiniMax M3.1 Flash** | ❌ FAIL | 18/20 | 24.0m | — | — |
+| `infra-05-k8s-pod-admission` | **Nemotron 3.5 Lightning Free** | ❌ FAIL | 17/20 | 9.3m | — | — |
 | `obs-02-query-redactor` | **deepseek-flash** | ✅ PASS | 37/37 | 2.4m | — | — |
 | `obs-02-query-redactor` | **deepseek-v4-pro** | ✅ PASS | 37/37 | 15.0m | — | — |
+| `obs-02-query-redactor` | **GigaChat 3.5 Ultra** | ❌ FAIL | 7/37 | 0.6m | — | — |
+| `obs-02-query-redactor` | **GLM 5.3** | ❌ FAIL | 36/37 | 26.2m | — | — |
+| `obs-02-query-redactor` | **GLM 5.3 Flash** | ✅ PASS | 37/37 | 19.0m | — | — |
+| `obs-02-query-redactor` | **Iceman Free** | ❌ FAIL | 36/37 | 4.0m | — | — |
+| `obs-02-query-redactor` | **Kimi for Coding** | ✅ PASS | 37/37 | 10.1m | — | — |
+| `obs-02-query-redactor` | **Kimi K3** | ❌ FAIL | 36/37 | 15.3m | — | — |
+| `obs-02-query-redactor` | **Kimi K3.1 Pro** | ✅ PASS | 37/37 | 26.9m | — | — |
+| `obs-02-query-redactor` | **MiniMax M3.1 Flash** | ✅ PASS | 37/37 | 14.1m | — | — |
+| `obs-02-query-redactor` | **Nemotron 3.5 Lightning Free** | ❌ FAIL | 17/37 | 13.7m | — | — |
 | `onec-06-payment-allocator` | **deepseek-flash** | ✅ PASS | 16/16 | 1.5m | — | — |
 | `onec-06-payment-allocator` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 3.9m | — | — |
+| `onec-06-payment-allocator` | **GigaChat 3.5 Ultra** | ❌ FAIL | 6/16 | 1.7m | — | — |
+| `onec-06-payment-allocator` | **GLM 5.3** | ✅ PASS | 16/16 | 5.6m | — | — |
+| `onec-06-payment-allocator` | **GLM 5.3 Flash** | ✅ PASS | 16/16 | 7.5m | — | — |
+| `onec-06-payment-allocator` | **Iceman Free** | ✅ PASS | 16/16 | 1.3m | — | — |
+| `onec-06-payment-allocator` | **Kimi for Coding** | ✅ PASS | 16/16 | 3.0m | — | — |
+| `onec-06-payment-allocator` | **Kimi K3** | ✅ PASS | 16/16 | 3.4m | — | — |
+| `onec-06-payment-allocator` | **Kimi K3.1 Pro** | ✅ PASS | 16/16 | 8.5m | — | — |
+| `onec-06-payment-allocator` | **MiniMax M3.1 Flash** | ✅ PASS | 16/16 | 4.0m | — | — |
+| `onec-06-payment-allocator` | **Nemotron 3.5 Lightning Free** | ❌ FAIL | 13/16 | 5.4m | — | — |
 | `scrub-09-metadata-scrubber` | **deepseek-flash** | ✅ PASS | 15/15 | 1.3m | — | — |
 | `scrub-09-metadata-scrubber` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 6.0m | — | — |
 | `scrub-09-metadata-scrubber` | **devstral-small-2-24b-fp8** | ✅ PASS | 15/15 | 14.8m | 1.5M | $0.14 |
@@ -146,10 +182,13 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `sec-01-clock-skew` | **GLM 5.3** | ✅ PASS | 6/6 | 5.2m | — | — |
 | `sec-01-clock-skew` | **GLM 5.3 Flash** | ❌ FAIL | 4/6 | 30.0m | — | — |
 | `sec-01-clock-skew` | **gpt-oss-20b** | ✅ PASS | 6/6 | 0.3m | 90k | $0.00 |
+| `sec-01-clock-skew` | **Iceman Free** | ✅ PASS | 6/6 | 1.2m | — | — |
 | `sec-01-clock-skew` | **Kimi for Coding** | ✅ PASS | 6/6 | 1.4m | — | — |
 | `sec-01-clock-skew` | **Kimi for Coding HighSpeed** | ✅ PASS | 6/6 | 1.5m | — | — |
+| `sec-01-clock-skew` | **Kimi K3** | ✅ PASS | 6/6 | 2.4m | — | — |
 | `sec-01-clock-skew` | **Kimi K3.1 Pro** | ✅ PASS | 6/6 | 7.7m | — | — |
 | `sec-01-clock-skew` | **MiniMax M3.1 Flash** | ✅ PASS | 6/6 | 7.1m | — | — |
+| `sec-01-clock-skew` | **Nemotron 3.5 Lightning Free** | ✅ PASS | 6/6 | 1.1m | — | — |
 | `tenant-11-scoped-listing` | **deepseek-flash** | ✅ PASS | 16/16 | 1.1m | — | — |
 | `tenant-11-scoped-listing` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 4.1m | — | — |
 | `tenant-11-scoped-listing` | **devstral-small-2-24b-fp8** | ✅ PASS | 16/16 | 5.7m | 414k | $0.05 |
