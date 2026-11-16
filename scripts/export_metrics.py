@@ -143,13 +143,21 @@ def _current_task_hash(task_id: str) -> str | None:
 
 
 def build_benchmark_runs(
-    submissions_dir: Path = SUBMISSIONS_DIR, hash_of=_current_task_hash
+    submissions_dir: Path = SUBMISSIONS_DIR,
+    hash_of=_current_task_hash,
+    overrides: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     """Сворачивает отчёты из submissions/ в список {id: задача, runs: [...]} для страницы и README.
 
     Отчёт, полученный на старой версии задачи (tasks_hash не совпадает с текущим), помечается outdated:
     он остаётся в списке, но в сводку по моделям не входит.
+
+    Переквалификация прогонов по итогам аудита задаётся в data/run_overrides.json
+    (см. load_run_overrides): ключ «<модель из отчёта>/<task_id>» → {"status": "PASS"|"FAIL"|"INVALID",
+    "note": "…"}. INVALID означает отозванный прогон (например, грязный пасс с нарушением доступа
+    к скрытым данным): он остаётся в списке, но в сводку по моделям не входит, как outdated.
     """
+    run_overrides = (overrides or {}).get("runs", {})
     by_task: dict[str, list[dict[str, Any]]] = {}
     for f in sorted(submissions_dir.glob("*/*.json")):
         try:
@@ -170,8 +178,22 @@ def build_benchmark_runs(
             task_id = r["task_id"]
         except (KeyError, TypeError, ValueError) as e:
             raise SystemExit(f"{f}: неверный отчёт ({type(e).__name__}: {e})") from e
+        ov = run_overrides.get(f"{r['model']}/{task_id}")
+        if ov:
+            if ov.get("status"):
+                run["status"] = ov["status"]
+            if ov.get("note"):
+                run["note"] = ov["note"]
         by_task.setdefault(task_id, []).append(run)
     return [{"id": task_id, "runs": runs} for task_id, runs in sorted(by_task.items())]
+
+
+def load_run_overrides(path: Path | None = None) -> dict[str, Any]:
+    """Читает data/run_overrides.json (переквалификация прогонов аудитом); нет файла — пусто."""
+    p = path or ROOT / "data" / "run_overrides.json"
+    if not p.exists():
+        return {}
+    return json.loads(p.read_text(encoding="utf-8"))
 
 
 def export_ratings(dest_dir: Path) -> dict[str, Any]:
@@ -262,7 +284,7 @@ def export_models(dest_dir: Path) -> None:
 def export_benchmarks(dest_dir: Path) -> None:
     out_file = dest_dir / "benchmark_runs.json"
     with open(out_file, "w", encoding="utf-8") as f:
-        json.dump(build_benchmark_runs(), f, indent=2, ensure_ascii=False)
+        json.dump(build_benchmark_runs(overrides=load_run_overrides()), f, indent=2, ensure_ascii=False)
     print(f"Exported benchmark summary to {out_file}")
 
 

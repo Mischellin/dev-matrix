@@ -4,13 +4,13 @@
   "model": "MiniMax M3.1 Flash",
   "provider": "MiniMax",
   "passed": false,
-  "passed_tests": 18,
+  "passed_tests": 7,
   "total_tests": 20,
-  "agent_seconds": 1442.7,
+  "agent_seconds": 1800.0,
   "tokens": null,
   "cost_usd": null,
   "tasks_hash": "be6d1e645036c9fba8064ced398fb01b86c0b856ec2817f7e47bdd44bc0df538",
   "devmatrix_version": "0.2.0",
-  "created_at": "2026-11-12T06:17:44Z",
+  "created_at": "2026-11-15T23:13:45Z",
   "claimed": true
 }

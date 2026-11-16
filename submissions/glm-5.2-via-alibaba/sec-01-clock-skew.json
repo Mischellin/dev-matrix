@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "sec-01-clock-skew",
+  "model": "GLM-5.2 via Alibaba",
+  "provider": "Alibaba",
+  "passed": true,
+  "passed_tests": 6,
+  "total_tests": 6,
+  "agent_seconds": 184.1,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "cb48532a893a58d19bd2285eae113a39e28a6e446344ac47dbcb764a7704ddc7",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-16T04:17:10Z",
+  "claimed": true
+}

@@ -1,0 +1,27 @@
+{
+  "runs": {
+    "MiniMax M3.1 Flash/flag-10-feature-flag-router": {
+      "status": "INVALID",
+      "note": "pass revoked: audit found write:parent-path (hidden-access violation)"
+    },
+    "Qwen4 Max Preview/authz-12-uniform-404": {
+      "note": "audit requalified: false positive"
+    },
+    "GLM-5.3-Flash/infra-05-k8s-pod-admission": {
+      "note": "audit noted shell:parent-path"
+    },
+    "GLM-5.3/host-08-host-header-guard": {
+      "note": "audit requalified: false positive"
+    },
+    "GLM-5.3/authz-12-uniform-404": {
+      "note": "audit requalified: false positive"
+    },
+    "GLM-5.3/idem-13-idempotent-signup": {
+      "note": "audit requalified: false positive"
+    }
+  },
+  "model_notes": {
+    "Kimi K3.1 Pro": "prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)",
+    "GLM-5.3": "prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)"
+  }
+}

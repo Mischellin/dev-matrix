@@ -4,13 +4,13 @@
   "model": "Kimi K3.1 Pro",
   "provider": "Moonshot",
   "passed": false,
-  "passed_tests": 17,
+  "passed_tests": 19,
   "total_tests": 20,
-  "agent_seconds": 1211.5,
+  "agent_seconds": 428.9,
   "tokens": null,
   "cost_usd": null,
   "tasks_hash": "be6d1e645036c9fba8064ced398fb01b86c0b856ec2817f7e47bdd44bc0df538",
   "devmatrix_version": "0.2.0",
-  "created_at": "2026-11-11T23:19:38Z",
+  "created_at": "2026-11-16T11:44:41Z",
   "claimed": true
 }

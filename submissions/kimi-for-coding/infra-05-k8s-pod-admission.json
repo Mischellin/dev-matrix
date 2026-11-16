@@ -3,14 +3,14 @@
   "task_id": "infra-05-k8s-pod-admission",
   "model": "Kimi for Coding",
   "provider": "Moonshot",
-  "passed": true,
-  "passed_tests": 20,
+  "passed": false,
+  "passed_tests": 18,
   "total_tests": 20,
-  "agent_seconds": 193.6,
+  "agent_seconds": 206.7,
   "tokens": null,
   "cost_usd": null,
   "tasks_hash": "be6d1e645036c9fba8064ced398fb01b86c0b856ec2817f7e47bdd44bc0df538",
   "devmatrix_version": "0.2.0",
-  "created_at": "2026-11-12T04:35:57Z",
+  "created_at": "2026-11-15T23:57:21Z",
   "claimed": true
 }

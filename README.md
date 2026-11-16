@@ -71,128 +71,238 @@ Tested under identical isolated runtime conditions with full hidden test suites.
 
 | Model | Tasks passed | Tests passed |
 | :--- | :---: | :---: |
-| **deepseek-flash** | 13/13 | 222/222 |
-| **deepseek-v4-pro** | 13/13 | 222/222 |
-| **devstral-small-2-24b-fp8** | 7/13 | 156/161 |
-| **gpt-oss-20b** | 7/13 | 114/161 |
-| **Kimi for Coding** | 6/13 | 114/114 |
-| **MiniMax M3.1 Flash** | 5/13 | 112/114 |
-| **Kimi K3.1 Pro** | 5/13 | 111/114 |
-| **Iceman Free** | 4/13 | 111/114 |
-| **Kimi K3** | 4/13 | 111/114 |
-| **GLM 5.3** | 4/13 | 110/114 |
-| **Nemotron 3.5 Lightning Free** | 3/13 | 88/114 |
-| **GLM 5.3 Flash** | 3/13 | 85/114 |
-| **GigaChat 3.5 Ultra** | 3/13 | 61/114 |
-| **Kimi for Coding HighSpeed** | 2/13 | 52/53 |
+| **DeepSeek V4 Pro** | 13/13 | 222/222 |
+| **DeepSeek V4.1 Flash 1017** | 13/13 | 222/222 |
+| **GLM-5.3** | 13/13 | 222/222 |
+| **Kimi K3-256K** | 13/13 | 222/222 |
+| **Qwen3.8 Flash via Alibaba** | 13/13 | 222/222 |
+| **GLM-5.2 via Alibaba** | 12/13 | 221/222 |
+| **Kimi K3.1 Pro** | 12/13 | 221/222 |
+| **Qwen3.7 Max via Alibaba** | 12/13 | 221/222 |
+| **Kimi for Coding** | 12/13 | 220/222 |
+| **Qwen4 Max Preview** | 12/13 | 220/222 |
+| **Inkling 2 Small Free** | 11/13 | 219/222 |
+| **GLM-5.3-Flash** | 11/13 | 218/222 |
+| **Iceman Free** | 11/13 | 218/222 |
+| **Qwen3.8 Max via Alibaba** | 11/13 | 190/222 |
+| **Qwen3.7 Plus via Alibaba** | 10/13 | 217/222 |
+| **MiniMax M3.1 Flash** | 6/13 | 142/206 |
 
-_Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task and are not counted in the summary. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks && python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._
+*GLM-5.3: prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)*
+*Kimi K3.1 Pro: prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)*
+
+_Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task and are not counted in the summary. Runs marked INVALID were withdrawn after audit (see [`data/run_overrides.json`](data/run_overrides.json)) and are not counted in the summary either. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks && python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._
 
 | Task | Model | Status | Tests | Time | Tokens | API Cost |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| `algo-03-range-merger` | **deepseek-flash** | ✅ PASS | 27/27 | 0.7m | — | — |
-| `algo-03-range-merger` | **deepseek-v4-pro** | ✅ PASS | 27/27 | 2.6m | — | — |
-| `algo-03-range-merger` | **devstral-small-2-24b-fp8** | ❌ FAIL | 26/27 | 25.0m | 14.3M | $0.23 |
-| `algo-03-range-merger` | **GigaChat 3.5 Ultra** | ✅ PASS | 27/27 | 5.0m | — | — |
-| `algo-03-range-merger` | **GLM 5.3** | ✅ PASS | 27/27 | 8.3m | — | — |
-| `algo-03-range-merger` | **GLM 5.3 Flash** | ❌ FAIL | 1/27 | 30.0m | — | — |
-| `algo-03-range-merger` | **gpt-oss-20b** | ✅ PASS | 27/27 | 0.3m | 72k | $0.00 |
-| `algo-03-range-merger` | **Iceman Free** | ✅ PASS | 27/27 | 0.9m | — | — |
-| `algo-03-range-merger` | **Kimi for Coding** | ✅ PASS | 27/27 | 1.2m | — | — |
-| `algo-03-range-merger` | **Kimi for Coding HighSpeed** | ✅ PASS | 27/27 | 3.0m | — | — |
-| `algo-03-range-merger` | **Kimi K3** | ✅ PASS | 27/27 | 9.1m | — | — |
-| `algo-03-range-merger` | **Kimi K3.1 Pro** | ✅ PASS | 27/27 | 10.0m | — | — |
-| `algo-03-range-merger` | **MiniMax M3.1 Flash** | ✅ PASS | 27/27 | 3.7m | — | — |
-| `algo-03-range-merger` | **Nemotron 3.5 Lightning Free** | ✅ PASS | 27/27 | 1.2m | — | — |
-| `arch-04-tag-registry` | **deepseek-flash** | ✅ PASS | 8/8 | 1.2m | — | — |
-| `arch-04-tag-registry` | **deepseek-v4-pro** | ✅ PASS | 8/8 | 2.6m | — | — |
-| `arch-04-tag-registry` | **GigaChat 3.5 Ultra** | ✅ PASS | 8/8 | 2.4m | — | — |
-| `arch-04-tag-registry` | **GLM 5.3** | ✅ PASS | 8/8 | 3.2m | — | — |
-| `arch-04-tag-registry` | **GLM 5.3 Flash** | ✅ PASS | 8/8 | 1.4m | — | — |
-| `arch-04-tag-registry` | **Iceman Free** | ✅ PASS | 8/8 | 1.0m | — | — |
-| `arch-04-tag-registry` | **Kimi for Coding** | ✅ PASS | 8/8 | 1.0m | — | — |
-| `arch-04-tag-registry` | **Kimi K3** | ✅ PASS | 8/8 | 1.0m | — | — |
-| `arch-04-tag-registry` | **Kimi K3.1 Pro** | ✅ PASS | 8/8 | 4.6m | — | — |
-| `arch-04-tag-registry` | **MiniMax M3.1 Flash** | ✅ PASS | 8/8 | 2.6m | — | — |
-| `arch-04-tag-registry` | **Nemotron 3.5 Lightning Free** | ✅ PASS | 8/8 | 2.2m | — | — |
-| `auth-07-claim-roles` | **deepseek-flash** | ✅ PASS | 14/14 | 1.1m | — | — |
-| `auth-07-claim-roles` | **deepseek-v4-pro** | ✅ PASS | 14/14 | 2.4m | — | — |
-| `auth-07-claim-roles` | **devstral-small-2-24b-fp8** | ✅ PASS | 14/14 | 3.0m | 193k | $0.03 |
-| `auth-07-claim-roles` | **gpt-oss-20b** | ✅ PASS | 14/14 | 0.4m | 121k | $0.00 |
-| `authz-12-uniform-404` | **deepseek-flash** | ✅ PASS | 15/15 | 1.1m | — | — |
-| `authz-12-uniform-404` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 3.5m | — | — |
-| `authz-12-uniform-404` | **devstral-small-2-24b-fp8** | ✅ PASS | 15/15 | 3.8m | 153k | $0.03 |
-| `authz-12-uniform-404` | **gpt-oss-20b** | ✅ PASS | 15/15 | 0.7m | 180k | $0.01 |
-| `flag-10-feature-flag-router` | **deepseek-flash** | ✅ PASS | 16/16 | 0.8m | — | — |
-| `flag-10-feature-flag-router` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 3.1m | — | — |
-| `flag-10-feature-flag-router` | **devstral-small-2-24b-fp8** | ❌ FAIL | 15/16 | 1.4m | 204k | $0.01 |
-| `flag-10-feature-flag-router` | **gpt-oss-20b** | ✅ PASS | 16/16 | 0.8m | 308k | $0.01 |
-| `host-08-host-header-guard` | **deepseek-flash** | ✅ PASS | 15/15 | 1.4m | — | — |
-| `host-08-host-header-guard` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 4.7m | — | — |
-| `host-08-host-header-guard` | **devstral-small-2-24b-fp8** | ✅ PASS | 15/15 | 12.6m | 1.1M | $0.12 |
-| `host-08-host-header-guard` | **gpt-oss-20b** | ❌ FAIL | 0/15 | 2.3m | 686k | $0.02 |
-| `idem-13-idempotent-signup` | **deepseek-flash** | ✅ PASS | 17/17 | 1.3m | — | — |
-| `idem-13-idempotent-signup` | **deepseek-v4-pro** | ✅ PASS | 17/17 | 4.0m | — | — |
-| `idem-13-idempotent-signup` | **devstral-small-2-24b-fp8** | ✅ PASS | 17/17 | 7.4m | 601k | $0.07 |
-| `idem-13-idempotent-signup` | **gpt-oss-20b** | ✅ PASS | 17/17 | 0.7m | 128k | $0.01 |
-| `infra-05-k8s-pod-admission` | **deepseek-flash** | ✅ PASS | 20/20 | 1.7m | — | — |
-| `infra-05-k8s-pod-admission` | **deepseek-v4-pro** | ✅ PASS | 20/20 | 4.5m | — | — |
-| `infra-05-k8s-pod-admission` | **devstral-small-2-24b-fp8** | ❌ FAIL | 17/20 | 6.5m | 372k | $0.06 |
-| `infra-05-k8s-pod-admission` | **GigaChat 3.5 Ultra** | ❌ FAIL | 7/20 | 2.9m | — | — |
-| `infra-05-k8s-pod-admission` | **GLM 5.3** | ❌ FAIL | 17/20 | 7.8m | — | — |
-| `infra-05-k8s-pod-admission` | **GLM 5.3 Flash** | ❌ FAIL | 19/20 | 11.4m | — | — |
-| `infra-05-k8s-pod-admission` | **gpt-oss-20b** | ❌ FAIL | 0/20 | 1.2m | 135k | $0.01 |
-| `infra-05-k8s-pod-admission` | **Iceman Free** | ❌ FAIL | 18/20 | 1.9m | — | — |
-| `infra-05-k8s-pod-admission` | **Kimi for Coding** | ✅ PASS | 20/20 | 3.2m | — | — |
-| `infra-05-k8s-pod-admission` | **Kimi for Coding HighSpeed** | ❌ FAIL | 19/20 | 11.7m | — | — |
-| `infra-05-k8s-pod-admission` | **Kimi K3** | ❌ FAIL | 18/20 | 3.1m | — | — |
-| `infra-05-k8s-pod-admission` | **Kimi K3.1 Pro** | ❌ FAIL | 17/20 | 20.2m | — | — |
-| `infra-05-k8s-pod-admission` | **MiniMax M3.1 Flash** | ❌ FAIL | 18/20 | 24.0m | — | — |
-| `infra-05-k8s-pod-admission` | **Nemotron 3.5 Lightning Free** | ❌ FAIL | 17/20 | 9.3m | — | — |
-| `obs-02-query-redactor` | **deepseek-flash** | ✅ PASS | 37/37 | 2.4m | — | — |
-| `obs-02-query-redactor` | **deepseek-v4-pro** | ✅ PASS | 37/37 | 15.0m | — | — |
-| `obs-02-query-redactor` | **GigaChat 3.5 Ultra** | ❌ FAIL | 7/37 | 0.6m | — | — |
-| `obs-02-query-redactor` | **GLM 5.3** | ❌ FAIL | 36/37 | 26.2m | — | — |
-| `obs-02-query-redactor` | **GLM 5.3 Flash** | ✅ PASS | 37/37 | 19.0m | — | — |
-| `obs-02-query-redactor` | **Iceman Free** | ❌ FAIL | 36/37 | 4.0m | — | — |
-| `obs-02-query-redactor` | **Kimi for Coding** | ✅ PASS | 37/37 | 10.1m | — | — |
-| `obs-02-query-redactor` | **Kimi K3** | ❌ FAIL | 36/37 | 15.3m | — | — |
-| `obs-02-query-redactor` | **Kimi K3.1 Pro** | ✅ PASS | 37/37 | 26.9m | — | — |
-| `obs-02-query-redactor` | **MiniMax M3.1 Flash** | ✅ PASS | 37/37 | 14.1m | — | — |
-| `obs-02-query-redactor` | **Nemotron 3.5 Lightning Free** | ❌ FAIL | 17/37 | 13.7m | — | — |
-| `onec-06-payment-allocator` | **deepseek-flash** | ✅ PASS | 16/16 | 1.5m | — | — |
-| `onec-06-payment-allocator` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 3.9m | — | — |
-| `onec-06-payment-allocator` | **GigaChat 3.5 Ultra** | ❌ FAIL | 6/16 | 1.7m | — | — |
-| `onec-06-payment-allocator` | **GLM 5.3** | ✅ PASS | 16/16 | 5.6m | — | — |
-| `onec-06-payment-allocator` | **GLM 5.3 Flash** | ✅ PASS | 16/16 | 7.5m | — | — |
-| `onec-06-payment-allocator` | **Iceman Free** | ✅ PASS | 16/16 | 1.3m | — | — |
-| `onec-06-payment-allocator` | **Kimi for Coding** | ✅ PASS | 16/16 | 3.0m | — | — |
-| `onec-06-payment-allocator` | **Kimi K3** | ✅ PASS | 16/16 | 3.4m | — | — |
-| `onec-06-payment-allocator` | **Kimi K3.1 Pro** | ✅ PASS | 16/16 | 8.5m | — | — |
-| `onec-06-payment-allocator` | **MiniMax M3.1 Flash** | ✅ PASS | 16/16 | 4.0m | — | — |
-| `onec-06-payment-allocator` | **Nemotron 3.5 Lightning Free** | ❌ FAIL | 13/16 | 5.4m | — | — |
-| `scrub-09-metadata-scrubber` | **deepseek-flash** | ✅ PASS | 15/15 | 1.3m | — | — |
-| `scrub-09-metadata-scrubber` | **deepseek-v4-pro** | ✅ PASS | 15/15 | 6.0m | — | — |
-| `scrub-09-metadata-scrubber` | **devstral-small-2-24b-fp8** | ✅ PASS | 15/15 | 14.8m | 1.5M | $0.14 |
-| `scrub-09-metadata-scrubber` | **gpt-oss-20b** | ✅ PASS | 15/15 | 0.8m | 108k | $0.01 |
-| `sec-01-clock-skew` | **deepseek-flash** | ✅ PASS | 6/6 | 0.8m | — | — |
-| `sec-01-clock-skew` | **deepseek-v4-pro** | ✅ PASS | 6/6 | 1.3m | — | — |
-| `sec-01-clock-skew` | **devstral-small-2-24b-fp8** | ✅ PASS | 6/6 | 0.8m | 95k | $0.01 |
-| `sec-01-clock-skew` | **GigaChat 3.5 Ultra** | ✅ PASS | 6/6 | 1.8m | — | — |
-| `sec-01-clock-skew` | **GLM 5.3** | ✅ PASS | 6/6 | 5.2m | — | — |
-| `sec-01-clock-skew` | **GLM 5.3 Flash** | ❌ FAIL | 4/6 | 30.0m | — | — |
-| `sec-01-clock-skew` | **gpt-oss-20b** | ✅ PASS | 6/6 | 0.3m | 90k | $0.00 |
-| `sec-01-clock-skew` | **Iceman Free** | ✅ PASS | 6/6 | 1.2m | — | — |
-| `sec-01-clock-skew` | **Kimi for Coding** | ✅ PASS | 6/6 | 1.4m | — | — |
-| `sec-01-clock-skew` | **Kimi for Coding HighSpeed** | ✅ PASS | 6/6 | 1.5m | — | — |
-| `sec-01-clock-skew` | **Kimi K3** | ✅ PASS | 6/6 | 2.4m | — | — |
-| `sec-01-clock-skew` | **Kimi K3.1 Pro** | ✅ PASS | 6/6 | 7.7m | — | — |
-| `sec-01-clock-skew` | **MiniMax M3.1 Flash** | ✅ PASS | 6/6 | 7.1m | — | — |
-| `sec-01-clock-skew` | **Nemotron 3.5 Lightning Free** | ✅ PASS | 6/6 | 1.1m | — | — |
-| `tenant-11-scoped-listing` | **deepseek-flash** | ✅ PASS | 16/16 | 1.1m | — | — |
-| `tenant-11-scoped-listing` | **deepseek-v4-pro** | ✅ PASS | 16/16 | 4.1m | — | — |
-| `tenant-11-scoped-listing` | **devstral-small-2-24b-fp8** | ✅ PASS | 16/16 | 5.7m | 414k | $0.05 |
-| `tenant-11-scoped-listing` | **gpt-oss-20b** | ❌ FAIL | 4/16 | 0.1m | 32k | $0.00 |
+| `algo-03-range-merger` | **DeepSeek V4 Pro** | ✅ PASS | 27/27 | 1.0m | — | — |
+| `algo-03-range-merger` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 27/27 | 0.7m | — | — |
+| `algo-03-range-merger` | **GLM-5.2 via Alibaba** | ✅ PASS | 27/27 | 3.3m | — | — |
+| `algo-03-range-merger` | **GLM-5.3** | ✅ PASS | 27/27 | 2.2m | — | — |
+| `algo-03-range-merger` | **GLM-5.3-Flash** | ✅ PASS | 27/27 | 1.4m | — | — |
+| `algo-03-range-merger` | **Iceman Free** | ✅ PASS | 27/27 | 1.4m | — | — |
+| `algo-03-range-merger` | **Inkling 2 Small Free** | ✅ PASS | 27/27 | 0.8m | — | — |
+| `algo-03-range-merger` | **Kimi for Coding** | ✅ PASS | 27/27 | 1.8m | — | — |
+| `algo-03-range-merger` | **Kimi K3-256K** | ✅ PASS | 27/27 | 0.9m | — | — |
+| `algo-03-range-merger` | **Kimi K3.1 Pro** | ✅ PASS | 27/27 | 3.7m | — | — |
+| `algo-03-range-merger` | **MiniMax M3.1 Flash** | ✅ PASS | 27/27 | 3.0m | — | — |
+| `algo-03-range-merger` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 27/27 | 1.4m | — | — |
+| `algo-03-range-merger` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 27/27 | 3.3m | — | — |
+| `algo-03-range-merger` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 27/27 | 1.8m | — | — |
+| `algo-03-range-merger` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 27/27 | 17.1m | — | — |
+| `algo-03-range-merger` | **Qwen4 Max Preview** | ✅ PASS | 27/27 | 2.0m | — | — |
+| `arch-04-tag-registry` | **DeepSeek V4 Pro** | ✅ PASS | 8/8 | 0.8m | — | — |
+| `arch-04-tag-registry` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 8/8 | 0.7m | — | — |
+| `arch-04-tag-registry` | **GLM-5.2 via Alibaba** | ✅ PASS | 8/8 | 3.3m | — | — |
+| `arch-04-tag-registry` | **GLM-5.3** | ✅ PASS | 8/8 | 2.0m | — | — |
+| `arch-04-tag-registry` | **GLM-5.3-Flash** | ✅ PASS | 8/8 | 1.6m | — | — |
+| `arch-04-tag-registry` | **Iceman Free** | ✅ PASS | 8/8 | 1.1m | — | — |
+| `arch-04-tag-registry` | **Inkling 2 Small Free** | ✅ PASS | 8/8 | 0.6m | — | — |
+| `arch-04-tag-registry` | **Kimi for Coding** | ✅ PASS | 8/8 | 1.4m | — | — |
+| `arch-04-tag-registry` | **Kimi K3-256K** | ✅ PASS | 8/8 | 2.8m | — | — |
+| `arch-04-tag-registry` | **Kimi K3.1 Pro** | ✅ PASS | 8/8 | 2.5m | — | — |
+| `arch-04-tag-registry` | **MiniMax M3.1 Flash** | ❌ FAIL | 2/8 | 30.0m | — | — |
+| `arch-04-tag-registry` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 8/8 | 1.3m | — | — |
+| `arch-04-tag-registry` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 8/8 | 1.9m | — | — |
+| `arch-04-tag-registry` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 8/8 | 1.5m | — | — |
+| `arch-04-tag-registry` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 8/8 | 3.7m | — | — |
+| `arch-04-tag-registry` | **Qwen4 Max Preview** | ✅ PASS | 8/8 | 2.2m | — | — |
+| `auth-07-claim-roles` | **DeepSeek V4 Pro** | ✅ PASS | 14/14 | 1.4m | — | — |
+| `auth-07-claim-roles` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 14/14 | 1.1m | — | — |
+| `auth-07-claim-roles` | **GLM-5.2 via Alibaba** | ✅ PASS | 14/14 | 2.9m | — | — |
+| `auth-07-claim-roles` | **GLM-5.3** | ✅ PASS | 14/14 | 4.6m | — | — |
+| `auth-07-claim-roles` | **GLM-5.3-Flash** | ✅ PASS | 14/14 | 4.0m | — | — |
+| `auth-07-claim-roles` | **Iceman Free** | ✅ PASS | 14/14 | 1.9m | — | — |
+| `auth-07-claim-roles` | **Inkling 2 Small Free** | ✅ PASS | 14/14 | 1.2m | — | — |
+| `auth-07-claim-roles` | **Kimi for Coding** | ✅ PASS | 14/14 | 1.5m | — | — |
+| `auth-07-claim-roles` | **Kimi K3-256K** | ✅ PASS | 14/14 | 1.2m | — | — |
+| `auth-07-claim-roles` | **Kimi K3.1 Pro** | ✅ PASS | 14/14 | 5.6m | — | — |
+| `auth-07-claim-roles` | **MiniMax M3.1 Flash** | ❌ FAIL | 4/14 | 30.0m | — | — |
+| `auth-07-claim-roles` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 14/14 | 1.3m | — | — |
+| `auth-07-claim-roles` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 14/14 | 2.1m | — | — |
+| `auth-07-claim-roles` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 14/14 | 1.8m | — | — |
+| `auth-07-claim-roles` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 14/14 | 6.8m | — | — |
+| `auth-07-claim-roles` | **Qwen4 Max Preview** | ✅ PASS | 14/14 | 3.7m | — | — |
+| `authz-12-uniform-404` | **DeepSeek V4 Pro** | ✅ PASS | 15/15 | 1.2m | — | — |
+| `authz-12-uniform-404` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 15/15 | 0.8m | — | — |
+| `authz-12-uniform-404` | **GLM-5.2 via Alibaba** | ✅ PASS | 15/15 | 4.9m | — | — |
+| `authz-12-uniform-404` | **GLM-5.3** | ✅ PASS — audit requalified: false positive | 15/15 | 3.9m | — | — |
+| `authz-12-uniform-404` | **GLM-5.3-Flash** | ✅ PASS | 15/15 | 4.1m | — | — |
+| `authz-12-uniform-404` | **Iceman Free** | ✅ PASS | 15/15 | 1.8m | — | — |
+| `authz-12-uniform-404` | **Inkling 2 Small Free** | ✅ PASS | 15/15 | 0.8m | — | — |
+| `authz-12-uniform-404` | **Kimi for Coding** | ✅ PASS | 15/15 | 2.9m | — | — |
+| `authz-12-uniform-404` | **Kimi K3-256K** | ✅ PASS | 15/15 | 2.4m | — | — |
+| `authz-12-uniform-404` | **Kimi K3.1 Pro** | ✅ PASS | 15/15 | 6.5m | — | — |
+| `authz-12-uniform-404` | **MiniMax M3.1 Flash** | ✅ PASS | 15/15 | 2.9m | — | — |
+| `authz-12-uniform-404` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 15/15 | 1.4m | — | — |
+| `authz-12-uniform-404` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 15/15 | 3.2m | — | — |
+| `authz-12-uniform-404` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 15/15 | 4.2m | — | — |
+| `authz-12-uniform-404` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 15/15 | 8.3m | — | — |
+| `authz-12-uniform-404` | **Qwen4 Max Preview** | ✅ PASS — audit requalified: false positive | 15/15 | 4.1m | — | — |
+| `flag-10-feature-flag-router` | **DeepSeek V4 Pro** | ✅ PASS | 16/16 | 1.5m | — | — |
+| `flag-10-feature-flag-router` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 16/16 | 1.4m | — | — |
+| `flag-10-feature-flag-router` | **GLM-5.2 via Alibaba** | ✅ PASS | 16/16 | 5.5m | — | — |
+| `flag-10-feature-flag-router` | **GLM-5.3** | ✅ PASS | 16/16 | 4.3m | — | — |
+| `flag-10-feature-flag-router` | **GLM-5.3-Flash** | ✅ PASS | 16/16 | 4.1m | — | — |
+| `flag-10-feature-flag-router` | **Iceman Free** | ✅ PASS | 16/16 | 1.5m | — | — |
+| `flag-10-feature-flag-router` | **Inkling 2 Small Free** | ✅ PASS | 16/16 | 1.4m | — | — |
+| `flag-10-feature-flag-router` | **Kimi for Coding** | ✅ PASS | 16/16 | 2.2m | — | — |
+| `flag-10-feature-flag-router` | **Kimi K3-256K** | ✅ PASS | 16/16 | 1.8m | — | — |
+| `flag-10-feature-flag-router` | **Kimi K3.1 Pro** | ✅ PASS | 16/16 | 4.8m | — | — |
+| `flag-10-feature-flag-router` | **MiniMax M3.1 Flash** | 🚫 INVALID — pass revoked: audit found write:parent-path (hidden-access violation) | 16/16 | 6.5m | — | — |
+| `flag-10-feature-flag-router` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 16/16 | 1.6m | — | — |
+| `flag-10-feature-flag-router` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 16/16 | 2.3m | — | — |
+| `flag-10-feature-flag-router` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 16/16 | 2.9m | — | — |
+| `flag-10-feature-flag-router` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 16/16 | 13.2m | — | — |
+| `flag-10-feature-flag-router` | **Qwen4 Max Preview** | ✅ PASS | 16/16 | 4.5m | — | — |
+| `host-08-host-header-guard` | **DeepSeek V4 Pro** | ✅ PASS | 15/15 | 3.4m | — | — |
+| `host-08-host-header-guard` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 15/15 | 2.6m | — | — |
+| `host-08-host-header-guard` | **GLM-5.2 via Alibaba** | ✅ PASS | 15/15 | 15.8m | — | — |
+| `host-08-host-header-guard` | **GLM-5.3** | ✅ PASS — audit requalified: false positive | 15/15 | 9.6m | — | — |
+| `host-08-host-header-guard` | **GLM-5.3-Flash** | ✅ PASS | 15/15 | 9.2m | — | — |
+| `host-08-host-header-guard` | **Iceman Free** | ✅ PASS | 15/15 | 1.7m | — | — |
+| `host-08-host-header-guard` | **Inkling 2 Small Free** | ✅ PASS | 15/15 | 3.8m | — | — |
+| `host-08-host-header-guard` | **Kimi for Coding** | ✅ PASS | 15/15 | 5.7m | — | — |
+| `host-08-host-header-guard` | **Kimi K3-256K** | ✅ PASS | 15/15 | 5.1m | — | — |
+| `host-08-host-header-guard` | **Kimi K3.1 Pro** | ✅ PASS | 15/15 | 5.7m | — | — |
+| `host-08-host-header-guard` | **MiniMax M3.1 Flash** | ❌ FAIL | 0/15 | 30.0m | — | — |
+| `host-08-host-header-guard` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 15/15 | 2.6m | — | — |
+| `host-08-host-header-guard` | **Qwen3.7 Plus via Alibaba** | ❌ FAIL | 14/15 | 5.5m | — | — |
+| `host-08-host-header-guard` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 15/15 | 7.1m | — | — |
+| `host-08-host-header-guard` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 15/15 | 15.9m | — | — |
+| `host-08-host-header-guard` | **Qwen4 Max Preview** | ✅ PASS | 15/15 | 6.5m | — | — |
+| `idem-13-idempotent-signup` | **DeepSeek V4 Pro** | ✅ PASS | 17/17 | 1.8m | — | — |
+| `idem-13-idempotent-signup` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 17/17 | 1.8m | — | — |
+| `idem-13-idempotent-signup` | **GLM-5.2 via Alibaba** | ✅ PASS | 17/17 | 8.6m | — | — |
+| `idem-13-idempotent-signup` | **GLM-5.3** | ✅ PASS — audit requalified: false positive | 17/17 | 5.1m | — | — |
+| `idem-13-idempotent-signup` | **GLM-5.3-Flash** | ✅ PASS | 17/17 | 7.8m | — | — |
+| `idem-13-idempotent-signup` | **Iceman Free** | ✅ PASS | 17/17 | 2.6m | — | — |
+| `idem-13-idempotent-signup` | **Inkling 2 Small Free** | ✅ PASS | 17/17 | 1.8m | — | — |
+| `idem-13-idempotent-signup` | **Kimi for Coding** | ✅ PASS | 17/17 | 3.4m | — | — |
+| `idem-13-idempotent-signup` | **Kimi K3-256K** | ✅ PASS | 17/17 | 2.0m | — | — |
+| `idem-13-idempotent-signup` | **Kimi K3.1 Pro** | ✅ PASS | 17/17 | 7.0m | — | — |
+| `idem-13-idempotent-signup` | **MiniMax M3.1 Flash** | ✅ PASS | 17/17 | 6.9m | — | — |
+| `idem-13-idempotent-signup` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 17/17 | 2.2m | — | — |
+| `idem-13-idempotent-signup` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 17/17 | 4.1m | — | — |
+| `idem-13-idempotent-signup` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 17/17 | 4.1m | — | — |
+| `idem-13-idempotent-signup` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 17/17 | 9.2m | — | — |
+| `idem-13-idempotent-signup` | **Qwen4 Max Preview** | ✅ PASS | 17/17 | 4.0m | — | — |
+| `infra-05-k8s-pod-admission` | **DeepSeek V4 Pro** | ✅ PASS | 20/20 | 2.0m | — | — |
+| `infra-05-k8s-pod-admission` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 20/20 | 1.8m | — | — |
+| `infra-05-k8s-pod-admission` | **GLM-5.2 via Alibaba** | ❌ FAIL | 19/20 | 9.0m | — | — |
+| `infra-05-k8s-pod-admission` | **GLM-5.3** | ✅ PASS | 20/20 | 8.7m | — | — |
+| `infra-05-k8s-pod-admission` | **GLM-5.3-Flash** | ❌ FAIL — audit noted shell:parent-path | 18/20 | 10.1m | — | — |
+| `infra-05-k8s-pod-admission` | **Iceman Free** | ❌ FAIL | 17/20 | 2.0m | — | — |
+| `infra-05-k8s-pod-admission` | **Inkling 2 Small Free** | ❌ FAIL | 18/20 | 1.7m | — | — |
+| `infra-05-k8s-pod-admission` | **Kimi for Coding** | ❌ FAIL | 18/20 | 3.4m | — | — |
+| `infra-05-k8s-pod-admission` | **Kimi K3-256K** | ✅ PASS | 20/20 | 2.7m | — | — |
+| `infra-05-k8s-pod-admission` | **Kimi K3.1 Pro** | ❌ FAIL | 19/20 | 7.1m | — | — |
+| `infra-05-k8s-pod-admission` | **MiniMax M3.1 Flash** | ❌ FAIL | 7/20 | 30.0m | — | — |
+| `infra-05-k8s-pod-admission` | **Qwen3.7 Max via Alibaba** | ❌ FAIL | 19/20 | 2.2m | — | — |
+| `infra-05-k8s-pod-admission` | **Qwen3.7 Plus via Alibaba** | ❌ FAIL | 17/20 | 4.0m | — | — |
+| `infra-05-k8s-pod-admission` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 20/20 | 6.8m | — | — |
+| `infra-05-k8s-pod-admission` | **Qwen3.8 Max via Alibaba** | ❌ FAIL | 18/20 | 10.7m | — | — |
+| `infra-05-k8s-pod-admission` | **Qwen4 Max Preview** | ❌ FAIL | 18/20 | 7.7m | — | — |
+| `obs-02-query-redactor` | **DeepSeek V4 Pro** | ✅ PASS | 37/37 | 7.8m | — | — |
+| `obs-02-query-redactor` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 37/37 | 6.7m | — | — |
+| `obs-02-query-redactor` | **GLM-5.2 via Alibaba** | ✅ PASS | 37/37 | 19.3m | — | — |
+| `obs-02-query-redactor` | **GLM-5.3** | ✅ PASS | 37/37 | 23.0m | — | — |
+| `obs-02-query-redactor` | **GLM-5.3-Flash** | ❌ FAIL | 35/37 | 22.7m | — | — |
+| `obs-02-query-redactor` | **Iceman Free** | ❌ FAIL | 36/37 | 5.7m | — | — |
+| `obs-02-query-redactor` | **Inkling 2 Small Free** | ❌ FAIL | 36/37 | 8.7m | — | — |
+| `obs-02-query-redactor` | **Kimi for Coding** | ✅ PASS | 37/37 | 10.2m | — | — |
+| `obs-02-query-redactor` | **Kimi K3-256K** | ✅ PASS | 37/37 | 9.2m | — | — |
+| `obs-02-query-redactor` | **Kimi K3.1 Pro** | ✅ PASS | 37/37 | 9.7m | — | — |
+| `obs-02-query-redactor` | **MiniMax M3.1 Flash** | ✅ PASS | 37/37 | 9.7m | — | — |
+| `obs-02-query-redactor` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 37/37 | 16.2m | — | — |
+| `obs-02-query-redactor` | **Qwen3.7 Plus via Alibaba** | ❌ FAIL | 36/37 | 15.6m | — | — |
+| `obs-02-query-redactor` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 37/37 | 21.6m | — | — |
+| `obs-02-query-redactor` | **Qwen3.8 Max via Alibaba** | ❌ FAIL | 7/37 | 30.0m | — | — |
+| `obs-02-query-redactor` | **Qwen4 Max Preview** | ✅ PASS | 37/37 | 16.4m | — | — |
+| `onec-06-payment-allocator` | **DeepSeek V4 Pro** | ✅ PASS | 16/16 | 2.0m | — | — |
+| `onec-06-payment-allocator` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 16/16 | 1.9m | — | — |
+| `onec-06-payment-allocator` | **GLM-5.2 via Alibaba** | ✅ PASS | 16/16 | 6.9m | — | — |
+| `onec-06-payment-allocator` | **GLM-5.3** | ✅ PASS | 16/16 | 5.3m | — | — |
+| `onec-06-payment-allocator` | **GLM-5.3-Flash** | ✅ PASS | 16/16 | 10.1m | — | — |
+| `onec-06-payment-allocator` | **Iceman Free** | ✅ PASS | 16/16 | 1.7m | — | — |
+| `onec-06-payment-allocator` | **Inkling 2 Small Free** | ✅ PASS | 16/16 | 1.0m | — | — |
+| `onec-06-payment-allocator` | **Kimi for Coding** | ✅ PASS | 16/16 | 4.2m | — | — |
+| `onec-06-payment-allocator` | **Kimi K3-256K** | ✅ PASS | 16/16 | 2.0m | — | — |
+| `onec-06-payment-allocator` | **Kimi K3.1 Pro** | ✅ PASS | 16/16 | 6.1m | — | — |
+| `onec-06-payment-allocator` | **MiniMax M3.1 Flash** | ❌ FAIL | 6/16 | 30.0m | — | — |
+| `onec-06-payment-allocator` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 16/16 | 2.9m | — | — |
+| `onec-06-payment-allocator` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 16/16 | 3.1m | — | — |
+| `onec-06-payment-allocator` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 16/16 | 4.2m | — | — |
+| `onec-06-payment-allocator` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 16/16 | 11.6m | — | — |
+| `onec-06-payment-allocator` | **Qwen4 Max Preview** | ✅ PASS | 16/16 | 4.5m | — | — |
+| `scrub-09-metadata-scrubber` | **DeepSeek V4 Pro** | ✅ PASS | 15/15 | 1.1m | — | — |
+| `scrub-09-metadata-scrubber` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 15/15 | 1.9m | — | — |
+| `scrub-09-metadata-scrubber` | **GLM-5.2 via Alibaba** | ✅ PASS | 15/15 | 7.7m | — | — |
+| `scrub-09-metadata-scrubber` | **GLM-5.3** | ✅ PASS | 15/15 | 10.3m | — | — |
+| `scrub-09-metadata-scrubber` | **GLM-5.3-Flash** | ✅ PASS | 15/15 | 11.3m | — | — |
+| `scrub-09-metadata-scrubber` | **Iceman Free** | ✅ PASS | 15/15 | 2.1m | — | — |
+| `scrub-09-metadata-scrubber` | **Inkling 2 Small Free** | ✅ PASS | 15/15 | 2.2m | — | — |
+| `scrub-09-metadata-scrubber` | **Kimi for Coding** | ✅ PASS | 15/15 | 3.0m | — | — |
+| `scrub-09-metadata-scrubber` | **Kimi K3-256K** | ✅ PASS | 15/15 | 2.9m | — | — |
+| `scrub-09-metadata-scrubber` | **Kimi K3.1 Pro** | ✅ PASS | 15/15 | 4.2m | — | — |
+| `scrub-09-metadata-scrubber` | **MiniMax M3.1 Flash** | ❌ FAIL | 5/15 | 30.0m | — | — |
+| `scrub-09-metadata-scrubber` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 15/15 | 1.7m | — | — |
+| `scrub-09-metadata-scrubber` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 15/15 | 4.4m | — | — |
+| `scrub-09-metadata-scrubber` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 15/15 | 4.7m | — | — |
+| `scrub-09-metadata-scrubber` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 15/15 | 21.2m | — | — |
+| `scrub-09-metadata-scrubber` | **Qwen4 Max Preview** | ✅ PASS | 15/15 | 6.9m | — | — |
+| `sec-01-clock-skew` | **DeepSeek V4 Pro** | ✅ PASS | 6/6 | 1.1m | — | — |
+| `sec-01-clock-skew` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 6/6 | 1.1m | — | — |
+| `sec-01-clock-skew` | **GLM-5.2 via Alibaba** | ✅ PASS | 6/6 | 3.1m | — | — |
+| `sec-01-clock-skew` | **GLM-5.3** | ✅ PASS | 6/6 | 3.2m | — | — |
+| `sec-01-clock-skew` | **GLM-5.3-Flash** | ✅ PASS | 6/6 | 2.3m | — | — |
+| `sec-01-clock-skew` | **Iceman Free** | ✅ PASS | 6/6 | 1.4m | — | — |
+| `sec-01-clock-skew` | **Inkling 2 Small Free** | ✅ PASS | 6/6 | 0.8m | — | — |
+| `sec-01-clock-skew` | **Kimi for Coding** | ✅ PASS | 6/6 | 1.5m | — | — |
+| `sec-01-clock-skew` | **Kimi K3-256K** | ✅ PASS | 6/6 | 1.9m | — | — |
+| `sec-01-clock-skew` | **Kimi K3.1 Pro** | ✅ PASS | 6/6 | 2.7m | — | — |
+| `sec-01-clock-skew` | **MiniMax M3.1 Flash** | ✅ PASS | 6/6 | 3.2m | — | — |
+| `sec-01-clock-skew` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 6/6 | 1.2m | — | — |
+| `sec-01-clock-skew` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 6/6 | 2.0m | — | — |
+| `sec-01-clock-skew` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 6/6 | 3.9m | — | — |
+| `sec-01-clock-skew` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 6/6 | 5.8m | — | — |
+| `sec-01-clock-skew` | **Qwen4 Max Preview** | ✅ PASS | 6/6 | 4.3m | — | — |
+| `tenant-11-scoped-listing` | **DeepSeek V4 Pro** | ✅ PASS | 16/16 | 1.3m | — | — |
+| `tenant-11-scoped-listing` | **DeepSeek V4.1 Flash 1017** | ✅ PASS | 16/16 | 0.9m | — | — |
+| `tenant-11-scoped-listing` | **GLM-5.2 via Alibaba** | ✅ PASS | 16/16 | 7.2m | — | — |
+| `tenant-11-scoped-listing` | **GLM-5.3** | ✅ PASS | 16/16 | 6.8m | — | — |
+| `tenant-11-scoped-listing` | **GLM-5.3-Flash** | ✅ PASS | 16/16 | 5.2m | — | — |
+| `tenant-11-scoped-listing` | **Iceman Free** | ✅ PASS | 16/16 | 1.7m | — | — |
+| `tenant-11-scoped-listing` | **Inkling 2 Small Free** | ✅ PASS | 16/16 | 1.0m | — | — |
+| `tenant-11-scoped-listing` | **Kimi for Coding** | ✅ PASS | 16/16 | 1.8m | — | — |
+| `tenant-11-scoped-listing` | **Kimi K3-256K** | ✅ PASS | 16/16 | 2.9m | — | — |
+| `tenant-11-scoped-listing` | **Kimi K3.1 Pro** | ✅ PASS | 16/16 | 3.8m | — | — |
+| `tenant-11-scoped-listing` | **MiniMax M3.1 Flash** | ✅ PASS | 16/16 | 7.0m | — | — |
+| `tenant-11-scoped-listing` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 16/16 | 1.2m | — | — |
+| `tenant-11-scoped-listing` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 16/16 | 2.4m | — | — |
+| `tenant-11-scoped-listing` | **Qwen3.8 Flash via Alibaba** | ✅ PASS | 16/16 | 3.4m | — | — |
+| `tenant-11-scoped-listing` | **Qwen3.8 Max via Alibaba** | ✅ PASS | 16/16 | 17.8m | — | — |
+| `tenant-11-scoped-listing` | **Qwen4 Max Preview** | ✅ PASS | 16/16 | 3.6m | — | — |
 
 ---
 
@@ -353,6 +463,7 @@ Data files are stored in [`data/`](data/) in machine-readable JSON format:
 - `data/ratings.json`: Full 3D matrix (Model × Role × Domain).
 - `data/models.json`: Model parameters, context windows, and token pricing.
 - `data/benchmark_runs.json`: Detailed execution metrics across tasks.
+- `data/run_overrides.json`: Audit overrides for benchmark runs (status requalification, e.g. withdrawn INVALID runs, and per-model notes).
 
 To refresh and update README tables:
 ```bash

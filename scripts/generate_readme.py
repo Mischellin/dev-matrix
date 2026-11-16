@@ -15,6 +15,14 @@ def load_json(filename: str):
         return json.load(f)
 
 
+def load_optional_json(filename: str) -> dict:
+    p = DATA_DIR / filename
+    if not p.exists():
+        return {}
+    with open(p, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def build_readme() -> str:
     ratings = load_json("ratings.json")
     models = load_json("models.json")
@@ -80,8 +88,11 @@ def build_readme() -> str:
         rev_rows.append(f"| **{name}** | `{fam}` | {acc} | `{shift}` | {revs} |")
     reviewer_table = "\n".join(rev_rows)
 
-    # Tasks Benchmark Table
+    # Task Benchmark Table
     # Токены, цена и время в отчётах из submissions/ заявлены авторами и могут отсутствовать — тогда «—».
+    # Прогоны, отозванные аудитом (status INVALID из data/run_overrides.json), в сводку не входят.
+    overrides = load_optional_json("run_overrides.json")
+    model_notes: dict[str, str] = overrides.get("model_notes", {})
     task_rows = []
     task_rows.append("| Task | Model | Status | Tests | Time | Tokens | API Cost |")
     task_rows.append("| :--- | :--- | :---: | :---: | :---: | :---: | :---: |")
@@ -91,7 +102,14 @@ def build_readme() -> str:
     for t in benchmarks:
         t_id = t["id"]
         for r in t["runs"]:
-            status_badge = "✅ PASS" if r["status"] == "PASS" else "❌ FAIL"
+            if r["status"] == "PASS":
+                status_badge = "✅ PASS"
+            elif r["status"] == "INVALID":
+                status_badge = "🚫 INVALID"
+            else:
+                status_badge = "❌ FAIL"
+            if r.get("note"):
+                status_badge += f" — {r['note']}"
             time_str = f"{r['duration_min']:.1f}m" if r.get("duration_min") is not None else "—"
             tokens = r.get("total_tokens")
             tok_str = "—" if tokens is None else (f"{tokens / 1_000_000:.1f}M" if tokens >= 1_000_000 else f"{tokens / 1_000:.0f}k")
@@ -99,7 +117,7 @@ def build_readme() -> str:
             if r.get("outdated"):
                 status_badge += " ⚠️ outdated"
             task_rows.append(f"| `{t_id}` | **{r['model_name']}** | {status_badge} | {r['passed_tests']}/{r['total_tests']} | {time_str} | {tok_str} | {cost_str} |")
-            if r.get("outdated"):
+            if r.get("outdated") or r["status"] == "INVALID":
                 continue
             stat = per_model.setdefault(r["model_name"], [0, 0, 0, 0])
             stat[0] += r["status"] == "PASS"
@@ -114,11 +132,19 @@ def build_readme() -> str:
         # Рейтинг по числу пройденных задач из всего пула: частичная отправка не должна обгонять полную.
         for name, (ok, n, tests_ok, tests_all) in sorted(per_model.items(), key=lambda kv: (-kv[1][0], -kv[1][2], kv[0])):
             summary_rows.append(f"| **{name}** | {ok}/{suite_size or n} | {tests_ok}/{tests_all} |")
+        # Сноски по моделям (например, заменённые rerun-прогоны) из data/run_overrides.json.
+        footnote_rows = [
+            f"*{name}: {note}*"
+            for name, note in sorted(model_notes.items())
+            if name in per_model
+        ]
         benchmark_table = (
             "\n".join(summary_rows)
+            + ("\n\n" + "\n".join(footnote_rows) if footnote_rows else "")
             + "\n\n_Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter (\"claimed by author\"). "
             "The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task "
-            "and are not counted in the summary. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks "
+            "and are not counted in the summary. Runs marked INVALID were withdrawn after audit (see [`data/run_overrides.json`](data/run_overrides.json)) "
+            "and are not counted in the summary either. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks "
             "&& python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._\n\n"
             + benchmark_table
         )
@@ -335,6 +361,7 @@ Data files are stored in [`data/`](data/) in machine-readable JSON format:
 - `data/ratings.json`: Full 3D matrix (Model × Role × Domain).
 - `data/models.json`: Model parameters, context windows, and token pricing.
 - `data/benchmark_runs.json`: Detailed execution metrics across tasks.
+- `data/run_overrides.json`: Audit overrides for benchmark runs (status requalification, e.g. withdrawn INVALID runs, and per-model notes).
 
 To refresh and update README tables:
 ```bash

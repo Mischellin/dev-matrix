@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "tenant-11-scoped-listing",
+  "model": "Kimi K3.1 Pro",
+  "provider": "Moonshot",
+  "passed": true,
+  "passed_tests": 16,
+  "total_tests": 16,
+  "agent_seconds": 226.4,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "e682ed5f08a6dd617a24b2d7183d48fda0b392e14716d46242905f6cc8a6275d",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-16T12:14:50Z",
+  "claimed": true
+}

@@ -3,14 +3,14 @@
   "task_id": "onec-06-payment-allocator",
   "model": "MiniMax M3.1 Flash",
   "provider": "MiniMax",
-  "passed": true,
-  "passed_tests": 16,
+  "passed": false,
+  "passed_tests": 6,
   "total_tests": 16,
-  "agent_seconds": 242.3,
+  "agent_seconds": 1800.0,
   "tokens": null,
   "cost_usd": null,
   "tasks_hash": "5f31ffc6328d0b42022dcbf68168d42456aa6a9e9ccdc1a1461677e0c3ea6272",
   "devmatrix_version": "0.2.0",
-  "created_at": "2026-11-13T13:08:49Z",
+  "created_at": "2026-11-15T23:43:45Z",
   "claimed": true
 }

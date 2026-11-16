@@ -57,6 +57,34 @@ def test_report_from_older_task_version_is_marked_outdated(tmp_path: Path) -> No
     assert run["outdated"] is True
 
 
+def test_run_override_can_withdraw_pass_as_invalid(tmp_path: Path) -> None:
+    """Отозванный аудитом прогон (INVALID) получает статус и note, а не считается пройденным."""
+    _write(tmp_path, _report("m-a", "t-1", True, (6, 6), 90.0))
+    overrides = {
+        "runs": {
+            "m-a/t-1": {"status": "INVALID", "note": "pass revoked: hidden-access violation"},
+            # Чужой ключ не должен ни на что влиять.
+            "m-other/t-1": {"status": "FAIL"},
+        }
+    }
+    run = export_metrics.build_benchmark_runs(tmp_path, hash_of=_hash, overrides=overrides)[0]["runs"][0]
+    assert run["status"] == "INVALID"
+    assert run["note"] == "pass revoked: hidden-access violation"
+
+
+def test_run_override_without_status_keeps_report_status(tmp_path: Path) -> None:
+    """Примечание (note) без смены статуса — для переквалифицированных аудитов."""
+    _write(tmp_path, _report("m-a", "t-1", True, (6, 6), 90.0))
+    overrides = {"runs": {"m-a/t-1": {"note": "audit requalified: false positive"}}}
+    run = export_metrics.build_benchmark_runs(tmp_path, hash_of=_hash, overrides=overrides)[0]["runs"][0]
+    assert run["status"] == "PASS"
+    assert run["note"] == "audit requalified: false positive"
+
+
+def test_missing_overrides_file_means_no_overrides(tmp_path: Path) -> None:
+    assert export_metrics.load_run_overrides(tmp_path / "absent.json") == {}
+
+
 def test_broken_report_names_the_file(tmp_path: Path) -> None:
     d = tmp_path / "m-a"
     d.mkdir()
