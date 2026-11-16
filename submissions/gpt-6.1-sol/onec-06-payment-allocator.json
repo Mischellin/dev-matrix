@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "task_id": "onec-06-payment-allocator",
+  "model": "GPT-6.1 Sol",
+  "provider": "OpenAI",
+  "passed": true,
+  "passed_tests": 16,
+  "total_tests": 16,
+  "agent_seconds": 148.9,
+  "tokens": null,
+  "cost_usd": null,
+  "tasks_hash": "5f31ffc6328d0b42022dcbf68168d42456aa6a9e9ccdc1a1461677e0c3ea6272",
+  "devmatrix_version": "0.2.0",
+  "created_at": "2026-11-16T21:02:22Z",
+  "claimed": true
+}

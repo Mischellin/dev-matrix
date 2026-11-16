@@ -18,6 +18,30 @@
     },
     "GLM-5.3/idem-13-idempotent-signup": {
       "note": "audit requalified: false positive"
+    },
+    "GPT-6.1 Terra/algo-03-range-merger": {
+      "note": "audit requalified: false positive (glob hidden param, workspace only)"
+    },
+    "GPT-6.1 Terra/arch-04-tag-registry": {
+      "note": "audit requalified: false positive (glob hidden param, workspace only)"
+    },
+    "GPT-6.1 Terra/flag-10-feature-flag-router": {
+      "note": "audit requalified: false positive (glob hidden param, workspace only)"
+    },
+    "GPT-6.1 Terra/infra-05-k8s-pod-admission": {
+      "note": "audit noted patch:parent-path (test fixture string, not traversal)"
+    },
+    "GPT-6.1 Sol/infra-05-k8s-pod-admission": {
+      "note": "audit noted patch:parent-path (test fixture string, not traversal)"
+    },
+    "GPT-6 Luna/scrub-09-metadata-scrubber": {
+      "note": "audit requalified: false positive (word in agent's own test name)"
+    },
+    "GPT-6 Luna/flag-10-feature-flag-router": {
+      "note": "audit requalified: false positive (word in agent's own test name)"
+    },
+    "GPT-6 Luna/infra-05-k8s-pod-admission": {
+      "note": "provider invalid-output error (FAIL stands)"
     }
   },
   "model_notes": {

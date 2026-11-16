@@ -79,8 +79,11 @@ Tested under identical isolated runtime conditions with full hidden test suites.
 | **GLM-5.2 via Alibaba** | 12/13 | 221/222 |
 | **Kimi K3.1 Pro** | 12/13 | 221/222 |
 | **Qwen3.7 Max via Alibaba** | 12/13 | 221/222 |
+| **GPT-6.1 Sol** | 12/13 | 220/222 |
+| **GPT-6.1 Terra** | 12/13 | 220/222 |
 | **Kimi for Coding** | 12/13 | 220/222 |
 | **Qwen4 Max Preview** | 12/13 | 220/222 |
+| **GPT-6 Luna** | 11/13 | 219/222 |
 | **Inkling 2 Small Free** | 11/13 | 219/222 |
 | **GLM-5.3-Flash** | 11/13 | 218/222 |
 | **Iceman Free** | 11/13 | 218/222 |
@@ -100,6 +103,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `algo-03-range-merger` | **GLM-5.2 via Alibaba** | ✅ PASS | 27/27 | 3.3m | — | — |
 | `algo-03-range-merger` | **GLM-5.3** | ✅ PASS | 27/27 | 2.2m | — | — |
 | `algo-03-range-merger` | **GLM-5.3-Flash** | ✅ PASS | 27/27 | 1.4m | — | — |
+| `algo-03-range-merger` | **GPT-6 Luna** | ✅ PASS | 27/27 | 1.3m | — | — |
+| `algo-03-range-merger` | **GPT-6.1 Sol** | ✅ PASS | 27/27 | 2.0m | — | — |
+| `algo-03-range-merger` | **GPT-6.1 Terra** | ✅ PASS — audit requalified: false positive (glob hidden param, workspace only) | 27/27 | 1.2m | — | — |
 | `algo-03-range-merger` | **Iceman Free** | ✅ PASS | 27/27 | 1.4m | — | — |
 | `algo-03-range-merger` | **Inkling 2 Small Free** | ✅ PASS | 27/27 | 0.8m | — | — |
 | `algo-03-range-merger` | **Kimi for Coding** | ✅ PASS | 27/27 | 1.8m | — | — |
@@ -116,6 +122,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `arch-04-tag-registry` | **GLM-5.2 via Alibaba** | ✅ PASS | 8/8 | 3.3m | — | — |
 | `arch-04-tag-registry` | **GLM-5.3** | ✅ PASS | 8/8 | 2.0m | — | — |
 | `arch-04-tag-registry` | **GLM-5.3-Flash** | ✅ PASS | 8/8 | 1.6m | — | — |
+| `arch-04-tag-registry` | **GPT-6 Luna** | ✅ PASS | 8/8 | 1.4m | — | — |
+| `arch-04-tag-registry` | **GPT-6.1 Sol** | ✅ PASS | 8/8 | 1.7m | — | — |
+| `arch-04-tag-registry` | **GPT-6.1 Terra** | ✅ PASS — audit requalified: false positive (glob hidden param, workspace only) | 8/8 | 1.4m | — | — |
 | `arch-04-tag-registry` | **Iceman Free** | ✅ PASS | 8/8 | 1.1m | — | — |
 | `arch-04-tag-registry` | **Inkling 2 Small Free** | ✅ PASS | 8/8 | 0.6m | — | — |
 | `arch-04-tag-registry` | **Kimi for Coding** | ✅ PASS | 8/8 | 1.4m | — | — |
@@ -132,6 +141,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `auth-07-claim-roles` | **GLM-5.2 via Alibaba** | ✅ PASS | 14/14 | 2.9m | — | — |
 | `auth-07-claim-roles` | **GLM-5.3** | ✅ PASS | 14/14 | 4.6m | — | — |
 | `auth-07-claim-roles` | **GLM-5.3-Flash** | ✅ PASS | 14/14 | 4.0m | — | — |
+| `auth-07-claim-roles` | **GPT-6 Luna** | ✅ PASS | 14/14 | 1.7m | — | — |
+| `auth-07-claim-roles` | **GPT-6.1 Sol** | ✅ PASS | 14/14 | 2.0m | — | — |
+| `auth-07-claim-roles` | **GPT-6.1 Terra** | ✅ PASS | 14/14 | 1.3m | — | — |
 | `auth-07-claim-roles` | **Iceman Free** | ✅ PASS | 14/14 | 1.9m | — | — |
 | `auth-07-claim-roles` | **Inkling 2 Small Free** | ✅ PASS | 14/14 | 1.2m | — | — |
 | `auth-07-claim-roles` | **Kimi for Coding** | ✅ PASS | 14/14 | 1.5m | — | — |
@@ -148,6 +160,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `authz-12-uniform-404` | **GLM-5.2 via Alibaba** | ✅ PASS | 15/15 | 4.9m | — | — |
 | `authz-12-uniform-404` | **GLM-5.3** | ✅ PASS — audit requalified: false positive | 15/15 | 3.9m | — | — |
 | `authz-12-uniform-404` | **GLM-5.3-Flash** | ✅ PASS | 15/15 | 4.1m | — | — |
+| `authz-12-uniform-404` | **GPT-6 Luna** | ✅ PASS | 15/15 | 1.5m | — | — |
+| `authz-12-uniform-404` | **GPT-6.1 Sol** | ✅ PASS | 15/15 | 2.1m | — | — |
+| `authz-12-uniform-404` | **GPT-6.1 Terra** | ✅ PASS | 15/15 | 1.3m | — | — |
 | `authz-12-uniform-404` | **Iceman Free** | ✅ PASS | 15/15 | 1.8m | — | — |
 | `authz-12-uniform-404` | **Inkling 2 Small Free** | ✅ PASS | 15/15 | 0.8m | — | — |
 | `authz-12-uniform-404` | **Kimi for Coding** | ✅ PASS | 15/15 | 2.9m | — | — |
@@ -164,6 +179,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `flag-10-feature-flag-router` | **GLM-5.2 via Alibaba** | ✅ PASS | 16/16 | 5.5m | — | — |
 | `flag-10-feature-flag-router` | **GLM-5.3** | ✅ PASS | 16/16 | 4.3m | — | — |
 | `flag-10-feature-flag-router` | **GLM-5.3-Flash** | ✅ PASS | 16/16 | 4.1m | — | — |
+| `flag-10-feature-flag-router` | **GPT-6 Luna** | ✅ PASS — audit requalified: false positive (word in agent's own test name) | 16/16 | 1.7m | — | — |
+| `flag-10-feature-flag-router` | **GPT-6.1 Sol** | ✅ PASS | 16/16 | 3.0m | — | — |
+| `flag-10-feature-flag-router` | **GPT-6.1 Terra** | ✅ PASS — audit requalified: false positive (glob hidden param, workspace only) | 16/16 | 1.8m | — | — |
 | `flag-10-feature-flag-router` | **Iceman Free** | ✅ PASS | 16/16 | 1.5m | — | — |
 | `flag-10-feature-flag-router` | **Inkling 2 Small Free** | ✅ PASS | 16/16 | 1.4m | — | — |
 | `flag-10-feature-flag-router` | **Kimi for Coding** | ✅ PASS | 16/16 | 2.2m | — | — |
@@ -180,6 +198,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `host-08-host-header-guard` | **GLM-5.2 via Alibaba** | ✅ PASS | 15/15 | 15.8m | — | — |
 | `host-08-host-header-guard` | **GLM-5.3** | ✅ PASS — audit requalified: false positive | 15/15 | 9.6m | — | — |
 | `host-08-host-header-guard` | **GLM-5.3-Flash** | ✅ PASS | 15/15 | 9.2m | — | — |
+| `host-08-host-header-guard` | **GPT-6 Luna** | ✅ PASS | 15/15 | 1.7m | — | — |
+| `host-08-host-header-guard` | **GPT-6.1 Sol** | ✅ PASS | 15/15 | 3.3m | — | — |
+| `host-08-host-header-guard` | **GPT-6.1 Terra** | ✅ PASS | 15/15 | 2.2m | — | — |
 | `host-08-host-header-guard` | **Iceman Free** | ✅ PASS | 15/15 | 1.7m | — | — |
 | `host-08-host-header-guard` | **Inkling 2 Small Free** | ✅ PASS | 15/15 | 3.8m | — | — |
 | `host-08-host-header-guard` | **Kimi for Coding** | ✅ PASS | 15/15 | 5.7m | — | — |
@@ -196,6 +217,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `idem-13-idempotent-signup` | **GLM-5.2 via Alibaba** | ✅ PASS | 17/17 | 8.6m | — | — |
 | `idem-13-idempotent-signup` | **GLM-5.3** | ✅ PASS — audit requalified: false positive | 17/17 | 5.1m | — | — |
 | `idem-13-idempotent-signup` | **GLM-5.3-Flash** | ✅ PASS | 17/17 | 7.8m | — | — |
+| `idem-13-idempotent-signup` | **GPT-6 Luna** | ✅ PASS | 17/17 | 1.7m | — | — |
+| `idem-13-idempotent-signup` | **GPT-6.1 Sol** | ✅ PASS | 17/17 | 2.8m | — | — |
+| `idem-13-idempotent-signup` | **GPT-6.1 Terra** | ✅ PASS | 17/17 | 1.9m | — | — |
 | `idem-13-idempotent-signup` | **Iceman Free** | ✅ PASS | 17/17 | 2.6m | — | — |
 | `idem-13-idempotent-signup` | **Inkling 2 Small Free** | ✅ PASS | 17/17 | 1.8m | — | — |
 | `idem-13-idempotent-signup` | **Kimi for Coding** | ✅ PASS | 17/17 | 3.4m | — | — |
@@ -212,6 +236,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `infra-05-k8s-pod-admission` | **GLM-5.2 via Alibaba** | ❌ FAIL | 19/20 | 9.0m | — | — |
 | `infra-05-k8s-pod-admission` | **GLM-5.3** | ✅ PASS | 20/20 | 8.7m | — | — |
 | `infra-05-k8s-pod-admission` | **GLM-5.3-Flash** | ❌ FAIL — audit noted shell:parent-path | 18/20 | 10.1m | — | — |
+| `infra-05-k8s-pod-admission` | **GPT-6 Luna** | ❌ FAIL — provider invalid-output error (FAIL stands) | 18/20 | 2.1m | — | — |
+| `infra-05-k8s-pod-admission` | **GPT-6.1 Sol** | ❌ FAIL — audit noted patch:parent-path (test fixture string, not traversal) | 18/20 | 3.0m | — | — |
+| `infra-05-k8s-pod-admission` | **GPT-6.1 Terra** | ❌ FAIL — audit noted patch:parent-path (test fixture string, not traversal) | 18/20 | 1.9m | — | — |
 | `infra-05-k8s-pod-admission` | **Iceman Free** | ❌ FAIL | 17/20 | 2.0m | — | — |
 | `infra-05-k8s-pod-admission` | **Inkling 2 Small Free** | ❌ FAIL | 18/20 | 1.7m | — | — |
 | `infra-05-k8s-pod-admission` | **Kimi for Coding** | ❌ FAIL | 18/20 | 3.4m | — | — |
@@ -228,6 +255,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `obs-02-query-redactor` | **GLM-5.2 via Alibaba** | ✅ PASS | 37/37 | 19.3m | — | — |
 | `obs-02-query-redactor` | **GLM-5.3** | ✅ PASS | 37/37 | 23.0m | — | — |
 | `obs-02-query-redactor` | **GLM-5.3-Flash** | ❌ FAIL | 35/37 | 22.7m | — | — |
+| `obs-02-query-redactor` | **GPT-6 Luna** | ❌ FAIL | 36/37 | 2.0m | — | — |
+| `obs-02-query-redactor` | **GPT-6.1 Sol** | ✅ PASS | 37/37 | 3.6m | — | — |
+| `obs-02-query-redactor` | **GPT-6.1 Terra** | ✅ PASS | 37/37 | 2.1m | — | — |
 | `obs-02-query-redactor` | **Iceman Free** | ❌ FAIL | 36/37 | 5.7m | — | — |
 | `obs-02-query-redactor` | **Inkling 2 Small Free** | ❌ FAIL | 36/37 | 8.7m | — | — |
 | `obs-02-query-redactor` | **Kimi for Coding** | ✅ PASS | 37/37 | 10.2m | — | — |
@@ -244,6 +274,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `onec-06-payment-allocator` | **GLM-5.2 via Alibaba** | ✅ PASS | 16/16 | 6.9m | — | — |
 | `onec-06-payment-allocator` | **GLM-5.3** | ✅ PASS | 16/16 | 5.3m | — | — |
 | `onec-06-payment-allocator` | **GLM-5.3-Flash** | ✅ PASS | 16/16 | 10.1m | — | — |
+| `onec-06-payment-allocator` | **GPT-6 Luna** | ✅ PASS | 16/16 | 1.4m | — | — |
+| `onec-06-payment-allocator` | **GPT-6.1 Sol** | ✅ PASS | 16/16 | 2.5m | — | — |
+| `onec-06-payment-allocator` | **GPT-6.1 Terra** | ✅ PASS | 16/16 | 1.4m | — | — |
 | `onec-06-payment-allocator` | **Iceman Free** | ✅ PASS | 16/16 | 1.7m | — | — |
 | `onec-06-payment-allocator` | **Inkling 2 Small Free** | ✅ PASS | 16/16 | 1.0m | — | — |
 | `onec-06-payment-allocator` | **Kimi for Coding** | ✅ PASS | 16/16 | 4.2m | — | — |
@@ -260,6 +293,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `scrub-09-metadata-scrubber` | **GLM-5.2 via Alibaba** | ✅ PASS | 15/15 | 7.7m | — | — |
 | `scrub-09-metadata-scrubber` | **GLM-5.3** | ✅ PASS | 15/15 | 10.3m | — | — |
 | `scrub-09-metadata-scrubber` | **GLM-5.3-Flash** | ✅ PASS | 15/15 | 11.3m | — | — |
+| `scrub-09-metadata-scrubber` | **GPT-6 Luna** | ✅ PASS — audit requalified: false positive (word in agent's own test name) | 15/15 | 1.4m | — | — |
+| `scrub-09-metadata-scrubber` | **GPT-6.1 Sol** | ✅ PASS | 15/15 | 2.4m | — | — |
+| `scrub-09-metadata-scrubber` | **GPT-6.1 Terra** | ✅ PASS | 15/15 | 1.3m | — | — |
 | `scrub-09-metadata-scrubber` | **Iceman Free** | ✅ PASS | 15/15 | 2.1m | — | — |
 | `scrub-09-metadata-scrubber` | **Inkling 2 Small Free** | ✅ PASS | 15/15 | 2.2m | — | — |
 | `scrub-09-metadata-scrubber` | **Kimi for Coding** | ✅ PASS | 15/15 | 3.0m | — | — |
@@ -276,6 +312,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `sec-01-clock-skew` | **GLM-5.2 via Alibaba** | ✅ PASS | 6/6 | 3.1m | — | — |
 | `sec-01-clock-skew` | **GLM-5.3** | ✅ PASS | 6/6 | 3.2m | — | — |
 | `sec-01-clock-skew` | **GLM-5.3-Flash** | ✅ PASS | 6/6 | 2.3m | — | — |
+| `sec-01-clock-skew` | **GPT-6 Luna** | ✅ PASS | 6/6 | 1.2m | — | — |
+| `sec-01-clock-skew` | **GPT-6.1 Sol** | ✅ PASS | 6/6 | 2.4m | — | — |
+| `sec-01-clock-skew` | **GPT-6.1 Terra** | ✅ PASS | 6/6 | 1.6m | — | — |
 | `sec-01-clock-skew` | **Iceman Free** | ✅ PASS | 6/6 | 1.4m | — | — |
 | `sec-01-clock-skew` | **Inkling 2 Small Free** | ✅ PASS | 6/6 | 0.8m | — | — |
 | `sec-01-clock-skew` | **Kimi for Coding** | ✅ PASS | 6/6 | 1.5m | — | — |
@@ -292,6 +331,9 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `tenant-11-scoped-listing` | **GLM-5.2 via Alibaba** | ✅ PASS | 16/16 | 7.2m | — | — |
 | `tenant-11-scoped-listing` | **GLM-5.3** | ✅ PASS | 16/16 | 6.8m | — | — |
 | `tenant-11-scoped-listing` | **GLM-5.3-Flash** | ✅ PASS | 16/16 | 5.2m | — | — |
+| `tenant-11-scoped-listing` | **GPT-6 Luna** | ✅ PASS | 16/16 | 1.2m | — | — |
+| `tenant-11-scoped-listing` | **GPT-6.1 Sol** | ✅ PASS | 16/16 | 2.3m | — | — |
+| `tenant-11-scoped-listing` | **GPT-6.1 Terra** | ✅ PASS | 16/16 | 1.3m | — | — |
 | `tenant-11-scoped-listing` | **Iceman Free** | ✅ PASS | 16/16 | 1.7m | — | — |
 | `tenant-11-scoped-listing` | **Inkling 2 Small Free** | ✅ PASS | 16/16 | 1.0m | — | — |
 | `tenant-11-scoped-listing` | **Kimi for Coding** | ✅ PASS | 16/16 | 1.8m | — | — |
