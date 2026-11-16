@@ -1,0 +1,15 @@
+START qwen4-max-preview | Qwen4 Max Preview | Alibaba | alibaba-token-plan/qwen4-max-preview
+[qwen4-max-preview] sec-01-clock-skew rc=0
+[qwen4-max-preview] obs-02-query-redactor rc=0
+[qwen4-max-preview] algo-03-range-merger rc=0
+[qwen4-max-preview] arch-04-tag-registry rc=0
+[qwen4-max-preview] infra-05-k8s-pod-admission rc=1
+[qwen4-max-preview] onec-06-payment-allocator rc=0
+[qwen4-max-preview] auth-07-claim-roles rc=0
+[qwen4-max-preview] host-08-host-header-guard rc=0
+[qwen4-max-preview] scrub-09-metadata-scrubber rc=0
+[qwen4-max-preview] flag-10-feature-flag-router rc=0
+[qwen4-max-preview] tenant-11-scoped-listing rc=0
+[qwen4-max-preview] authz-12-uniform-404 rc=0
+[qwen4-max-preview] idem-13-idempotent-signup rc=0
+QWEN4 FULL13 FINISHED

@@ -1,0 +1,14 @@
+generated_at=2026-11-16T22:11:45Z models=13 tasks_per_model=13 expected=169 reports=169 passed=1
+gpt-6.1-terra-fast: 0/13 passed, reports=13
+gpt-6.1-sol-fast: 0/13 passed, reports=13
+gpt-6-sol: 0/13 passed, reports=13
+gpt-6-sol-fast: 0/13 passed, reports=13
+gpt-6-luna-fast: 1/13 passed, reports=13
+gpt-6-astra-fast: 0/13 passed, reports=13
+gpt-5.6-luna: 0/13 passed, reports=13
+gpt-5.6-luna-fast: 0/13 passed, reports=13
+gpt-5.6-terra: 0/13 passed, reports=13
+gpt-5.6-terra-fast: 0/13 passed, reports=13
+gpt-5.6-sol: 0/13 passed, reports=13
+gpt-5.6-sol-fast: 0/13 passed, reports=13
+gpt-5.5-fast: 0/13 passed, reports=13

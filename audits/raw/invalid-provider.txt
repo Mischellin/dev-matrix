@@ -1,0 +1,46 @@
+gigachat-3.5-ultra | sec-01-clock-skew | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec887f9ffeDiIp6x2lPiHrYd: assistant message error
+gigachat-3.5-ultra | obs-02-query-redactor | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec86789ffejaa0ykO8GHR6Mw: assistant message error
+gigachat-3.5-ultra | algo-03-range-merger | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec84fc3ffeOEwZSAjJxXxZMi: assistant message error
+gigachat-3.5-ultra | arch-04-tag-registry | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec838d6ffecqgxkKPpu0Few2: assistant message error
+gigachat-3.5-ultra | infra-05-k8s-pod-admission | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec81ec3ffeyYWXTVbteBhXI2: assistant message error
+gigachat-3.5-ultra | onec-06-payment-allocator | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec80476ffe3r72sHNgtYOwEG: assistant message error
+gigachat-3.5-ultra | auth-07-claim-roles | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7e95cffedIethlBDa72b6d: assistant message error
+gigachat-3.5-ultra | host-08-host-header-guard | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7cd46ffeWQuIBMgQfNpJKc: assistant message error
+gigachat-3.5-ultra | scrub-09-metadata-scrubber | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7b04fffetaLo51WoL80GEg: assistant message error
+gigachat-3.5-ultra | flag-10-feature-flag-router | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7962fffeZlAkTbRgTrm4tW: assistant message error
+gigachat-3.5-ultra | tenant-11-scoped-listing | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec77a3affe65mIcYS1uSxKEZ: assistant message error
+gigachat-3.5-ultra | authz-12-uniform-404 | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec75e77ffexJ2EK7G4kEONuT: assistant message error
+gigachat-3.5-ultra | idem-13-idempotent-signup | error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7417cffeOz530eJMUVAq3g: assistant message error
+qwen4-max-preview | infra-05-k8s-pod-admission | forbidden tool inputs: edit:parent-path,shell:parent-path,write:parent-path
+kimi-k3.1-pro | algo-03-range-merger | forbidden tool inputs: glob:hidden
+glm-5.3 | scrub-09-metadata-scrubber | forbidden tool inputs: write:hidden
+glm-5.3-flash | infra-05-k8s-pod-admission | forbidden tool inputs: shell:parent-path
+qwen3.8-max | obs-02-query-redactor | ses_e1e5b5e50ffezudx4N70D46dyb: assistant message error
+minimax-m3.1-flash | flag-10-feature-flag-router | forbidden tool inputs: write:parent-path
+minimax-m3 | obs-02-query-redactor | forbidden tool inputs: edit:hidden,glob:hidden
+kimi-k2.7-code-alibaba | sec-01-clock-skew | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d16be8affeby7IPvm908u4gR: assistant message error
+kimi-k2.7-code-alibaba | obs-02-query-redactor | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d16a04effewiPmzpsTOKsHAn: assistant message error
+kimi-k2.7-code-alibaba | algo-03-range-merger | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1686c4ffeX9sth389hmDEg5: assistant message error
+kimi-k2.7-code-alibaba | arch-04-tag-registry | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d166ef8ffeG2kLlICfwQgvZ9: assistant message error
+kimi-k2.7-code-alibaba | infra-05-k8s-pod-admission | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1655c5ffeyaiF5pX0Piy69u: assistant message error
+kimi-k2.7-code-alibaba | onec-06-payment-allocator | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d163b3bffeq0uvaMhIiOv0yw: assistant message error
+kimi-k2.7-code-alibaba | auth-07-claim-roles | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d16217cffeb7a5xkVsjX3a5Y: assistant message error
+kimi-k2.7-code-alibaba | host-08-host-header-guard | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d16067dffekkVoZscIJwhzrx: assistant message error
+kimi-k2.7-code-alibaba | scrub-09-metadata-scrubber | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d15eee7ffeX6NXnGeX0uojhL: assistant message error
+kimi-k2.7-code-alibaba | flag-10-feature-flag-router | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d15d612ffe04ZhFoKgPw48AB: assistant message error
+kimi-k2.7-code-alibaba | tenant-11-scoped-listing | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d15be34ffe1Xjl6Z53MS4hVs: assistant message error
+kimi-k2.7-code-alibaba | authz-12-uniform-404 | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d15a515ffePnQxaXMGJNiy59: assistant message error
+kimi-k2.7-code-alibaba | idem-13-idempotent-signup | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d158bf7ffeFIyuUSt429IhI2: assistant message error
+minimax-m2.5-alibaba | sec-01-clock-skew | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d156999ffeoWVgU17yjh8p7n: assistant message error
+minimax-m2.5-alibaba | obs-02-query-redactor | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1551b4ffecOz7vFRVuxbqKd: assistant message error
+minimax-m2.5-alibaba | algo-03-range-merger | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1538b5ffeA3N6AX9RqpwJtm: assistant message error
+minimax-m2.5-alibaba | arch-04-tag-registry | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d151dd4ffeGlCoXcavzssTwx: assistant message error
+minimax-m2.5-alibaba | infra-05-k8s-pod-admission | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1503feffeREuecqR3pEPl7g: assistant message error
+minimax-m2.5-alibaba | onec-06-payment-allocator | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d14ecfbffeXrIFDL9O52b4DC: assistant message error
+minimax-m2.5-alibaba | auth-07-claim-roles | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d14d5ebffelI7Se1zD0Xz6A5: assistant message error
+minimax-m2.5-alibaba | host-08-host-header-guard | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d14b018ffe0sR9bxv2SCvNlL: assistant message error
+minimax-m2.5-alibaba | scrub-09-metadata-scrubber | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d149739ffeM3hETJzvZe8LOQ: assistant message error
+minimax-m2.5-alibaba | flag-10-feature-flag-router | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d147b6cffeJqwQZyD6ZhTOQB: assistant message error
+minimax-m2.5-alibaba | tenant-11-scoped-listing | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d146314ffejrVBv91UO2772F: assistant message error
+minimax-m2.5-alibaba | authz-12-uniform-404 | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1447c1ffeCn3fv27Jud6u7l: assistant message error
+minimax-m2.5-alibaba | idem-13-idempotent-signup | error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d142f1cffe7ELCCfpWnJwfft: assistant message error

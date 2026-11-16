@@ -1,0 +1,7 @@
+generated_at=2026-11-16T08:48:41Z models=6 tasks_per_model=13 expected=78 reports=78 passed=27
+inkling-2-small-free: 11/13 passed, reports=13
+longcat-2.5-free: 1/13 passed, reports=13
+flint-40b-free: 6/13 passed, reports=13
+nemotron-3.5-super-vl-free: 9/13 passed, reports=13
+mimo-v2.6-flash-free: 0/13 passed, reports=13
+big-pickle: 0/13 passed, reports=13

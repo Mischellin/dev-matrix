@@ -1,0 +1,433 @@
+[
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1cb6a3bfffeatSkta7wW5Dslc"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 19
+    },
+    "agents": {
+      "ses_e1cb6a3bfffeatSkta7wW5Dslc": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cb6a3bfffeatSkta7wW5Dslc": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "skill": 1,
+      "shell": 9,
+      "edit": 4,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1cb2bbc9ffeOKQgaCSvLF0XCy"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 24,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 24
+    },
+    "agents": {
+      "ses_e1cb2bbc9ffeOKQgaCSvLF0XCy": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cb2bbc9ffeOKQgaCSvLF0XCy": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 12,
+      "glob": 1,
+      "skill": 1,
+      "write": 4,
+      "edit": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1ca3ac7effe4MpkFljK6htoP8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 8
+    },
+    "agents": {
+      "ses_e1ca3ac7effe4MpkFljK6htoP8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ca3ac7effe4MpkFljK6htoP8": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "write": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1ca1cc09ffegadixl80xmJdqN"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 11
+    },
+    "agents": {
+      "ses_e1ca1cc09ffegadixl80xmJdqN": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ca1cc09ffegadixl80xmJdqN": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "skill": 2,
+      "write": 2,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1c9fc856ffe1N4y2ERBXvXvfG"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 21,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 21
+    },
+    "agents": {
+      "ses_e1c9fc856ffe1N4y2ERBXvXvfG": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c9fc856ffe1N4y2ERBXvXvfG": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 10,
+      "skill": 2,
+      "write": 3,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1c98c68cffeyZ3byzQUAdi4m3"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 13
+    },
+    "agents": {
+      "ses_e1c98c68cffeyZ3byzQUAdi4m3": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c98c68cffeyZ3byzQUAdi4m3": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "skill": 1,
+      "write": 2,
+      "shell": 4,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1c94aa78ffeRjO2KgO9OWUVFv"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 16
+    },
+    "agents": {
+      "ses_e1c94aa78ffeRjO2KgO9OWUVFv": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c94aa78ffeRjO2KgO9OWUVFv": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 8,
+      "skill": 1,
+      "write": 3,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1c914c33ffer8vrO0AJHM7Wgf"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 16
+    },
+    "agents": {
+      "ses_e1c914c33ffer8vrO0AJHM7Wgf": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c914c33ffer8vrO0AJHM7Wgf": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "glob": 1,
+      "skill": 2,
+      "shell": 10,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1c8b55fcffeOzNluJs2grSzdJ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 22,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 22
+    },
+    "agents": {
+      "ses_e1c8b55fcffeOzNluJs2grSzdJ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c8b55fcffeOzNluJs2grSzdJ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "skill": 1,
+      "shell": 14,
+      "write": 3,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1c84fe12ffeSJUm75P8hlgHqA"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 16
+    },
+    "agents": {
+      "ses_e1c84fe12ffeSJUm75P8hlgHqA": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c84fe12ffeSJUm75P8hlgHqA": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 9,
+      "skill": 1,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1c80de18ffenHUKO00N0beqmd"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 11
+    },
+    "agents": {
+      "ses_e1c80de18ffenHUKO00N0beqmd": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c80de18ffenHUKO00N0beqmd": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 7,
+      "edit": 1,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1c7d8705ffe0M49L8aEYPZMFN"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 18
+    },
+    "agents": {
+      "ses_e1c7d8705ffe0M49L8aEYPZMFN": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c7d8705ffe0M49L8aEYPZMFN": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "read": 7,
+      "shell": 9,
+      "write": 2,
+      "edit": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "write:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: write:hidden"
+    ]
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1c79b8c3ffesI7JrXqXgwhWtP"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 15
+    },
+    "agents": {
+      "ses_e1c79b8c3ffesI7JrXqXgwhWtP": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c79b8c3ffesI7JrXqXgwhWtP": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "skill": 1,
+      "write": 3,
+      "shell": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  }
+]

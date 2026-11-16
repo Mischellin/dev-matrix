@@ -1,0 +1,60 @@
+QUEUE START 2026-11-16T11:18:50Z | prompt=v2 | models=2 tasks=13
+LANE PIDS: kimi=70057 glm=70058
+START glm-5.3 | GLM-5.3 | Zhipu AI | zai-coding-plan/glm-5.3
+START kimi-k3.1-pro | Kimi K3.1 Pro | Moonshot | kimi-code-plan-global/k3.1-pro
+[kimi-k3.1-pro] sec-01-clock-skew rc=0
+AUDIT kimi-k3.1-pro sec-01-clock-skew: VALID sessions=1 msgs=18 reasons=-
+[glm-5.3] sec-01-clock-skew rc=0
+AUDIT glm-5.3 sec-01-clock-skew: VALID sessions=1 msgs=16 reasons=-
+[kimi-k3.1-pro] obs-02-query-redactor rc=0
+AUDIT kimi-k3.1-pro obs-02-query-redactor: VALID sessions=1 msgs=19 reasons=-
+[kimi-k3.1-pro] algo-03-range-merger rc=0
+AUDIT kimi-k3.1-pro algo-03-range-merger: VALID sessions=1 msgs=15 reasons=-
+[kimi-k3.1-pro] arch-04-tag-registry rc=0
+AUDIT kimi-k3.1-pro arch-04-tag-registry: VALID sessions=1 msgs=14 reasons=-
+[kimi-k3.1-pro] infra-05-k8s-pod-admission rc=1
+AUDIT kimi-k3.1-pro infra-05-k8s-pod-admission: VALID sessions=1 msgs=39 reasons=-
+[glm-5.3] obs-02-query-redactor rc=0
+AUDIT glm-5.3 obs-02-query-redactor: VALID sessions=1 msgs=26 reasons=-
+[glm-5.3] algo-03-range-merger rc=0
+AUDIT glm-5.3 algo-03-range-merger: VALID sessions=1 msgs=11 reasons=-
+[glm-5.3] arch-04-tag-registry rc=0
+AUDIT glm-5.3 arch-04-tag-registry: VALID sessions=1 msgs=10 reasons=-
+[kimi-k3.1-pro] onec-06-payment-allocator rc=0
+AUDIT kimi-k3.1-pro onec-06-payment-allocator: VALID sessions=1 msgs=18 reasons=-
+[kimi-k3.1-pro] auth-07-claim-roles rc=0
+AUDIT kimi-k3.1-pro auth-07-claim-roles: VALID sessions=1 msgs=25 reasons=-
+[glm-5.3] infra-05-k8s-pod-admission rc=0
+AUDIT glm-5.3 infra-05-k8s-pod-admission: VALID sessions=1 msgs=21 reasons=-
+[kimi-k3.1-pro] host-08-host-header-guard rc=0
+AUDIT kimi-k3.1-pro host-08-host-header-guard: VALID sessions=1 msgs=17 reasons=-
+[glm-5.3] onec-06-payment-allocator rc=0
+AUDIT glm-5.3 onec-06-payment-allocator: VALID sessions=1 msgs=10 reasons=-
+[kimi-k3.1-pro] scrub-09-metadata-scrubber rc=0
+AUDIT kimi-k3.1-pro scrub-09-metadata-scrubber: VALID sessions=1 msgs=20 reasons=-
+[glm-5.3] auth-07-claim-roles rc=0
+AUDIT glm-5.3 auth-07-claim-roles: VALID sessions=1 msgs=19 reasons=-
+[kimi-k3.1-pro] flag-10-feature-flag-router rc=0
+AUDIT kimi-k3.1-pro flag-10-feature-flag-router: VALID sessions=1 msgs=23 reasons=-
+[kimi-k3.1-pro] tenant-11-scoped-listing rc=0
+AUDIT kimi-k3.1-pro tenant-11-scoped-listing: VALID sessions=1 msgs=17 reasons=-
+[glm-5.3] host-08-host-header-guard rc=0
+AUDIT glm-5.3 host-08-host-header-guard: INVALID sessions=1 msgs=19 reasons=forbidden tool inputs: shell:hidden
+[kimi-k3.1-pro] authz-12-uniform-404 rc=0
+AUDIT kimi-k3.1-pro authz-12-uniform-404: VALID sessions=1 msgs=28 reasons=-
+[glm-5.3] scrub-09-metadata-scrubber rc=0
+AUDIT glm-5.3 scrub-09-metadata-scrubber: VALID sessions=1 msgs=21 reasons=-
+[kimi-k3.1-pro] idem-13-idempotent-signup rc=0
+AUDIT kimi-k3.1-pro idem-13-idempotent-signup: VALID sessions=1 msgs=33 reasons=-
+[kimi-k3.1-pro] MODEL DONE
+[glm-5.3] flag-10-feature-flag-router rc=0
+AUDIT glm-5.3 flag-10-feature-flag-router: VALID sessions=1 msgs=20 reasons=-
+[glm-5.3] tenant-11-scoped-listing rc=0
+AUDIT glm-5.3 tenant-11-scoped-listing: VALID sessions=1 msgs=19 reasons=-
+[glm-5.3] authz-12-uniform-404 rc=0
+AUDIT glm-5.3 authz-12-uniform-404: INVALID sessions=1 msgs=18 reasons=forbidden tool inputs: shell:hidden
+[glm-5.3] idem-13-idempotent-signup rc=0
+AUDIT glm-5.3 idem-13-idempotent-signup: INVALID sessions=1 msgs=14 reasons=forbidden tool inputs: shell:hidden
+[glm-5.3] MODEL DONE
+LANE EXITS: kimi=0 glm=0
+RERUN V2B QUEUE FINISHED

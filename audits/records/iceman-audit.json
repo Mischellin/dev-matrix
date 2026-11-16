@@ -1,0 +1,377 @@
+[
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1ee15accffeex477ZP3mcphRX"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "opencode/iceman-free": 10
+    },
+    "agents": {
+      "ses_e1ee15accffeex477ZP3mcphRX": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ee15accffeex477ZP3mcphRX": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 6,
+      "skill": 2,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1ee00d80ffeEzbBx0SI3oR9Xi"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "opencode/iceman-free": 13
+    },
+    "agents": {
+      "ses_e1ee00d80ffeEzbBx0SI3oR9Xi": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ee00d80ffeEzbBx0SI3oR9Xi": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 3,
+      "shell": 14,
+      "edit": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1edad185ffe0FBPiD3y214Ndg"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 7,
+    "assistant_models": {
+      "opencode/iceman-free": 7
+    },
+    "agents": {
+      "ses_e1edad185ffe0FBPiD3y214Ndg": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1edad185ffe0FBPiD3y214Ndg": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 5,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1ed97deeffevGjOUHxxTIs8O7"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 6,
+    "assistant_models": {
+      "opencode/iceman-free": 6
+    },
+    "agents": {
+      "ses_e1ed97deeffevGjOUHxxTIs8O7": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ed97deeffevGjOUHxxTIs8O7": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 7,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1ed8819fffeEPpgcczsR6ks56"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "opencode/iceman-free": 8
+    },
+    "agents": {
+      "ses_e1ed8819fffeEPpgcczsR6ks56": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ed8819fffeEPpgcczsR6ks56": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 10,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1ed6b316ffeb5Ze5TI1qUU0fi"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "opencode/iceman-free": 8
+    },
+    "agents": {
+      "ses_e1ed6b316ffeb5Ze5TI1qUU0fi": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ed6b316ffeb5Ze5TI1qUU0fi": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 1,
+      "shell": 10,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1ed51ff4ffeud7JMi2mOy0Hx7"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 7,
+    "assistant_models": {
+      "opencode/iceman-free": 7
+    },
+    "agents": {
+      "ses_e1ed51ff4ffeud7JMi2mOy0Hx7": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ed51ff4ffeud7JMi2mOy0Hx7": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 6,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1ed36bc6ffeSEsbwUZcxcEsmQ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 6,
+    "assistant_models": {
+      "opencode/iceman-free": 6
+    },
+    "agents": {
+      "ses_e1ed36bc6ffeSEsbwUZcxcEsmQ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ed36bc6ffeSEsbwUZcxcEsmQ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 6,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1ed1d533ffeOEiPX22EMKGOo4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "opencode/iceman-free": 9
+    },
+    "agents": {
+      "ses_e1ed1d533ffeOEiPX22EMKGOo4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ed1d533ffeOEiPX22EMKGOo4": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 1,
+      "shell": 11,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1ecfdbe3ffe5Z2vBCTOr8apyI"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "opencode/iceman-free": 9
+    },
+    "agents": {
+      "ses_e1ecfdbe3ffe5Z2vBCTOr8apyI": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ecfdbe3ffe5Z2vBCTOr8apyI": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 6,
+      "skill": 1,
+      "edit": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1ece8349ffeRy03sskKg6rNeP"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 6,
+    "assistant_models": {
+      "opencode/iceman-free": 6
+    },
+    "agents": {
+      "ses_e1ece8349ffeRy03sskKg6rNeP": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ece8349ffeRy03sskKg6rNeP": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 4,
+      "edit": 1,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1eccfd31ffeASrXih29zegAWm"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 6,
+    "assistant_models": {
+      "opencode/iceman-free": 6
+    },
+    "agents": {
+      "ses_e1eccfd31ffeASrXih29zegAWm": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eccfd31ffeASrXih29zegAWm": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 3,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  }
+]

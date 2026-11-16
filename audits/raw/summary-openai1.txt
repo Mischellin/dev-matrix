@@ -1,0 +1,6 @@
+generated_at=2026-11-16T21:44:31Z models=5 tasks_per_model=13 expected=65 reports=65 passed=35
+gpt-6.1-terra: 12/13 passed, reports=13
+gpt-6.1-sol: 12/13 passed, reports=13
+gpt-6-luna: 11/13 passed, reports=13
+gpt-6-astra: 0/13 passed, reports=13
+gpt-5.5: 0/13 passed, reports=13

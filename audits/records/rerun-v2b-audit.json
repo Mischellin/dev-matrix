@@ -1,0 +1,869 @@
+[
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1beb331bffe8nsjkDWO5Fpg9c"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 18
+    },
+    "agents": {
+      "ses_e1beb331bffe8nsjkDWO5Fpg9c": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1beb331bffe8nsjkDWO5Fpg9c": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 9,
+      "edit": 3,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1beb3316ffeYfpAk72V1DB1bz"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 16
+    },
+    "agents": {
+      "ses_e1beb3316ffeYfpAk72V1DB1bz": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1beb3316ffeYfpAk72V1DB1bz": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "skill": 1,
+      "edit": 3,
+      "shell": 8
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1be8bd27ffeFnrJhkMFE90g6x"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 19
+    },
+    "agents": {
+      "ses_e1be8bd27ffeFnrJhkMFE90g6x": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1be8bd27ffeFnrJhkMFE90g6x": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 6,
+      "glob": 3,
+      "shell": 8,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1bdfd91cffeymk9WGclQY0RwS"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 15
+    },
+    "agents": {
+      "ses_e1bdfd91cffeymk9WGclQY0RwS": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bdfd91cffeymk9WGclQY0RwS": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "read": 9,
+      "write": 1,
+      "shell": 5,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1bdc7269ffeXW1AP935SbpH06"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 14
+    },
+    "agents": {
+      "ses_e1bdc7269ffeXW1AP935SbpH06": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bdc7269ffeXW1AP935SbpH06": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "read": 9,
+      "write": 1,
+      "shell": 4,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1bda1e36ffeyL5kd7azlyrgVk"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 39,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 39
+    },
+    "agents": {
+      "ses_e1bda1e36ffeyL5kd7azlyrgVk": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bda1e36ffeyL5kd7azlyrgVk": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 12,
+      "grep": 1,
+      "shell": 10,
+      "write": 3,
+      "edit": 15
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1be83b15ffevK4xeP57fU7uLN"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 26,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 26
+    },
+    "agents": {
+      "ses_e1be83b15ffevK4xeP57fU7uLN": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1be83b15ffevK4xeP57fU7uLN": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 11,
+      "skill": 1,
+      "write": 3,
+      "edit": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1bd326ddffePditQ7qYA9offL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 11
+    },
+    "agents": {
+      "ses_e1bd326ddffePditQ7qYA9offL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bd326ddffePditQ7qYA9offL": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "glob": 1,
+      "write": 2,
+      "shell": 3,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1bd12bdbffeijTlZHcaj2qyse"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 10
+    },
+    "agents": {
+      "ses_e1bd12bdbffeijTlZHcaj2qyse": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bd12bdbffeijTlZHcaj2qyse": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 5,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1bd388daffegs5qqErD4xLvuF"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 18
+    },
+    "agents": {
+      "ses_e1bd388daffegs5qqErD4xLvuF": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bd388daffegs5qqErD4xLvuF": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 9,
+      "write": 4,
+      "shell": 6,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1bcdeebbffezDDdi0z8hQAxL9"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 25,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 25
+    },
+    "agents": {
+      "ses_e1bcdeebbffezDDdi0z8hQAxL9": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bcdeebbffezDDdi0z8hQAxL9": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 12,
+      "skill": 3,
+      "write": 1,
+      "shell": 9,
+      "edit": 8
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1bcf6038ffe1N6DoQu2dxCC1n"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 21,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 21
+    },
+    "agents": {
+      "ses_e1bcf6038ffe1N6DoQu2dxCC1n": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bcf6038ffe1N6DoQu2dxCC1n": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 10,
+      "skill": 1,
+      "write": 3,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1bc8c826ffepmNGktlMyg8MOx"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 17
+    },
+    "agents": {
+      "ses_e1bc8c826ffepmNGktlMyg8MOx": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bc8c826ffepmNGktlMyg8MOx": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 7,
+      "grep": 1,
+      "write": 2,
+      "shell": 8
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1bc7652affehVaPKtab4qLBss"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 10
+    },
+    "agents": {
+      "ses_e1bc7652affehVaPKtab4qLBss": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bc7652affehVaPKtab4qLBss": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 5,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1bc394e5ffeviNt3hoTxUQO5Z"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 20
+    },
+    "agents": {
+      "ses_e1bc394e5ffeviNt3hoTxUQO5Z": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bc394e5ffeviNt3hoTxUQO5Z": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 10,
+      "edit": 5,
+      "shell": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1bc28ce2ffe01bAS77ElBZOqS"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 19
+    },
+    "agents": {
+      "ses_e1bc28ce2ffe01bAS77ElBZOqS": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bc28ce2ffe01bAS77ElBZOqS": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 11,
+      "skill": 1,
+      "edit": 3,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1bbfc3b1ffeFrEouHk5eQqyQM"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 23,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 23
+    },
+    "agents": {
+      "ses_e1bbfc3b1ffeFrEouHk5eQqyQM": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bbfc3b1ffeFrEouHk5eQqyQM": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 14,
+      "shell": 11,
+      "write": 2,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1bbb6464ffeB9xTMCfmM2g43D"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 17
+    },
+    "agents": {
+      "ses_e1bbb6464ffeB9xTMCfmM2g43D": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bbb6464ffeB9xTMCfmM2g43D": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 10,
+      "write": 1,
+      "shell": 5,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1bbe4010ffelq41h5DJxpkEhC"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 19
+    },
+    "agents": {
+      "ses_e1bbe4010ffelq41h5DJxpkEhC": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bbe4010ffelq41h5DJxpkEhC": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 13,
+      "glob": 1,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "shell:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: shell:hidden"
+    ]
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1bb7ef50ffefUNmeKgcd9VxI6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 28,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 28
+    },
+    "agents": {
+      "ses_e1bb7ef50ffefUNmeKgcd9VxI6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bb7ef50ffefUNmeKgcd9VxI6": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 14,
+      "glob": 1,
+      "write": 1,
+      "shell": 10,
+      "edit": 11,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1bb5734effea5Hann5zuKPhfu"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 21,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 21
+    },
+    "agents": {
+      "ses_e1bb5734effea5Hann5zuKPhfu": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bb5734effea5Hann5zuKPhfu": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 14,
+      "skill": 1,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1bb2002bffeyzGqdSV2HVV0ge"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 33,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 33
+    },
+    "agents": {
+      "ses_e1bb2002bffeyzGqdSV2HVV0ge": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1bb2002bffeyzGqdSV2HVV0ge": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 9,
+      "glob": 2,
+      "edit": 13,
+      "shell": 14
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1babf979ffeY3JFsDeal4AC0L"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 20
+    },
+    "agents": {
+      "ses_e1babf979ffeY3JFsDeal4AC0L": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1babf979ffeY3JFsDeal4AC0L": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "glob": 2,
+      "skill": 1,
+      "write": 3,
+      "shell": 8,
+      "edit": 1,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1ba81132ffem7aeHc24qPKdwx"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 19
+    },
+    "agents": {
+      "ses_e1ba81132ffem7aeHc24qPKdwx": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ba81132ffem7aeHc24qPKdwx": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 11,
+      "skill": 1,
+      "write": 1,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1ba1d589ffeRnN74s5DjJZBqL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 18
+    },
+    "agents": {
+      "ses_e1ba1d589ffeRnN74s5DjJZBqL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ba1d589ffeRnN74s5DjJZBqL": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 8,
+      "skill": 1,
+      "write": 2,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "shell:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: shell:hidden"
+    ]
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1b9e4208ffepeUX2FbYaW9vC2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 14
+    },
+    "agents": {
+      "ses_e1b9e4208ffepeUX2FbYaW9vC2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1b9e4208ffepeUX2FbYaW9vC2": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 9,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "shell:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: shell:hidden"
+    ]
+  }
+]

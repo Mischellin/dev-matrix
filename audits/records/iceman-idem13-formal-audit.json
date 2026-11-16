@@ -1,0 +1,34 @@
+[
+  {
+    "model_slug": "iceman-free",
+    "display": "Iceman Free",
+    "expected_model": "opencode/iceman-free",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1ecb61bfffeoq7Tw2V8qFcnpA"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "opencode/iceman-free": 13
+    },
+    "agents": {
+      "ses_e1ecb61bfffeoq7Tw2V8qFcnpA": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ecb61bfffeoq7Tw2V8qFcnpA": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 11,
+      "skill": 2,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  }
+]

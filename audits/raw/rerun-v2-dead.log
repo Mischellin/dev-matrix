@@ -1,0 +1,8 @@
+QUEUE START 2026-11-16T11:02:29Z | prompt=v2 | models=3 tasks=13
+LANE PIDS: kimi=68094 glm=68095 minimax=68096
+START kimi-k3.1-pro | Kimi K3.1 Pro | Moonshot | kimi-code-plan-global/k3.1-pro
+START minimax-m3 | MiniMax-M3 | MiniMax | minimax-coding-plan/MiniMax-M3
+START glm-5.3 | GLM-5.3 | Zhipu AI | zai-coding-plan/glm-5.3
+[glm-5.3] sec-01-clock-skew rc=0
+AUDIT glm-5.3 sec-01-clock-skew: INVALID sessions=1 msgs=16 reasons=forbidden tool inputs: shell:hidden
+MANUAL STOP minimax-m3 at 2026-11-16T11:13:57Z — model excluded from leaderboard by user decision (remaining lanes unaffected)

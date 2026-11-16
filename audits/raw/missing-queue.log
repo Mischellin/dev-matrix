@@ -1,0 +1,169 @@
+START inkling-2-small-free | Inkling 2 Small Free | OpenCode | opencode/inkling-2-small-free
+[inkling-2-small-free] sec-01-clock-skew rc=0
+AUDIT inkling-2-small-free sec-01-clock-skew: VALID sessions=1 msgs=11 reasons=-
+[inkling-2-small-free] obs-02-query-redactor rc=1
+AUDIT inkling-2-small-free obs-02-query-redactor: VALID sessions=1 msgs=25 reasons=-
+[inkling-2-small-free] algo-03-range-merger rc=0
+AUDIT inkling-2-small-free algo-03-range-merger: VALID sessions=1 msgs=6 reasons=-
+[inkling-2-small-free] arch-04-tag-registry rc=0
+AUDIT inkling-2-small-free arch-04-tag-registry: VALID sessions=1 msgs=8 reasons=-
+[inkling-2-small-free] infra-05-k8s-pod-admission rc=1
+AUDIT inkling-2-small-free infra-05-k8s-pod-admission: VALID sessions=1 msgs=12 reasons=-
+[inkling-2-small-free] onec-06-payment-allocator rc=0
+AUDIT inkling-2-small-free onec-06-payment-allocator: VALID sessions=1 msgs=8 reasons=-
+[inkling-2-small-free] auth-07-claim-roles rc=0
+AUDIT inkling-2-small-free auth-07-claim-roles: VALID sessions=1 msgs=13 reasons=-
+[inkling-2-small-free] host-08-host-header-guard rc=0
+AUDIT inkling-2-small-free host-08-host-header-guard: VALID sessions=1 msgs=23 reasons=-
+[inkling-2-small-free] scrub-09-metadata-scrubber rc=0
+AUDIT inkling-2-small-free scrub-09-metadata-scrubber: VALID sessions=1 msgs=14 reasons=-
+[inkling-2-small-free] flag-10-feature-flag-router rc=0
+AUDIT inkling-2-small-free flag-10-feature-flag-router: VALID sessions=1 msgs=17 reasons=-
+[inkling-2-small-free] tenant-11-scoped-listing rc=0
+AUDIT inkling-2-small-free tenant-11-scoped-listing: VALID sessions=1 msgs=9 reasons=-
+[inkling-2-small-free] authz-12-uniform-404 rc=0
+AUDIT inkling-2-small-free authz-12-uniform-404: VALID sessions=1 msgs=9 reasons=-
+[inkling-2-small-free] idem-13-idempotent-signup rc=0
+AUDIT inkling-2-small-free idem-13-idempotent-signup: VALID sessions=1 msgs=16 reasons=-
+[inkling-2-small-free] MODEL DONE
+START longcat-2.5-free | LongCat 2.5 Free | OpenCode | opencode/longcat-2.5-free
+[longcat-2.5-free] sec-01-clock-skew rc=0
+AUDIT longcat-2.5-free sec-01-clock-skew: VALID sessions=1 msgs=16 reasons=-
+[longcat-2.5-free] obs-02-query-redactor rc=1
+AUDIT longcat-2.5-free obs-02-query-redactor: INVALID sessions=1 msgs=25 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cea54eeffecQapfB15BtXuWs: assistant message error
+[longcat-2.5-free] algo-03-range-merger rc=1
+AUDIT longcat-2.5-free algo-03-range-merger: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd830adffeT8eSsDNJkwv8XW: assistant message error
+[longcat-2.5-free] arch-04-tag-registry rc=1
+AUDIT longcat-2.5-free arch-04-tag-registry: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd80b41ffef3fY3YXmUtQpdg: assistant message error
+[longcat-2.5-free] infra-05-k8s-pod-admission rc=1
+AUDIT longcat-2.5-free infra-05-k8s-pod-admission: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd7e322ffeG0TQI5J3R6erZ4: assistant message error
+[longcat-2.5-free] onec-06-payment-allocator rc=1
+AUDIT longcat-2.5-free onec-06-payment-allocator: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd7bb3fffeNwH5eo4puxt3eg: assistant message error
+[longcat-2.5-free] auth-07-claim-roles rc=1
+AUDIT longcat-2.5-free auth-07-claim-roles: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd797aaffeydmC5D0OuP9XVa: assistant message error
+[longcat-2.5-free] host-08-host-header-guard rc=1
+AUDIT longcat-2.5-free host-08-host-header-guard: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd77518ffeN6poQqd1elLpKl: assistant message error
+[longcat-2.5-free] scrub-09-metadata-scrubber rc=1
+AUDIT longcat-2.5-free scrub-09-metadata-scrubber: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd746b1ffehdHoAm4GLiu33g: assistant message error
+[longcat-2.5-free] flag-10-feature-flag-router rc=1
+AUDIT longcat-2.5-free flag-10-feature-flag-router: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd720cbffeLot1FXwSMrL5O8: assistant message error
+[longcat-2.5-free] tenant-11-scoped-listing rc=1
+AUDIT longcat-2.5-free tenant-11-scoped-listing: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd6f6b9ffetZ23ZC4oKGzdAF: assistant message error
+[longcat-2.5-free] authz-12-uniform-404 rc=1
+AUDIT longcat-2.5-free authz-12-uniform-404: INVALID sessions=1 msgs=2 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd6d11fffeqVqgFFo40MjRT4: assistant message error
+[longcat-2.5-free] idem-13-idempotent-signup rc=1
+AUDIT longcat-2.5-free idem-13-idempotent-signup: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1cd68c57ffezNX5zRrqPuI6Yf: assistant message error
+[longcat-2.5-free] MODEL DONE
+START flint-40b-free | Flint 40B Free | OpenCode | opencode/flint-40b-free
+[flint-40b-free] sec-01-clock-skew rc=0
+AUDIT flint-40b-free sec-01-clock-skew: VALID sessions=1 msgs=18 reasons=-
+[flint-40b-free] obs-02-query-redactor rc=1
+AUDIT flint-40b-free obs-02-query-redactor: VALID sessions=1 msgs=57 reasons=-
+[flint-40b-free] algo-03-range-merger rc=0
+AUDIT flint-40b-free algo-03-range-merger: VALID sessions=1 msgs=13 reasons=-
+[flint-40b-free] arch-04-tag-registry rc=0
+AUDIT flint-40b-free arch-04-tag-registry: VALID sessions=1 msgs=13 reasons=-
+[flint-40b-free] infra-05-k8s-pod-admission rc=1
+AUDIT flint-40b-free infra-05-k8s-pod-admission: VALID sessions=1 msgs=28 reasons=-
+[flint-40b-free] onec-06-payment-allocator rc=0
+AUDIT flint-40b-free onec-06-payment-allocator: VALID sessions=1 msgs=18 reasons=-
+[flint-40b-free] auth-07-claim-roles rc=0
+AUDIT flint-40b-free auth-07-claim-roles: VALID sessions=1 msgs=20 reasons=-
+[flint-40b-free] host-08-host-header-guard rc=0
+AUDIT flint-40b-free host-08-host-header-guard: VALID sessions=1 msgs=19 reasons=-
+[flint-40b-free] scrub-09-metadata-scrubber rc=1
+AUDIT flint-40b-free scrub-09-metadata-scrubber: INVALID sessions=1 msgs=2 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c98e208ffell9aunzQ5HBKTM: assistant message error
+[flint-40b-free] flag-10-feature-flag-router rc=1
+AUDIT flint-40b-free flag-10-feature-flag-router: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c98b171ffemjwKJrzJaGNclq: assistant message error
+[flint-40b-free] tenant-11-scoped-listing rc=1
+AUDIT flint-40b-free tenant-11-scoped-listing: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c989647ffeKvjuByN06qOoM4: assistant message error
+[flint-40b-free] authz-12-uniform-404 rc=1
+AUDIT flint-40b-free authz-12-uniform-404: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c9878c3ffe3oNh33eimCsrPH: assistant message error
+[flint-40b-free] idem-13-idempotent-signup rc=1
+AUDIT flint-40b-free idem-13-idempotent-signup: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c985da8ffeYl2Ty1I6zW8E1P: assistant message error
+[flint-40b-free] MODEL DONE
+START nemotron-3.5-super-vl-free | Nemotron 3.5 Super VL Free | OpenCode | opencode/nemotron-3.5-super-vl-free
+[nemotron-3.5-super-vl-free] sec-01-clock-skew rc=0
+AUDIT nemotron-3.5-super-vl-free sec-01-clock-skew: VALID sessions=1 msgs=15 reasons=-
+[nemotron-3.5-super-vl-free] obs-02-query-redactor rc=0
+AUDIT nemotron-3.5-super-vl-free obs-02-query-redactor: VALID sessions=1 msgs=26 reasons=-
+[nemotron-3.5-super-vl-free] algo-03-range-merger rc=0
+AUDIT nemotron-3.5-super-vl-free algo-03-range-merger: INVALID sessions=1 msgs=27 reasons=forbidden tool inputs: read:parent-path
+[nemotron-3.5-super-vl-free] arch-04-tag-registry rc=0
+AUDIT nemotron-3.5-super-vl-free arch-04-tag-registry: VALID sessions=1 msgs=22 reasons=-
+[nemotron-3.5-super-vl-free] infra-05-k8s-pod-admission rc=1
+AUDIT nemotron-3.5-super-vl-free infra-05-k8s-pod-admission: VALID sessions=1 msgs=23 reasons=-
+[nemotron-3.5-super-vl-free] onec-06-payment-allocator rc=0
+AUDIT nemotron-3.5-super-vl-free onec-06-payment-allocator: VALID sessions=1 msgs=13 reasons=-
+[nemotron-3.5-super-vl-free] auth-07-claim-roles rc=0
+AUDIT nemotron-3.5-super-vl-free auth-07-claim-roles: VALID sessions=1 msgs=17 reasons=-
+[nemotron-3.5-super-vl-free] host-08-host-header-guard rc=0
+AUDIT nemotron-3.5-super-vl-free host-08-host-header-guard: VALID sessions=1 msgs=22 reasons=-
+[nemotron-3.5-super-vl-free] scrub-09-metadata-scrubber rc=0
+AUDIT nemotron-3.5-super-vl-free scrub-09-metadata-scrubber: VALID sessions=1 msgs=19 reasons=-
+[nemotron-3.5-super-vl-free] flag-10-feature-flag-router rc=0
+AUDIT nemotron-3.5-super-vl-free flag-10-feature-flag-router: INVALID sessions=1 msgs=15 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c798dd2ffe5pFw9IVrykLSu6: assistant message error
+[nemotron-3.5-super-vl-free] tenant-11-scoped-listing rc=1
+AUDIT nemotron-3.5-super-vl-free tenant-11-scoped-listing: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c77f376ffewkqQqx8jYzPbiZ: assistant message error
+[nemotron-3.5-super-vl-free] authz-12-uniform-404 rc=1
+AUDIT nemotron-3.5-super-vl-free authz-12-uniform-404: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c77d230ffeDyK78K5rxyyRtX: assistant message error
+[nemotron-3.5-super-vl-free] idem-13-idempotent-signup rc=1
+AUDIT nemotron-3.5-super-vl-free idem-13-idempotent-signup: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c77b1c9ffe7sg2F4D5nofS2a: assistant message error
+[nemotron-3.5-super-vl-free] MODEL DONE
+START mimo-v2.6-flash-free | MiMo-V2.6-Flash Free | OpenCode | opencode/mimo-v2.6-flash-free
+[mimo-v2.6-flash-free] sec-01-clock-skew rc=1
+AUDIT mimo-v2.6-flash-free sec-01-clock-skew: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c77985fffeFcjhagat2gXqBV: assistant message error
+[mimo-v2.6-flash-free] obs-02-query-redactor rc=1
+AUDIT mimo-v2.6-flash-free obs-02-query-redactor: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c777eb3ffeSTK17jrv5zqoET: assistant message error
+[mimo-v2.6-flash-free] algo-03-range-merger rc=1
+AUDIT mimo-v2.6-flash-free algo-03-range-merger: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c7762f4ffefU0ZRY9NORJV05: assistant message error
+[mimo-v2.6-flash-free] arch-04-tag-registry rc=1
+AUDIT mimo-v2.6-flash-free arch-04-tag-registry: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c774952ffellJncxoc3xgbiT: assistant message error
+[mimo-v2.6-flash-free] infra-05-k8s-pod-admission rc=1
+AUDIT mimo-v2.6-flash-free infra-05-k8s-pod-admission: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c772c3cffeEzDocI2qIHmq2Z: assistant message error
+[mimo-v2.6-flash-free] onec-06-payment-allocator rc=1
+AUDIT mimo-v2.6-flash-free onec-06-payment-allocator: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c770d40ffeb6QkuD5GmSvqLZ: assistant message error
+[mimo-v2.6-flash-free] auth-07-claim-roles rc=1
+AUDIT mimo-v2.6-flash-free auth-07-claim-roles: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c76ebecffeYfrPAb7wXMjcee: assistant message error
+[mimo-v2.6-flash-free] host-08-host-header-guard rc=1
+AUDIT mimo-v2.6-flash-free host-08-host-header-guard: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c76ca36ffeDU3YkeEzQ1dgvz: assistant message error
+[mimo-v2.6-flash-free] scrub-09-metadata-scrubber rc=1
+AUDIT mimo-v2.6-flash-free scrub-09-metadata-scrubber: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c76aeceffekdmWB1FRsdsTKw: assistant message error
+[mimo-v2.6-flash-free] flag-10-feature-flag-router rc=1
+AUDIT mimo-v2.6-flash-free flag-10-feature-flag-router: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c76903cffeVLYOlA6GYsWEo0: assistant message error
+[mimo-v2.6-flash-free] tenant-11-scoped-listing rc=1
+AUDIT mimo-v2.6-flash-free tenant-11-scoped-listing: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c7673bfffe3Ht4pH5OVca7OZ: assistant message error
+[mimo-v2.6-flash-free] authz-12-uniform-404 rc=1
+AUDIT mimo-v2.6-flash-free authz-12-uniform-404: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c7657b4ffeRKDZoMlz0fUzT4: assistant message error
+[mimo-v2.6-flash-free] idem-13-idempotent-signup rc=1
+AUDIT mimo-v2.6-flash-free idem-13-idempotent-signup: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c763b79ffeTHNspbUrUlIb5S: assistant message error
+[mimo-v2.6-flash-free] MODEL DONE
+START big-pickle | Big Pickle | OpenCode | opencode/big-pickle
+[big-pickle] sec-01-clock-skew rc=1
+AUDIT big-pickle sec-01-clock-skew: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c76193bffepspv434M4l2mKI: assistant message error
+[big-pickle] obs-02-query-redactor rc=1
+AUDIT big-pickle obs-02-query-redactor: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c75fcd9ffeOjd6f45c8bEsbk: assistant message error
+[big-pickle] algo-03-range-merger rc=1
+AUDIT big-pickle algo-03-range-merger: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c75e073ffeRnxL1GtyGfVbTc: assistant message error
+[big-pickle] arch-04-tag-registry rc=1
+AUDIT big-pickle arch-04-tag-registry: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c75c491ffeT1errDmcGpoNxL: assistant message error
+[big-pickle] infra-05-k8s-pod-admission rc=1
+AUDIT big-pickle infra-05-k8s-pod-admission: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c75aa5effeYq0IKyDCHAilZS: assistant message error
+[big-pickle] onec-06-payment-allocator rc=1
+AUDIT big-pickle onec-06-payment-allocator: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c758bf2ffe5g7ntnZf9lJYjD: assistant message error
+[big-pickle] auth-07-claim-roles rc=1
+AUDIT big-pickle auth-07-claim-roles: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c75703effeb4wcnoPN02hCap: assistant message error
+[big-pickle] host-08-host-header-guard rc=1
+AUDIT big-pickle host-08-host-header-guard: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c75558cffeDA0r1rr6gwdv37: assistant message error
+[big-pickle] scrub-09-metadata-scrubber rc=1
+AUDIT big-pickle scrub-09-metadata-scrubber: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c7538e6ffekLGGjynfPK2gg3: assistant message error
+[big-pickle] flag-10-feature-flag-router rc=1
+AUDIT big-pickle flag-10-feature-flag-router: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c7519d8ffeP26PSif3A73Bh4: assistant message error
+[big-pickle] tenant-11-scoped-listing rc=1
+AUDIT big-pickle tenant-11-scoped-listing: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c74fee5ffenQG2OIo37c7GiQ: assistant message error
+[big-pickle] authz-12-uniform-404 rc=1
+AUDIT big-pickle authz-12-uniform-404: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c74e2a3ffeIo45hp0ufORUYY: assistant message error
+[big-pickle] idem-13-idempotent-signup rc=1
+AUDIT big-pickle idem-13-idempotent-signup: INVALID sessions=1 msgs=1 reasons=error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.; ses_e1c74c5d2ffet3dxEAmrte5BGR: assistant message error
+[big-pickle] MODEL DONE
+OPENCODE MISSING QUEUE FINISHED

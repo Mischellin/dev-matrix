@@ -1,0 +1,500 @@
+QUEUE START moonshot models=3
+QUEUE START minimax models=2
+QUEUE START zai models=2
+QUEUE START sber models=1
+QUEUE START alibaba models=8
+QUEUE START deepseek models=2
+START minimax-m3.1-flash | MiniMax M3.1 Flash | MiniMax | minimax-coding-plan/MiniMax-M3.1-Flash | queue=minimax
+START kimi-k3.1-pro | Kimi K3.1 Pro | Moonshot | kimi-code-plan-global/k3.1-pro | queue=moonshot
+START deepseek-v4.1-flash-1017 | DeepSeek V4.1 Flash 1017 | DeepSeek | deepseek/deepseek-flash | queue=deepseek
+START glm-5.3 | GLM-5.3 | Zhipu AI | zai-coding-plan/glm-5.3 | queue=zai
+START gigachat-3.5-ultra | GigaChat 3.5 Ultra | Sber | GigaChat (Sberbank)/GigaChat-3-Ultra | queue=sber
+START qwen4-max-preview | Qwen4 Max Preview | Alibaba | alibaba-token-plan/qwen4-max-preview | queue=alibaba
+[gigachat-3.5-ultra] sec-01-clock-skew rc=1
+AUDIT gigachat-3.5-ultra sec-01-clock-skew: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec887f9ffeDiIp6x2lPiHrYd: assistant message error
+[gigachat-3.5-ultra] obs-02-query-redactor rc=1
+AUDIT gigachat-3.5-ultra obs-02-query-redactor: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec86789ffejaa0ykO8GHR6Mw: assistant message error
+[gigachat-3.5-ultra] algo-03-range-merger rc=1
+AUDIT gigachat-3.5-ultra algo-03-range-merger: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec84fc3ffeOEwZSAjJxXxZMi: assistant message error
+[gigachat-3.5-ultra] arch-04-tag-registry rc=1
+AUDIT gigachat-3.5-ultra arch-04-tag-registry: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec838d6ffecqgxkKPpu0Few2: assistant message error
+[gigachat-3.5-ultra] infra-05-k8s-pod-admission rc=1
+AUDIT gigachat-3.5-ultra infra-05-k8s-pod-admission: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec81ec3ffeyYWXTVbteBhXI2: assistant message error
+[gigachat-3.5-ultra] onec-06-payment-allocator rc=1
+AUDIT gigachat-3.5-ultra onec-06-payment-allocator: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec80476ffe3r72sHNgtYOwEG: assistant message error
+[gigachat-3.5-ultra] auth-07-claim-roles rc=1
+AUDIT gigachat-3.5-ultra auth-07-claim-roles: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7e95cffedIethlBDa72b6d: assistant message error
+[gigachat-3.5-ultra] host-08-host-header-guard rc=1
+AUDIT gigachat-3.5-ultra host-08-host-header-guard: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7cd46ffeWQuIBMgQfNpJKc: assistant message error
+[gigachat-3.5-ultra] scrub-09-metadata-scrubber rc=1
+AUDIT gigachat-3.5-ultra scrub-09-metadata-scrubber: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7b04fffetaLo51WoL80GEg: assistant message error
+[deepseek-v4.1-flash-1017] sec-01-clock-skew rc=0
+AUDIT deepseek-v4.1-flash-1017 sec-01-clock-skew: VALID sessions=1 msgs=18 reasons=-
+[gigachat-3.5-ultra] flag-10-feature-flag-router rc=1
+AUDIT gigachat-3.5-ultra flag-10-feature-flag-router: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7962fffeZlAkTbRgTrm4tW: assistant message error
+[gigachat-3.5-ultra] tenant-11-scoped-listing rc=1
+AUDIT gigachat-3.5-ultra tenant-11-scoped-listing: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec77a3affe65mIcYS1uSxKEZ: assistant message error
+[gigachat-3.5-ultra] authz-12-uniform-404 rc=1
+AUDIT gigachat-3.5-ultra authz-12-uniform-404: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec75e77ffexJ2EK7G4kEONuT: assistant message error
+[gigachat-3.5-ultra] idem-13-idempotent-signup rc=1
+AUDIT gigachat-3.5-ultra idem-13-idempotent-signup: INVALID sessions=1 msgs=1 reasons=error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required); ses_e1ec7417cffeOz530eJMUVAq3g: assistant message error
+QUEUE DONE sber
+[qwen4-max-preview] sec-01-clock-skew rc=0
+AUDIT qwen4-max-preview sec-01-clock-skew: VALID sessions=1 msgs=16 reasons=-
+[glm-5.3] sec-01-clock-skew rc=0
+AUDIT glm-5.3 sec-01-clock-skew: VALID sessions=1 msgs=19 reasons=-
+[minimax-m3.1-flash] sec-01-clock-skew rc=0
+AUDIT minimax-m3.1-flash sec-01-clock-skew: VALID sessions=1 msgs=26 reasons=-
+[kimi-k3.1-pro] sec-01-clock-skew rc=0
+AUDIT kimi-k3.1-pro sec-01-clock-skew: VALID sessions=1 msgs=18 reasons=-
+[deepseek-v4.1-flash-1017] obs-02-query-redactor rc=0
+AUDIT deepseek-v4.1-flash-1017 obs-02-query-redactor: VALID sessions=1 msgs=41 reasons=-
+[deepseek-v4.1-flash-1017] algo-03-range-merger rc=0
+AUDIT deepseek-v4.1-flash-1017 algo-03-range-merger: VALID sessions=1 msgs=8 reasons=-
+[deepseek-v4.1-flash-1017] arch-04-tag-registry rc=0
+AUDIT deepseek-v4.1-flash-1017 arch-04-tag-registry: VALID sessions=1 msgs=11 reasons=-
+[deepseek-v4.1-flash-1017] infra-05-k8s-pod-admission rc=0
+AUDIT deepseek-v4.1-flash-1017 infra-05-k8s-pod-admission: VALID sessions=1 msgs=13 reasons=-
+[minimax-m3.1-flash] obs-02-query-redactor rc=0
+AUDIT minimax-m3.1-flash obs-02-query-redactor: VALID sessions=1 msgs=64 reasons=-
+[deepseek-v4.1-flash-1017] onec-06-payment-allocator rc=0
+AUDIT deepseek-v4.1-flash-1017 onec-06-payment-allocator: VALID sessions=1 msgs=15 reasons=-
+[deepseek-v4.1-flash-1017] auth-07-claim-roles rc=0
+AUDIT deepseek-v4.1-flash-1017 auth-07-claim-roles: VALID sessions=1 msgs=16 reasons=-
+[minimax-m3.1-flash] algo-03-range-merger rc=0
+AUDIT minimax-m3.1-flash algo-03-range-merger: VALID sessions=1 msgs=36 reasons=-
+[deepseek-v4.1-flash-1017] host-08-host-header-guard rc=0
+AUDIT deepseek-v4.1-flash-1017 host-08-host-header-guard: VALID sessions=1 msgs=20 reasons=-
+[qwen4-max-preview] obs-02-query-redactor rc=0
+AUDIT qwen4-max-preview obs-02-query-redactor: VALID sessions=1 msgs=33 reasons=-
+[glm-5.3] obs-02-query-redactor rc=1
+AUDIT glm-5.3 obs-02-query-redactor: VALID sessions=1 msgs=31 reasons=-
+[deepseek-v4.1-flash-1017] scrub-09-metadata-scrubber rc=0
+AUDIT deepseek-v4.1-flash-1017 scrub-09-metadata-scrubber: VALID sessions=1 msgs=20 reasons=-
+[qwen4-max-preview] algo-03-range-merger rc=0
+AUDIT qwen4-max-preview algo-03-range-merger: VALID sessions=1 msgs=11 reasons=-
+[deepseek-v4.1-flash-1017] flag-10-feature-flag-router rc=0
+AUDIT deepseek-v4.1-flash-1017 flag-10-feature-flag-router: VALID sessions=1 msgs=20 reasons=-
+[qwen4-max-preview] arch-04-tag-registry rc=0
+AUDIT qwen4-max-preview arch-04-tag-registry: VALID sessions=1 msgs=8 reasons=-
+[glm-5.3] algo-03-range-merger rc=0
+AUDIT glm-5.3 algo-03-range-merger: VALID sessions=1 msgs=18 reasons=-
+[deepseek-v4.1-flash-1017] tenant-11-scoped-listing rc=0
+AUDIT deepseek-v4.1-flash-1017 tenant-11-scoped-listing: VALID sessions=1 msgs=13 reasons=-
+[deepseek-v4.1-flash-1017] authz-12-uniform-404 rc=0
+AUDIT deepseek-v4.1-flash-1017 authz-12-uniform-404: VALID sessions=1 msgs=11 reasons=-
+[glm-5.3] arch-04-tag-registry rc=0
+AUDIT glm-5.3 arch-04-tag-registry: VALID sessions=1 msgs=13 reasons=-
+[deepseek-v4.1-flash-1017] idem-13-idempotent-signup rc=0
+AUDIT deepseek-v4.1-flash-1017 idem-13-idempotent-signup: VALID sessions=1 msgs=19 reasons=-
+START deepseek-v4-pro | DeepSeek V4 Pro | DeepSeek | deepseek/deepseek-v4-pro | queue=deepseek
+[kimi-k3.1-pro] obs-02-query-redactor rc=0
+AUDIT kimi-k3.1-pro obs-02-query-redactor: VALID sessions=1 msgs=24 reasons=-
+[deepseek-v4-pro] sec-01-clock-skew rc=0
+AUDIT deepseek-v4-pro sec-01-clock-skew: VALID sessions=1 msgs=17 reasons=-
+[qwen4-max-preview] infra-05-k8s-pod-admission rc=1
+AUDIT qwen4-max-preview infra-05-k8s-pod-admission: INVALID sessions=1 msgs=18 reasons=forbidden tool inputs: edit:parent-path,shell:parent-path,write:parent-path
+[qwen4-max-preview] onec-06-payment-allocator rc=0
+AUDIT qwen4-max-preview onec-06-payment-allocator: VALID sessions=1 msgs=7 reasons=-
+[qwen4-max-preview] auth-07-claim-roles rc=0
+AUDIT qwen4-max-preview auth-07-claim-roles: VALID sessions=1 msgs=9 reasons=-
+[kimi-k3.1-pro] algo-03-range-merger rc=0
+AUDIT kimi-k3.1-pro algo-03-range-merger: INVALID sessions=1 msgs=15 reasons=forbidden tool inputs: glob:hidden
+[glm-5.3] infra-05-k8s-pod-admission rc=1
+AUDIT glm-5.3 infra-05-k8s-pod-admission: VALID sessions=1 msgs=11 reasons=-
+[kimi-k3.1-pro] arch-04-tag-registry rc=0
+AUDIT kimi-k3.1-pro arch-04-tag-registry: VALID sessions=1 msgs=14 reasons=-
+[qwen4-max-preview] host-08-host-header-guard rc=0
+AUDIT qwen4-max-preview host-08-host-header-guard: VALID sessions=1 msgs=14 reasons=-
+[deepseek-v4-pro] obs-02-query-redactor rc=0
+AUDIT deepseek-v4-pro obs-02-query-redactor: VALID sessions=1 msgs=18 reasons=-
+[deepseek-v4-pro] algo-03-range-merger rc=0
+AUDIT deepseek-v4-pro algo-03-range-merger: VALID sessions=1 msgs=9 reasons=-
+[glm-5.3] onec-06-payment-allocator rc=0
+AUDIT glm-5.3 onec-06-payment-allocator: VALID sessions=1 msgs=10 reasons=-
+[deepseek-v4-pro] arch-04-tag-registry rc=0
+AUDIT deepseek-v4-pro arch-04-tag-registry: VALID sessions=1 msgs=10 reasons=-
+[qwen4-max-preview] scrub-09-metadata-scrubber rc=0
+AUDIT qwen4-max-preview scrub-09-metadata-scrubber: VALID sessions=1 msgs=15 reasons=-
+[deepseek-v4-pro] infra-05-k8s-pod-admission rc=0
+AUDIT deepseek-v4-pro infra-05-k8s-pod-admission: VALID sessions=1 msgs=9 reasons=-
+[glm-5.3] auth-07-claim-roles rc=0
+AUDIT glm-5.3 auth-07-claim-roles: VALID sessions=1 msgs=14 reasons=-
+[qwen4-max-preview] flag-10-feature-flag-router rc=0
+AUDIT qwen4-max-preview flag-10-feature-flag-router: VALID sessions=1 msgs=13 reasons=-
+[deepseek-v4-pro] onec-06-payment-allocator rc=0
+AUDIT deepseek-v4-pro onec-06-payment-allocator: VALID sessions=1 msgs=10 reasons=-
+[deepseek-v4-pro] auth-07-claim-roles rc=0
+AUDIT deepseek-v4-pro auth-07-claim-roles: VALID sessions=1 msgs=14 reasons=-
+[qwen4-max-preview] tenant-11-scoped-listing rc=0
+AUDIT qwen4-max-preview tenant-11-scoped-listing: VALID sessions=1 msgs=18 reasons=-
+[qwen4-max-preview] authz-12-uniform-404 rc=0
+AUDIT qwen4-max-preview authz-12-uniform-404: VALID sessions=1 msgs=12 reasons=-
+[deepseek-v4-pro] host-08-host-header-guard rc=0
+AUDIT deepseek-v4-pro host-08-host-header-guard: VALID sessions=1 msgs=11 reasons=-
+[glm-5.3] host-08-host-header-guard rc=0
+AUDIT glm-5.3 host-08-host-header-guard: VALID sessions=1 msgs=16 reasons=-
+[deepseek-v4-pro] scrub-09-metadata-scrubber rc=0
+AUDIT deepseek-v4-pro scrub-09-metadata-scrubber: VALID sessions=1 msgs=9 reasons=-
+[qwen4-max-preview] idem-13-idempotent-signup rc=0
+AUDIT qwen4-max-preview idem-13-idempotent-signup: VALID sessions=1 msgs=14 reasons=-
+START qwen3.8-flash | Qwen3.8 Flash via Alibaba | Alibaba | alibaba-token-plan/qwen3.8-flash | queue=alibaba
+[deepseek-v4-pro] flag-10-feature-flag-router rc=0
+AUDIT deepseek-v4-pro flag-10-feature-flag-router: VALID sessions=1 msgs=15 reasons=-
+[minimax-m3.1-flash] arch-04-tag-registry rc=1
+AUDIT minimax-m3.1-flash arch-04-tag-registry: VALID sessions=1 msgs=6 reasons=-
+[deepseek-v4-pro] tenant-11-scoped-listing rc=0
+AUDIT deepseek-v4-pro tenant-11-scoped-listing: VALID sessions=1 msgs=12 reasons=-
+[glm-5.3] scrub-09-metadata-scrubber rc=0
+AUDIT glm-5.3 scrub-09-metadata-scrubber: INVALID sessions=1 msgs=16 reasons=forbidden tool inputs: write:hidden
+[deepseek-v4-pro] authz-12-uniform-404 rc=0
+AUDIT deepseek-v4-pro authz-12-uniform-404: VALID sessions=1 msgs=12 reasons=-
+[kimi-k3.1-pro] infra-05-k8s-pod-admission rc=1
+AUDIT kimi-k3.1-pro infra-05-k8s-pod-admission: VALID sessions=1 msgs=55 reasons=-
+[qwen3.8-flash] sec-01-clock-skew rc=0
+AUDIT qwen3.8-flash sec-01-clock-skew: VALID sessions=1 msgs=27 reasons=-
+[deepseek-v4-pro] idem-13-idempotent-signup rc=0
+AUDIT deepseek-v4-pro idem-13-idempotent-signup: VALID sessions=1 msgs=14 reasons=-
+QUEUE DONE deepseek
+[kimi-k3.1-pro] onec-06-payment-allocator rc=0
+AUDIT kimi-k3.1-pro onec-06-payment-allocator: VALID sessions=1 msgs=13 reasons=-
+[glm-5.3] flag-10-feature-flag-router rc=0
+AUDIT glm-5.3 flag-10-feature-flag-router: VALID sessions=1 msgs=28 reasons=-
+[kimi-k3.1-pro] auth-07-claim-roles rc=0
+AUDIT kimi-k3.1-pro auth-07-claim-roles: VALID sessions=1 msgs=21 reasons=-
+[glm-5.3] tenant-11-scoped-listing rc=0
+AUDIT glm-5.3 tenant-11-scoped-listing: VALID sessions=1 msgs=16 reasons=-
+[glm-5.3] authz-12-uniform-404 rc=0
+AUDIT glm-5.3 authz-12-uniform-404: VALID sessions=1 msgs=19 reasons=-
+[glm-5.3] idem-13-idempotent-signup rc=0
+AUDIT glm-5.3 idem-13-idempotent-signup: VALID sessions=1 msgs=16 reasons=-
+START glm-5.3-flash | GLM-5.3-Flash | Zhipu AI | zai-coding-plan/glm-5.3-flash | queue=zai
+[glm-5.3-flash] sec-01-clock-skew rc=0
+AUDIT glm-5.3-flash sec-01-clock-skew: VALID sessions=1 msgs=18 reasons=-
+[qwen3.8-flash] obs-02-query-redactor rc=0
+AUDIT qwen3.8-flash obs-02-query-redactor: VALID sessions=1 msgs=44 reasons=-
+[kimi-k3.1-pro] host-08-host-header-guard rc=0
+AUDIT kimi-k3.1-pro host-08-host-header-guard: VALID sessions=1 msgs=27 reasons=-
+[qwen3.8-flash] algo-03-range-merger rc=0
+AUDIT qwen3.8-flash algo-03-range-merger: VALID sessions=1 msgs=9 reasons=-
+[qwen3.8-flash] arch-04-tag-registry rc=0
+AUDIT qwen3.8-flash arch-04-tag-registry: VALID sessions=1 msgs=9 reasons=-
+[kimi-k3.1-pro] scrub-09-metadata-scrubber rc=0
+AUDIT kimi-k3.1-pro scrub-09-metadata-scrubber: VALID sessions=1 msgs=17 reasons=-
+[minimax-m3.1-flash] infra-05-k8s-pod-admission rc=1
+AUDIT minimax-m3.1-flash infra-05-k8s-pod-admission: VALID sessions=1 msgs=1 reasons=-
+[kimi-k3.1-pro] flag-10-feature-flag-router rc=0
+AUDIT kimi-k3.1-pro flag-10-feature-flag-router: VALID sessions=1 msgs=28 reasons=-
+[qwen3.8-flash] infra-05-k8s-pod-admission rc=0
+AUDIT qwen3.8-flash infra-05-k8s-pod-admission: VALID sessions=1 msgs=24 reasons=-
+[kimi-k3.1-pro] tenant-11-scoped-listing rc=0
+AUDIT kimi-k3.1-pro tenant-11-scoped-listing: VALID sessions=1 msgs=18 reasons=-
+[qwen3.8-flash] onec-06-payment-allocator rc=0
+AUDIT qwen3.8-flash onec-06-payment-allocator: VALID sessions=1 msgs=10 reasons=-
+[qwen3.8-flash] auth-07-claim-roles rc=0
+AUDIT qwen3.8-flash auth-07-claim-roles: VALID sessions=1 msgs=12 reasons=-
+[glm-5.3-flash] obs-02-query-redactor rc=1
+AUDIT glm-5.3-flash obs-02-query-redactor: VALID sessions=1 msgs=34 reasons=-
+[glm-5.3-flash] algo-03-range-merger rc=0
+AUDIT glm-5.3-flash algo-03-range-merger: VALID sessions=1 msgs=9 reasons=-
+[kimi-k3.1-pro] authz-12-uniform-404 rc=0
+AUDIT kimi-k3.1-pro authz-12-uniform-404: VALID sessions=1 msgs=27 reasons=-
+[glm-5.3-flash] arch-04-tag-registry rc=0
+AUDIT glm-5.3-flash arch-04-tag-registry: VALID sessions=1 msgs=8 reasons=-
+[qwen3.8-flash] host-08-host-header-guard rc=0
+AUDIT qwen3.8-flash host-08-host-header-guard: VALID sessions=1 msgs=13 reasons=-
+[qwen3.8-flash] scrub-09-metadata-scrubber rc=0
+AUDIT qwen3.8-flash scrub-09-metadata-scrubber: VALID sessions=1 msgs=20 reasons=-
+[kimi-k3.1-pro] idem-13-idempotent-signup rc=0
+AUDIT kimi-k3.1-pro idem-13-idempotent-signup: VALID sessions=1 msgs=55 reasons=-
+START kimi-for-coding | Kimi for Coding | Moonshot | kimi-code-plan-global/kimi-for-coding | queue=moonshot
+[qwen3.8-flash] flag-10-feature-flag-router rc=0
+AUDIT qwen3.8-flash flag-10-feature-flag-router: VALID sessions=1 msgs=15 reasons=-
+[kimi-for-coding] sec-01-clock-skew rc=0
+AUDIT kimi-for-coding sec-01-clock-skew: VALID sessions=1 msgs=11 reasons=-
+[glm-5.3-flash] infra-05-k8s-pod-admission rc=1
+AUDIT glm-5.3-flash infra-05-k8s-pod-admission: INVALID sessions=1 msgs=10 reasons=forbidden tool inputs: shell:parent-path
+[qwen3.8-flash] tenant-11-scoped-listing rc=0
+AUDIT qwen3.8-flash tenant-11-scoped-listing: VALID sessions=1 msgs=13 reasons=-
+[minimax-m3.1-flash] onec-06-payment-allocator rc=1
+AUDIT minimax-m3.1-flash onec-06-payment-allocator: VALID sessions=1 msgs=1 reasons=-
+[qwen3.8-flash] authz-12-uniform-404 rc=0
+AUDIT qwen3.8-flash authz-12-uniform-404: VALID sessions=1 msgs=23 reasons=-
+[kimi-for-coding] obs-02-query-redactor rc=0
+AUDIT kimi-for-coding obs-02-query-redactor: VALID sessions=1 msgs=21 reasons=-
+[qwen3.8-flash] idem-13-idempotent-signup rc=0
+AUDIT qwen3.8-flash idem-13-idempotent-signup: VALID sessions=1 msgs=13 reasons=-
+START qwen3.8-max | Qwen3.8 Max via Alibaba | Alibaba | alibaba-token-plan/qwen3.8-max | queue=alibaba
+[glm-5.3-flash] onec-06-payment-allocator rc=0
+AUDIT glm-5.3-flash onec-06-payment-allocator: VALID sessions=1 msgs=11 reasons=-
+[kimi-for-coding] algo-03-range-merger rc=0
+AUDIT kimi-for-coding algo-03-range-merger: VALID sessions=1 msgs=9 reasons=-
+[kimi-for-coding] arch-04-tag-registry rc=0
+AUDIT kimi-for-coding arch-04-tag-registry: VALID sessions=1 msgs=9 reasons=-
+[glm-5.3-flash] auth-07-claim-roles rc=0
+AUDIT glm-5.3-flash auth-07-claim-roles: VALID sessions=1 msgs=16 reasons=-
+[qwen3.8-max] sec-01-clock-skew rc=0
+AUDIT qwen3.8-max sec-01-clock-skew: VALID sessions=1 msgs=19 reasons=-
+[kimi-for-coding] infra-05-k8s-pod-admission rc=1
+AUDIT kimi-for-coding infra-05-k8s-pod-admission: VALID sessions=1 msgs=10 reasons=-
+[kimi-for-coding] onec-06-payment-allocator rc=0
+AUDIT kimi-for-coding onec-06-payment-allocator: VALID sessions=1 msgs=14 reasons=-
+[kimi-for-coding] auth-07-claim-roles rc=0
+AUDIT kimi-for-coding auth-07-claim-roles: VALID sessions=1 msgs=8 reasons=-
+[glm-5.3-flash] host-08-host-header-guard rc=0
+AUDIT glm-5.3-flash host-08-host-header-guard: VALID sessions=1 msgs=15 reasons=-
+[kimi-for-coding] host-08-host-header-guard rc=0
+AUDIT kimi-for-coding host-08-host-header-guard: VALID sessions=1 msgs=15 reasons=-
+[kimi-for-coding] scrub-09-metadata-scrubber rc=0
+AUDIT kimi-for-coding scrub-09-metadata-scrubber: VALID sessions=1 msgs=16 reasons=-
+[minimax-m3.1-flash] auth-07-claim-roles rc=1
+AUDIT minimax-m3.1-flash auth-07-claim-roles: VALID sessions=1 msgs=1 reasons=-
+[kimi-for-coding] flag-10-feature-flag-router rc=0
+AUDIT kimi-for-coding flag-10-feature-flag-router: VALID sessions=1 msgs=15 reasons=-
+[kimi-for-coding] tenant-11-scoped-listing rc=0
+AUDIT kimi-for-coding tenant-11-scoped-listing: VALID sessions=1 msgs=9 reasons=-
+[glm-5.3-flash] scrub-09-metadata-scrubber rc=0
+AUDIT glm-5.3-flash scrub-09-metadata-scrubber: VALID sessions=1 msgs=32 reasons=-
+[kimi-for-coding] authz-12-uniform-404 rc=0
+AUDIT kimi-for-coding authz-12-uniform-404: VALID sessions=1 msgs=13 reasons=-
+[glm-5.3-flash] flag-10-feature-flag-router rc=0
+AUDIT glm-5.3-flash flag-10-feature-flag-router: VALID sessions=1 msgs=24 reasons=-
+[kimi-for-coding] idem-13-idempotent-signup rc=0
+AUDIT kimi-for-coding idem-13-idempotent-signup: VALID sessions=1 msgs=14 reasons=-
+START kimi-k3-256k | Kimi K3-256K | Moonshot | kimi-code-plan-global/k3-256k | queue=moonshot
+[kimi-k3-256k] sec-01-clock-skew rc=0
+AUDIT kimi-k3-256k sec-01-clock-skew: VALID sessions=1 msgs=10 reasons=-
+[glm-5.3-flash] tenant-11-scoped-listing rc=0
+AUDIT glm-5.3-flash tenant-11-scoped-listing: VALID sessions=1 msgs=13 reasons=-
+[qwen3.8-max] obs-02-query-redactor rc=1
+AUDIT qwen3.8-max obs-02-query-redactor: INVALID sessions=1 msgs=13 reasons=ses_e1e5b5e50ffezudx4N70D46dyb: assistant message error
+[glm-5.3-flash] authz-12-uniform-404 rc=0
+AUDIT glm-5.3-flash authz-12-uniform-404: VALID sessions=1 msgs=21 reasons=-
+[kimi-k3-256k] obs-02-query-redactor rc=0
+AUDIT kimi-k3-256k obs-02-query-redactor: VALID sessions=1 msgs=11 reasons=-
+[kimi-k3-256k] algo-03-range-merger rc=0
+AUDIT kimi-k3-256k algo-03-range-merger: VALID sessions=1 msgs=6 reasons=-
+[kimi-k3-256k] arch-04-tag-registry rc=0
+AUDIT kimi-k3-256k arch-04-tag-registry: VALID sessions=1 msgs=17 reasons=-
+[glm-5.3-flash] idem-13-idempotent-signup rc=0
+AUDIT glm-5.3-flash idem-13-idempotent-signup: VALID sessions=1 msgs=35 reasons=-
+QUEUE DONE zai
+[kimi-k3-256k] infra-05-k8s-pod-admission rc=0
+AUDIT kimi-k3-256k infra-05-k8s-pod-admission: VALID sessions=1 msgs=11 reasons=-
+[kimi-k3-256k] onec-06-payment-allocator rc=0
+AUDIT kimi-k3-256k onec-06-payment-allocator: VALID sessions=1 msgs=11 reasons=-
+[kimi-k3-256k] auth-07-claim-roles rc=0
+AUDIT kimi-k3-256k auth-07-claim-roles: VALID sessions=1 msgs=7 reasons=-
+[minimax-m3.1-flash] host-08-host-header-guard rc=1
+AUDIT minimax-m3.1-flash host-08-host-header-guard: VALID sessions=1 msgs=1 reasons=-
+[qwen3.8-max] algo-03-range-merger rc=0
+AUDIT qwen3.8-max algo-03-range-merger: VALID sessions=1 msgs=29 reasons=-
+[qwen3.8-max] arch-04-tag-registry rc=0
+AUDIT qwen3.8-max arch-04-tag-registry: VALID sessions=1 msgs=15 reasons=-
+[kimi-k3-256k] host-08-host-header-guard rc=0
+AUDIT kimi-k3-256k host-08-host-header-guard: VALID sessions=1 msgs=8 reasons=-
+[kimi-k3-256k] scrub-09-metadata-scrubber rc=0
+AUDIT kimi-k3-256k scrub-09-metadata-scrubber: VALID sessions=1 msgs=13 reasons=-
+[kimi-k3-256k] flag-10-feature-flag-router rc=0
+AUDIT kimi-k3-256k flag-10-feature-flag-router: VALID sessions=1 msgs=12 reasons=-
+[kimi-k3-256k] tenant-11-scoped-listing rc=0
+AUDIT kimi-k3-256k tenant-11-scoped-listing: VALID sessions=1 msgs=14 reasons=-
+[kimi-k3-256k] authz-12-uniform-404 rc=0
+AUDIT kimi-k3-256k authz-12-uniform-404: VALID sessions=1 msgs=13 reasons=-
+[qwen3.8-max] infra-05-k8s-pod-admission rc=1
+AUDIT qwen3.8-max infra-05-k8s-pod-admission: VALID sessions=1 msgs=11 reasons=-
+[kimi-k3-256k] idem-13-idempotent-signup rc=0
+AUDIT kimi-k3-256k idem-13-idempotent-signup: VALID sessions=1 msgs=10 reasons=-
+QUEUE DONE moonshot
+[qwen3.8-max] onec-06-payment-allocator rc=0
+AUDIT qwen3.8-max onec-06-payment-allocator: VALID sessions=1 msgs=13 reasons=-
+[minimax-m3.1-flash] scrub-09-metadata-scrubber rc=1
+AUDIT minimax-m3.1-flash scrub-09-metadata-scrubber: VALID sessions=1 msgs=1 reasons=-
+[qwen3.8-max] auth-07-claim-roles rc=0
+AUDIT qwen3.8-max auth-07-claim-roles: VALID sessions=1 msgs=12 reasons=-
+[minimax-m3.1-flash] flag-10-feature-flag-router rc=0
+AUDIT minimax-m3.1-flash flag-10-feature-flag-router: INVALID sessions=1 msgs=36 reasons=forbidden tool inputs: write:parent-path
+[minimax-m3.1-flash] tenant-11-scoped-listing rc=0
+AUDIT minimax-m3.1-flash tenant-11-scoped-listing: VALID sessions=1 msgs=23 reasons=-
+[minimax-m3.1-flash] authz-12-uniform-404 rc=0
+AUDIT minimax-m3.1-flash authz-12-uniform-404: VALID sessions=1 msgs=35 reasons=-
+[qwen3.8-max] host-08-host-header-guard rc=0
+AUDIT qwen3.8-max host-08-host-header-guard: VALID sessions=1 msgs=16 reasons=-
+[minimax-m3.1-flash] idem-13-idempotent-signup rc=0
+AUDIT minimax-m3.1-flash idem-13-idempotent-signup: VALID sessions=1 msgs=31 reasons=-
+START minimax-m3 | MiniMax-M3 | MiniMax | minimax-coding-plan/MiniMax-M3 | queue=minimax
+[minimax-m3] sec-01-clock-skew rc=0
+AUDIT minimax-m3 sec-01-clock-skew: VALID sessions=1 msgs=17 reasons=-
+[qwen3.8-max] scrub-09-metadata-scrubber rc=0
+AUDIT qwen3.8-max scrub-09-metadata-scrubber: VALID sessions=1 msgs=19 reasons=-
+[minimax-m3] obs-02-query-redactor rc=1
+AUDIT minimax-m3 obs-02-query-redactor: INVALID sessions=1 msgs=222 reasons=forbidden tool inputs: edit:hidden,glob:hidden
+[minimax-m3] algo-03-range-merger rc=0
+AUDIT minimax-m3 algo-03-range-merger: VALID sessions=1 msgs=43 reasons=-
+[minimax-m3] arch-04-tag-registry rc=0
+AUDIT minimax-m3 arch-04-tag-registry: VALID sessions=1 msgs=8 reasons=-
+[qwen3.8-max] flag-10-feature-flag-router rc=0
+AUDIT qwen3.8-max flag-10-feature-flag-router: VALID sessions=1 msgs=20 reasons=-
+[qwen3.8-max] tenant-11-scoped-listing rc=0
+AUDIT qwen3.8-max tenant-11-scoped-listing: VALID sessions=1 msgs=24 reasons=-
+[qwen3.8-max] authz-12-uniform-404 rc=0
+AUDIT qwen3.8-max authz-12-uniform-404: VALID sessions=1 msgs=14 reasons=-
+[minimax-m3] infra-05-k8s-pod-admission rc=1
+AUDIT minimax-m3 infra-05-k8s-pod-admission: VALID sessions=1 msgs=7 reasons=-
+[qwen3.8-max] idem-13-idempotent-signup rc=0
+AUDIT qwen3.8-max idem-13-idempotent-signup: VALID sessions=1 msgs=15 reasons=-
+START qwen3.7-plus | Qwen3.7 Plus via Alibaba | Alibaba | alibaba-token-plan/qwen3.7-plus | queue=alibaba
+[qwen3.7-plus] sec-01-clock-skew rc=0
+AUDIT qwen3.7-plus sec-01-clock-skew: VALID sessions=1 msgs=17 reasons=-
+[qwen3.7-plus] obs-02-query-redactor rc=1
+AUDIT qwen3.7-plus obs-02-query-redactor: VALID sessions=1 msgs=38 reasons=-
+[qwen3.7-plus] algo-03-range-merger rc=0
+AUDIT qwen3.7-plus algo-03-range-merger: VALID sessions=1 msgs=17 reasons=-
+[minimax-m3] onec-06-payment-allocator rc=1
+AUDIT minimax-m3 onec-06-payment-allocator: VALID sessions=1 msgs=1 reasons=-
+[qwen3.7-plus] arch-04-tag-registry rc=0
+AUDIT qwen3.7-plus arch-04-tag-registry: VALID sessions=1 msgs=12 reasons=-
+[qwen3.7-plus] infra-05-k8s-pod-admission rc=1
+AUDIT qwen3.7-plus infra-05-k8s-pod-admission: VALID sessions=1 msgs=14 reasons=-
+[qwen3.7-plus] onec-06-payment-allocator rc=0
+AUDIT qwen3.7-plus onec-06-payment-allocator: VALID sessions=1 msgs=11 reasons=-
+[qwen3.7-plus] auth-07-claim-roles rc=0
+AUDIT qwen3.7-plus auth-07-claim-roles: VALID sessions=1 msgs=14 reasons=-
+[qwen3.7-plus] host-08-host-header-guard rc=1
+AUDIT qwen3.7-plus host-08-host-header-guard: VALID sessions=1 msgs=18 reasons=-
+[qwen3.7-plus] scrub-09-metadata-scrubber rc=0
+AUDIT qwen3.7-plus scrub-09-metadata-scrubber: VALID sessions=1 msgs=11 reasons=-
+[qwen3.7-plus] flag-10-feature-flag-router rc=0
+AUDIT qwen3.7-plus flag-10-feature-flag-router: VALID sessions=1 msgs=16 reasons=-
+[qwen3.7-plus] tenant-11-scoped-listing rc=0
+AUDIT qwen3.7-plus tenant-11-scoped-listing: VALID sessions=1 msgs=11 reasons=-
+[qwen3.7-plus] authz-12-uniform-404 rc=0
+AUDIT qwen3.7-plus authz-12-uniform-404: VALID sessions=1 msgs=18 reasons=-
+[minimax-m3] auth-07-claim-roles rc=1
+AUDIT minimax-m3 auth-07-claim-roles: VALID sessions=1 msgs=1 reasons=-
+[qwen3.7-plus] idem-13-idempotent-signup rc=0
+AUDIT qwen3.7-plus idem-13-idempotent-signup: VALID sessions=1 msgs=17 reasons=-
+START qwen3.7-max | Qwen3.7 Max via Alibaba | Alibaba | alibaba-token-plan/qwen3.7-max | queue=alibaba
+[qwen3.7-max] sec-01-clock-skew rc=0
+AUDIT qwen3.7-max sec-01-clock-skew: VALID sessions=1 msgs=15 reasons=-
+[qwen3.7-max] obs-02-query-redactor rc=0
+AUDIT qwen3.7-max obs-02-query-redactor: VALID sessions=1 msgs=15 reasons=-
+[qwen3.7-max] algo-03-range-merger rc=0
+AUDIT qwen3.7-max algo-03-range-merger: VALID sessions=1 msgs=11 reasons=-
+[qwen3.7-max] arch-04-tag-registry rc=0
+AUDIT qwen3.7-max arch-04-tag-registry: VALID sessions=1 msgs=11 reasons=-
+[qwen3.7-max] infra-05-k8s-pod-admission rc=1
+AUDIT qwen3.7-max infra-05-k8s-pod-admission: VALID sessions=1 msgs=11 reasons=-
+[qwen3.7-max] onec-06-payment-allocator rc=0
+AUDIT qwen3.7-max onec-06-payment-allocator: VALID sessions=1 msgs=22 reasons=-
+[qwen3.7-max] auth-07-claim-roles rc=0
+AUDIT qwen3.7-max auth-07-claim-roles: VALID sessions=1 msgs=12 reasons=-
+[minimax-m3] host-08-host-header-guard rc=1
+AUDIT minimax-m3 host-08-host-header-guard: VALID sessions=1 msgs=1 reasons=-
+[qwen3.7-max] host-08-host-header-guard rc=0
+AUDIT qwen3.7-max host-08-host-header-guard: VALID sessions=1 msgs=14 reasons=-
+[qwen3.7-max] scrub-09-metadata-scrubber rc=0
+AUDIT qwen3.7-max scrub-09-metadata-scrubber: VALID sessions=1 msgs=11 reasons=-
+[qwen3.7-max] flag-10-feature-flag-router rc=0
+AUDIT qwen3.7-max flag-10-feature-flag-router: VALID sessions=1 msgs=17 reasons=-
+[qwen3.7-max] tenant-11-scoped-listing rc=0
+AUDIT qwen3.7-max tenant-11-scoped-listing: VALID sessions=1 msgs=10 reasons=-
+[qwen3.7-max] authz-12-uniform-404 rc=0
+AUDIT qwen3.7-max authz-12-uniform-404: VALID sessions=1 msgs=10 reasons=-
+[qwen3.7-max] idem-13-idempotent-signup rc=0
+AUDIT qwen3.7-max idem-13-idempotent-signup: VALID sessions=1 msgs=17 reasons=-
+START glm-5.2-alibaba | GLM-5.2 via Alibaba | Alibaba | alibaba-token-plan/glm-5.2 | queue=alibaba
+[glm-5.2-alibaba] sec-01-clock-skew rc=0
+AUDIT glm-5.2-alibaba sec-01-clock-skew: VALID sessions=1 msgs=31 reasons=-
+[minimax-m3] scrub-09-metadata-scrubber rc=1
+AUDIT minimax-m3 scrub-09-metadata-scrubber: VALID sessions=1 msgs=1 reasons=-
+[glm-5.2-alibaba] obs-02-query-redactor rc=0
+AUDIT glm-5.2-alibaba obs-02-query-redactor: VALID sessions=1 msgs=31 reasons=-
+[glm-5.2-alibaba] algo-03-range-merger rc=0
+AUDIT glm-5.2-alibaba algo-03-range-merger: VALID sessions=1 msgs=15 reasons=-
+[glm-5.2-alibaba] arch-04-tag-registry rc=0
+AUDIT glm-5.2-alibaba arch-04-tag-registry: VALID sessions=1 msgs=17 reasons=-
+[glm-5.2-alibaba] infra-05-k8s-pod-admission rc=1
+AUDIT glm-5.2-alibaba infra-05-k8s-pod-admission: VALID sessions=1 msgs=29 reasons=-
+[glm-5.2-alibaba] onec-06-payment-allocator rc=0
+AUDIT glm-5.2-alibaba onec-06-payment-allocator: VALID sessions=1 msgs=11 reasons=-
+[glm-5.2-alibaba] auth-07-claim-roles rc=0
+AUDIT glm-5.2-alibaba auth-07-claim-roles: VALID sessions=1 msgs=13 reasons=-
+[minimax-m3] flag-10-feature-flag-router rc=1
+AUDIT minimax-m3 flag-10-feature-flag-router: VALID sessions=1 msgs=1 reasons=-
+[glm-5.2-alibaba] host-08-host-header-guard rc=0
+AUDIT glm-5.2-alibaba host-08-host-header-guard: VALID sessions=1 msgs=29 reasons=-
+[glm-5.2-alibaba] scrub-09-metadata-scrubber rc=0
+AUDIT glm-5.2-alibaba scrub-09-metadata-scrubber: VALID sessions=1 msgs=27 reasons=-
+[glm-5.2-alibaba] flag-10-feature-flag-router rc=0
+AUDIT glm-5.2-alibaba flag-10-feature-flag-router: VALID sessions=1 msgs=26 reasons=-
+[minimax-m3] tenant-11-scoped-listing rc=1
+AUDIT minimax-m3 tenant-11-scoped-listing: VALID sessions=1 msgs=1 reasons=-
+[glm-5.2-alibaba] tenant-11-scoped-listing rc=0
+AUDIT glm-5.2-alibaba tenant-11-scoped-listing: VALID sessions=1 msgs=24 reasons=-
+[glm-5.2-alibaba] authz-12-uniform-404 rc=0
+AUDIT glm-5.2-alibaba authz-12-uniform-404: VALID sessions=1 msgs=21 reasons=-
+[glm-5.2-alibaba] idem-13-idempotent-signup rc=0
+AUDIT glm-5.2-alibaba idem-13-idempotent-signup: VALID sessions=1 msgs=25 reasons=-
+START kimi-k2.7-code-alibaba | Kimi K2.7 Code via Alibaba | Alibaba | alibaba-token-plan/kimi-k2.7-code | queue=alibaba
+[kimi-k2.7-code-alibaba] sec-01-clock-skew rc=1
+AUDIT kimi-k2.7-code-alibaba sec-01-clock-skew: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d16be8affeby7IPvm908u4gR: assistant message error
+[kimi-k2.7-code-alibaba] obs-02-query-redactor rc=1
+AUDIT kimi-k2.7-code-alibaba obs-02-query-redactor: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d16a04effewiPmzpsTOKsHAn: assistant message error
+[kimi-k2.7-code-alibaba] algo-03-range-merger rc=1
+AUDIT kimi-k2.7-code-alibaba algo-03-range-merger: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1686c4ffeX9sth389hmDEg5: assistant message error
+[kimi-k2.7-code-alibaba] arch-04-tag-registry rc=1
+AUDIT kimi-k2.7-code-alibaba arch-04-tag-registry: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d166ef8ffeG2kLlICfwQgvZ9: assistant message error
+[kimi-k2.7-code-alibaba] infra-05-k8s-pod-admission rc=1
+AUDIT kimi-k2.7-code-alibaba infra-05-k8s-pod-admission: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1655c5ffeyaiF5pX0Piy69u: assistant message error
+[kimi-k2.7-code-alibaba] onec-06-payment-allocator rc=1
+AUDIT kimi-k2.7-code-alibaba onec-06-payment-allocator: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d163b3bffeq0uvaMhIiOv0yw: assistant message error
+[kimi-k2.7-code-alibaba] auth-07-claim-roles rc=1
+AUDIT kimi-k2.7-code-alibaba auth-07-claim-roles: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d16217cffeb7a5xkVsjX3a5Y: assistant message error
+[kimi-k2.7-code-alibaba] host-08-host-header-guard rc=1
+AUDIT kimi-k2.7-code-alibaba host-08-host-header-guard: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d16067dffekkVoZscIJwhzrx: assistant message error
+[kimi-k2.7-code-alibaba] scrub-09-metadata-scrubber rc=1
+AUDIT kimi-k2.7-code-alibaba scrub-09-metadata-scrubber: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d15eee7ffeX6NXnGeX0uojhL: assistant message error
+[kimi-k2.7-code-alibaba] flag-10-feature-flag-router rc=1
+AUDIT kimi-k2.7-code-alibaba flag-10-feature-flag-router: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d15d612ffe04ZhFoKgPw48AB: assistant message error
+[kimi-k2.7-code-alibaba] tenant-11-scoped-listing rc=1
+AUDIT kimi-k2.7-code-alibaba tenant-11-scoped-listing: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d15be34ffe1Xjl6Z53MS4hVs: assistant message error
+[kimi-k2.7-code-alibaba] authz-12-uniform-404 rc=1
+AUDIT kimi-k2.7-code-alibaba authz-12-uniform-404: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d15a515ffePnQxaXMGJNiy59: assistant message error
+[kimi-k2.7-code-alibaba] idem-13-idempotent-signup rc=1
+AUDIT kimi-k2.7-code-alibaba idem-13-idempotent-signup: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d158bf7ffeFIyuUSt429IhI2: assistant message error
+START minimax-m2.5-alibaba | MiniMax-M2.5 via Alibaba | Alibaba | alibaba-token-plan/MiniMax-M2.5 | queue=alibaba
+[minimax-m2.5-alibaba] sec-01-clock-skew rc=1
+AUDIT minimax-m2.5-alibaba sec-01-clock-skew: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d156999ffeoWVgU17yjh8p7n: assistant message error
+[minimax-m2.5-alibaba] obs-02-query-redactor rc=1
+AUDIT minimax-m2.5-alibaba obs-02-query-redactor: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1551b4ffecOz7vFRVuxbqKd: assistant message error
+[minimax-m2.5-alibaba] algo-03-range-merger rc=1
+AUDIT minimax-m2.5-alibaba algo-03-range-merger: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1538b5ffeA3N6AX9RqpwJtm: assistant message error
+[minimax-m2.5-alibaba] arch-04-tag-registry rc=1
+AUDIT minimax-m2.5-alibaba arch-04-tag-registry: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d151dd4ffeGlCoXcavzssTwx: assistant message error
+[minimax-m2.5-alibaba] infra-05-k8s-pod-admission rc=1
+AUDIT minimax-m2.5-alibaba infra-05-k8s-pod-admission: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1503feffeREuecqR3pEPl7g: assistant message error
+[minimax-m2.5-alibaba] onec-06-payment-allocator rc=1
+AUDIT minimax-m2.5-alibaba onec-06-payment-allocator: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d14ecfbffeXrIFDL9O52b4DC: assistant message error
+[minimax-m2.5-alibaba] auth-07-claim-roles rc=1
+AUDIT minimax-m2.5-alibaba auth-07-claim-roles: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d14d5ebffelI7Se1zD0Xz6A5: assistant message error
+[minimax-m2.5-alibaba] host-08-host-header-guard rc=1
+AUDIT minimax-m2.5-alibaba host-08-host-header-guard: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d14b018ffe0sR9bxv2SCvNlL: assistant message error
+[minimax-m2.5-alibaba] scrub-09-metadata-scrubber rc=1
+AUDIT minimax-m2.5-alibaba scrub-09-metadata-scrubber: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d149739ffeM3hETJzvZe8LOQ: assistant message error
+[minimax-m2.5-alibaba] flag-10-feature-flag-router rc=1
+AUDIT minimax-m2.5-alibaba flag-10-feature-flag-router: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d147b6cffeJqwQZyD6ZhTOQB: assistant message error
+[minimax-m2.5-alibaba] tenant-11-scoped-listing rc=1
+AUDIT minimax-m2.5-alibaba tenant-11-scoped-listing: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d146314ffejrVBv91UO2772F: assistant message error
+[minimax-m2.5-alibaba] authz-12-uniform-404 rc=1
+AUDIT minimax-m2.5-alibaba authz-12-uniform-404: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d1447c1ffeCn3fv27Jud6u7l: assistant message error
+[minimax-m2.5-alibaba] idem-13-idempotent-signup rc=1
+AUDIT minimax-m2.5-alibaba idem-13-idempotent-signup: INVALID sessions=1 msgs=1 reasons=error events=1: Access to model denied. Please make sure you are eligible for using the model.; ses_e1d142f1cffe7ELCCfpWnJwfft: assistant message error
+QUEUE DONE alibaba
+[minimax-m3] authz-12-uniform-404 rc=1
+AUDIT minimax-m3 authz-12-uniform-404: VALID sessions=1 msgs=1 reasons=-
+[minimax-m3] idem-13-idempotent-signup rc=1
+AUDIT minimax-m3 idem-13-idempotent-signup: VALID sessions=1 msgs=1 reasons=-
+QUEUE DONE minimax
+OPENCODE LANE: iceman reports=13
+ALL QUEUES FINISHED

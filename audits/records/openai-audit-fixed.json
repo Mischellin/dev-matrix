@@ -1,0 +1,1310 @@
+[
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e19f61f76ffe23N4du3G3OQFw8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 16
+    },
+    "agents": {
+      "ses_e19f61f76ffe23N4du3G3OQFw8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19f61f76ffe23N4du3G3OQFw8": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 6,
+      "glob": 2,
+      "patch": 2,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e19f4ad2fffef1xefzqgyQBdWG"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 17
+    },
+    "agents": {
+      "ses_e19f4ad2fffef1xefzqgyQBdWG": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19f4ad2fffef1xefzqgyQBdWG": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "glob": 1,
+      "read": 5,
+      "patch": 4,
+      "shell": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e19f2c3d3ffePetPJUaLOCXmoq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 12
+    },
+    "agents": {
+      "ses_e19f2c3d3ffePetPJUaLOCXmoq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19f2c3d3ffePetPJUaLOCXmoq": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "read": 4,
+      "glob": 2,
+      "patch": 3,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "glob:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: glob:hidden"
+    ]
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e19f1aa26ffe5zTqQies5z3TSB"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 14
+    },
+    "agents": {
+      "ses_e19f1aa26ffe5zTqQies5z3TSB": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19f1aa26ffe5zTqQies5z3TSB": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "glob": 2,
+      "read": 4,
+      "patch": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "glob:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: glob:hidden"
+    ]
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e19f05731ffeOxI5kWr7OhscZF"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 13
+    },
+    "agents": {
+      "ses_e19f05731ffeOxI5kWr7OhscZF": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19f05731ffeOxI5kWr7OhscZF": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "read": 4,
+      "glob": 2,
+      "patch": 2,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "patch:parent-path"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: patch:parent-path"
+    ]
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e19ee9ae7ffetcuGo09063k9P3"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 11
+    },
+    "agents": {
+      "ses_e19ee9ae7ffetcuGo09063k9P3": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19ee9ae7ffetcuGo09063k9P3": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "glob": 1,
+      "read": 4,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e19ed46b9ffe29DsRA7rIKPVVu"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 12
+    },
+    "agents": {
+      "ses_e19ed46b9ffe29DsRA7rIKPVVu": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19ed46b9ffe29DsRA7rIKPVVu": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "glob": 2,
+      "read": 5,
+      "patch": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e19ec0df1ffei7VjL3sTjF5b93"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 18
+    },
+    "agents": {
+      "ses_e19ec0df1ffei7VjL3sTjF5b93": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19ec0df1ffei7VjL3sTjF5b93": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "glob": 2,
+      "read": 4,
+      "patch": 2,
+      "shell": 8
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e19ea054effe22XtPCAGlx3q6m"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 13
+    },
+    "agents": {
+      "ses_e19ea054effe22XtPCAGlx3q6m": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19ea054effe22XtPCAGlx3q6m": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "glob": 2,
+      "read": 4,
+      "patch": 3,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e19e8c8e3ffeSrhGVi7nL7DFK1"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 15
+    },
+    "agents": {
+      "ses_e19e8c8e3ffeSrhGVi7nL7DFK1": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19e8c8e3ffeSrhGVi7nL7DFK1": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "glob": 2,
+      "read": 6,
+      "patch": 2,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "glob:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: glob:hidden"
+    ]
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e19e7228fffese2bKgegX2dnz8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 11
+    },
+    "agents": {
+      "ses_e19e7228fffese2bKgegX2dnz8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19e7228fffese2bKgegX2dnz8": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "glob": 2,
+      "read": 4,
+      "patch": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e19e5ed13ffeGaT6fq02hC3pz5"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 11
+    },
+    "agents": {
+      "ses_e19e5ed13ffeGaT6fq02hC3pz5": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19e5ed13ffeGaT6fq02hC3pz5": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "glob": 2,
+      "read": 6,
+      "patch": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-terra",
+    "display": "GPT-6.1 Terra",
+    "expected_model": "openai/gpt-6.1-terra",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e19e4b6b1ffedoK803CYYUVqmP"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "openai/gpt-6.1-terra": 13
+    },
+    "agents": {
+      "ses_e19e4b6b1ffedoK803CYYUVqmP": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19e4b6b1ffedoK803CYYUVqmP": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "read": 6,
+      "glob": 2,
+      "patch": 2,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e19e2fcd1ffeNflUj7CdX3GhAT"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 20
+    },
+    "agents": {
+      "ses_e19e2fcd1ffeNflUj7CdX3GhAT": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19e2fcd1ffeNflUj7CdX3GhAT": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 1,
+      "skill": 2,
+      "read": 6,
+      "patch": 3,
+      "shell": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e19e0c633ffe8qxYBXX92HARGG"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 20
+    },
+    "agents": {
+      "ses_e19e0c633ffe8qxYBXX92HARGG": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19e0c633ffe8qxYBXX92HARGG": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 1,
+      "skill": 2,
+      "read": 6,
+      "patch": 5,
+      "shell": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e19dd7944ffe3qjYY9Erzckqzm"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 16
+    },
+    "agents": {
+      "ses_e19dd7944ffe3qjYY9Erzckqzm": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19dd7944ffe3qjYY9Erzckqzm": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 1,
+      "skill": 2,
+      "read": 6,
+      "patch": 3,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e19db9ac2ffe53IqHGN2xv103Z"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 12
+    },
+    "agents": {
+      "ses_e19db9ac2ffe53IqHGN2xv103Z": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19db9ac2ffe53IqHGN2xv103Z": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 2,
+      "skill": 1,
+      "read": 5,
+      "patch": 3,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e19da0975ffeqx1aAKlvtgalZ0"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 19
+    },
+    "agents": {
+      "ses_e19da0975ffeqx1aAKlvtgalZ0": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19da0975ffeqx1aAKlvtgalZ0": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 2,
+      "skill": 2,
+      "read": 5,
+      "patch": 5,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "patch:parent-path"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: patch:parent-path"
+    ]
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e19d73db9ffecP8e4ZxDQlccjC"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 16
+    },
+    "agents": {
+      "ses_e19d73db9ffecP8e4ZxDQlccjC": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19d73db9ffecP8e4ZxDQlccjC": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 3,
+      "skill": 2,
+      "read": 6,
+      "patch": 3,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e19d4f736ffeUBjyXwuLHxsx7P"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 15
+    },
+    "agents": {
+      "ses_e19d4f736ffeUBjyXwuLHxsx7P": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19d4f736ffeUBjyXwuLHxsx7P": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 1,
+      "skill": 1,
+      "read": 7,
+      "patch": 3,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e19d32739ffeuKTq3nzX5ZE4rm"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 22,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 22
+    },
+    "agents": {
+      "ses_e19d32739ffeuKTq3nzX5ZE4rm": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19d32739ffeuKTq3nzX5ZE4rm": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 1,
+      "skill": 2,
+      "read": 6,
+      "patch": 6,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e19d0188affeF7aPWdoWtFIKbC"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 16
+    },
+    "agents": {
+      "ses_e19d0188affeF7aPWdoWtFIKbC": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19d0188affeF7aPWdoWtFIKbC": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 1,
+      "skill": 2,
+      "read": 6,
+      "patch": 4,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e19cdd7f0ffeiAkiXJ4RyGOHf6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 20
+    },
+    "agents": {
+      "ses_e19cdd7f0ffeiAkiXJ4RyGOHf6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19cdd7f0ffeiAkiXJ4RyGOHf6": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 2,
+      "skill": 2,
+      "read": 9,
+      "patch": 3,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e19cb16d3ffehmTMWpOhztmthq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 15
+    },
+    "agents": {
+      "ses_e19cb16d3ffehmTMWpOhztmthq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19cb16d3ffehmTMWpOhztmthq": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 1,
+      "skill": 2,
+      "read": 6,
+      "patch": 3,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e19c8f93effeuM9RcRGX475QM8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 17
+    },
+    "agents": {
+      "ses_e19c8f93effeuM9RcRGX475QM8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19c8f93effeuM9RcRGX475QM8": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "read": 8,
+      "patch": 3,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6.1-sol",
+    "display": "GPT-6.1 Sol",
+    "expected_model": "openai/gpt-6.1-sol",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e19c7080effeHjkIhrw0ktXIyw"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "openai/gpt-6.1-sol": 20
+    },
+    "agents": {
+      "ses_e19c7080effeHjkIhrw0ktXIyw": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19c7080effeHjkIhrw0ktXIyw": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 1,
+      "skill": 2,
+      "read": 7,
+      "patch": 3,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e19c47b66ffeSHVqhh6AeG3qhb"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "openai/gpt-6-luna": 11
+    },
+    "agents": {
+      "ses_e19c47b66ffeSHVqhh6AeG3qhb": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19c47b66ffeSHVqhh6AeG3qhb": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "skill": 1,
+      "glob": 1,
+      "patch": 2,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e19c36260ffesMmh4ntHvLLByL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "openai/gpt-6-luna": 15
+    },
+    "agents": {
+      "ses_e19c36260ffesMmh4ntHvLLByL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19c36260ffesMmh4ntHvLLByL": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "shell": 5,
+      "read": 4,
+      "glob": 1,
+      "patch": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e19c19499ffenIx1WvPzCE7acC"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "openai/gpt-6-luna": 12
+    },
+    "agents": {
+      "ses_e19c19499ffenIx1WvPzCE7acC": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19c19499ffenIx1WvPzCE7acC": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "read": 3,
+      "glob": 1,
+      "patch": 2,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e19c0697effeo6nKyBKLXhLTfC"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "openai/gpt-6-luna": 12
+    },
+    "agents": {
+      "ses_e19c0697effeo6nKyBKLXhLTfC": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19c0697effeo6nKyBKLXhLTfC": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "shell": 6,
+      "read": 4,
+      "patch": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e19bf21f9ffe7r56ZT4EvhUNNW"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "openai/gpt-6-luna": 15
+    },
+    "agents": {
+      "ses_e19bf21f9ffe7r56ZT4EvhUNNW": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19bf21f9ffe7r56ZT4EvhUNNW": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 1,
+      "skill": 1,
+      "shell": 6,
+      "patch": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "ses_e19bf21f9ffe7r56ZT4EvhUNNW: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e19bd28e6ffersC3f7T7WGRWVt"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "openai/gpt-6-luna": 12
+    },
+    "agents": {
+      "ses_e19bd28e6ffersC3f7T7WGRWVt": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19bd28e6ffersC3f7T7WGRWVt": null
+    },
+    "children": 0,
+    "tools": {
+      "shell": 4,
+      "glob": 2,
+      "skill": 1,
+      "read": 3,
+      "patch": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e19bbd6f6ffewE6wgpn4CMxq56"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "openai/gpt-6-luna": 17
+    },
+    "agents": {
+      "ses_e19bbd6f6ffewE6wgpn4CMxq56": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19bbd6f6ffewE6wgpn4CMxq56": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "skill": 1,
+      "glob": 1,
+      "patch": 5,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e19ba3de9ffeoGa0tBy05u6oN1"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "openai/gpt-6-luna": 14
+    },
+    "agents": {
+      "ses_e19ba3de9ffeoGa0tBy05u6oN1": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19ba3de9ffeoGa0tBy05u6oN1": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "read": 5,
+      "glob": 1,
+      "patch": 4,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e19b8b10effeV4iGQXqa3q2YCe"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "openai/gpt-6-luna": 13
+    },
+    "agents": {
+      "ses_e19b8b10effeV4iGQXqa3q2YCe": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19b8b10effeV4iGQXqa3q2YCe": null
+    },
+    "children": 0,
+    "tools": {
+      "glob": 2,
+      "read": 4,
+      "skill": 1,
+      "patch": 3,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "patch:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: patch:hidden"
+    ]
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e19b76735ffeeueva603qdsN8I"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "openai/gpt-6-luna": 16
+    },
+    "agents": {
+      "ses_e19b76735ffeeueva603qdsN8I": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19b76735ffeeueva603qdsN8I": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "shell": 8,
+      "read": 7,
+      "glob": 2,
+      "patch": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "patch:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: patch:hidden"
+    ]
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e19b5cf2affeZEVPJ9dMm1TamT"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "openai/gpt-6-luna": 11
+    },
+    "agents": {
+      "ses_e19b5cf2affeZEVPJ9dMm1TamT": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19b5cf2affeZEVPJ9dMm1TamT": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "shell": 4,
+      "read": 4,
+      "patch": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e19b4af03ffeXxPfAD1qYYvGC4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "openai/gpt-6-luna": 14
+    },
+    "agents": {
+      "ses_e19b4af03ffeXxPfAD1qYYvGC4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19b4af03ffeXxPfAD1qYYvGC4": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 5,
+      "patch": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gpt-6-luna",
+    "display": "GPT-6 Luna",
+    "expected_model": "openai/gpt-6-luna",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e19b3561affesOrzS6nf06mUyM"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "openai/gpt-6-luna": 13
+    },
+    "agents": {
+      "ses_e19b3561affesOrzS6nf06mUyM": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e19b3561affesOrzS6nf06mUyM": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 2,
+      "shell": 9,
+      "patch": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  }
+]

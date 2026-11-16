@@ -1,0 +1,2 @@
+generated_at=2026-11-16T08:47:09Z models=1 tasks_per_model=13 expected=13 reports=13 passed=12
+qwen4-max-preview: 12/13 passed, reports=13

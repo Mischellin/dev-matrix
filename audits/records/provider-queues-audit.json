@@ -1,0 +1,7429 @@
+[
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1ec887f9ffeDiIp6x2lPiHrYd"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec887f9ffeDiIp6x2lPiHrYd": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec887f9ffeDiIp6x2lPiHrYd": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec887f9ffeDiIp6x2lPiHrYd: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1ec86789ffejaa0ykO8GHR6Mw"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec86789ffejaa0ykO8GHR6Mw": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec86789ffejaa0ykO8GHR6Mw": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec86789ffejaa0ykO8GHR6Mw: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1ec84fc3ffeOEwZSAjJxXxZMi"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec84fc3ffeOEwZSAjJxXxZMi": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec84fc3ffeOEwZSAjJxXxZMi": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec84fc3ffeOEwZSAjJxXxZMi: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1ec838d6ffecqgxkKPpu0Few2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec838d6ffecqgxkKPpu0Few2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec838d6ffecqgxkKPpu0Few2": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec838d6ffecqgxkKPpu0Few2: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1ec81ec3ffeyYWXTVbteBhXI2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec81ec3ffeyYWXTVbteBhXI2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec81ec3ffeyYWXTVbteBhXI2": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec81ec3ffeyYWXTVbteBhXI2: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1ec80476ffe3r72sHNgtYOwEG"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec80476ffe3r72sHNgtYOwEG": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec80476ffe3r72sHNgtYOwEG": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec80476ffe3r72sHNgtYOwEG: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1ec7e95cffedIethlBDa72b6d"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec7e95cffedIethlBDa72b6d": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec7e95cffedIethlBDa72b6d": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec7e95cffedIethlBDa72b6d: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1ec7cd46ffeWQuIBMgQfNpJKc"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec7cd46ffeWQuIBMgQfNpJKc": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec7cd46ffeWQuIBMgQfNpJKc": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec7cd46ffeWQuIBMgQfNpJKc: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1ec7b04fffetaLo51WoL80GEg"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec7b04fffetaLo51WoL80GEg": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec7b04fffetaLo51WoL80GEg": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec7b04fffetaLo51WoL80GEg: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1ec887f8ffelGsPMsu3cBw9d8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 18
+    },
+    "agents": {
+      "ses_e1ec887f8ffelGsPMsu3cBw9d8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec887f8ffelGsPMsu3cBw9d8": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 3,
+      "shell": 12,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1ec7962fffeZlAkTbRgTrm4tW"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec7962fffeZlAkTbRgTrm4tW": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec7962fffeZlAkTbRgTrm4tW": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec7962fffeZlAkTbRgTrm4tW: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1ec77a3affe65mIcYS1uSxKEZ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec77a3affe65mIcYS1uSxKEZ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec77a3affe65mIcYS1uSxKEZ": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec77a3affe65mIcYS1uSxKEZ: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1ec75e77ffexJ2EK7G4kEONuT"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec75e77ffexJ2EK7G4kEONuT": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec75e77ffexJ2EK7G4kEONuT": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec75e77ffexJ2EK7G4kEONuT: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "gigachat-3.5-ultra",
+    "display": "GigaChat 3.5 Ultra",
+    "expected_model": "GigaChat (Sberbank)/GigaChat-3-Ultra",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1ec7417cffeOz530eJMUVAq3g"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "GigaChat (Sberbank)/GigaChat-3-Ultra": 1
+    },
+    "agents": {
+      "ses_e1ec7417cffeOz530eJMUVAq3g": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec7417cffeOz530eJMUVAq3g": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: GigaChat Translation Proxy Error: Request failed with status code 402 (Payment Required)",
+      "ses_e1ec7417cffeOz530eJMUVAq3g: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1ec887eeffepbXO8nVAeGqgDT"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 16
+    },
+    "agents": {
+      "ses_e1ec887eeffepbXO8nVAeGqgDT": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec887eeffepbXO8nVAeGqgDT": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "skill": 1,
+      "shell": 8,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1ec887f9ffeuO0lrts3r3QtmQ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 19
+    },
+    "agents": {
+      "ses_e1ec887f9ffeuO0lrts3r3QtmQ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec887f9ffeuO0lrts3r3QtmQ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "grep": 1,
+      "skill": 1,
+      "shell": 10,
+      "edit": 3,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1ec887fdffexm4PAladsUv0ew"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 26,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 26
+    },
+    "agents": {
+      "ses_e1ec887fdffexm4PAladsUv0ew": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec887fdffexm4PAladsUv0ew": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "glob": 1,
+      "shell": 18,
+      "grep": 1,
+      "write": 1,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1ec887feffek7A6JEeRTviFrn"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 18
+    },
+    "agents": {
+      "ses_e1ec887feffek7A6JEeRTviFrn": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec887feffek7A6JEeRTviFrn": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 11,
+      "glob": 3,
+      "shell": 8,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1ec782e9ffeLbGh0PfH1ZG1wF"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 41,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 41
+    },
+    "agents": {
+      "ses_e1ec782e9ffeLbGh0PfH1ZG1wF": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec782e9ffeLbGh0PfH1ZG1wF": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 21,
+      "write": 2,
+      "edit": 14
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1ec165a7ffe60ZOGsboupXXnV"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 8
+    },
+    "agents": {
+      "ses_e1ec165a7ffe60ZOGsboupXXnV": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec165a7ffe60ZOGsboupXXnV": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 4,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1ec0bb5effe22ixLQ5qAdL6vz"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 11
+    },
+    "agents": {
+      "ses_e1ec0bb5effe22ixLQ5qAdL6vz": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec0bb5effe22ixLQ5qAdL6vz": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 3,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1ec01bfcffeH3xg46cbWH0bor"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 13
+    },
+    "agents": {
+      "ses_e1ec01bfcffeH3xg46cbWH0bor": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec01bfcffeH3xg46cbWH0bor": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 5,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1ec598dcffeZC2wW1EpUlFgG7"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 64,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 64
+    },
+    "agents": {
+      "ses_e1ec598dcffeZC2wW1EpUlFgG7": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec598dcffeZC2wW1EpUlFgG7": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 13,
+      "shell": 30,
+      "glob": 1,
+      "skill": 2,
+      "write": 3,
+      "edit": 19,
+      "bash": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1ebe69f1ffeM9soMkMQDH4Ws9"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 15
+    },
+    "agents": {
+      "ses_e1ebe69f1ffeM9soMkMQDH4Ws9": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ebe69f1ffeM9soMkMQDH4Ws9": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 3,
+      "shell": 9,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1ebcad61ffeYdeTS6dpshHTKD"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 16
+    },
+    "agents": {
+      "ses_e1ebcad61ffeYdeTS6dpshHTKD": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ebcad61ffeYdeTS6dpshHTKD": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 6,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1ebcb3a1ffegLCQACEdp5hiGp"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 36,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 36
+    },
+    "agents": {
+      "ses_e1ebcb3a1ffegLCQACEdp5hiGp": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ebcb3a1ffegLCQACEdp5hiGp": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "shell": 22,
+      "glob": 1,
+      "write": 5,
+      "edit": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1ebba034ffeFrFNtu74icfOWL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 20
+    },
+    "agents": {
+      "ses_e1ebba034ffeFrFNtu74icfOWL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ebba034ffeFrFNtu74icfOWL": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 13,
+      "write": 2,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1ec67232ffeEl6x2q918v5RE5"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 33,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 33
+    },
+    "agents": {
+      "ses_e1ec67232ffeEl6x2q918v5RE5": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec67232ffeEl6x2q918v5RE5": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 19,
+      "skill": 1,
+      "write": 3,
+      "edit": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1ec5ea01ffeewy5ugw2scOK0E"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 31,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 31
+    },
+    "agents": {
+      "ses_e1ec5ea01ffeewy5ugw2scOK0E": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec5ea01ffeewy5ugw2scOK0E": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "glob": 1,
+      "shell": 17,
+      "skill": 1,
+      "write": 3,
+      "edit": 8
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1eb94922ffeVpgq77LAVpWfN7"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 20
+    },
+    "agents": {
+      "ses_e1eb94922ffeVpgq77LAVpWfN7": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb94922ffeVpgq77LAVpWfN7": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 10,
+      "skill": 1,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1eb91c93ffe5k1qO2lhWZUyFl"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 11
+    },
+    "agents": {
+      "ses_e1eb91c93ffe5k1qO2lhWZUyFl": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb91c93ffe5k1qO2lhWZUyFl": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "skill": 1,
+      "glob": 1,
+      "write": 3,
+      "shell": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1eb78389ffeG0mWAUdxFby5Jr"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 20
+    },
+    "agents": {
+      "ses_e1eb78389ffeG0mWAUdxFby5Jr": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb78389ffeG0mWAUdxFby5Jr": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 9,
+      "write": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1eb73eceffeBN6yWugbd7gHRJ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 8
+    },
+    "agents": {
+      "ses_e1eb73eceffeBN6yWugbd7gHRJ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb73eceffeBN6yWugbd7gHRJ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "skill": 1,
+      "shell": 3,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1eb83cddffe2bqnZhrce5Dl8l"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 18
+    },
+    "agents": {
+      "ses_e1eb83cddffe2bqnZhrce5Dl8l": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb83cddffe2bqnZhrce5Dl8l": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "glob": 2,
+      "skill": 1,
+      "write": 3,
+      "shell": 6,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1eb63091ffeV8lyN35cJ3yNf1"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 13
+    },
+    "agents": {
+      "ses_e1eb63091ffeV8lyN35cJ3yNf1": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb63091ffeV8lyN35cJ3yNf1": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 5,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1eb554ccffeHAFOeokSJ3HGmT"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 11
+    },
+    "agents": {
+      "ses_e1eb554ccffeHAFOeokSJ3HGmT": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb554ccffeHAFOeokSJ3HGmT": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 1,
+      "shell": 6,
+      "skill": 1,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1eb56eb6ffeD0brx2UAZLIdVH"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 13
+    },
+    "agents": {
+      "ses_e1eb56eb6ffeD0brx2UAZLIdVH": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb56eb6ffeD0brx2UAZLIdVH": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "glob": 2,
+      "shell": 5,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4.1-flash-1017",
+    "display": "DeepSeek V4.1 Flash 1017",
+    "expected_model": "deepseek/deepseek-flash",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1eb48dc1ffeo0l5I9jF0gsaM6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "deepseek/deepseek-flash": 19
+    },
+    "agents": {
+      "ses_e1eb48dc1ffeo0l5I9jF0gsaM6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb48dc1ffeo0l5I9jF0gsaM6": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 2,
+      "shell": 11,
+      "write": 2,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1ec3ad5cffe9EnTM4qV1J6kEC"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 24,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 24
+    },
+    "agents": {
+      "ses_e1ec3ad5cffe9EnTM4qV1J6kEC": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ec3ad5cffe9EnTM4qV1J6kEC": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 10,
+      "glob": 3,
+      "shell": 10,
+      "write": 2,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1eb2eafbffeOUsiZlM6k8wmwy"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 17
+    },
+    "agents": {
+      "ses_e1eb2eafbffeOUsiZlM6k8wmwy": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb2eafbffeOUsiZlM6k8wmwy": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "edit": 3,
+      "shell": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1eb62f9bffez2i1Jg52WTnMiv"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 18
+    },
+    "agents": {
+      "ses_e1eb62f9bffez2i1Jg52WTnMiv": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb62f9bffez2i1Jg52WTnMiv": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 9,
+      "skill": 1,
+      "write": 4,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "edit:parent-path",
+      "shell:parent-path",
+      "write:parent-path"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: edit:parent-path,shell:parent-path,write:parent-path"
+    ]
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1eb1c8a2ffel5VtVe2XhCVHQB"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 7,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 7
+    },
+    "agents": {
+      "ses_e1eb1c8a2ffel5VtVe2XhCVHQB": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb1c8a2ffel5VtVe2XhCVHQB": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "write": 1,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1eb00f0cffeyhDaGcR2J8eW9h"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 9
+    },
+    "agents": {
+      "ses_e1eb00f0cffeyhDaGcR2J8eW9h": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb00f0cffeyhDaGcR2J8eW9h": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 4,
+      "skill": 1,
+      "write": 2,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1eb21fb5ffeKxywHqu0zIdyYR"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 15
+    },
+    "agents": {
+      "ses_e1eb21fb5ffeKxywHqu0zIdyYR": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb21fb5ffeKxywHqu0zIdyYR": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 9,
+      "glob": 1,
+      "write": 2,
+      "shell": 5,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "glob:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: glob:hidden"
+    ]
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1eb3283fffeASOMTzI4GFMjZO"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 11
+    },
+    "agents": {
+      "ses_e1eb3283fffeASOMTzI4GFMjZO": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb3283fffeASOMTzI4GFMjZO": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 5,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1eae6b25ffeGGXQuS9nZpVb5B"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 14
+    },
+    "agents": {
+      "ses_e1eae6b25ffeGGXQuS9nZpVb5B": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eae6b25ffeGGXQuS9nZpVb5B": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "skill": 3,
+      "glob": 1,
+      "write": 2,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1eae95a4ffe3flHFlG3ia6OwT"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 14
+    },
+    "agents": {
+      "ses_e1eae95a4ffe3flHFlG3ia6OwT": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eae95a4ffe3flHFlG3ia6OwT": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "skill": 1,
+      "shell": 9,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1eb1ecd7ffeObeUXKJgCk8mPm"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 18
+    },
+    "agents": {
+      "ses_e1eb1ecd7ffeObeUXKJgCk8mPm": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb1ecd7ffeObeUXKJgCk8mPm": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "write": 2,
+      "shell": 7,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1eaabd89ffeuFklMSwQ1x4Nk2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 9
+    },
+    "agents": {
+      "ses_e1eaabd89ffeuFklMSwQ1x4Nk2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eaabd89ffeuFklMSwQ1x4Nk2": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 5,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1ead2aa3ffeJeDjltUQsecx0x"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 10
+    },
+    "agents": {
+      "ses_e1ead2aa3ffeJeDjltUQsecx0x": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ead2aa3ffeJeDjltUQsecx0x": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "glob": 1,
+      "write": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1ea9cd82fferPakqO5uKLoAbu"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 10
+    },
+    "agents": {
+      "ses_e1ea9cd82fferPakqO5uKLoAbu": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea9cd82fferPakqO5uKLoAbu": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 1,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1eab6f5bffev2AAiGSgP2dJyB"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 15
+    },
+    "agents": {
+      "ses_e1eab6f5bffev2AAiGSgP2dJyB": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eab6f5bffev2AAiGSgP2dJyB": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "skill": 1,
+      "glob": 1,
+      "shell": 7,
+      "write": 3,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1ea918ceffeuYZq22ACQW56mq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 9
+    },
+    "agents": {
+      "ses_e1ea918ceffeuYZq22ACQW56mq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea918ceffeuYZq22ACQW56mq": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 1,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1ea93143ffe0JRYYw5MDdc2g1"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 14
+    },
+    "agents": {
+      "ses_e1ea93143ffe0JRYYw5MDdc2g1": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea93143ffe0JRYYw5MDdc2g1": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "skill": 1,
+      "shell": 8,
+      "edit": 1,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1ea8b7d1ffe24N2YGEST8Rzcq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 13
+    },
+    "agents": {
+      "ses_e1ea8b7d1ffe24N2YGEST8Rzcq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea8b7d1ffe24N2YGEST8Rzcq": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 6,
+      "skill": 1,
+      "write": 3,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1ea73bc3ffevC8LsQ8P5a7cSD"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 10
+    },
+    "agents": {
+      "ses_e1ea73bc3ffevC8LsQ8P5a7cSD": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea73bc3ffevC8LsQ8P5a7cSD": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "write": 1,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1ea5651affeMUSn3GlWtHsY0f"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 14
+    },
+    "agents": {
+      "ses_e1ea5651affeMUSn3GlWtHsY0f": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea5651affeMUSn3GlWtHsY0f": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 7,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1ea6a6e1ffeFN6B6j02Fk62A6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 18
+    },
+    "agents": {
+      "ses_e1ea6a6e1ffeFN6B6j02Fk62A6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea6a6e1ffeFN6B6j02Fk62A6": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 12,
+      "skill": 1,
+      "write": 4,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1ea3d9faffeuR4IK6OIQy5fgq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 12
+    },
+    "agents": {
+      "ses_e1ea3d9faffeuR4IK6OIQy5fgq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea3d9faffeuR4IK6OIQy5fgq": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "glob": 1,
+      "skill": 1,
+      "write": 1,
+      "shell": 3,
+      "edit": 4,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1ea42670ffeXjDDsePoiJ2C9n"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 11
+    },
+    "agents": {
+      "ses_e1ea42670ffeXjDDsePoiJ2C9n": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea42670ffeXjDDsePoiJ2C9n": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 2,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1ea6cdd5ffe2Mnic2UrfmyljM"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 16
+    },
+    "agents": {
+      "ses_e1ea6cdd5ffe2Mnic2UrfmyljM": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea6cdd5ffe2Mnic2UrfmyljM": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 10,
+      "skill": 1,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1ea10f9fffek2CdhvgwDsFAMK"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 9
+    },
+    "agents": {
+      "ses_e1ea10f9fffek2CdhvgwDsFAMK": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea10f9fffek2CdhvgwDsFAMK": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "write": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen4-max-preview",
+    "display": "Qwen4 Max Preview",
+    "expected_model": "alibaba-token-plan/qwen4-max-preview",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1ea1b032ffeTa6jAYrl9nlx8B"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "alibaba-token-plan/qwen4-max-preview": 14
+    },
+    "agents": {
+      "ses_e1ea1b032ffeTa6jAYrl9nlx8B": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea1b032ffeTa6jAYrl9nlx8B": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "skill": 2,
+      "glob": 1,
+      "shell": 7,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1ea00dc4ffeYVfokmaU7N8l81"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 15
+    },
+    "agents": {
+      "ses_e1ea00dc4ffeYVfokmaU7N8l81": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea00dc4ffeYVfokmaU7N8l81": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "write": 2,
+      "shell": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1eb9fa0dffes4mOKKkqM2UilE"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 6,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 6
+    },
+    "agents": {
+      "ses_e1eb9fa0dffes4mOKKkqM2UilE": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eb9fa0dffes4mOKKkqM2UilE": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1e9eb27dffenUWqAja1BAuzpe"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 12
+    },
+    "agents": {
+      "ses_e1e9eb27dffenUWqAja1BAuzpe": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e9eb27dffenUWqAja1BAuzpe": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 2,
+      "edit": 1,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1ea103e1ffeTWmzX3NyJBldD9"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 16
+    },
+    "agents": {
+      "ses_e1ea103e1ffeTWmzX3NyJBldD9": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ea103e1ffeTWmzX3NyJBldD9": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 10,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "write:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: write:hidden"
+    ]
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1e9d8b1effeBYQIM8H9S466zW"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 12
+    },
+    "agents": {
+      "ses_e1e9d8b1effeBYQIM8H9S466zW": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e9d8b1effeBYQIM8H9S466zW": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 4,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1eac1485ffezZPVbAruJQwShI"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 55,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 55
+    },
+    "agents": {
+      "ses_e1eac1485ffezZPVbAruJQwShI": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1eac1485ffezZPVbAruJQwShI": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 10,
+      "glob": 2,
+      "shell": 18,
+      "write": 5,
+      "edit": 24
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1e9eeec5ffeOYNuLFh6Zdp9J0"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 27,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 27
+    },
+    "agents": {
+      "ses_e1e9eeec5ffeOYNuLFh6Zdp9J0": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e9eeec5ffeOYNuLFh6Zdp9J0": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "shell": 13,
+      "skill": 1,
+      "write": 1,
+      "edit": 8
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "deepseek-v4-pro",
+    "display": "DeepSeek V4 Pro",
+    "expected_model": "deepseek/deepseek-v4-pro",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1e9c7bcbffezUrGgcxwC4ZGx1"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "deepseek/deepseek-v4-pro": 14
+    },
+    "agents": {
+      "ses_e1e9c7bcbffezUrGgcxwC4ZGx1": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e9c7bcbffezUrGgcxwC4ZGx1": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "write": 1,
+      "edit": 1,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1e9c54e2ffe514ilb5rET4j6V"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 13
+    },
+    "agents": {
+      "ses_e1e9c54e2ffe514ilb5rET4j6V": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e9c54e2ffe514ilb5rET4j6V": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "grep": 1,
+      "read": 10,
+      "glob": 1,
+      "shell": 5,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1e9ca7bdffefy4R6CBUSn94DP"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 28,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 28
+    },
+    "agents": {
+      "ses_e1e9ca7bdffefy4R6CBUSn94DP": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e9ca7bdffefy4R6CBUSn94DP": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 15,
+      "write": 4,
+      "edit": 3,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1e983146ffeyMho3Mbm7hvWks"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 21,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 21
+    },
+    "agents": {
+      "ses_e1e983146ffeyMho3Mbm7hvWks": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e983146ffeyMho3Mbm7hvWks": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 10,
+      "shell": 7,
+      "write": 2,
+      "edit": 2,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1e97fd4cffeQcQre5jXcPzQou"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 16
+    },
+    "agents": {
+      "ses_e1e97fd4cffeQcQre5jXcPzQou": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e97fd4cffeQcQre5jXcPzQou": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "skill": 1,
+      "shell": 8,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1e938711ffeebjtDmTtFOrY3i"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 19
+    },
+    "agents": {
+      "ses_e1e938711ffeebjtDmTtFOrY3i": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e938711ffeebjtDmTtFOrY3i": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "glob": 3,
+      "shell": 8,
+      "write": 3,
+      "grep": 1,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3",
+    "display": "GLM-5.3",
+    "expected_model": "zai-coding-plan/glm-5.3",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1e90ae04ffe6pJzyeCb2gdvCi"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3": 16
+    },
+    "agents": {
+      "ses_e1e90ae04ffe6pJzyeCb2gdvCi": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e90ae04ffe6pJzyeCb2gdvCi": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 9,
+      "glob": 1,
+      "skill": 2,
+      "write": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1e8c41f5ffeUub58HXHx9cBMH"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 18
+    },
+    "agents": {
+      "ses_e1e8c41f5ffeUub58HXHx9cBMH": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e8c41f5ffeUub58HXHx9cBMH": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "skill": 1,
+      "edit": 3,
+      "shell": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1e9b646affehU6IM6z8RdRsrK"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 44,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 44
+    },
+    "agents": {
+      "ses_e1e9b646affehU6IM6z8RdRsrK": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e9b646affehU6IM6z8RdRsrK": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 21,
+      "skill": 1,
+      "write": 2,
+      "edit": 13,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1e954436ffesbaoJ812FHjIe8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 27,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 27
+    },
+    "agents": {
+      "ses_e1e954436ffesbaoJ812FHjIe8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e954436ffesbaoJ812FHjIe8": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 14,
+      "glob": 3,
+      "shell": 12,
+      "write": 4,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1e87a395ffeW9WN544rHsZFg7"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 9
+    },
+    "agents": {
+      "ses_e1e87a395ffeW9WN544rHsZFg7": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e87a395ffeW9WN544rHsZFg7": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 5,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1e85f6ecffeF0CAzMra4dDR94"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 9
+    },
+    "agents": {
+      "ses_e1e85f6ecffeF0CAzMra4dDR94": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e85f6ecffeF0CAzMra4dDR94": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 3,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1e879e83ffedNjZ7yW6bd9zso"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 17
+    },
+    "agents": {
+      "ses_e1e879e83ffedNjZ7yW6bd9zso": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e879e83ffedNjZ7yW6bd9zso": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 7,
+      "glob": 2,
+      "shell": 7,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1e9e81adffeO43m80IB0hnhQp"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 1
+    },
+    "agents": {
+      "ses_e1e9e81adffeO43m80IB0hnhQp": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e9e81adffeO43m80IB0hnhQp": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1e83b3bdffeMBe2zvH4xyh5FH"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 28,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 28
+    },
+    "agents": {
+      "ses_e1e83b3bdffeMBe2zvH4xyh5FH": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e83b3bdffeMBe2zvH4xyh5FH": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "glob": 3,
+      "skill": 3,
+      "write": 3,
+      "shell": 10,
+      "edit": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1e849eb5fferZCBvtl3Hd21pL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 24,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 24
+    },
+    "agents": {
+      "ses_e1e849eb5fferZCBvtl3Hd21pL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e849eb5fferZCBvtl3Hd21pL": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 10,
+      "skill": 1,
+      "write": 3,
+      "edit": 10
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1e7eef92ffeHzei1jtALQcQ4k"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 18
+    },
+    "agents": {
+      "ses_e1e7eef92ffeHzei1jtALQcQ4k": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e7eef92ffeHzei1jtALQcQ4k": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 10,
+      "glob": 1,
+      "shell": 6,
+      "edit": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1e7e6490ffev9P6DiEx0EnmoB"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 10
+    },
+    "agents": {
+      "ses_e1e7e6490ffev9P6DiEx0EnmoB": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e7e6490ffev9P6DiEx0EnmoB": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 5,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1e7a8d26ffe3SBMcMxC4xXcpC"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 12
+    },
+    "agents": {
+      "ses_e1e7a8d26ffe3SBMcMxC4xXcpC": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e7a8d26ffe3SBMcMxC4xXcpC": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 6,
+      "skill": 1,
+      "edit": 1,
+      "write": 1,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1e8a2ab9ffeZYI5ne92EGySnd"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 34,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 34
+    },
+    "agents": {
+      "ses_e1e8a2ab9ffeZYI5ne92EGySnd": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e8a2ab9ffeZYI5ne92EGySnd": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 11,
+      "write": 2,
+      "edit": 16
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1e755f44ffe3ZwWwY5FTjtD7k"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 9
+    },
+    "agents": {
+      "ses_e1e755f44ffe3ZwWwY5FTjtD7k": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e755f44ffe3ZwWwY5FTjtD7k": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 1,
+      "shell": 4,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1e7b3ba4ffeYbIViAdMMM1Rpe"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 27,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 27
+    },
+    "agents": {
+      "ses_e1e7b3ba4ffeYbIViAdMMM1Rpe": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e7b3ba4ffeYbIViAdMMM1Rpe": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 11,
+      "glob": 3,
+      "shell": 9,
+      "write": 2,
+      "edit": 6,
+      "grep": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1e740e42ffe8re7FBJeHgdG35"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 8
+    },
+    "agents": {
+      "ses_e1e740e42ffe8re7FBJeHgdG35": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e740e42ffe8re7FBJeHgdG35": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "write": 2,
+      "shell": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1e78e726ffei8xkP97IbpoMQV"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 13
+    },
+    "agents": {
+      "ses_e1e78e726ffei8xkP97IbpoMQV": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e78e726ffei8xkP97IbpoMQV": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "write": 2,
+      "edit": 2,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1e7264fcffeuzzDsy549blRmT"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 20
+    },
+    "agents": {
+      "ses_e1e7264fcffeuzzDsy549blRmT": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e7264fcffeuzzDsy549blRmT": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 9,
+      "write": 2,
+      "edit": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3.1-pro",
+    "display": "Kimi K3.1 Pro",
+    "expected_model": "kimi-code-plan-global/k3.1-pro",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1e734a2effeXbA3PQJgD5f43M"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 55,
+    "assistant_models": {
+      "kimi-code-plan-global/k3.1-pro": 55
+    },
+    "agents": {
+      "ses_e1e734a2effeXbA3PQJgD5f43M": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e734a2effeXbA3PQJgD5f43M": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 18,
+      "glob": 2,
+      "shell": 19,
+      "write": 2,
+      "edit": 24
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1e6e1c52ffeS7dw2MBH8JFMeG"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 15
+    },
+    "agents": {
+      "ses_e1e6e1c52ffeS7dw2MBH8JFMeG": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e6e1c52ffeS7dw2MBH8JFMeG": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 5,
+      "skill": 1,
+      "write": 1,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1e6bfdecffe1Q6OwOB5xt17mB"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 11
+    },
+    "agents": {
+      "ses_e1e6bfdecffe1Q6OwOB5xt17mB": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e6bfdecffe1Q6OwOB5xt17mB": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 3,
+      "shell": 7,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1e729aa1ffeWzu9AcVdfnedl2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 10
+    },
+    "agents": {
+      "ses_e1e729aa1ffeWzu9AcVdfnedl2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e729aa1ffeWzu9AcVdfnedl2": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "write": 2,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "shell:parent-path"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: shell:parent-path"
+    ]
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1e6b69fbffeOolNI23RX41u75"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 13
+    },
+    "agents": {
+      "ses_e1e6b69fbffeOolNI23RX41u75": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e6b69fbffeOolNI23RX41u75": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "shell": 5,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1e8308a7ffefLfWoXW02T6jnD"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 1
+    },
+    "agents": {
+      "ses_e1e8308a7ffefLfWoXW02T6jnD": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e8308a7ffefLfWoXW02T6jnD": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1e684bbdffe6ytC5am8xuwhrx"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 23,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 23
+    },
+    "agents": {
+      "ses_e1e684bbdffe6ytC5am8xuwhrx": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e684bbdffe6ytC5am8xuwhrx": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 8,
+      "skill": 1,
+      "write": 4,
+      "edit": 12
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1e6a95e2ffeJ3t7SrpEPQzi5D"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 21,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 21
+    },
+    "agents": {
+      "ses_e1e6a95e2ffeJ3t7SrpEPQzi5D": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e6a95e2ffeJ3t7SrpEPQzi5D": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 13,
+      "write": 2,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-flash",
+    "display": "Qwen3.8 Flash via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-flash",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1e6477fbffei1QIvrcLldfsGU"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-flash": 13
+    },
+    "agents": {
+      "ses_e1e6477fbffei1QIvrcLldfsGU": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e6477fbffei1QIvrcLldfsGU": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 9,
+      "skill": 1,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1e696027ffemjioGC5IsK0fRu"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 11
+    },
+    "agents": {
+      "ses_e1e696027ffemjioGC5IsK0fRu": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e696027ffemjioGC5IsK0fRu": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 4,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1e61392dffeVGizV0UEqvQg6i"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 9
+    },
+    "agents": {
+      "ses_e1e61392dffeVGizV0UEqvQg6i": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e61392dffeVGizV0UEqvQg6i": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 5,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1e5f8c08ffeNCqa4zVJk06pZ6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 9
+    },
+    "agents": {
+      "ses_e1e5f8c08ffeNCqa4zVJk06pZ6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e5f8c08ffeNCqa4zVJk06pZ6": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1e601f24ffeM2jPHdlrGDxV3x"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 16
+    },
+    "agents": {
+      "ses_e1e601f24ffeM2jPHdlrGDxV3x": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e601f24ffeM2jPHdlrGDxV3x": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "skill": 1,
+      "shell": 6,
+      "edit": 3,
+      "write": 1,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1e60ae54ffecgsWOP8fBCTiQ8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 19
+    },
+    "agents": {
+      "ses_e1e60ae54ffecgsWOP8fBCTiQ8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e60ae54ffecgsWOP8fBCTiQ8": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 12,
+      "skill": 1,
+      "edit": 3,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1e5e45acffe6atPQ2WKUroT7Q"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 10
+    },
+    "agents": {
+      "ses_e1e5e45acffe6atPQ2WKUroT7Q": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e5e45acffe6atPQ2WKUroT7Q": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 6,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1e5b1d6bffePOKrNm3Ke2TX4f"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 14
+    },
+    "agents": {
+      "ses_e1e5b1d6bffePOKrNm3Ke2TX4f": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e5b1d6bffePOKrNm3Ke2TX4f": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 8,
+      "write": 1,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1e5733b3ffe1DyIcX2HDmkrfL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 8
+    },
+    "agents": {
+      "ses_e1e5733b3ffe1DyIcX2HDmkrfL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e5733b3ffe1DyIcX2HDmkrfL": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 3,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1e5c7057ffe523PCAAWR0Tuqg"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 15
+    },
+    "agents": {
+      "ses_e1e5c7057ffe523PCAAWR0Tuqg": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e5c7057ffe523PCAAWR0Tuqg": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 8,
+      "skill": 1,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1e55cf25ffe302lH9Rw3fhIRN"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 15
+    },
+    "agents": {
+      "ses_e1e55cf25ffe302lH9Rw3fhIRN": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e55cf25ffe302lH9Rw3fhIRN": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 3,
+      "shell": 9,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1e509222ffe4EW025gltPTXwA"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 16
+    },
+    "agents": {
+      "ses_e1e509222ffe4EW025gltPTXwA": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e509222ffe4EW025gltPTXwA": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "glob": 1,
+      "write": 1,
+      "edit": 8,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1e679085ffeblD3FB9er2STnW"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 1
+    },
+    "agents": {
+      "ses_e1e679085ffeblD3FB9er2STnW": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e679085ffeblD3FB9er2STnW": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1e4dd367ffedeQWmeIyF1GllK"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 15
+    },
+    "agents": {
+      "ses_e1e4dd367ffedeQWmeIyF1GllK": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e4dd367ffedeQWmeIyF1GllK": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 7,
+      "edit": 4,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1e4bc7abffeeKdaDZa7RupSCk"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 9
+    },
+    "agents": {
+      "ses_e1e4bc7abffeeKdaDZa7RupSCk": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e4bc7abffeeKdaDZa7RupSCk": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 4,
+      "write": 1,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1e53fd8effeaMQ6oHVFrFcfsF"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 32,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 32
+    },
+    "agents": {
+      "ses_e1e53fd8effeaMQ6oHVFrFcfsF": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e53fd8effeaMQ6oHVFrFcfsF": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "skill": 1,
+      "shell": 18,
+      "write": 3,
+      "edit": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1e4a17f2ffeCkLcGx2720WuAU"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 13
+    },
+    "agents": {
+      "ses_e1e4a17f2ffeCkLcGx2720WuAU": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e4a17f2ffeCkLcGx2720WuAU": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "write": 2,
+      "shell": 3,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1e49aadfffeJ2jbtE2SkuSl50"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 24,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 24
+    },
+    "agents": {
+      "ses_e1e49aadfffeJ2jbtE2SkuSl50": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e49aadfffeJ2jbtE2SkuSl50": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 13,
+      "skill": 1,
+      "write": 3,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-for-coding",
+    "display": "Kimi for Coding",
+    "expected_model": "kimi-code-plan-global/kimi-for-coding",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1e477b49ffeSGcFOT7zZQD4EZ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "kimi-code-plan-global/kimi-for-coding": 14
+    },
+    "agents": {
+      "ses_e1e477b49ffeSGcFOT7zZQD4EZ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e477b49ffeSGcFOT7zZQD4EZ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 9,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1e444f7fffeAHUPCA4B4BXd4Q"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 10
+    },
+    "agents": {
+      "ses_e1e444f7fffeAHUPCA4B4BXd4Q": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e444f7fffeAHUPCA4B4BXd4Q": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 5,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1e45f27affePOAczV0aWvcial"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 13
+    },
+    "agents": {
+      "ses_e1e45f27affePOAczV0aWvcial": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e45f27affePOAczV0aWvcial": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "skill": 1,
+      "shell": 6,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1e5b5e50ffezudx4N70D46dyb"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 13
+    },
+    "agents": {
+      "ses_e1e5b5e50ffezudx4N70D46dyb": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e5b5e50ffezudx4N70D46dyb": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 7,
+      "skill": 1,
+      "write": 1,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "ses_e1e5b5e50ffezudx4N70D46dyb: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1e41248bffeRK933J9P2KHJ2G"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 21,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 21
+    },
+    "agents": {
+      "ses_e1e41248bffeRK933J9P2KHJ2G": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e41248bffeRK933J9P2KHJ2G": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "skill": 1,
+      "glob": 1,
+      "shell": 8,
+      "write": 2,
+      "edit": 5,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1e429ce8ffeM5TS9Wgc6WPvnq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 11
+    },
+    "agents": {
+      "ses_e1e429ce8ffeM5TS9Wgc6WPvnq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e429ce8ffeM5TS9Wgc6WPvnq": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 4,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1e3a30f4ffetSGtK2J7uxMnJv"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 6,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 6
+    },
+    "agents": {
+      "ses_e1e3a30f4ffetSGtK2J7uxMnJv": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e3a30f4ffetSGtK2J7uxMnJv": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 2,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1e396574ffeGlcBe1SgKo9fxu"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 17
+    },
+    "agents": {
+      "ses_e1e396574ffeGlcBe1SgKo9fxu": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e396574ffeGlcBe1SgKo9fxu": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 12,
+      "write": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.3-flash",
+    "display": "GLM-5.3-Flash",
+    "expected_model": "zai-coding-plan/glm-5.3-flash",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1e3d66d9ffexEL6gknqD9v4c2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 35,
+    "assistant_models": {
+      "zai-coding-plan/glm-5.3-flash": 35
+    },
+    "agents": {
+      "ses_e1e3d66d9ffexEL6gknqD9v4c2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e3d66d9ffexEL6gknqD9v4c2": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "glob": 1,
+      "skill": 1,
+      "shell": 18,
+      "write": 6,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1e36db8cffe6p5L0uumZ3xdIq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 11
+    },
+    "agents": {
+      "ses_e1e36db8cffe6p5L0uumZ3xdIq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e36db8cffe6p5L0uumZ3xdIq": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 5,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1e346956ffevUZwQcgRcZWoyr"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 11
+    },
+    "agents": {
+      "ses_e1e346956ffevUZwQcgRcZWoyr": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e346956ffevUZwQcgRcZWoyr": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 5,
+      "write": 1,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1e3299b9ffeIVpPwvkfKXbZzc"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 7,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 7
+    },
+    "agents": {
+      "ses_e1e3299b9ffeIVpPwvkfKXbZzc": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e3299b9ffeIVpPwvkfKXbZzc": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 2,
+      "write": 1,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1e4c188fffeN1bkb8GglH1ccY"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 1
+    },
+    "agents": {
+      "ses_e1e4c188fffeN1bkb8GglH1ccY": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e4c188fffeN1bkb8GglH1ccY": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1e3fe60bffeci4vcZpiMBUnMQ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 29,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 29
+    },
+    "agents": {
+      "ses_e1e3fe60bffeci4vcZpiMBUnMQ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e3fe60bffeci4vcZpiMBUnMQ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 19,
+      "skill": 2,
+      "write": 9,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1e30432cffecRxsiMY31iIEH4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 15
+    },
+    "agents": {
+      "ses_e1e30432cffecRxsiMY31iIEH4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e30432cffecRxsiMY31iIEH4": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 10,
+      "skill": 1,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1e3183c2ffe9OgAQhS4TkCldN"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 8
+    },
+    "agents": {
+      "ses_e1e3183c2ffe9OgAQhS4TkCldN": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e3183c2ffe9OgAQhS4TkCldN": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "write": 1,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1e2cdac7ffeHfl3vvzbTTMw5Z"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 13
+    },
+    "agents": {
+      "ses_e1e2cdac7ffeHfl3vvzbTTMw5Z": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e2cdac7ffeHfl3vvzbTTMw5Z": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "write": 2,
+      "shell": 3,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1e2a2e33ffeI4y6DwlIcr5jWo"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 12
+    },
+    "agents": {
+      "ses_e1e2a2e33ffeI4y6DwlIcr5jWo": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e2a2e33ffeI4y6DwlIcr5jWo": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 8,
+      "write": 1,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1e2892e8ffeD4KO50HkLg3K9f"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 14
+    },
+    "agents": {
+      "ses_e1e2892e8ffeD4KO50HkLg3K9f": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e2892e8ffeD4KO50HkLg3K9f": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "write": 1,
+      "edit": 4,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1e25eb98ffeK1a5MUXsvCtMKN"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 13
+    },
+    "agents": {
+      "ses_e1e25eb98ffeK1a5MUXsvCtMKN": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e25eb98ffeK1a5MUXsvCtMKN": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 4,
+      "write": 1,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1e2cded2ffeGO4lEQR4YmdY3M"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 11
+    },
+    "agents": {
+      "ses_e1e2cded2ffeGO4lEQR4YmdY3M": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e2cded2ffeGO4lEQR4YmdY3M": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 4,
+      "glob": 1,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k3-256k",
+    "display": "Kimi K3-256K",
+    "expected_model": "kimi-code-plan-global/k3-256k",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1e23b8b8ffe148CjDnargdj6S"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "kimi-code-plan-global/k3-256k": 10
+    },
+    "agents": {
+      "ses_e1e23b8b8ffe148CjDnargdj6S": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e23b8b8ffe148CjDnargdj6S": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 5,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1e2308d1ffeEZWPfs0OdBf516"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 13
+    },
+    "agents": {
+      "ses_e1e2308d1ffeEZWPfs0OdBf516": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e2308d1ffeEZWPfs0OdBf516": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 6,
+      "skill": 1,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1e309af5ffe5LU87d7ccwWHr5"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 1
+    },
+    "agents": {
+      "ses_e1e309af5ffe5LU87d7ccwWHr5": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e309af5ffe5LU87d7ccwWHr5": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1e186755ffe97lkplWs0aWatY"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 12
+    },
+    "agents": {
+      "ses_e1e186755ffe97lkplWs0aWatY": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e186755ffe97lkplWs0aWatY": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 8,
+      "skill": 1,
+      "grep": 1,
+      "write": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1e1522d0ffe639viJhiH5SaFL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 36,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 36
+    },
+    "agents": {
+      "ses_e1e1522d0ffe639viJhiH5SaFL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e1522d0ffe639viJhiH5SaFL": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "shell": 22,
+      "write": 8,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "write:parent-path"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: write:parent-path"
+    ]
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1e0f23c1ffeRt3cmVAnGjOe53"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 23,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 23
+    },
+    "agents": {
+      "ses_e1e0f23c1ffeRt3cmVAnGjOe53": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e0f23c1ffeRt3cmVAnGjOe53": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 16,
+      "skill": 1,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1e08bd43ffeJCdmrHNgPIAFtw"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 35,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 35
+    },
+    "agents": {
+      "ses_e1e08bd43ffeJCdmrHNgPIAFtw": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e08bd43ffeJCdmrHNgPIAFtw": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "shell": 20,
+      "skill": 1,
+      "write": 2,
+      "edit": 6,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1e122f93ffe0iL993nb6HAqZp"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 16
+    },
+    "agents": {
+      "ses_e1e122f93ffe0iL993nb6HAqZp": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e122f93ffe0iL993nb6HAqZp": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 11,
+      "skill": 2,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3.1-flash",
+    "display": "MiniMax M3.1 Flash",
+    "expected_model": "minimax-coding-plan/MiniMax-M3.1-Flash",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1e061c0bffeSNWH7V2zpM1CLV"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 31,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3.1-Flash": 31
+    },
+    "agents": {
+      "ses_e1e061c0bffeSNWH7V2zpM1CLV": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e061c0bffeSNWH7V2zpM1CLV": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 19,
+      "glob": 1,
+      "skill": 2,
+      "write": 4,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1dffd142ffeKjTnxGioFzdgs1"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 17
+    },
+    "agents": {
+      "ses_e1dffd142ffeKjTnxGioFzdgs1": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dffd142ffeKjTnxGioFzdgs1": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 11,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1e039b2fffeaDF8gJv0nWsaF6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 19
+    },
+    "agents": {
+      "ses_e1e039b2fffeaDF8gJv0nWsaF6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1e039b2fffeaDF8gJv0nWsaF6": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 13,
+      "skill": 2,
+      "write": 5,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1dfe0308ffePHFn76TAv2HCzq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 222,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 222
+    },
+    "agents": {
+      "ses_e1dfe0308ffePHFn76TAv2HCzq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dfe0308ffePHFn76TAv2HCzq": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 3,
+      "read": 16,
+      "glob": 3,
+      "write": 10,
+      "shell": 108,
+      "edit": 90
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "edit:hidden",
+      "glob:hidden"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: edit:hidden,glob:hidden"
+    ]
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1dec8e73ffehoumLcyzFYTbuO"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 43,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 43
+    },
+    "agents": {
+      "ses_e1dec8e73ffehoumLcyzFYTbuO": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dec8e73ffehoumLcyzFYTbuO": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "shell": 25,
+      "glob": 1,
+      "skill": 3,
+      "write": 2,
+      "edit": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1de84f5fffeWG84yEei7DblZY"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 8
+    },
+    "agents": {
+      "ses_e1de84f5fffeWG84yEei7DblZY": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1de84f5fffeWG84yEei7DblZY": null
+    },
+    "children": 0,
+    "tools": {
+      "skill": 1,
+      "read": 4,
+      "shell": 3,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1df0270cffeJwXYz0TbkI5NoJ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 20
+    },
+    "agents": {
+      "ses_e1df0270cffeJwXYz0TbkI5NoJ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1df0270cffeJwXYz0TbkI5NoJ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 14,
+      "skill": 1,
+      "write": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1de41694ffeQtb7nVQ3Mw6GPG"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 24,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 24
+    },
+    "agents": {
+      "ses_e1de41694ffeQtb7nVQ3Mw6GPG": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1de41694ffeQtb7nVQ3Mw6GPG": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 15,
+      "glob": 1,
+      "write": 6,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1dd3ce70ffeer7JzvY1cr0XD6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 14
+    },
+    "agents": {
+      "ses_e1dd3ce70ffeer7JzvY1cr0XD6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dd3ce70ffeer7JzvY1cr0XD6": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 11,
+      "skill": 2,
+      "write": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1de74e36ffeBvKTkhijqR7yF6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 7,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 7
+    },
+    "agents": {
+      "ses_e1de74e36ffeBvKTkhijqR7yF6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1de74e36ffeBvKTkhijqR7yF6": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.8-max",
+    "display": "Qwen3.8 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.8-max",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1dcc292affefRDImvZrtv1pHe"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.8-max": 15
+    },
+    "agents": {
+      "ses_e1dcc292affefRDImvZrtv1pHe": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dcc292affefRDImvZrtv1pHe": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 10,
+      "skill": 1,
+      "write": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1dc3b001ffeI3CmODY1fv9zTh"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 17
+    },
+    "agents": {
+      "ses_e1dc3b001ffeI3CmODY1fv9zTh": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dc3b001ffeI3CmODY1fv9zTh": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "edit": 3,
+      "shell": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1dc1dd1effeW5h26r1Iaudrrd"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 38,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 38
+    },
+    "agents": {
+      "ses_e1dc1dd1effeW5h26r1Iaudrrd": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dc1dd1effeW5h26r1Iaudrrd": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "write": 7,
+      "shell": 15,
+      "edit": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1db38b27ffeeipQumtpQUqmlO"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 17
+    },
+    "agents": {
+      "ses_e1db38b27ffeeipQumtpQUqmlO": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1db38b27ffeeipQumtpQUqmlO": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "edit": 1,
+      "shell": 8,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1dcbd579ffe5p8YcrfFr6FP1F"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 1
+    },
+    "agents": {
+      "ses_e1dcbd579ffe5p8YcrfFr6FP1F": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dcbd579ffe5p8YcrfFr6FP1F": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1db09067ffeUFvqKeceDvnZiN"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 12
+    },
+    "agents": {
+      "ses_e1db09067ffeUFvqKeceDvnZiN": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1db09067ffeUFvqKeceDvnZiN": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 1,
+      "shell": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1daed01fffej7SJKTdqmorZKS"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 14
+    },
+    "agents": {
+      "ses_e1daed01fffej7SJKTdqmorZKS": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1daed01fffej7SJKTdqmorZKS": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "edit": 1,
+      "shell": 4,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1dab2610ffeS5mLxVVF0w6YZD"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 11
+    },
+    "agents": {
+      "ses_e1dab2610ffeS5mLxVVF0w6YZD": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1dab2610ffeS5mLxVVF0w6YZD": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "glob": 1,
+      "write": 1,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1da84cc0ffeSdx3WbZiCtZCuw"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 14
+    },
+    "agents": {
+      "ses_e1da84cc0ffeSdx3WbZiCtZCuw": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1da84cc0ffeSdx3WbZiCtZCuw": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 2,
+      "shell": 5,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1da66372ffedaSqPTJDa8xeTd"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 18
+    },
+    "agents": {
+      "ses_e1da66372ffedaSqPTJDa8xeTd": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1da66372ffedaSqPTJDa8xeTd": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 1,
+      "shell": 5,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1da16488ffeYeLCZ4Jr8Qr1aY"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 11
+    },
+    "agents": {
+      "ses_e1da16488ffeYeLCZ4Jr8Qr1aY": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1da16488ffeYeLCZ4Jr8Qr1aY": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "glob": 1,
+      "write": 2,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1d9d4bcaffeBM4efc88kl32em"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 16
+    },
+    "agents": {
+      "ses_e1d9d4bcaffeBM4efc88kl32em": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d9d4bcaffeBM4efc88kl32em": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "write": 2,
+      "shell": 5,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1d9b260effeUbHWwO0S0dG39C"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 11
+    },
+    "agents": {
+      "ses_e1d9b260effeUbHWwO0S0dG39C": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d9b260effeUbHWwO0S0dG39C": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "glob": 1,
+      "write": 1,
+      "shell": 4,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1d98f0aeffeIHjly5hcOvTZSo"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 18
+    },
+    "agents": {
+      "ses_e1d98f0aeffeIHjly5hcOvTZSo": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d98f0aeffeIHjly5hcOvTZSo": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 13,
+      "edit": 4,
+      "shell": 2,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1db05d0fffef4ncZm10uLHiU0"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 1
+    },
+    "agents": {
+      "ses_e1db05d0fffef4ncZm10uLHiU0": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1db05d0fffef4ncZm10uLHiU0": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-plus",
+    "display": "Qwen3.7 Plus via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-plus",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1d9604f8ffeYuN5iuiW75i1nx"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-plus": 17
+    },
+    "agents": {
+      "ses_e1d9604f8ffeYuN5iuiW75i1nx": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d9604f8ffeYuN5iuiW75i1nx": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 9,
+      "edit": 1,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1d9243cbffeKmv7gZV4hhyzCm"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 15
+    },
+    "agents": {
+      "ses_e1d9243cbffeKmv7gZV4hhyzCm": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d9243cbffeKmv7gZV4hhyzCm": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "glob": 1,
+      "edit": 5,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1d91231cffe24dUcm4lrsKOw8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 15
+    },
+    "agents": {
+      "ses_e1d91231cffe24dUcm4lrsKOw8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d91231cffe24dUcm4lrsKOw8": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 3,
+      "shell": 6
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1d824e2affezQIzXiK7QJd286"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 11
+    },
+    "agents": {
+      "ses_e1d824e2affezQIzXiK7QJd286": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d824e2affezQIzXiK7QJd286": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "edit": 2,
+      "write": 1,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1d810272ffez7jFkvj60lq84D"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 11
+    },
+    "agents": {
+      "ses_e1d810272ffez7jFkvj60lq84D": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d810272ffez7jFkvj60lq84D": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 2,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1d7fda2fffevHgQ1A8UJi4VF4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 11
+    },
+    "agents": {
+      "ses_e1d7fda2fffevHgQ1A8UJi4VF4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d7fda2fffevHgQ1A8UJi4VF4": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 2,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1d7dddaaffe7RWRVqclJy2qmn"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 22,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 22
+    },
+    "agents": {
+      "ses_e1d7dddaaffe7RWRVqclJy2qmn": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d7dddaaffe7RWRVqclJy2qmn": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "glob": 3,
+      "write": 2,
+      "shell": 6,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1d7b2db8ffeYcQVvI51P7Fxj5"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 12
+    },
+    "agents": {
+      "ses_e1d7b2db8ffeYcQVvI51P7Fxj5": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d7b2db8ffeYcQVvI51P7Fxj5": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "edit": 1,
+      "write": 1,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1d94e55bffekxb5Vv3ByN8sr9"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 1
+    },
+    "agents": {
+      "ses_e1d94e55bffekxb5Vv3ByN8sr9": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d94e55bffekxb5Vv3ByN8sr9": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1d79fd9affe7uS3cPN48ms3ta"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 14
+    },
+    "agents": {
+      "ses_e1d79fd9affe7uS3cPN48ms3ta": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d79fd9affe7uS3cPN48ms3ta": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "glob": 1,
+      "write": 2,
+      "shell": 4,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1d779e98ffeZQ8f9czV93Mi51"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 11
+    },
+    "agents": {
+      "ses_e1d779e98ffeZQ8f9czV93Mi51": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d779e98ffeZQ8f9czV93Mi51": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "write": 2,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1d76082dffe44ZAD9sPsutAb3"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 17
+    },
+    "agents": {
+      "ses_e1d76082dffe44ZAD9sPsutAb3": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d76082dffe44ZAD9sPsutAb3": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "edit": 2,
+      "shell": 9
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1d748972ffe9L7zGNURo3a7YM"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 10
+    },
+    "agents": {
+      "ses_e1d748972ffe9L7zGNURo3a7YM": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d748972ffe9L7zGNURo3a7YM": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "glob": 1,
+      "write": 2,
+      "shell": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1d7371fbffeex0soSJ0igfjxP"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 10,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 10
+    },
+    "agents": {
+      "ses_e1d7371fbffeex0soSJ0igfjxP": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d7371fbffeex0soSJ0igfjxP": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "edit": 1,
+      "write": 1,
+      "shell": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "qwen3.7-max",
+    "display": "Qwen3.7 Max via Alibaba",
+    "expected_model": "alibaba-token-plan/qwen3.7-max",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1d72276effeq4LtsG450YiBSA"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "alibaba-token-plan/qwen3.7-max": 17
+    },
+    "agents": {
+      "ses_e1d72276effeq4LtsG450YiBSA": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d72276effeq4LtsG450YiBSA": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "glob": 1,
+      "edit": 2,
+      "shell": 8
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1d701f2affeDTlYwFx2DtUdsi"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 31,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 31
+    },
+    "agents": {
+      "ses_e1d701f2affeDTlYwFx2DtUdsi": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d701f2affeDTlYwFx2DtUdsi": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 12,
+      "edit": 4,
+      "shell": 18
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1d796d8fffeINaPFQs0d9mAeV"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 1
+    },
+    "agents": {
+      "ses_e1d796d8fffeINaPFQs0d9mAeV": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d796d8fffeINaPFQs0d9mAeV": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1d6d3fc8ffexoi4brjOavLznj"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 31,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 31
+    },
+    "agents": {
+      "ses_e1d6d3fc8ffexoi4brjOavLznj": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d6d3fc8ffexoi4brjOavLznj": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 19,
+      "write": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1d5b8cbcffeTEEe4MEvbip7Vl"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 15
+    },
+    "agents": {
+      "ses_e1d5b8cbcffeTEEe4MEvbip7Vl": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d5b8cbcffeTEEe4MEvbip7Vl": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 8,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1d587d0dffeNyFtYXuQyLyGPH"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 17
+    },
+    "agents": {
+      "ses_e1d587d0dffeNyFtYXuQyLyGPH": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d587d0dffeNyFtYXuQyLyGPH": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 6,
+      "write": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1d557166ffecp34FZvhkkzBZl"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 29,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 29
+    },
+    "agents": {
+      "ses_e1d557166ffecp34FZvhkkzBZl": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d557166ffecp34FZvhkkzBZl": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "shell": 16,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1d4d2eccffeOsHxXCoW7FFtYU"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 11
+    },
+    "agents": {
+      "ses_e1d4d2eccffeOsHxXCoW7FFtYU": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d4d2eccffeOsHxXCoW7FFtYU": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "write": 1,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1d46db22ffelvRLGC7X10FcfH"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 13
+    },
+    "agents": {
+      "ses_e1d46db22ffelvRLGC7X10FcfH": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d46db22ffelvRLGC7X10FcfH": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 10,
+      "write": 2,
+      "shell": 4,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1d5defdeffe2RuA35REQENdOm"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 1
+    },
+    "agents": {
+      "ses_e1d5defdeffe2RuA35REQENdOm": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d5defdeffe2RuA35REQENdOm": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1d443dc5ffe9dhQ5Zmabs1oc7"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 29,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 29
+    },
+    "agents": {
+      "ses_e1d443dc5ffe9dhQ5Zmabs1oc7": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d443dc5ffe9dhQ5Zmabs1oc7": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 19,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1d35ca1cffe6J4Rw0EcWYRXoE"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 27,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 27
+    },
+    "agents": {
+      "ses_e1d35ca1cffe6J4Rw0EcWYRXoE": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d35ca1cffe6J4Rw0EcWYRXoE": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 17,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1d2ebc63ffekLX0yL1p9eKQYQ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 26,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 26
+    },
+    "agents": {
+      "ses_e1d2ebc63ffekLX0yL1p9eKQYQ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d2ebc63ffekLX0yL1p9eKQYQ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 15,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1d4273a6ffeBmTQccnNKoXlgb"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 1
+    },
+    "agents": {
+      "ses_e1d4273a6ffeBmTQccnNKoXlgb": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d4273a6ffeBmTQccnNKoXlgb": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1d29b656ffe2LSH1XijPqjFze"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 24,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 24
+    },
+    "agents": {
+      "ses_e1d29b656ffe2LSH1XijPqjFze": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d29b656ffe2LSH1XijPqjFze": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 12,
+      "write": 2,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1d2320f1ffe465WF0WVsdFe8A"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 21,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 21
+    },
+    "agents": {
+      "ses_e1d2320f1ffe465WF0WVsdFe8A": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d2320f1ffe465WF0WVsdFe8A": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 12,
+      "write": 2,
+      "grep": 2,
+      "shell": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "glm-5.2-alibaba",
+    "display": "GLM-5.2 via Alibaba",
+    "expected_model": "alibaba-token-plan/glm-5.2",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1d1e9d6affeaLU0033kBPyAX2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 25,
+    "assistant_models": {
+      "alibaba-token-plan/glm-5.2": 25
+    },
+    "agents": {
+      "ses_e1d1e9d6affeaLU0033kBPyAX2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d1e9d6affeaLU0033kBPyAX2": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "shell": 14,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1d16be8affeby7IPvm908u4gR"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d16be8affeby7IPvm908u4gR": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d16be8affeby7IPvm908u4gR": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d16be8affeby7IPvm908u4gR: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1d16a04effewiPmzpsTOKsHAn"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d16a04effewiPmzpsTOKsHAn": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d16a04effewiPmzpsTOKsHAn": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d16a04effewiPmzpsTOKsHAn: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1d1686c4ffeX9sth389hmDEg5"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d1686c4ffeX9sth389hmDEg5": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d1686c4ffeX9sth389hmDEg5": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d1686c4ffeX9sth389hmDEg5: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1d166ef8ffeG2kLlICfwQgvZ9"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d166ef8ffeG2kLlICfwQgvZ9": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d166ef8ffeG2kLlICfwQgvZ9": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d166ef8ffeG2kLlICfwQgvZ9: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1d1655c5ffeyaiF5pX0Piy69u"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d1655c5ffeyaiF5pX0Piy69u": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d1655c5ffeyaiF5pX0Piy69u": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d1655c5ffeyaiF5pX0Piy69u: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1d163b3bffeq0uvaMhIiOv0yw"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d163b3bffeq0uvaMhIiOv0yw": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d163b3bffeq0uvaMhIiOv0yw": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d163b3bffeq0uvaMhIiOv0yw: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1d16217cffeb7a5xkVsjX3a5Y"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d16217cffeb7a5xkVsjX3a5Y": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d16217cffeb7a5xkVsjX3a5Y": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d16217cffeb7a5xkVsjX3a5Y: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1d16067dffekkVoZscIJwhzrx"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d16067dffekkVoZscIJwhzrx": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d16067dffekkVoZscIJwhzrx": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d16067dffekkVoZscIJwhzrx: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1d15eee7ffeX6NXnGeX0uojhL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d15eee7ffeX6NXnGeX0uojhL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d15eee7ffeX6NXnGeX0uojhL": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d15eee7ffeX6NXnGeX0uojhL: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1d15d612ffe04ZhFoKgPw48AB"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d15d612ffe04ZhFoKgPw48AB": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d15d612ffe04ZhFoKgPw48AB": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d15d612ffe04ZhFoKgPw48AB: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1d15be34ffe1Xjl6Z53MS4hVs"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d15be34ffe1Xjl6Z53MS4hVs": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d15be34ffe1Xjl6Z53MS4hVs": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d15be34ffe1Xjl6Z53MS4hVs: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1d15a515ffePnQxaXMGJNiy59"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d15a515ffePnQxaXMGJNiy59": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d15a515ffePnQxaXMGJNiy59": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d15a515ffePnQxaXMGJNiy59: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "kimi-k2.7-code-alibaba",
+    "display": "Kimi K2.7 Code via Alibaba",
+    "expected_model": "alibaba-token-plan/kimi-k2.7-code",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1d158bf7ffeFIyuUSt429IhI2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/kimi-k2.7-code": 1
+    },
+    "agents": {
+      "ses_e1d158bf7ffeFIyuUSt429IhI2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d158bf7ffeFIyuUSt429IhI2": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d158bf7ffeFIyuUSt429IhI2: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1d156999ffeoWVgU17yjh8p7n"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d156999ffeoWVgU17yjh8p7n": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d156999ffeoWVgU17yjh8p7n": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d156999ffeoWVgU17yjh8p7n: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1d1551b4ffecOz7vFRVuxbqKd"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d1551b4ffecOz7vFRVuxbqKd": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d1551b4ffecOz7vFRVuxbqKd": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d1551b4ffecOz7vFRVuxbqKd: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1d1538b5ffeA3N6AX9RqpwJtm"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d1538b5ffeA3N6AX9RqpwJtm": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d1538b5ffeA3N6AX9RqpwJtm": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d1538b5ffeA3N6AX9RqpwJtm: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1d151dd4ffeGlCoXcavzssTwx"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d151dd4ffeGlCoXcavzssTwx": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d151dd4ffeGlCoXcavzssTwx": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d151dd4ffeGlCoXcavzssTwx: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1d1503feffeREuecqR3pEPl7g"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d1503feffeREuecqR3pEPl7g": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d1503feffeREuecqR3pEPl7g": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d1503feffeREuecqR3pEPl7g: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1d14ecfbffeXrIFDL9O52b4DC"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d14ecfbffeXrIFDL9O52b4DC": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d14ecfbffeXrIFDL9O52b4DC": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d14ecfbffeXrIFDL9O52b4DC: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1d14d5ebffelI7Se1zD0Xz6A5"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d14d5ebffelI7Se1zD0Xz6A5": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d14d5ebffelI7Se1zD0Xz6A5": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d14d5ebffelI7Se1zD0Xz6A5: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1d14b018ffe0sR9bxv2SCvNlL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d14b018ffe0sR9bxv2SCvNlL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d14b018ffe0sR9bxv2SCvNlL": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d14b018ffe0sR9bxv2SCvNlL: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1d149739ffeM3hETJzvZe8LOQ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d149739ffeM3hETJzvZe8LOQ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d149739ffeM3hETJzvZe8LOQ": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d149739ffeM3hETJzvZe8LOQ: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1d147b6cffeJqwQZyD6ZhTOQB"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d147b6cffeJqwQZyD6ZhTOQB": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d147b6cffeJqwQZyD6ZhTOQB": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d147b6cffeJqwQZyD6ZhTOQB: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1d146314ffejrVBv91UO2772F"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d146314ffejrVBv91UO2772F": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d146314ffejrVBv91UO2772F": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d146314ffejrVBv91UO2772F: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1d1447c1ffeCn3fv27Jud6u7l"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d1447c1ffeCn3fv27Jud6u7l": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d1447c1ffeCn3fv27Jud6u7l": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d1447c1ffeCn3fv27Jud6u7l: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m2.5-alibaba",
+    "display": "MiniMax-M2.5 via Alibaba",
+    "expected_model": "alibaba-token-plan/MiniMax-M2.5",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1d142f1cffe7ELCCfpWnJwfft"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "alibaba-token-plan/MiniMax-M2.5": 1
+    },
+    "agents": {
+      "ses_e1d142f1cffe7ELCCfpWnJwfft": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d142f1cffe7ELCCfpWnJwfft": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Access to model denied. Please make sure you are eligible for using the model.",
+      "ses_e1d142f1cffe7ELCCfpWnJwfft: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1d26fb82ffe34CatQsSAWaFBu"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 1
+    },
+    "agents": {
+      "ses_e1d26fb82ffe34CatQsSAWaFBu": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d26fb82ffe34CatQsSAWaFBu": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "minimax-m3",
+    "display": "MiniMax-M3",
+    "expected_model": "minimax-coding-plan/MiniMax-M3",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1d0b7dd4ffecO03QjgbRzbEm1"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "minimax-coding-plan/MiniMax-M3": 1
+    },
+    "agents": {
+      "ses_e1d0b7dd4ffecO03QjgbRzbEm1": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d0b7dd4ffecO03QjgbRzbEm1": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  }
+]

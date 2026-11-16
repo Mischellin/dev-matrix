@@ -1,0 +1,273 @@
+QUEUE START 2026-11-16T20:26:09Z | prompt=v1 | lane=1 sequential | models=5 tasks=13 runs=65
+START gpt-6.1-terra | GPT-6.1 Terra | OpenAI | openai/gpt-6.1-terra
+[gpt-6.1-terra] sec-01-clock-skew rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] obs-02-query-redactor rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] algo-03-range-merger rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] arch-04-tag-registry rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] infra-05-k8s-pod-admission rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] onec-06-payment-allocator rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] auth-07-claim-roles rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] host-08-host-header-guard rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] scrub-09-metadata-scrubber rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] flag-10-feature-flag-router rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] tenant-11-scoped-listing rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] authz-12-uniform-404 rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] idem-13-idempotent-signup rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-terra] MODEL DONE
+START gpt-6.1-sol | GPT-6.1 Sol | OpenAI | openai/gpt-6.1-sol
+[gpt-6.1-sol] sec-01-clock-skew rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] obs-02-query-redactor rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] algo-03-range-merger rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] arch-04-tag-registry rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] infra-05-k8s-pod-admission rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] onec-06-payment-allocator rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] auth-07-claim-roles rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] host-08-host-header-guard rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] scrub-09-metadata-scrubber rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] flag-10-feature-flag-router rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] tenant-11-scoped-listing rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] authz-12-uniform-404 rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] idem-13-idempotent-signup rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6.1-sol] MODEL DONE
+START gpt-6-luna | GPT-6 Luna | OpenAI | openai/gpt-6-luna
+[gpt-6-luna] sec-01-clock-skew rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] obs-02-query-redactor rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] algo-03-range-merger rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] arch-04-tag-registry rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] infra-05-k8s-pod-admission rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] onec-06-payment-allocator rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] auth-07-claim-roles rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] host-08-host-header-guard rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] scrub-09-metadata-scrubber rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] flag-10-feature-flag-router rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] tenant-11-scoped-listing rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] authz-12-uniform-404 rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] idem-13-idempotent-signup rc=0
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-luna] MODEL DONE
+START gpt-6-astra | GPT-6 Astra | OpenAI | openai/gpt-6-astra
+[gpt-6-astra] sec-01-clock-skew rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] obs-02-query-redactor rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] algo-03-range-merger rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] arch-04-tag-registry rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] infra-05-k8s-pod-admission rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] onec-06-payment-allocator rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] auth-07-claim-roles rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] host-08-host-header-guard rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] scrub-09-metadata-scrubber rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] flag-10-feature-flag-router rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] tenant-11-scoped-listing rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] authz-12-uniform-404 rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] idem-13-idempotent-signup rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-6-astra] MODEL DONE
+START gpt-5.5 | GPT-5.5 | OpenAI | openai/gpt-5.5
+[gpt-5.5] sec-01-clock-skew rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] obs-02-query-redactor rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] algo-03-range-merger rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] arch-04-tag-registry rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] infra-05-k8s-pod-admission rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] onec-06-payment-allocator rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] auth-07-claim-roles rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] host-08-host-header-guard rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] scrub-09-metadata-scrubber rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] flag-10-feature-flag-router rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] tenant-11-scoped-listing rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] authz-12-uniform-404 rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] idem-13-idempotent-signup rc=1
+Traceback (most recent call last):
+  File "<stdin>", line 92, in <module>
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+[gpt-5.5] MODEL DONE
+LANE EXIT rc=0
+OPENAI QUEUE FINISHED

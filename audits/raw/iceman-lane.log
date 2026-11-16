@@ -1,0 +1,25 @@
+START iceman-free | Iceman Free | OpenCode | opencode/iceman-free
+[iceman-free] sec-01-clock-skew rc=0
+AUDIT iceman-free sec-01-clock-skew: VALID sessions=1 msgs=10 reasons=-
+[iceman-free] obs-02-query-redactor rc=1
+AUDIT iceman-free obs-02-query-redactor: VALID sessions=1 msgs=13 reasons=-
+[iceman-free] algo-03-range-merger rc=0
+AUDIT iceman-free algo-03-range-merger: VALID sessions=1 msgs=7 reasons=-
+[iceman-free] arch-04-tag-registry rc=0
+AUDIT iceman-free arch-04-tag-registry: VALID sessions=1 msgs=6 reasons=-
+[iceman-free] infra-05-k8s-pod-admission rc=1
+AUDIT iceman-free infra-05-k8s-pod-admission: VALID sessions=1 msgs=8 reasons=-
+[iceman-free] onec-06-payment-allocator rc=0
+AUDIT iceman-free onec-06-payment-allocator: VALID sessions=1 msgs=8 reasons=-
+[iceman-free] auth-07-claim-roles rc=0
+AUDIT iceman-free auth-07-claim-roles: VALID sessions=1 msgs=7 reasons=-
+[iceman-free] host-08-host-header-guard rc=0
+AUDIT iceman-free host-08-host-header-guard: VALID sessions=1 msgs=6 reasons=-
+[iceman-free] scrub-09-metadata-scrubber rc=0
+AUDIT iceman-free scrub-09-metadata-scrubber: VALID sessions=1 msgs=9 reasons=-
+[iceman-free] flag-10-feature-flag-router rc=0
+AUDIT iceman-free flag-10-feature-flag-router: VALID sessions=1 msgs=9 reasons=-
+[iceman-free] tenant-11-scoped-listing rc=0
+AUDIT iceman-free tenant-11-scoped-listing: VALID sessions=1 msgs=6 reasons=-
+[iceman-free] authz-12-uniform-404 rc=0
+AUDIT iceman-free authz-12-uniform-404: VALID sessions=1 msgs=6 reasons=-

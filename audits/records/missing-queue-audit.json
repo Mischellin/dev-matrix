@@ -1,0 +1,2433 @@
+[
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1d055924ffe6k602AJ7gd1cKK"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 11,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 11
+    },
+    "agents": {
+      "ses_e1d055924ffe6k602AJ7gd1cKK": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d055924ffe6k602AJ7gd1cKK": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 2,
+      "shell": 5,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1d049feaffeQ19eq8VTAX7IOs"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 25,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 25
+    },
+    "agents": {
+      "ses_e1d049feaffeQ19eq8VTAX7IOs": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1d049feaffeQ19eq8VTAX7IOs": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 18,
+      "write": 1,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1cfca319ffevA4urul0uvE0Yw"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 6,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 6
+    },
+    "agents": {
+      "ses_e1cfca319ffevA4urul0uvE0Yw": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cfca319ffevA4urul0uvE0Yw": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 2,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1cfbdd97ffenw5oCKpWRFxSOp"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 8
+    },
+    "agents": {
+      "ses_e1cfbdd97ffenw5oCKpWRFxSOp": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cfbdd97ffenw5oCKpWRFxSOp": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 4,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1cfb55c3ffew8JZo7WpQ8SSc3"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 12,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 12
+    },
+    "agents": {
+      "ses_e1cfb55c3ffew8JZo7WpQ8SSc3": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cfb55c3ffew8JZo7WpQ8SSc3": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 4,
+      "write": 1,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1cf9bd67ffeQ3kBQ0SSff74g7"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 8,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 8
+    },
+    "agents": {
+      "ses_e1cf9bd67ffeQ3kBQ0SSff74g7": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cf9bd67ffeQ3kBQ0SSff74g7": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 1,
+      "shell": 5,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1cf8da22ffe2bhuBgt6XqgyM0"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 13
+    },
+    "agents": {
+      "ses_e1cf8da22ffe2bhuBgt6XqgyM0": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cf8da22ffe2bhuBgt6XqgyM0": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 5,
+      "skill": 1,
+      "write": 2,
+      "edit": 1,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1cf7cacaffe44s5ZLBU5qOcl2"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 23,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 23
+    },
+    "agents": {
+      "ses_e1cf7cacaffe44s5ZLBU5qOcl2": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cf7cacaffe44s5ZLBU5qOcl2": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 13,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1cf457c8ffennJ3j5eObIlOuH"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 14,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 14
+    },
+    "agents": {
+      "ses_e1cf457c8ffennJ3j5eObIlOuH": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cf457c8ffennJ3j5eObIlOuH": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 2,
+      "shell": 6,
+      "write": 2,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1cf242e0ffeiyya9vRxg3mLt4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 17
+    },
+    "agents": {
+      "ses_e1cf242e0ffeiyya9vRxg3mLt4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cf242e0ffeiyya9vRxg3mLt4": null
+    },
+    "children": 0,
+    "tools": {
+      "shell": 11,
+      "read": 6,
+      "write": 1,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1cf0fc83ffejL7V1SS0Z75ptQ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 9
+    },
+    "agents": {
+      "ses_e1cf0fc83ffejL7V1SS0Z75ptQ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cf0fc83ffejL7V1SS0Z75ptQ": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 2,
+      "shell": 5,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1cf011f5ffezgl9xYfC2kQiid"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 9,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 9
+    },
+    "agents": {
+      "ses_e1cf011f5ffezgl9xYfC2kQiid": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cf011f5ffezgl9xYfC2kQiid": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 3,
+      "write": 1,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "inkling-2-small-free",
+    "display": "Inkling 2 Small Free",
+    "expected_model": "opencode/inkling-2-small-free",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1cef4cc4ffemUT77hCtByhn4i"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "opencode/inkling-2-small-free": 16
+    },
+    "agents": {
+      "ses_e1cef4cc4ffemUT77hCtByhn4i": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cef4cc4ffemUT77hCtByhn4i": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 8,
+      "skill": 1,
+      "edit": 1,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1cedad98ffep3h2szZa4fW5CM"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 16,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 16
+    },
+    "agents": {
+      "ses_e1cedad98ffep3h2szZa4fW5CM": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cedad98ffep3h2szZa4fW5CM": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "shell": 11,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1cea54eeffecQapfB15BtXuWs"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 25,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 25
+    },
+    "agents": {
+      "ses_e1cea54eeffecQapfB15BtXuWs": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cea54eeffecQapfB15BtXuWs": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "shell": 20,
+      "write": 1,
+      "edit": 1
+    },
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cea54eeffecQapfB15BtXuWs: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1cd830adffeT8eSsDNJkwv8XW"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd830adffeT8eSsDNJkwv8XW": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd830adffeT8eSsDNJkwv8XW": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd830adffeT8eSsDNJkwv8XW: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1cd80b41ffef3fY3YXmUtQpdg"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd80b41ffef3fY3YXmUtQpdg": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd80b41ffef3fY3YXmUtQpdg": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd80b41ffef3fY3YXmUtQpdg: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1cd7e322ffeG0TQI5J3R6erZ4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd7e322ffeG0TQI5J3R6erZ4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd7e322ffeG0TQI5J3R6erZ4": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd7e322ffeG0TQI5J3R6erZ4: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1cd7bb3fffeNwH5eo4puxt3eg"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd7bb3fffeNwH5eo4puxt3eg": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd7bb3fffeNwH5eo4puxt3eg": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd7bb3fffeNwH5eo4puxt3eg: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1cd797aaffeydmC5D0OuP9XVa"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd797aaffeydmC5D0OuP9XVa": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd797aaffeydmC5D0OuP9XVa": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd797aaffeydmC5D0OuP9XVa: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1cd77518ffeN6poQqd1elLpKl"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd77518ffeN6poQqd1elLpKl": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd77518ffeN6poQqd1elLpKl": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd77518ffeN6poQqd1elLpKl: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1cd746b1ffehdHoAm4GLiu33g"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd746b1ffehdHoAm4GLiu33g": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd746b1ffehdHoAm4GLiu33g": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd746b1ffehdHoAm4GLiu33g: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1cd720cbffeLot1FXwSMrL5O8"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd720cbffeLot1FXwSMrL5O8": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd720cbffeLot1FXwSMrL5O8": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd720cbffeLot1FXwSMrL5O8: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1cd6f6b9ffetZ23ZC4oKGzdAF"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd6f6b9ffetZ23ZC4oKGzdAF": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd6f6b9ffetZ23ZC4oKGzdAF": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd6f6b9ffetZ23ZC4oKGzdAF: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1cd6d11fffeqVqgFFo40MjRT4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 2,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 2
+    },
+    "agents": {
+      "ses_e1cd6d11fffeqVqgFFo40MjRT4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd6d11fffeqVqgFFo40MjRT4": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 1
+    },
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd6d11fffeqVqgFFo40MjRT4: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "longcat-2.5-free",
+    "display": "LongCat 2.5 Free",
+    "expected_model": "opencode/longcat-2.5-free",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1cd68c57ffezNX5zRrqPuI6Yf"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/longcat-2.5-free": 1
+    },
+    "agents": {
+      "ses_e1cd68c57ffezNX5zRrqPuI6Yf": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd68c57ffezNX5zRrqPuI6Yf": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1cd68c57ffezNX5zRrqPuI6Yf: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1cd66f52ffeI4KqRotgIc4qR5"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "opencode/flint-40b-free": 18
+    },
+    "agents": {
+      "ses_e1cd66f52ffeI4KqRotgIc4qR5": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd66f52ffeI4KqRotgIc4qR5": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 9,
+      "skill": 3,
+      "edit": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1cd35fdaffeSL1biIJclYjPCm"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 57,
+    "assistant_models": {
+      "opencode/flint-40b-free": 57
+    },
+    "agents": {
+      "ses_e1cd35fdaffeSL1biIJclYjPCm": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cd35fdaffeSL1biIJclYjPCm": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 12,
+      "shell": 31,
+      "write": 4,
+      "edit": 15
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1cbdac63ffewTrFECkdxGVU2E"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "opencode/flint-40b-free": 13
+    },
+    "agents": {
+      "ses_e1cbdac63ffewTrFECkdxGVU2E": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cbdac63ffewTrFECkdxGVU2E": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 5,
+      "shell": 7,
+      "skill": 1,
+      "write": 2,
+      "edit": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1cba716bffe3aQPjbVmNz5nPS"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "opencode/flint-40b-free": 13
+    },
+    "agents": {
+      "ses_e1cba716bffe3aQPjbVmNz5nPS": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cba716bffe3aQPjbVmNz5nPS": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 7,
+      "shell": 9,
+      "write": 2
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1cb78afaffejPm75Bfb542Mgy"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 28,
+    "assistant_models": {
+      "opencode/flint-40b-free": 28
+    },
+    "agents": {
+      "ses_e1cb78afaffejPm75Bfb542Mgy": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1cb78afaffejPm75Bfb542Mgy": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 18,
+      "skill": 2,
+      "write": 3,
+      "edit": 9
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1caeb091ffeMxb0u5OhBCB3jk"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 18,
+    "assistant_models": {
+      "opencode/flint-40b-free": 18
+    },
+    "agents": {
+      "ses_e1caeb091ffeMxb0u5OhBCB3jk": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1caeb091ffeMxb0u5OhBCB3jk": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "shell": 9,
+      "write": 1,
+      "edit": 3
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1ca4fa77ffeqixwji5aGCxibA"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 20,
+    "assistant_models": {
+      "opencode/flint-40b-free": 20
+    },
+    "agents": {
+      "ses_e1ca4fa77ffeqixwji5aGCxibA": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ca4fa77ffeqixwji5aGCxibA": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "shell": 9,
+      "skill": 2,
+      "edit": 7,
+      "write": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1ca12b94ffeiAYmQVLKbAktDc"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "opencode/flint-40b-free": 19
+    },
+    "agents": {
+      "ses_e1ca12b94ffeiAYmQVLKbAktDc": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1ca12b94ffeiAYmQVLKbAktDc": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "write": 2,
+      "edit": 5,
+      "shell": 7,
+      "grep": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1c98e208ffell9aunzQ5HBKTM"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 2,
+    "assistant_models": {
+      "opencode/flint-40b-free": 2
+    },
+    "agents": {
+      "ses_e1c98e208ffell9aunzQ5HBKTM": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c98e208ffell9aunzQ5HBKTM": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 2
+    },
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c98e208ffell9aunzQ5HBKTM: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1c98b171ffemjwKJrzJaGNclq"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/flint-40b-free": 1
+    },
+    "agents": {
+      "ses_e1c98b171ffemjwKJrzJaGNclq": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c98b171ffemjwKJrzJaGNclq": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c98b171ffemjwKJrzJaGNclq: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1c989647ffeKvjuByN06qOoM4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/flint-40b-free": 1
+    },
+    "agents": {
+      "ses_e1c989647ffeKvjuByN06qOoM4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c989647ffeKvjuByN06qOoM4": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c989647ffeKvjuByN06qOoM4: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1c9878c3ffe3oNh33eimCsrPH"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/flint-40b-free": 1
+    },
+    "agents": {
+      "ses_e1c9878c3ffe3oNh33eimCsrPH": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c9878c3ffe3oNh33eimCsrPH": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c9878c3ffe3oNh33eimCsrPH: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "flint-40b-free",
+    "display": "Flint 40B Free",
+    "expected_model": "opencode/flint-40b-free",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1c985da8ffeYl2Ty1I6zW8E1P"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/flint-40b-free": 1
+    },
+    "agents": {
+      "ses_e1c985da8ffeYl2Ty1I6zW8E1P": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c985da8ffeYl2Ty1I6zW8E1P": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c985da8ffeYl2Ty1I6zW8E1P: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1c9838ddffeeLpv9o2pyOQleD"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 15
+    },
+    "agents": {
+      "ses_e1c9838ddffeeLpv9o2pyOQleD": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c9838ddffeeLpv9o2pyOQleD": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 4,
+      "glob": 1,
+      "edit": 5,
+      "shell": 5
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1c97059effeDE4MjBxdX4AS7J"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 26,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 26
+    },
+    "agents": {
+      "ses_e1c97059effeDE4MjBxdX4AS7J": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c97059effeDE4MjBxdX4AS7J": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 8,
+      "glob": 1,
+      "shell": 11,
+      "write": 2,
+      "edit": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1c8cf644ffeZ4B5Sd7Jpvc5Nk"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 27,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 27
+    },
+    "agents": {
+      "ses_e1c8cf644ffeZ4B5Sd7Jpvc5Nk": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c8cf644ffeZ4B5Sd7Jpvc5Nk": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 13,
+      "glob": 2,
+      "shell": 9,
+      "write": 5,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [
+      "read:parent-path"
+    ],
+    "status": "INVALID",
+    "reasons": [
+      "forbidden tool inputs: read:parent-path"
+    ]
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1c89d681ffebqACtVlEKu5tKr"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 22,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 22
+    },
+    "agents": {
+      "ses_e1c89d681ffebqACtVlEKu5tKr": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c89d681ffebqACtVlEKu5tKr": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "glob": 2,
+      "write": 2,
+      "shell": 11,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1c8786d8ffekST4MB4lxjc29K"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 23,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 23
+    },
+    "agents": {
+      "ses_e1c8786d8ffekST4MB4lxjc29K": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c8786d8ffekST4MB4lxjc29K": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 12,
+      "glob": 2,
+      "shell": 5,
+      "skill": 2,
+      "write": 2,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1c84049effe1qYdtMGSnava3f"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 13,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 13
+    },
+    "agents": {
+      "ses_e1c84049effe1qYdtMGSnava3f": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c84049effe1qYdtMGSnava3f": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "glob": 1,
+      "shell": 4,
+      "write": 1,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1c81f995ffex7RFVo7OtK8jpN"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 17,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 17
+    },
+    "agents": {
+      "ses_e1c81f995ffex7RFVo7OtK8jpN": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c81f995ffex7RFVo7OtK8jpN": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 10,
+      "grep": 1,
+      "shell": 4,
+      "write": 1,
+      "edit": 1
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1c806633ffe446naNyGEx4SuW"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 22,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 22
+    },
+    "agents": {
+      "ses_e1c806633ffe446naNyGEx4SuW": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c806633ffe446naNyGEx4SuW": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 11,
+      "grep": 2,
+      "write": 2,
+      "shell": 6,
+      "edit": 4
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1c7ca567ffeXwYzJMU0KSO4ce"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 19,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 19
+    },
+    "agents": {
+      "ses_e1c7ca567ffeXwYzJMU0KSO4ce": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c7ca567ffeXwYzJMU0KSO4ce": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 6,
+      "glob": 1,
+      "shell": 5,
+      "write": 1,
+      "edit": 7
+    },
+    "error_events": 0,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "VALID",
+    "reasons": []
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1c798dd2ffe5pFw9IVrykLSu6"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 15,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 15
+    },
+    "agents": {
+      "ses_e1c798dd2ffe5pFw9IVrykLSu6": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c798dd2ffe5pFw9IVrykLSu6": null
+    },
+    "children": 0,
+    "tools": {
+      "read": 9,
+      "glob": 1,
+      "shell": 3,
+      "write": 2,
+      "edit": 5
+    },
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c798dd2ffe5pFw9IVrykLSu6: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1c77f376ffewkqQqx8jYzPbiZ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 1
+    },
+    "agents": {
+      "ses_e1c77f376ffewkqQqx8jYzPbiZ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c77f376ffewkqQqx8jYzPbiZ": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c77f376ffewkqQqx8jYzPbiZ: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1c77d230ffeDyK78K5rxyyRtX"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 1
+    },
+    "agents": {
+      "ses_e1c77d230ffeDyK78K5rxyyRtX": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c77d230ffeDyK78K5rxyyRtX": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c77d230ffeDyK78K5rxyyRtX: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "nemotron-3.5-super-vl-free",
+    "display": "Nemotron 3.5 Super VL Free",
+    "expected_model": "opencode/nemotron-3.5-super-vl-free",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1c77b1c9ffe7sg2F4D5nofS2a"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/nemotron-3.5-super-vl-free": 1
+    },
+    "agents": {
+      "ses_e1c77b1c9ffe7sg2F4D5nofS2a": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c77b1c9ffe7sg2F4D5nofS2a": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c77b1c9ffe7sg2F4D5nofS2a: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1c77985fffeFcjhagat2gXqBV"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c77985fffeFcjhagat2gXqBV": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c77985fffeFcjhagat2gXqBV": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c77985fffeFcjhagat2gXqBV: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1c777eb3ffeSTK17jrv5zqoET"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c777eb3ffeSTK17jrv5zqoET": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c777eb3ffeSTK17jrv5zqoET": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c777eb3ffeSTK17jrv5zqoET: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1c7762f4ffefU0ZRY9NORJV05"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c7762f4ffefU0ZRY9NORJV05": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c7762f4ffefU0ZRY9NORJV05": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c7762f4ffefU0ZRY9NORJV05: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1c774952ffellJncxoc3xgbiT"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c774952ffellJncxoc3xgbiT": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c774952ffellJncxoc3xgbiT": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c774952ffellJncxoc3xgbiT: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1c772c3cffeEzDocI2qIHmq2Z"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c772c3cffeEzDocI2qIHmq2Z": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c772c3cffeEzDocI2qIHmq2Z": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c772c3cffeEzDocI2qIHmq2Z: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1c770d40ffeb6QkuD5GmSvqLZ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c770d40ffeb6QkuD5GmSvqLZ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c770d40ffeb6QkuD5GmSvqLZ": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c770d40ffeb6QkuD5GmSvqLZ: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1c76ebecffeYfrPAb7wXMjcee"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c76ebecffeYfrPAb7wXMjcee": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c76ebecffeYfrPAb7wXMjcee": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c76ebecffeYfrPAb7wXMjcee: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1c76ca36ffeDU3YkeEzQ1dgvz"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c76ca36ffeDU3YkeEzQ1dgvz": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c76ca36ffeDU3YkeEzQ1dgvz": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c76ca36ffeDU3YkeEzQ1dgvz: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1c76aeceffekdmWB1FRsdsTKw"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c76aeceffekdmWB1FRsdsTKw": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c76aeceffekdmWB1FRsdsTKw": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c76aeceffekdmWB1FRsdsTKw: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1c76903cffeVLYOlA6GYsWEo0"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c76903cffeVLYOlA6GYsWEo0": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c76903cffeVLYOlA6GYsWEo0": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c76903cffeVLYOlA6GYsWEo0: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1c7673bfffe3Ht4pH5OVca7OZ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c7673bfffe3Ht4pH5OVca7OZ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c7673bfffe3Ht4pH5OVca7OZ": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c7673bfffe3Ht4pH5OVca7OZ: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1c7657b4ffeRKDZoMlz0fUzT4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c7657b4ffeRKDZoMlz0fUzT4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c7657b4ffeRKDZoMlz0fUzT4": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c7657b4ffeRKDZoMlz0fUzT4: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "mimo-v2.6-flash-free",
+    "display": "MiMo-V2.6-Flash Free",
+    "expected_model": "opencode/mimo-v2.6-flash-free",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1c763b79ffeTHNspbUrUlIb5S"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/mimo-v2.6-flash-free": 1
+    },
+    "agents": {
+      "ses_e1c763b79ffeTHNspbUrUlIb5S": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c763b79ffeTHNspbUrUlIb5S": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c763b79ffeTHNspbUrUlIb5S: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "sec-01-clock-skew",
+    "session_ids": [
+      "ses_e1c76193bffepspv434M4l2mKI"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c76193bffepspv434M4l2mKI": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c76193bffepspv434M4l2mKI": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c76193bffepspv434M4l2mKI: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "obs-02-query-redactor",
+    "session_ids": [
+      "ses_e1c75fcd9ffeOjd6f45c8bEsbk"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c75fcd9ffeOjd6f45c8bEsbk": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c75fcd9ffeOjd6f45c8bEsbk": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c75fcd9ffeOjd6f45c8bEsbk: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "algo-03-range-merger",
+    "session_ids": [
+      "ses_e1c75e073ffeRnxL1GtyGfVbTc"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c75e073ffeRnxL1GtyGfVbTc": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c75e073ffeRnxL1GtyGfVbTc": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c75e073ffeRnxL1GtyGfVbTc: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "arch-04-tag-registry",
+    "session_ids": [
+      "ses_e1c75c491ffeT1errDmcGpoNxL"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c75c491ffeT1errDmcGpoNxL": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c75c491ffeT1errDmcGpoNxL": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c75c491ffeT1errDmcGpoNxL: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "infra-05-k8s-pod-admission",
+    "session_ids": [
+      "ses_e1c75aa5effeYq0IKyDCHAilZS"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c75aa5effeYq0IKyDCHAilZS": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c75aa5effeYq0IKyDCHAilZS": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c75aa5effeYq0IKyDCHAilZS: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "onec-06-payment-allocator",
+    "session_ids": [
+      "ses_e1c758bf2ffe5g7ntnZf9lJYjD"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c758bf2ffe5g7ntnZf9lJYjD": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c758bf2ffe5g7ntnZf9lJYjD": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c758bf2ffe5g7ntnZf9lJYjD: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "auth-07-claim-roles",
+    "session_ids": [
+      "ses_e1c75703effeb4wcnoPN02hCap"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c75703effeb4wcnoPN02hCap": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c75703effeb4wcnoPN02hCap": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c75703effeb4wcnoPN02hCap: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "host-08-host-header-guard",
+    "session_ids": [
+      "ses_e1c75558cffeDA0r1rr6gwdv37"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c75558cffeDA0r1rr6gwdv37": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c75558cffeDA0r1rr6gwdv37": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c75558cffeDA0r1rr6gwdv37: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "scrub-09-metadata-scrubber",
+    "session_ids": [
+      "ses_e1c7538e6ffekLGGjynfPK2gg3"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c7538e6ffekLGGjynfPK2gg3": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c7538e6ffekLGGjynfPK2gg3": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c7538e6ffekLGGjynfPK2gg3: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "flag-10-feature-flag-router",
+    "session_ids": [
+      "ses_e1c7519d8ffeP26PSif3A73Bh4"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c7519d8ffeP26PSif3A73Bh4": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c7519d8ffeP26PSif3A73Bh4": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c7519d8ffeP26PSif3A73Bh4: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "tenant-11-scoped-listing",
+    "session_ids": [
+      "ses_e1c74fee5ffenQG2OIo37c7GiQ"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c74fee5ffenQG2OIo37c7GiQ": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c74fee5ffenQG2OIo37c7GiQ": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c74fee5ffenQG2OIo37c7GiQ: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "authz-12-uniform-404",
+    "session_ids": [
+      "ses_e1c74e2a3ffeIo45hp0ufORUYY"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c74e2a3ffeIo45hp0ufORUYY": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c74e2a3ffeIo45hp0ufORUYY": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c74e2a3ffeIo45hp0ufORUYY: assistant message error"
+    ]
+  },
+  {
+    "model_slug": "big-pickle",
+    "display": "Big Pickle",
+    "expected_model": "opencode/big-pickle",
+    "task": "idem-13-idempotent-signup",
+    "session_ids": [
+      "ses_e1c74c5d2ffet3dxEAmrte5BGR"
+    ],
+    "sessions": 1,
+    "assistant_msgs": 1,
+    "assistant_models": {
+      "opencode/big-pickle": 1
+    },
+    "agents": {
+      "ses_e1c74c5d2ffet3dxEAmrte5BGR": "benchmark"
+    },
+    "parent_ids": {
+      "ses_e1c74c5d2ffet3dxEAmrte5BGR": null
+    },
+    "children": 0,
+    "tools": {},
+    "error_events": 1,
+    "finish_length": 0,
+    "forbidden": [],
+    "status": "INVALID",
+    "reasons": [
+      "error events=1: Free usage limit reached. Connect a provider or subscribe to OpenCode Go to keep going, or switch models.",
+      "ses_e1c74c5d2ffet3dxEAmrte5BGR: assistant message error"
+    ]
+  }
+]
