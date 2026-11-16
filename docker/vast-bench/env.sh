@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Общее окружение для entrypoint.sh, bench.sh и agent-opencode.sh (подключается через source).
 # Свой HOME и XDG внутри контейнера (root-владельные, 0700): здесь только шаблон opencode.json и кэши root. HOME
 # и XDG самого OpenCode — свежий каталог на каждую задачу под $AGENT_HOMES (см. agent-opencode.sh).

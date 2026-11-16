@@ -41,8 +41,7 @@ counter() {
 
 # /health с тремя попытками: одиночный таймаут под нагрузкой ещё не смерть сервера.
 healthy() {
-    local i
-    for i in 1 2 3; do
+    for _ in 1 2 3; do
         curl -fsS -m 5 "$VLLM_URL/health" >/dev/null 2>&1 && return 0
         sleep "${HEALTH_RETRY_SLEEP:-2}"
     done
@@ -76,6 +75,8 @@ drop=0 # 1 — из-под root ронять права до $agent_user
 task_home=""
 
 # Процессы агента живы (зомби не в счёт: PID 1 контейнера может их не подбирать).
+# pgrep не подходит: он видит и зомби, а нужен живой (статус не Z) процесс — поведение менять нельзя.
+# shellcheck disable=SC2009
 agent_procs_alive() {
     ps -u "$agent_user" -o stat= 2>/dev/null | grep -qv '^Z'
 }
@@ -93,6 +94,8 @@ kill_agent_procs() {
     return 0
 }
 
+# cleanup зовётся только через trap EXIT ниже — для shellcheck это непрямой вызов (SC2317/SC2329 ложные).
+# shellcheck disable=SC2317,SC2329
 cleanup() {
     kill_agent_procs
     [[ -n $task_home ]] && rm -rf -- "$task_home"

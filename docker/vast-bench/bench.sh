@@ -74,7 +74,8 @@ classify_run() {
     elif ((markers > 0)); then
         echo done_partial
     else
-        echo done
+        # «done» в кавычках: shellcheck парсит голое done как keyword цикла (SC1010).
+        echo "done"
     fi
 }
 
