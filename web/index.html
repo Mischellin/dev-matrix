@@ -84,7 +84,7 @@
       <!-- KPI Grid -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
         <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400">10</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400" id="kpi-frontier-models">10</div>
           <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Frontier Models</div>
         </div>
         <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
@@ -123,6 +123,21 @@
           <button data-role="quick" class="role-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
             ⚡ Quick Fixes (Мелочи)
           </button>
+        </div>
+
+        <!-- Dataset Version Switcher -->
+        <div class="flex flex-col gap-1.5">
+          <div class="inline-flex rounded-xl bg-slate-900 p-1 border border-slate-800" id="version-tabs">
+            <button data-version="1.0.0" class="version-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
+              <span class="block font-semibold">v1.0.0</span>
+              <span class="block text-[10px] font-normal opacity-70">initial run</span>
+            </button>
+            <button data-version="1.1.0" class="version-btn px-4 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 text-white shadow-sm">
+              <span class="block font-semibold">v1.1.0</span>
+              <span class="block text-[10px] font-normal opacity-70">audited, 19 models</span>
+            </button>
+          </div>
+          <span id="dataset-badge" class="text-xs font-mono text-slate-500"></span>
         </div>
 
         <!-- Search Input -->
@@ -175,6 +190,7 @@
         <p class="text-sm text-slate-400 mt-1">
           Models run by contributors through the <code>devmatrix</code> CLI on the public task pool. Time is reported by the submitter ("claimed by author"); the hidden tests are public, so this is not a trusted ranking.
         </p>
+        <p class="text-xs font-mono text-slate-500 mt-1" id="submissions-dataset"></p>
       </div>
       <div class="glass-card rounded-2xl p-5 overflow-x-auto" id="submissions-container"></div>
     </section>
@@ -252,6 +268,14 @@
     let modelsData = null;
     let benchmarksData = null;
 
+    // Dataset versions: each points to a separate benchmark runs snapshot (two leaderboards).
+    const DATASET_VERSIONS = {
+      "1.0.0": { file: 'data/benchmark_runs-1.0.0.json', label: 'v1.0.0 — initial public run' },
+      "1.1.0": { file: 'data/benchmark_runs.json',       label: 'v1.1.0 — full audited leaderboard' }
+    };
+    const DEFAULT_VERSION = '1.1.0';
+    let currentVersion = DEFAULT_VERSION;
+
     // Embedded fallback datasets ensuring offline file:// works perfectly
     const fallbackRatings = {
       cells: [
@@ -311,25 +335,84 @@
 
     const fallbackBenchmarks = [];
 
-    async function init() {
+    function getInitialVersion() {
+      const m = (location.hash || '').match(/^#matrix@([\w.]+)$/);
+      if (m && DATASET_VERSIONS[m[1]]) return m[1];
       try {
-        const [rRes, mRes, bRes] = await Promise.all([
+        const saved = localStorage.getItem('devmatrix-version');
+        if (saved && DATASET_VERSIONS[saved]) return saved;
+      } catch (e) {}
+      return DEFAULT_VERSION;
+    }
+
+    async function loadBenchmarks() {
+      try {
+        const bRes = await fetch(DATASET_VERSIONS[currentVersion].file).then(r => r.json()).catch(() => fallbackBenchmarks);
+        benchmarksData = bRes || fallbackBenchmarks;
+      } catch (e) {
+        benchmarksData = fallbackBenchmarks;
+      }
+      updateDatasetUI();
+    }
+
+    // Пересчитывает бейдж, саб-строку Submissions и KPI из загруженного датасета.
+    function updateDatasetUI() {
+      const runs = (benchmarksData || []).reduce((acc, t) => acc + (t.runs || []).length, 0);
+      const models = new Set();
+      (benchmarksData || []).forEach(t => (t.runs || []).forEach(r => models.add(r.model_name)));
+      const label = DATASET_VERSIONS[currentVersion].label;
+
+      document.querySelectorAll('.version-btn').forEach(b => {
+        const active = b.dataset.version === currentVersion;
+        b.classList.toggle('bg-indigo-600', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('shadow-sm', active);
+        b.classList.toggle('font-semibold', active);
+        b.classList.toggle('font-medium', !active);
+        b.classList.toggle('text-slate-400', !active);
+      });
+
+      const badge = document.getElementById('dataset-badge');
+      if (badge) badge.textContent = `${label} · ${models.size} models · ${runs} runs`;
+
+      const sub = document.getElementById('submissions-dataset');
+      if (sub) sub.textContent = `Dataset: ${label}`;
+
+      const kpi = document.getElementById('kpi-frontier-models');
+      if (kpi) kpi.textContent = models.size || 10;
+    }
+
+    async function init() {
+      currentVersion = getInitialVersion();
+      try {
+        const [rRes, mRes] = await Promise.all([
           fetch('data/ratings.json').then(r => r.json()).catch(() => fallbackRatings),
-          fetch('data/models.json').then(r => r.json()).catch(() => fallbackModels),
-          fetch('data/benchmark_runs.json').then(r => r.json()).catch(() => fallbackBenchmarks)
+          fetch('data/models.json').then(r => r.json()).catch(() => fallbackModels)
         ]);
         ratingsData = rRes || fallbackRatings;
         modelsData = mRes || fallbackModels;
-        benchmarksData = bRes || fallbackBenchmarks;
       } catch (e) {
         ratingsData = fallbackRatings;
         modelsData = fallbackModels;
-        benchmarksData = fallbackBenchmarks;
       }
+      await loadBenchmarks();
       renderMatrix();
       renderTasks();
       renderSubmissions();
       setupEventListeners();
+    }
+
+    async function switchVersion(version) {
+      if (!DATASET_VERSIONS[version] || version === currentVersion) return;
+      currentVersion = version;
+      try { localStorage.setItem('devmatrix-version', version); } catch (e) {}
+      if (location.hash !== `#matrix@${version}`) {
+        history.replaceState(null, '', `#matrix@${version}`);
+      }
+      updateDatasetUI();
+      await loadBenchmarks();
+      renderTasks();
+      renderSubmissions();
     }
 
     function renderMatrix() {
@@ -563,6 +646,11 @@
           currentRole = btn.dataset.role;
           renderMatrix();
         });
+      });
+
+      // Dataset Version Switcher
+      document.querySelectorAll('.version-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchVersion(btn.dataset.version));
       });
 
       // Domain Pills
