@@ -160,6 +160,18 @@
         "outdated": false
       },
       {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 27,
+        "total_tests": 27,
+        "duration_min": 0.9,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "MiniMax M3.1 Flash",
         "provider": "MiniMax",
         "status": "PASS",
@@ -392,6 +404,19 @@
         "cost_usd": null,
         "claimed": true,
         "outdated": false
+      },
+      {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 8,
+        "total_tests": 8,
+        "duration_min": 1.4,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false,
+        "note": "audit requalified: false positive (find exclusion pattern, workspace only)"
       },
       {
         "model_name": "MiniMax M3.1 Flash",
@@ -627,6 +652,18 @@
         "outdated": false
       },
       {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 14,
+        "total_tests": 14,
+        "duration_min": 1.4,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "MiniMax M3.1 Flash",
         "provider": "MiniMax",
         "status": "FAIL",
@@ -855,6 +892,18 @@
         "passed_tests": 15,
         "total_tests": 15,
         "duration_min": 6.5,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 15,
+        "total_tests": 15,
+        "duration_min": 1.8,
         "total_tokens": null,
         "cost_usd": null,
         "claimed": true,
@@ -1097,6 +1146,19 @@
         "outdated": false
       },
       {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 16,
+        "total_tests": 16,
+        "duration_min": 1.8,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false,
+        "note": "audit requalified: false positive (glob hidden param, workspace only)"
+      },
+      {
         "model_name": "MiniMax M3.1 Flash",
         "provider": "MiniMax",
         "status": "INVALID",
@@ -1332,6 +1394,18 @@
         "outdated": false
       },
       {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 15,
+        "total_tests": 15,
+        "duration_min": 3.7,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "MiniMax M3.1 Flash",
         "provider": "MiniMax",
         "status": "FAIL",
@@ -1560,6 +1634,18 @@
         "passed_tests": 17,
         "total_tests": 17,
         "duration_min": 7.0,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 17,
+        "total_tests": 17,
+        "duration_min": 1.8,
         "total_tokens": null,
         "cost_usd": null,
         "claimed": true,
@@ -1803,6 +1889,18 @@
         "outdated": false
       },
       {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "FAIL",
+        "passed_tests": 18,
+        "total_tests": 20,
+        "duration_min": 2.3,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "MiniMax M3.1 Flash",
         "provider": "MiniMax",
         "status": "FAIL",
@@ -2036,6 +2134,18 @@
         "outdated": false
       },
       {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "FAIL",
+        "passed_tests": 36,
+        "total_tests": 37,
+        "duration_min": 17.9,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "MiniMax M3.1 Flash",
         "provider": "MiniMax",
         "status": "PASS",
@@ -2263,6 +2373,18 @@
         "passed_tests": 16,
         "total_tests": 16,
         "duration_min": 6.1,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 16,
+        "total_tests": 16,
+        "duration_min": 5.6,
         "total_tokens": null,
         "cost_usd": null,
         "claimed": true,
@@ -2503,6 +2625,18 @@
         "outdated": false
       },
       {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 15,
+        "total_tests": 15,
+        "duration_min": 2.7,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "MiniMax M3.1 Flash",
         "provider": "MiniMax",
         "status": "FAIL",
@@ -2736,6 +2870,18 @@
         "outdated": false
       },
       {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 6,
+        "total_tests": 6,
+        "duration_min": 0.6,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
         "model_name": "MiniMax M3.1 Flash",
         "provider": "MiniMax",
         "status": "PASS",
@@ -2963,6 +3109,18 @@
         "passed_tests": 16,
         "total_tests": 16,
         "duration_min": 3.8,
+        "total_tokens": null,
+        "cost_usd": null,
+        "claimed": true,
+        "outdated": false
+      },
+      {
+        "model_name": "MiniMax-M3",
+        "provider": "MiniMax",
+        "status": "PASS",
+        "passed_tests": 16,
+        "total_tests": 16,
+        "duration_min": 5.6,
         "total_tokens": null,
         "cost_usd": null,
         "claimed": true,

@@ -85,6 +85,7 @@ Tested under identical isolated runtime conditions with full hidden test suites.
 | **Qwen4 Max Preview** | 12/13 | 220/222 |
 | **GPT-6 Luna** | 11/13 | 219/222 |
 | **Inkling 2 Small Free** | 11/13 | 219/222 |
+| **MiniMax-M3** | 11/13 | 219/222 |
 | **GLM-5.3-Flash** | 11/13 | 218/222 |
 | **Iceman Free** | 11/13 | 218/222 |
 | **Qwen3.8 Max via Alibaba** | 11/13 | 190/222 |
@@ -93,6 +94,7 @@ Tested under identical isolated runtime conditions with full hidden test suites.
 
 *GLM-5.3: prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)*
 *Kimi K3.1 Pro: prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)*
+*MiniMax-M3: prompt-v2 rerun (v1 hidden-access violation recorded, v1 run replaced)*
 
 _Results come from [`submissions/`](submissions/); time, tokens and cost are reported by the submitter ("claimed by author"). The hidden tests are public, so this is not a trusted ranking. Runs marked outdated were made on an older version of the task and are not counted in the summary. Runs marked INVALID were withdrawn after audit (see [`data/run_overrides.json`](data/run_overrides.json)) and are not counted in the summary either. After merging a PR with results, run `python3 scripts/export_metrics.py --only-benchmarks && python3 scripts/generate_readme.py` and commit `data/benchmark_runs.json` and `README.md` (the Pages deploy rebuilds the page itself)._
 
@@ -111,6 +113,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `algo-03-range-merger` | **Kimi for Coding** | ✅ PASS | 27/27 | 1.8m | — | — |
 | `algo-03-range-merger` | **Kimi K3-256K** | ✅ PASS | 27/27 | 0.9m | — | — |
 | `algo-03-range-merger` | **Kimi K3.1 Pro** | ✅ PASS | 27/27 | 3.7m | — | — |
+| `algo-03-range-merger` | **MiniMax-M3** | ✅ PASS | 27/27 | 0.9m | — | — |
 | `algo-03-range-merger` | **MiniMax M3.1 Flash** | ✅ PASS | 27/27 | 3.0m | — | — |
 | `algo-03-range-merger` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 27/27 | 1.4m | — | — |
 | `algo-03-range-merger` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 27/27 | 3.3m | — | — |
@@ -130,6 +133,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `arch-04-tag-registry` | **Kimi for Coding** | ✅ PASS | 8/8 | 1.4m | — | — |
 | `arch-04-tag-registry` | **Kimi K3-256K** | ✅ PASS | 8/8 | 2.8m | — | — |
 | `arch-04-tag-registry` | **Kimi K3.1 Pro** | ✅ PASS | 8/8 | 2.5m | — | — |
+| `arch-04-tag-registry` | **MiniMax-M3** | ✅ PASS — audit requalified: false positive (find exclusion pattern, workspace only) | 8/8 | 1.4m | — | — |
 | `arch-04-tag-registry` | **MiniMax M3.1 Flash** | ❌ FAIL | 2/8 | 30.0m | — | — |
 | `arch-04-tag-registry` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 8/8 | 1.3m | — | — |
 | `arch-04-tag-registry` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 8/8 | 1.9m | — | — |
@@ -149,6 +153,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `auth-07-claim-roles` | **Kimi for Coding** | ✅ PASS | 14/14 | 1.5m | — | — |
 | `auth-07-claim-roles` | **Kimi K3-256K** | ✅ PASS | 14/14 | 1.2m | — | — |
 | `auth-07-claim-roles` | **Kimi K3.1 Pro** | ✅ PASS | 14/14 | 5.6m | — | — |
+| `auth-07-claim-roles` | **MiniMax-M3** | ✅ PASS | 14/14 | 1.4m | — | — |
 | `auth-07-claim-roles` | **MiniMax M3.1 Flash** | ❌ FAIL | 4/14 | 30.0m | — | — |
 | `auth-07-claim-roles` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 14/14 | 1.3m | — | — |
 | `auth-07-claim-roles` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 14/14 | 2.1m | — | — |
@@ -168,6 +173,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `authz-12-uniform-404` | **Kimi for Coding** | ✅ PASS | 15/15 | 2.9m | — | — |
 | `authz-12-uniform-404` | **Kimi K3-256K** | ✅ PASS | 15/15 | 2.4m | — | — |
 | `authz-12-uniform-404` | **Kimi K3.1 Pro** | ✅ PASS | 15/15 | 6.5m | — | — |
+| `authz-12-uniform-404` | **MiniMax-M3** | ✅ PASS | 15/15 | 1.8m | — | — |
 | `authz-12-uniform-404` | **MiniMax M3.1 Flash** | ✅ PASS | 15/15 | 2.9m | — | — |
 | `authz-12-uniform-404` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 15/15 | 1.4m | — | — |
 | `authz-12-uniform-404` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 15/15 | 3.2m | — | — |
@@ -187,6 +193,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `flag-10-feature-flag-router` | **Kimi for Coding** | ✅ PASS | 16/16 | 2.2m | — | — |
 | `flag-10-feature-flag-router` | **Kimi K3-256K** | ✅ PASS | 16/16 | 1.8m | — | — |
 | `flag-10-feature-flag-router` | **Kimi K3.1 Pro** | ✅ PASS | 16/16 | 4.8m | — | — |
+| `flag-10-feature-flag-router` | **MiniMax-M3** | ✅ PASS — audit requalified: false positive (glob hidden param, workspace only) | 16/16 | 1.8m | — | — |
 | `flag-10-feature-flag-router` | **MiniMax M3.1 Flash** | 🚫 INVALID — pass revoked: audit found write:parent-path (hidden-access violation) | 16/16 | 6.5m | — | — |
 | `flag-10-feature-flag-router` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 16/16 | 1.6m | — | — |
 | `flag-10-feature-flag-router` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 16/16 | 2.3m | — | — |
@@ -206,6 +213,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `host-08-host-header-guard` | **Kimi for Coding** | ✅ PASS | 15/15 | 5.7m | — | — |
 | `host-08-host-header-guard` | **Kimi K3-256K** | ✅ PASS | 15/15 | 5.1m | — | — |
 | `host-08-host-header-guard` | **Kimi K3.1 Pro** | ✅ PASS | 15/15 | 5.7m | — | — |
+| `host-08-host-header-guard` | **MiniMax-M3** | ✅ PASS | 15/15 | 3.7m | — | — |
 | `host-08-host-header-guard` | **MiniMax M3.1 Flash** | ❌ FAIL | 0/15 | 30.0m | — | — |
 | `host-08-host-header-guard` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 15/15 | 2.6m | — | — |
 | `host-08-host-header-guard` | **Qwen3.7 Plus via Alibaba** | ❌ FAIL | 14/15 | 5.5m | — | — |
@@ -225,6 +233,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `idem-13-idempotent-signup` | **Kimi for Coding** | ✅ PASS | 17/17 | 3.4m | — | — |
 | `idem-13-idempotent-signup` | **Kimi K3-256K** | ✅ PASS | 17/17 | 2.0m | — | — |
 | `idem-13-idempotent-signup` | **Kimi K3.1 Pro** | ✅ PASS | 17/17 | 7.0m | — | — |
+| `idem-13-idempotent-signup` | **MiniMax-M3** | ✅ PASS | 17/17 | 1.8m | — | — |
 | `idem-13-idempotent-signup` | **MiniMax M3.1 Flash** | ✅ PASS | 17/17 | 6.9m | — | — |
 | `idem-13-idempotent-signup` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 17/17 | 2.2m | — | — |
 | `idem-13-idempotent-signup` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 17/17 | 4.1m | — | — |
@@ -244,6 +253,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `infra-05-k8s-pod-admission` | **Kimi for Coding** | ❌ FAIL | 18/20 | 3.4m | — | — |
 | `infra-05-k8s-pod-admission` | **Kimi K3-256K** | ✅ PASS | 20/20 | 2.7m | — | — |
 | `infra-05-k8s-pod-admission` | **Kimi K3.1 Pro** | ❌ FAIL | 19/20 | 7.1m | — | — |
+| `infra-05-k8s-pod-admission` | **MiniMax-M3** | ❌ FAIL | 18/20 | 2.3m | — | — |
 | `infra-05-k8s-pod-admission` | **MiniMax M3.1 Flash** | ❌ FAIL | 7/20 | 30.0m | — | — |
 | `infra-05-k8s-pod-admission` | **Qwen3.7 Max via Alibaba** | ❌ FAIL | 19/20 | 2.2m | — | — |
 | `infra-05-k8s-pod-admission` | **Qwen3.7 Plus via Alibaba** | ❌ FAIL | 17/20 | 4.0m | — | — |
@@ -263,6 +273,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `obs-02-query-redactor` | **Kimi for Coding** | ✅ PASS | 37/37 | 10.2m | — | — |
 | `obs-02-query-redactor` | **Kimi K3-256K** | ✅ PASS | 37/37 | 9.2m | — | — |
 | `obs-02-query-redactor` | **Kimi K3.1 Pro** | ✅ PASS | 37/37 | 9.7m | — | — |
+| `obs-02-query-redactor` | **MiniMax-M3** | ❌ FAIL | 36/37 | 17.9m | — | — |
 | `obs-02-query-redactor` | **MiniMax M3.1 Flash** | ✅ PASS | 37/37 | 9.7m | — | — |
 | `obs-02-query-redactor` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 37/37 | 16.2m | — | — |
 | `obs-02-query-redactor` | **Qwen3.7 Plus via Alibaba** | ❌ FAIL | 36/37 | 15.6m | — | — |
@@ -282,6 +293,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `onec-06-payment-allocator` | **Kimi for Coding** | ✅ PASS | 16/16 | 4.2m | — | — |
 | `onec-06-payment-allocator` | **Kimi K3-256K** | ✅ PASS | 16/16 | 2.0m | — | — |
 | `onec-06-payment-allocator` | **Kimi K3.1 Pro** | ✅ PASS | 16/16 | 6.1m | — | — |
+| `onec-06-payment-allocator` | **MiniMax-M3** | ✅ PASS | 16/16 | 5.6m | — | — |
 | `onec-06-payment-allocator` | **MiniMax M3.1 Flash** | ❌ FAIL | 6/16 | 30.0m | — | — |
 | `onec-06-payment-allocator` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 16/16 | 2.9m | — | — |
 | `onec-06-payment-allocator` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 16/16 | 3.1m | — | — |
@@ -301,6 +313,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `scrub-09-metadata-scrubber` | **Kimi for Coding** | ✅ PASS | 15/15 | 3.0m | — | — |
 | `scrub-09-metadata-scrubber` | **Kimi K3-256K** | ✅ PASS | 15/15 | 2.9m | — | — |
 | `scrub-09-metadata-scrubber` | **Kimi K3.1 Pro** | ✅ PASS | 15/15 | 4.2m | — | — |
+| `scrub-09-metadata-scrubber` | **MiniMax-M3** | ✅ PASS | 15/15 | 2.7m | — | — |
 | `scrub-09-metadata-scrubber` | **MiniMax M3.1 Flash** | ❌ FAIL | 5/15 | 30.0m | — | — |
 | `scrub-09-metadata-scrubber` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 15/15 | 1.7m | — | — |
 | `scrub-09-metadata-scrubber` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 15/15 | 4.4m | — | — |
@@ -320,6 +333,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `sec-01-clock-skew` | **Kimi for Coding** | ✅ PASS | 6/6 | 1.5m | — | — |
 | `sec-01-clock-skew` | **Kimi K3-256K** | ✅ PASS | 6/6 | 1.9m | — | — |
 | `sec-01-clock-skew` | **Kimi K3.1 Pro** | ✅ PASS | 6/6 | 2.7m | — | — |
+| `sec-01-clock-skew` | **MiniMax-M3** | ✅ PASS | 6/6 | 0.6m | — | — |
 | `sec-01-clock-skew` | **MiniMax M3.1 Flash** | ✅ PASS | 6/6 | 3.2m | — | — |
 | `sec-01-clock-skew` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 6/6 | 1.2m | — | — |
 | `sec-01-clock-skew` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 6/6 | 2.0m | — | — |
@@ -339,6 +353,7 @@ _Results come from [`submissions/`](submissions/); time, tokens and cost are rep
 | `tenant-11-scoped-listing` | **Kimi for Coding** | ✅ PASS | 16/16 | 1.8m | — | — |
 | `tenant-11-scoped-listing` | **Kimi K3-256K** | ✅ PASS | 16/16 | 2.9m | — | — |
 | `tenant-11-scoped-listing` | **Kimi K3.1 Pro** | ✅ PASS | 16/16 | 3.8m | — | — |
+| `tenant-11-scoped-listing` | **MiniMax-M3** | ✅ PASS | 16/16 | 5.6m | — | — |
 | `tenant-11-scoped-listing` | **MiniMax M3.1 Flash** | ✅ PASS | 16/16 | 7.0m | — | — |
 | `tenant-11-scoped-listing` | **Qwen3.7 Max via Alibaba** | ✅ PASS | 16/16 | 1.2m | — | — |
 | `tenant-11-scoped-listing` | **Qwen3.7 Plus via Alibaba** | ✅ PASS | 16/16 | 2.4m | — | — |

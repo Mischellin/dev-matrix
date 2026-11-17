@@ -42,10 +42,17 @@
     },
     "GPT-6 Luna/infra-05-k8s-pod-admission": {
       "note": "provider invalid-output error (FAIL stands)"
+    },
+    "MiniMax-M3/arch-04-tag-registry": {
+      "note": "audit requalified: false positive (find exclusion pattern, workspace only)"
+    },
+    "MiniMax-M3/flag-10-feature-flag-router": {
+      "note": "audit requalified: false positive (glob hidden param, workspace only)"
     }
   },
   "model_notes": {
     "Kimi K3.1 Pro": "prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)",
-    "GLM-5.3": "prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)"
+    "GLM-5.3": "prompt-v2 rerun (v1 hidden-access violations recorded, v1 run replaced)",
+    "MiniMax-M3": "prompt-v2 rerun (v1 hidden-access violation recorded, v1 run replaced)"
   }
 }
