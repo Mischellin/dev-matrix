@@ -568,7 +568,8 @@
               <div class="text-slate-500">${r.duration_min == null ? '—' : r.duration_min + ' min'} · ${r.total_tokens == null ? '—' : fmtTok(r.total_tokens)}${r.claimed ? ' · claimed by author' : ''}</div>
             </div>
             <div class="text-right">
-              <span class="font-mono font-bold ${r.status === 'PASS' ? 'text-emerald-400' : 'text-rose-400'}">${r.passed_tests}/${r.total_tests} ${r.status}</span>
+              <span class="font-mono font-bold ${r.status === 'PASS' ? 'text-emerald-400' : r.status === 'INVALID' ? 'text-amber-400' : 'text-rose-400'}">${r.passed_tests}/${r.total_tests} ${r.status}${r.status === 'INVALID' ? ' 🚫' : ''}</span>
+              ${r.note ? `<span class="block text-xs text-slate-500 mt-0.5">${esc(r.note)}</span>` : ''}
               <div class="text-slate-400 font-mono">${r.cost_usd == null ? '—' : '$' + r.cost_usd.toFixed(2)}</div>
             </div>
           </div>
