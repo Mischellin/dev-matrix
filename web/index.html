@@ -40,31 +40,79 @@
     .glass-card:hover {
       border-color: rgba(99, 102, 241, 0.3);
     }
+
+    /* --- mobile-first helpers (single-file page, no build step) ------------ */
+    /* Long tokens (model ids, notes, prices) must never widen the layout. */
+    .break-anywhere {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    /* Anchor targets must clear the sticky header. */
+    main[id], section[id] {
+      scroll-margin-top: 5rem;
+    }
+    /* Visible keyboard focus everywhere (Tailwind preflight hides some rings). */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid #6366f1 !important;
+      outline-offset: 2px;
+    }
+    /* Horizontally scrollable regions: keyboard reachable and visibly scrollable. */
+    .scroll-region {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .scroll-region:focus-visible {
+      outline: 2px solid #6366f1 !important;
+      outline-offset: -2px;
+    }
+    /* Background must not scroll while the modal dialog is open. */
+    body.modal-open {
+      position: fixed;
+      width: 100%;
+      overflow-y: hidden;
+    }
+    html.modal-open {
+      overflow-y: hidden;
+    }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
 
   <!-- Header -->
-  <header class="border-b border-slate-800/80 sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <span class="text-2xl">📊</span>
-        <div>
-          <span class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-            DevMatrix
-            <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 font-semibold border border-indigo-500/30">v1.0 Public</span>
-          </span>
+  <header class="border-b border-slate-800/80 sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-x-3 min-h-16 py-2">
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <span class="text-2xl shrink-0" aria-hidden="true">📊</span>
+          <div class="min-w-0">
+            <span class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2 min-w-0">
+              <span class="truncate">DevMatrix</span>
+              <span class="hidden sm:inline-flex shrink-0 text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 font-semibold border border-indigo-500/30">v1.0 Public</span>
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="flex items-center space-x-4 text-sm font-medium">
-        <a href="#matrix" class="text-slate-400 hover:text-white transition">Matrix</a>
-        <a href="#submissions" class="text-slate-400 hover:text-white transition">Submissions</a>
-        <a href="#head-to-head" class="text-slate-400 hover:text-white transition">Head-to-Head</a>
-        <a href="#methodology" class="text-slate-400 hover:text-white transition">Methodology</a>
-        <a href="https://github.com/Mischellin/dev-matrix" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 transition">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <button id="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Toggle navigation menu"
+          class="md:hidden inline-flex items-center justify-center gap-2 min-h-11 min-w-11 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700/70 text-sm font-medium text-slate-200 hover:text-white transition">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <span>Menu</span>
+        </button>
+        <nav id="primary-navigation" aria-label="Primary" class="hidden flex w-full flex-col gap-1 pb-3 md:flex md:w-auto md:flex-row md:items-center md:gap-2 md:pb-0 text-sm font-medium">
+          <a href="#matrix" class="inline-flex items-center min-h-11 px-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 transition">Matrix</a>
+          <a href="#submissions" class="inline-flex items-center min-h-11 px-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 transition">Submissions</a>
+          <a href="#head-to-head" class="inline-flex items-center min-h-11 px-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 transition">Head-to-Head</a>
+          <a href="#methodology" class="inline-flex items-center min-h-11 px-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-900 transition">Methodology</a>
+          <a href="https://github.com/Mischellin/dev-matrix" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 min-h-11 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60 transition">
+          <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           GitHub
         </a>
+        </nav>
       </div>
     </div>
   </header>
@@ -82,22 +130,22 @@
       </div>
 
       <!-- KPI Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-        <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400" id="kpi-frontier-models">10</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Frontier Models</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-10">
+        <div class="glass-card rounded-xl p-3 sm:p-5 text-center min-w-0">
+          <div class="text-xl sm:text-3xl font-extrabold text-indigo-400 break-anywhere" id="kpi-frontier-models">—</div>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold break-words">Benchmarked Models</div>
         </div>
-        <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Deterministic Verifier</div>
+        <div class="glass-card rounded-xl p-3 sm:p-5 text-center min-w-0">
+          <div class="text-xl sm:text-3xl font-extrabold text-emerald-400 break-anywhere">100%</div>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold break-words">Deterministic Verifier</div>
         </div>
-        <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-sky-400">4 Roles × 5 Domains</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Evaluation Dimensions</div>
+        <div class="glass-card rounded-xl p-3 sm:p-5 text-center min-w-0">
+          <div class="text-lg sm:text-2xl font-extrabold text-sky-400 break-anywhere leading-tight">4 Roles × 5 Domains</div>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold break-words">Evaluation Dimensions</div>
         </div>
-        <div class="glass-card rounded-xl p-4 sm:p-5 text-center">
-          <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">Tokens/Pass</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">True Cost Economics</div>
+        <div class="glass-card rounded-xl p-3 sm:p-5 text-center min-w-0">
+          <div class="text-lg sm:text-2xl font-extrabold text-amber-400 break-anywhere leading-tight">Tokens/Pass</div>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold break-words">True Cost Economics</div>
         </div>
       </div>
     </div>
@@ -108,72 +156,83 @@
     
     <!-- Controls Bar -->
     <div class="space-y-4">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-start lg:justify-between">
         <!-- Role Tabs -->
-        <div class="inline-flex rounded-xl bg-slate-900 p-1 border border-slate-800" id="role-tabs">
-          <button data-role="executor" class="role-btn px-4 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 text-white shadow-sm">
-            💻 Executor (Кодинг)
+        <div id="role-tabs" role="group" aria-label="Agent role" class="grid grid-cols-2 gap-1 rounded-xl bg-slate-900 p-1 border border-slate-800 md:inline-flex">
+          <button type="button" data-role="executor" aria-pressed="true" class="role-btn flex items-center justify-center gap-2 min-h-11 min-w-11 px-2 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-indigo-600 text-white shadow-sm">
+            <span aria-hidden="true">💻</span> Executor (Кодинг)
           </button>
-          <button data-role="reviewer" class="role-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
-            🔍 Reviewer (Ревью)
+          <button type="button" data-role="reviewer" aria-pressed="false" class="role-btn flex items-center justify-center gap-2 min-h-11 min-w-11 px-2 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white">
+            <span aria-hidden="true">🔍</span> Reviewer (Ревью)
           </button>
-          <button data-role="analyst" class="role-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
-            📐 Analyst (Анализ & ТЗ)
+          <button type="button" data-role="analyst" aria-pressed="false" class="role-btn flex items-center justify-center gap-2 min-h-11 min-w-11 px-2 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white">
+            <span aria-hidden="true">📐</span> Analyst (Анализ &amp; ТЗ)
           </button>
-          <button data-role="quick" class="role-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
-            ⚡ Quick Fixes (Мелочи)
+          <button type="button" data-role="quick" aria-pressed="false" class="role-btn flex items-center justify-center gap-2 min-h-11 min-w-11 px-2 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white">
+            <span aria-hidden="true">⚡</span> Quick Fixes (Мелочи)
           </button>
         </div>
 
         <!-- Dataset Version Switcher -->
-        <div class="flex flex-col gap-1.5">
-          <div class="inline-flex rounded-xl bg-slate-900 p-1 border border-slate-800" id="version-tabs">
-            <button data-version="1.0.0" class="version-btn px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
+        <div class="flex flex-col gap-1.5 w-full sm:w-auto">
+          <div id="version-tabs" role="group" aria-label="Dataset version" class="grid grid-cols-2 gap-1 rounded-xl bg-slate-900 p-1 border border-slate-800 sm:inline-grid">
+            <button type="button" data-version="1.0.0" aria-pressed="false" class="version-btn min-h-11 px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition text-slate-400 hover:text-white">
               <span class="block font-semibold">v1.0.0</span>
               <span class="block text-[10px] font-normal opacity-70">initial run</span>
             </button>
-            <button data-version="1.1.0" class="version-btn px-4 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 text-white shadow-sm">
+            <button type="button" data-version="1.1.0" aria-pressed="true" class="version-btn min-h-11 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 text-white shadow-sm">
               <span class="block font-semibold">v1.1.0</span>
-              <span class="block text-[10px] font-normal opacity-70">audited, 19 models</span>
+              <span class="block text-[10px] font-normal opacity-70">audited run</span>
             </button>
           </div>
-          <span id="dataset-badge" class="text-xs font-mono text-slate-500"></span>
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="dataset-badge" class="text-xs font-mono text-slate-400 break-words"></span>
+            <button type="button" id="dataset-retry" class="hidden inline-flex items-center gap-1 min-h-11 min-w-11 px-3 rounded-lg border border-rose-500/40 text-xs font-semibold text-rose-300 hover:bg-rose-500/10 transition">Retry</button>
+          </div>
         </div>
 
         <!-- Search Input -->
-        <div class="relative w-full md:w-64">
-          <input type="text" id="model-search" placeholder="Filter models..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-          <span class="absolute right-3 top-2.5 text-slate-500 text-xs">⌘K</span>
+        <div class="w-full sm:max-w-[16rem]">
+          <label for="model-search" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Filter models</label>
+          <div class="relative">
+            <input type="search" id="model-search" placeholder="Model or provider..." class="w-full min-h-11 bg-slate-900 border border-slate-800 rounded-xl pl-4 pr-14 text-sm text-slate-100 placeholder-slate-500 focus:border-indigo-500/60 focus:ring-2 focus:ring-indigo-500/50">
+            <kbd class="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-mono text-slate-400 border border-slate-700 rounded px-1.5 py-0.5 bg-slate-950 pointer-events-none" aria-hidden="true">⌘K</kbd>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-1.5">Press ⌘K (Ctrl+K) to jump to the filter.</p>
         </div>
       </div>
 
       <!-- Domain Filter Pills -->
-      <div class="flex flex-wrap items-center gap-2 pt-1" id="domain-filters">
-        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider mr-2">Sort by Domain:</span>
-        <button data-domain="All" class="domain-pill px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">All</button>
-        <button data-domain="Python" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Python</button>
-        <button data-domain="Web" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Web</button>
-        <button data-domain="Infra" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Infra</button>
-        <button data-domain="1С" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">1C / Enterprise</button>
-        <button data-domain="Тексты" class="domain-pill px-3 py-1 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Text & Specs</button>
+      <div id="domain-filters" role="group" aria-labelledby="domain-filter-label" class="flex flex-wrap items-center gap-2 pt-1">
+        <span id="domain-filter-label" class="text-xs font-semibold text-slate-400 uppercase tracking-wider mr-2">Sort by Domain:</span>
+        <button type="button" data-domain="All" aria-pressed="true" class="domain-pill min-h-11 min-w-11 px-3 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">All</button>
+        <button type="button" data-domain="Python" aria-pressed="false" class="domain-pill min-h-11 min-w-11 px-3 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Python</button>
+        <button type="button" data-domain="Web" aria-pressed="false" class="domain-pill min-h-11 min-w-11 px-3 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Web</button>
+        <button type="button" data-domain="Infra" aria-pressed="false" class="domain-pill min-h-11 min-w-11 px-3 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Infra</button>
+        <button type="button" data-domain="1С" aria-pressed="false" class="domain-pill min-h-11 min-w-11 px-3 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">1C / Enterprise</button>
+        <button type="button" data-domain="Тексты" aria-pressed="false" class="domain-pill min-h-11 min-w-11 px-3 rounded-full text-xs font-medium bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800">Text &amp; Specs</button>
       </div>
     </div>
 
     <!-- Leaderboard Table Container -->
     <div class="glass-card rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80">
-      <div class="overflow-x-auto">
+      <div class="px-4 sm:px-6 pt-4">
+        <p class="text-xs text-slate-400 break-words">Shared role/domain ratings — the same for both dataset versions. The version switch drives benchmark runs, submissions and head-to-head.</p>
+      </div>
+      <p id="matrix-scroll-hint" class="px-4 sm:px-6 pt-1 pb-3 text-[11px] text-slate-400">Scroll the table sideways to see every column — the region is keyboard focusable.</p>
+      <div id="matrix-scroll" role="region" aria-label="Leaderboard table" aria-describedby="matrix-scroll-hint" tabindex="0" class="scroll-region">
         <table class="w-full text-left border-collapse text-sm">
           <thead>
             <tr class="bg-slate-900/90 border-b border-slate-800 text-slate-400 text-xs uppercase tracking-wider font-semibold">
-              <th class="py-4 px-6">Model & Provider</th>
-              <th class="py-4 px-4 text-center">Score (Scale 1-5)</th>
-              <th class="py-4 px-4 text-center">Python</th>
-              <th class="py-4 px-4 text-center">Web</th>
-              <th class="py-4 px-4 text-center">Infra</th>
-              <th class="py-4 px-4 text-center">1C / Logic</th>
-              <th class="py-4 px-4 text-center">Texts</th>
-              <th class="py-4 px-4 text-center">Context</th>
-              <th class="py-4 px-6 text-right">Details</th>
+              <th scope="col" class="py-4 px-3 sm:px-6 whitespace-nowrap">Model &amp; Provider</th>
+              <th scope="col" class="py-4 px-2 sm:px-4 text-center whitespace-nowrap">Score (Scale 1-5)</th>
+              <th scope="col" class="py-4 px-2 sm:px-4 text-center whitespace-nowrap">Python</th>
+              <th scope="col" class="py-4 px-2 sm:px-4 text-center whitespace-nowrap">Web</th>
+              <th scope="col" class="py-4 px-2 sm:px-4 text-center whitespace-nowrap">Infra</th>
+              <th scope="col" class="py-4 px-2 sm:px-4 text-center whitespace-nowrap">1C / Logic</th>
+              <th scope="col" class="py-4 px-2 sm:px-4 text-center whitespace-nowrap">Texts</th>
+              <th scope="col" class="py-4 px-2 sm:px-4 text-center whitespace-nowrap">Context</th>
+              <th scope="col" class="py-4 px-3 sm:px-6 text-right whitespace-nowrap">Details</th>
             </tr>
           </thead>
           <tbody id="matrix-tbody" class="divide-y divide-slate-800/60 font-medium">
@@ -186,30 +245,33 @@
     <!-- Public Submissions Section -->
     <section class="space-y-4 pt-6" id="submissions">
       <div class="border-b border-slate-800 pb-3">
-        <h2 class="text-2xl font-bold text-white">🏁 Public Submissions</h2>
+        <h2 class="text-xl sm:text-2xl font-bold text-white">🏁 Public Submissions</h2>
         <p class="text-sm text-slate-400 mt-1">
           Models run by contributors through the <code>devmatrix</code> CLI on the public task pool. Time is reported by the submitter ("claimed by author"); the hidden tests are public, so this is not a trusted ranking.
         </p>
-        <p class="text-xs font-mono text-slate-500 mt-1" id="submissions-dataset"></p>
+        <p class="text-xs font-mono text-slate-400 mt-1 break-words" id="submissions-dataset"></p>
       </div>
-      <div class="glass-card rounded-2xl p-5 overflow-x-auto" id="submissions-container"></div>
+      <p id="submissions-scroll-hint" class="text-[11px] text-slate-400">Scroll horizontally to see all columns — the region is keyboard focusable.</p>
+      <div id="submissions-scroll" role="region" aria-label="Public submissions table" aria-describedby="submissions-scroll-hint" tabindex="0" class="glass-card rounded-2xl p-3 sm:p-5 scroll-region">
+        <div id="submissions-container"></div>
+      </div>
     </section>
 
     <!-- Head-to-Head Comparison Section -->
     <section class="space-y-6 pt-6" id="head-to-head">
-      <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
-        <div>
-          <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+      <div class="border-b border-slate-800 pb-3 flex flex-wrap items-center justify-between gap-2">
+        <div class="min-w-0">
+          <h2 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2 break-words">
             ⚡ Direct Validation Suite (Head-to-Head)
           </h2>
           <p class="text-sm text-slate-400 mt-1">
             Exact tasks executed in identical sandboxes with hidden assertions and cross-family review.
           </p>
         </div>
-        <span class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20 font-mono">100% Deterministic</span>
+        <span class="shrink-0 text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20 font-mono">100% Deterministic</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="tasks-container">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="tasks-container">
         <!-- Task cards injected by JavaScript -->
       </div>
     </section>
@@ -217,28 +279,28 @@
     <!-- Methodology Section -->
     <section class="space-y-6 pt-6" id="methodology">
       <div class="border-b border-slate-800 pb-3">
-        <h2 class="text-2xl font-bold text-white">🔬 Evaluation Methodology & Principles</h2>
+        <h2 class="text-xl sm:text-2xl font-bold text-white">🔬 Evaluation Methodology &amp; Principles</h2>
         <p class="text-sm text-slate-400 mt-1">Built to prevent benchmark gaming and evaluate true autonomous software engineering.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-card rounded-xl p-6 space-y-3">
-          <div class="text-indigo-400 text-xl font-bold">1. Zero-Leakage Verifier</div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div class="glass-card rounded-xl p-4 sm:p-6 space-y-3 min-w-0">
+          <div class="text-indigo-400 text-xl font-bold break-words">1. Zero-Leakage Verifier</div>
           <p class="text-slate-400 text-sm leading-relaxed">
             Models never receive the acceptance tests in their context. Acceptance tests are mounted into an isolated git worktree only during evaluation phase. A score of 100% test pass is mandatory.
           </p>
         </div>
-        <div class="glass-card rounded-xl p-6 space-y-3">
-          <div class="text-sky-400 text-xl font-bold">2. Cross-Family Review</div>
+        <div class="glass-card rounded-xl p-4 sm:p-6 space-y-3 min-w-0">
+          <div class="text-sky-400 text-xl font-bold break-words">2. Cross-Family Review</div>
           <p class="text-slate-400 text-sm leading-relaxed">
             Solutions written by Claude are reviewed by Codex or GPT; solutions by Codex are reviewed by Sonnet. Reviewers are calibrated for strictness bias and accuracy against human verification.
           </p>
         </div>
-        <div class="glass-card rounded-xl p-6 space-y-3">
-          <div class="text-emerald-400 text-xl font-bold">3. True Cost-per-Pass</div>
+        <div class="glass-card rounded-xl p-4 sm:p-6 space-y-3 min-w-0">
+          <div class="text-emerald-400 text-xl font-bold break-words">3. True Cost-per-Pass</div>
           <p class="text-slate-400 text-sm leading-relaxed">
             Measuring total expenditure across both successful and failed attempts:
-            <code class="block mt-2 p-2 bg-slate-900 rounded text-xs font-mono text-emerald-300">Cost/Pass = Total API USD / Successful Runs</code>
+            <code class="block mt-2 p-2 bg-slate-900 rounded text-xs font-mono text-emerald-300 break-anywhere">Cost/Pass = Total API USD / Successful Runs</code>
           </p>
         </div>
       </div>
@@ -246,9 +308,12 @@
   </main>
 
   <!-- Model Detail Modal -->
-  <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
-    <div class="glass-card bg-slate-900 border border-slate-700 max-w-xl w-full rounded-2xl p-6 space-y-5 shadow-2xl relative">
-      <button id="modal-close" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">✕</button>
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-2 sm:p-4 bg-black/70 backdrop-blur-sm hidden">
+    <div id="modal-panel" role="group" aria-label="Model details" tabindex="0" class="glass-card bg-slate-900 border border-slate-700 max-w-xl w-full rounded-t-2xl sm:rounded-2xl p-5 sm:p-6 space-y-5 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="sticky top-0 z-10 flex items-start justify-between gap-3 bg-slate-900">
+        <h2 id="modal-title" class="text-lg sm:text-2xl font-bold text-white break-words">Model details</h2>
+        <button id="modal-close" type="button" aria-label="Close model details" class="inline-flex items-center justify-center w-11 h-11 shrink-0 -mt-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition text-xl leading-none">✕</button>
+      </div>
       <div id="modal-content">
         <!-- Injected by JS -->
       </div>
@@ -256,8 +321,8 @@
   </div>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-xs text-slate-500">
-    <p>DevMatrix · Open Evaluation Framework · Maintained by <a href="https://github.com/Mischellin" class="text-indigo-400 hover:underline">Mischellin</a></p>
+  <footer class="border-t border-slate-900 bg-slate-950 py-8 text-center text-xs text-slate-400 px-4">
+    <p class="break-words">DevMatrix · Open Evaluation Framework · Maintained by <a href="https://github.com/Mischellin" class="inline-flex items-center min-h-11 text-indigo-400 hover:underline">Mischellin</a></p>
   </footer>
 
   <!-- Application Logic -->
@@ -267,6 +332,15 @@
     let ratingsData = null;
     let modelsData = null;
     let benchmarksData = null;
+    // Версия, чьи данные сейчас лежат в benchmarksData (отличается от currentVersion, пока идёт загрузка).
+    let loadedVersion = null;
+    let datasetLoading = false;
+    let datasetError = null;
+    let datasetLoadToken = 0;
+    let tasksRenderToken = 0;
+    let submissionsRenderToken = 0;
+    let modalLastFocused = null;
+    let modalScrollY = 0;
 
     // Dataset versions: each points to a separate benchmark runs snapshot (two leaderboards).
     const DATASET_VERSIONS = {
@@ -345,14 +419,29 @@
       return DEFAULT_VERSION;
     }
 
-    async function loadBenchmarks() {
-      try {
-        const bRes = await fetch(DATASET_VERSIONS[currentVersion].file).then(r => r.json()).catch(() => fallbackBenchmarks);
-        benchmarksData = bRes || fallbackBenchmarks;
-      } catch (e) {
-        benchmarksData = fallbackBenchmarks;
-      }
+    async function loadBenchmarks(version) {
+      const target = version || currentVersion;
+      // Guard от гонки: последний запрос выигрывает, устаревший ответ игнорируется.
+      const token = ++datasetLoadToken;
+      datasetLoading = true;
       updateDatasetUI();
+      try {
+        const res = await fetch(DATASET_VERSIONS[target].file);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        if (token !== datasetLoadToken) return false;
+        benchmarksData = json || fallbackBenchmarks;
+        loadedVersion = target;
+        datasetError = null;
+      } catch (e) {
+        if (token !== datasetLoadToken) return false;
+        benchmarksData = fallbackBenchmarks;
+        loadedVersion = target;
+        datasetError = (e && e.message) ? e.message : 'load failed';
+      }
+      datasetLoading = false;
+      updateDatasetUI();
+      return true;
     }
 
     // Пересчитывает бейдж, саб-строку Submissions и KPI из загруженного датасета.
@@ -361,9 +450,11 @@
       const models = new Set();
       (benchmarksData || []).forEach(t => (t.runs || []).forEach(r => models.add(r.model_name)));
       const label = DATASET_VERSIONS[currentVersion].label;
+      const loadedLabel = DATASET_VERSIONS[loadedVersion || currentVersion].label;
 
       document.querySelectorAll('.version-btn').forEach(b => {
         const active = b.dataset.version === currentVersion;
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
         b.classList.toggle('bg-indigo-600', active);
         b.classList.toggle('text-white', active);
         b.classList.toggle('shadow-sm', active);
@@ -373,17 +464,35 @@
       });
 
       const badge = document.getElementById('dataset-badge');
-      if (badge) badge.textContent = `${label} · ${models.size} models · ${runs} runs`;
+      const retry = document.getElementById('dataset-retry');
+      const kpi = document.getElementById('kpi-frontier-models');
+
+      if (badge) {
+        if (datasetError) {
+          badge.textContent = `⚠ ${label}: dataset not loaded (${datasetError})`;
+          badge.classList.add('text-rose-300');
+          badge.classList.remove('text-slate-400');
+        } else if (datasetLoading) {
+          badge.textContent = `⏳ ${label} — loading…`;
+          badge.classList.remove('text-rose-300');
+          badge.classList.add('text-slate-400');
+        } else {
+          badge.textContent = `${loadedLabel} · ${models.size} models · ${runs} runs`;
+          badge.classList.remove('text-rose-300');
+          badge.classList.add('text-slate-400');
+        }
+      }
+      if (retry) retry.classList.toggle('hidden', !(datasetError && !datasetLoading));
+      // Валидный пустой датасет — это 0 моделей, а не подстановка прошлого дефолта.
+      if (kpi && !datasetLoading) kpi.textContent = datasetError ? '—' : models.size;
 
       const sub = document.getElementById('submissions-dataset');
-      if (sub) sub.textContent = `Dataset: ${label}`;
-
-      const kpi = document.getElementById('kpi-frontier-models');
-      if (kpi) kpi.textContent = models.size || 10;
+      if (sub) sub.textContent = datasetError ? `Dataset: ${label} — not loaded` : `Dataset: ${loadedLabel}`;
     }
 
     async function init() {
       currentVersion = getInitialVersion();
+      loadedVersion = currentVersion;
       try {
         const [rRes, mRes] = await Promise.all([
           fetch('data/ratings.json').then(r => r.json()).catch(() => fallbackRatings),
@@ -409,8 +518,9 @@
       if (location.hash !== `#matrix@${version}`) {
         history.replaceState(null, '', `#matrix@${version}`);
       }
-      updateDatasetUI();
-      await loadBenchmarks();
+      // Если пока грузится другая версия, её результат не должен перерисовать страницу.
+      const loaded = await loadBenchmarks(version);
+      if (!loaded) return;
       renderTasks();
       renderSubmissions();
     }
@@ -472,32 +582,38 @@
         }
 
         tr.innerHTML = `
-          <td class="py-4 px-6">
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono text-slate-500 w-4">${idx + 1}</span>
-              <div>
-                <div class="font-bold text-white group-hover:text-indigo-400 transition">${m.name}</div>
-                <div class="text-xs text-slate-400">${m.provider}</div>
+          <td class="py-4 px-3 sm:px-6">
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="text-xs font-mono text-slate-400 w-4 shrink-0">${idx + 1}</span>
+              <div class="min-w-0">
+                <div class="font-bold text-white group-hover:text-indigo-400 transition break-anywhere">${esc(m.name)}</div>
+                <div class="text-xs text-slate-400 break-anywhere">${esc(m.provider)}</div>
               </div>
             </div>
           </td>
-          <td class="py-4 px-4 text-center">
-            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-              ${avgScore}
+          <td class="py-4 px-2 sm:px-4 text-center">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+              ${esc(avgScore)}
             </span>
           </td>
-          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['Python'])}</td>
-          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['Web'])}</td>
-          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['Infra'])}</td>
-          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['1С'])}</td>
-          <td class="py-4 px-4 text-center font-mono">${badge(m.domains['Тексты'])}</td>
-          <td class="py-4 px-4 text-center text-xs font-mono text-slate-400">${ctxStr}</td>
-          <td class="py-4 px-6 text-right">
-            <span class="text-xs text-indigo-400 hover:text-indigo-300 underline font-semibold">Inspect →</span>
+          <td class="py-4 px-2 sm:px-4 text-center font-mono">${badge(m.domains['Python'])}</td>
+          <td class="py-4 px-2 sm:px-4 text-center font-mono">${badge(m.domains['Web'])}</td>
+          <td class="py-4 px-2 sm:px-4 text-center font-mono">${badge(m.domains['Infra'])}</td>
+          <td class="py-4 px-2 sm:px-4 text-center font-mono">${badge(m.domains['1С'])}</td>
+          <td class="py-4 px-2 sm:px-4 text-center font-mono">${badge(m.domains['Тексты'])}</td>
+          <td class="py-4 px-2 sm:px-4 text-center text-xs font-mono text-slate-400">${esc(ctxStr)}</td>
+          <td class="py-4 px-3 sm:px-6 text-right whitespace-nowrap">
+            <button type="button" data-model-id="${esc(m.id)}" class="inspect-btn inline-flex items-center justify-center min-h-11 min-w-11 px-2 rounded-lg text-xs font-semibold text-indigo-400 hover:text-indigo-300 hover:bg-indigo-500/10 underline">Inspect →</button>
           </td>
         `;
         tbody.appendChild(tr);
       });
+
+      if (!models.length) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td colspan="9" class="px-4 py-8 text-center text-sm text-slate-400 break-anywhere">No models match “${esc(searchVal)}”. Try another model name or provider.</td>`;
+        tbody.appendChild(tr);
+      }
     }
 
     // Названия моделей приходят из PR с результатами, поэтому в разметку попадают только экранированными.
@@ -506,10 +622,18 @@
 
     async function renderSubmissions() {
       const box = document.getElementById('submissions-container');
+      // Генерация инвалидируется сразу при старте запроса: устаревший ответ не перерисует таблицу.
+      const token = ++submissionsRenderToken;
       let suite = 0;
+      let manifestError = null;
       try {
-        suite = ((await fetch('tasks/manifest.json').then(r => r.json())).tasks || []).length;
-      } catch (e) {}
+        const res = await fetch('tasks/manifest.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        suite = (((await res.json()).tasks) || []).length;
+      } catch (e) {
+        manifestError = (e && e.message) ? e.message : 'load failed';
+      }
+      if (token !== submissionsRenderToken) return;
       // Сводка по моделям из submissions/: устаревшие прогоны (задача с тех пор менялась) не считаются.
       const byModel = Object.create(null); // имена вроде constructor или __proto__ не должны попадать в прототип
       (benchmarksData || []).forEach(t => (t.runs || []).forEach(r => {
@@ -522,19 +646,26 @@
         m.min += r.duration_min || 0;
       }));
       const rows = Object.entries(byModel).sort((a, b) => b[1].ok - a[1].ok || b[1].tests - a[1].tests || a[0].localeCompare(b[0]));
+      if (manifestError) {
+        box.innerHTML = `<div class="text-sm text-rose-300 py-4">Task list unavailable — manifest not loaded (${esc(manifestError)}).</div>`;
+        return;
+      }
       if (!rows.length) {
-        box.innerHTML = '<div class="text-sm text-slate-500 py-4">No public submissions yet.</div>';
+        // Ошибка загрузки датасета и валидный пустой датасет — это разные состояния.
+        box.innerHTML = datasetError
+          ? '<div class="text-sm text-rose-300 py-4">Results unavailable — dataset not loaded. Retry above.</div>'
+          : '<div class="text-sm text-slate-400 py-4">No public submissions yet.</div>';
         return;
       }
       box.innerHTML = `
-        <table class="w-full text-left text-sm">
+        <table class="w-full min-w-[520px] text-left text-sm">
           <thead class="text-xs uppercase text-slate-400 border-b border-slate-800">
-            <tr><th class="py-2 pr-4">#</th><th class="py-2 pr-4">Model</th><th class="py-2 pr-4">Tasks passed</th><th class="py-2 pr-4">Tests passed</th><th class="py-2 pr-4">Agent time</th></tr>
+            <tr><th scope="col" class="py-2 pr-4 whitespace-nowrap">#</th><th scope="col" class="py-2 pr-4 whitespace-nowrap">Model</th><th scope="col" class="py-2 pr-4 whitespace-nowrap">Tasks passed</th><th scope="col" class="py-2 pr-4 whitespace-nowrap">Tests passed</th><th scope="col" class="py-2 pr-4 whitespace-nowrap">Agent time</th></tr>
           </thead>
           <tbody>${rows.map(([name, m], i) => `
             <tr class="border-b border-slate-800/60 last:border-0">
-              <td class="py-2 pr-4 text-slate-500">${i + 1}</td>
-              <td class="py-2 pr-4"><span class="font-semibold text-slate-200">${esc(name)}</span>${m.provider ? ` <span class="text-slate-500">${esc(m.provider)}</span>` : ''}</td>
+              <td class="py-2 pr-4 text-slate-400">${i + 1}</td>
+              <td class="py-2 pr-4"><span class="font-semibold text-slate-200">${esc(name)}</span>${m.provider ? ` <span class="text-slate-400">${esc(m.provider)}</span>` : ''}</td>
               <td class="py-2 pr-4 font-mono font-bold ${m.ok === (suite || m.n) ? 'text-emerald-400' : 'text-slate-200'}">${m.ok}/${suite || m.n}</td>
               <td class="py-2 pr-4 font-mono text-slate-300">${m.tests}/${m.all}</td>
               <td class="py-2 pr-4 font-mono text-slate-400">${m.min.toFixed(1)} min</td>
@@ -545,56 +676,74 @@
 
     async function renderTasks() {
       const container = document.getElementById('tasks-container');
-      container.innerHTML = '';
-
-      // Список задач берём из манифеста; результаты прогонов (если есть) — из benchmark_runs.json.
+      // Генерация инвалидируется сразу при старте запроса: старый рендер не допишет карточки позже.
+      const token = ++tasksRenderToken;
       let tasks = [];
+      let manifestError = null;
       try {
-        tasks = (await fetch('tasks/manifest.json').then(r => r.json())).tasks || [];
+        const res = await fetch('tasks/manifest.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        tasks = ((await res.json()).tasks) || [];
       } catch (e) {
-        tasks = [];
+        manifestError = (e && e.message) ? e.message : 'load failed';
       }
+      if (token !== tasksRenderToken) return;
       const runsById = Object.fromEntries((benchmarksData || []).map(t => [t.id, t.runs || []]));
+
+      // Карточки собираются в отсоединённый фрагмент и подменяются одним коммитом.
+      const fragment = document.createDocumentFragment();
+      if (manifestError) {
+        const note = document.createElement('div');
+        note.className = 'text-sm text-rose-300 py-4';
+        note.textContent = `Task list unavailable — manifest not loaded (${manifestError}).`;
+        fragment.appendChild(note);
+        container.replaceChildren(fragment);
+        return;
+      }
 
       tasks.forEach(task => {
         const card = document.createElement('div');
-        card.className = 'glass-card rounded-2xl p-5 space-y-4 flex flex-col justify-between';
+        card.className = 'glass-card rounded-2xl p-4 sm:p-5 space-y-4 flex flex-col justify-between min-w-0';
 
         const runs = runsById[task.id] || [];
         let rowsHtml = runs.map(r => `
-          <div class="flex items-center justify-between py-2 border-b border-slate-800/60 last:border-0 text-xs">
-            <div>
-              <div class="font-semibold text-slate-200">${esc(r.model_name)}${r.outdated ? ' <span class="text-amber-400">⚠ outdated</span>' : ''}</div>
-              <div class="text-slate-500">${r.duration_min == null ? '—' : r.duration_min + ' min'} · ${r.total_tokens == null ? '—' : fmtTok(r.total_tokens)}${r.claimed ? ' · claimed by author' : ''}</div>
+          <div class="flex items-center justify-between gap-3 py-2 border-b border-slate-800/60 last:border-0 text-xs min-w-0">
+            <div class="min-w-0">
+              <div class="font-semibold text-slate-200 break-anywhere">${esc(r.model_name)}${r.outdated ? ' <span class="text-amber-400">⚠ outdated</span>' : ''}</div>
+              <div class="text-slate-400 break-anywhere">${r.duration_min == null ? '—' : esc(r.duration_min) + ' min'} · ${r.total_tokens == null ? '—' : esc(fmtTok(r.total_tokens))}${r.claimed ? ' · claimed by author' : ''}</div>
             </div>
-            <div class="text-right">
-              <span class="font-mono font-bold ${r.status === 'PASS' ? 'text-emerald-400' : r.status === 'INVALID' ? 'text-amber-400' : 'text-rose-400'}">${r.passed_tests}/${r.total_tests} ${r.status}${r.status === 'INVALID' ? ' 🚫' : ''}</span>
-              ${r.note ? `<span class="block text-xs text-slate-500 mt-0.5">${esc(r.note)}</span>` : ''}
-              <div class="text-slate-400 font-mono">${r.cost_usd == null ? '—' : '$' + r.cost_usd.toFixed(2)}</div>
+            <div class="text-right min-w-0">
+              <span class="font-mono font-bold ${r.status === 'PASS' ? 'text-emerald-400' : r.status === 'INVALID' ? 'text-amber-400' : 'text-rose-400'}">${esc(r.passed_tests)}/${esc(r.total_tests)} ${esc(r.status)}${r.status === 'INVALID' ? ' 🚫' : ''}</span>
+              ${r.note ? `<span class="block text-xs text-slate-400 mt-0.5 break-anywhere">${esc(r.note)}</span>` : ''}
+              <div class="text-slate-400 font-mono">${r.cost_usd == null ? '—' : '$' + esc(r.cost_usd.toFixed(2))}</div>
             </div>
           </div>
         `).join('');
         if (!rowsHtml) {
-          rowsHtml = '<div class="text-xs text-slate-500 py-2">Results pending: no runs published yet.</div>';
+          // Ошибка загрузки датасета и валидные прогоны без результатов — разные состояния.
+          rowsHtml = datasetError
+            ? '<div class="text-xs text-rose-300 py-2">Results unavailable — dataset not loaded. Retry above.</div>'
+            : '<div class="text-xs text-slate-400 py-2">Results pending: no runs published yet.</div>';
         }
 
         card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
-              <span class="font-mono text-indigo-400">${task.id}</span>
-              <span>${task.domain}</span>
+          <div class="min-w-0">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 mb-1 min-w-0">
+              <span class="font-mono text-indigo-400 break-anywhere">${esc(task.id)}</span>
+              <span class="min-w-0 break-anywhere text-right">${esc(task.domain)}</span>
             </div>
-            <h3 class="text-base font-bold text-white mb-3">${task.title}</h3>
+            <h3 class="text-base font-bold text-white mb-3 break-anywhere">${esc(task.title)}</h3>
             <div class="space-y-1">
               ${rowsHtml}
             </div>
           </div>
           <div class="pt-2 text-right">
-            <span class="text-xs text-slate-500 font-mono">${task.difficulty} · ${task.tests_count} tests incl. hidden</span>
+            <span class="text-xs text-slate-400 font-mono break-anywhere">${esc(task.difficulty)} · ${esc(task.tests_count)} tests incl. hidden</span>
           </div>
         `;
-        container.appendChild(card);
+        fragment.appendChild(card);
       });
+      container.replaceChildren(fragment);
     }
 
     function openModal(modelId) {
@@ -602,36 +751,134 @@
       const cells = ratingsData.cells.filter(c => c.model === modelId && c.role === currentRole);
       const modal = document.getElementById('modal');
       const content = document.getElementById('modal-content');
+      const title = document.getElementById('modal-title');
 
       let domainScores = cells.map(c => `
-        <div class="flex justify-between items-center py-1 text-sm border-b border-slate-800 last:border-0">
-          <span class="text-slate-400">${c.domain}</span>
-          <span class="font-mono font-bold text-indigo-400">${c.rating.toFixed(2)} (obs: ${c.observations})</span>
+        <div class="flex justify-between items-center gap-3 py-1 text-sm border-b border-slate-800 last:border-0">
+          <span class="text-slate-400 break-anywhere">${esc(c.domain)}</span>
+          <span class="font-mono font-bold text-indigo-400">${esc(c.rating.toFixed(2))} (obs: ${esc(c.observations)})</span>
         </div>
       `).join('');
 
       content.innerHTML = `
         <div class="space-y-4">
           <div>
-            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">${meta.provider || 'Provider'}</span>
-            <h2 class="text-2xl font-bold text-white mt-2">${meta.name || modelId}</h2>
-            <p class="text-sm text-slate-400 mt-1">${meta.description || 'Frontier software engineering agent.'}</p>
+            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">${esc(meta.provider || 'Provider')}</span>
+            <p class="text-sm text-slate-400 mt-2 break-anywhere">${esc(meta.description || 'Frontier software engineering agent.')}</p>
           </div>
           <div class="grid grid-cols-2 gap-3 text-xs font-mono bg-slate-950 p-3 rounded-xl border border-slate-800">
-            <div><span class="text-slate-500">Context:</span> <span class="text-white">${meta.context_window ? meta.context_window.toLocaleString() : '128,000'} tokens</span></div>
-            <div><span class="text-slate-500">Input Price:</span> <span class="text-white">$${meta.input_price_per_m || 2.0} / 1M</span></div>
-            <div><span class="text-slate-500">Output Price:</span> <span class="text-white">$${meta.output_price_per_m || 8.0} / 1M</span></div>
-            <div><span class="text-slate-500">Evaluation Role:</span> <span class="text-white uppercase">${currentRole}</span></div>
+            <div class="min-w-0"><span class="text-slate-400">Context:</span> <span class="text-white">${meta.context_window ? esc(meta.context_window.toLocaleString()) : '128,000'} tokens</span></div>
+            <div class="min-w-0"><span class="text-slate-400">Input Price:</span> <span class="text-white">$${esc(meta.input_price_per_m || 2.0)} / 1M</span></div>
+            <div class="min-w-0"><span class="text-slate-400">Output Price:</span> <span class="text-white">$${esc(meta.output_price_per_m || 8.0)} / 1M</span></div>
+            <div class="min-w-0"><span class="text-slate-400">Evaluation Role:</span> <span class="text-white uppercase">${esc(currentRole)}</span></div>
           </div>
           <div>
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Scores by Domain:</h4>
             <div class="glass-card rounded-xl p-3 bg-slate-950/60">
-              ${domainScores || '<p class="text-xs text-slate-500">No domain ratings registered.</p>'}
+              ${domainScores || '<p class="text-xs text-slate-400">No domain ratings registered.</p>'}
             </div>
           </div>
         </div>
       `;
+      if (title) title.textContent = meta.name || modelId;
+      if (modal.classList.contains('hidden')) {
+        modalLastFocused = document.activeElement;
+        modalScrollY = window.scrollY || window.pageYOffset || 0;
+        document.body.style.top = `-${modalScrollY}px`;
+      }
       modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      document.documentElement.classList.add('modal-open');
+      const close = document.getElementById('modal-close');
+      if (close) close.focus();
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      modal.classList.add('hidden');
+      document.body.classList.remove('modal-open');
+      document.documentElement.classList.remove('modal-open');
+      document.body.style.top = '';
+      window.scrollTo(0, modalScrollY);
+      if (modalLastFocused && document.contains(modalLastFocused)) {
+        modalLastFocused.focus();
+      }
+      modalLastFocused = null;
+    }
+
+    // Ловушка фокуса: Tab не должен выводить фокус за пределы диалога.
+    function trapModalFocus(e) {
+      const modal = document.getElementById('modal');
+      const items = Array.from(modal.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )).filter(el => el.getClientRects().length > 0);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (!modal.contains(document.activeElement)) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    function syncPressed(selector, activeButton) {
+      document.querySelectorAll(selector).forEach(b => {
+        b.setAttribute('aria-pressed', b === activeButton ? 'true' : 'false');
+      });
+    }
+
+    function closeMobileNav(restoreFocus) {
+      const toggle = document.getElementById('mobile-nav-toggle');
+      const nav = document.getElementById('primary-navigation');
+      if (!toggle || !nav) return;
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.add('hidden');
+      if (restoreFocus) toggle.focus();
+    }
+
+    function handleGlobalKeydown(e) {
+      const modal = document.getElementById('modal');
+      const modalOpen = modal && !modal.classList.contains('hidden');
+      const isShortcut = (e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K');
+
+      if (modalOpen) {
+        // Пока открыт диалог, фокус не должен уходить наружу (в т.ч. по ⌘K).
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closeModal();
+          return;
+        }
+        if (e.key === 'Tab') {
+          trapModalFocus(e);
+          return;
+        }
+        if (isShortcut) {
+          e.preventDefault();
+          return;
+        }
+        return;
+      }
+
+      if (e.key === 'Escape') {
+        closeMobileNav(true);
+        return;
+      }
+      if (isShortcut) {
+        e.preventDefault();
+        const input = document.getElementById('model-search');
+        if (input) {
+          input.focus();
+          input.select();
+        }
+      }
     }
 
     function setupEventListeners() {
@@ -644,6 +891,7 @@
           });
           btn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
           btn.classList.remove('text-slate-400');
+          syncPressed('.role-btn', btn);
           currentRole = btn.dataset.role;
           renderMatrix();
         });
@@ -663,6 +911,7 @@
           });
           btn.classList.add('bg-indigo-500/20', 'text-indigo-300', 'border-indigo-500/30');
           btn.classList.remove('bg-slate-900', 'text-slate-400', 'border-slate-800');
+          syncPressed('.domain-pill', btn);
           currentDomain = btn.dataset.domain;
           renderMatrix();
         });
@@ -673,13 +922,72 @@
         renderMatrix();
       });
 
+      // Inspect: настоящая кнопка в строке матрицы (клавиатурный путь к модалке).
+      const tbody = document.getElementById('matrix-tbody');
+      if (tbody) {
+        tbody.addEventListener('click', (e) => {
+          const btn = e.target.closest('.inspect-btn[data-model-id]');
+          if (!btn) return;
+          e.stopPropagation();
+          openModal(btn.dataset.modelId);
+        }, true);
+      }
+
+      // Mobile navigation
+      const navToggle = document.getElementById('mobile-nav-toggle');
+      const nav = document.getElementById('primary-navigation');
+      if (navToggle && nav) {
+        navToggle.addEventListener('click', () => {
+          const open = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+          nav.classList.toggle('hidden', open);
+        });
+        nav.addEventListener('click', (e) => {
+          const link = e.target.closest('a[href]');
+          if (!link) return;
+          const href = link.getAttribute('href') || '';
+          closeMobileNav(false);
+          if (href.startsWith('#')) {
+            // Скрытая ссылка теряет фокус (уходит на body) — переносим фокус на цель якоря.
+            const target = document.getElementById(href.slice(1));
+            if (target) {
+              if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+              target.focus({ preventScroll: true });
+            }
+          } else {
+            // Внешняя ссылка (GitHub) открывается в новой вкладке — фокус возвращаем триггеру.
+            navToggle.focus();
+          }
+        });
+        document.addEventListener('click', (e) => {
+          if (navToggle.getAttribute('aria-expanded') !== 'true') return;
+          if (navToggle.contains(e.target) || nav.contains(e.target)) return;
+          closeMobileNav(false);
+        });
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 768) closeMobileNav(false);
+        });
+      }
+
       // Modal Close
-      document.getElementById('modal-close').addEventListener('click', () => {
-        document.getElementById('modal').classList.add('hidden');
-      });
+      document.getElementById('modal-close').addEventListener('click', () => closeModal());
       document.getElementById('modal').addEventListener('click', (e) => {
-        if (e.target.id === 'modal') document.getElementById('modal').classList.add('hidden');
+        if (e.target.id === 'modal') closeModal();
       });
+
+      // Retry неудачной загрузки датасета
+      const retry = document.getElementById('dataset-retry');
+      if (retry) {
+        retry.addEventListener('click', async () => {
+          const loaded = await loadBenchmarks(currentVersion);
+          if (!loaded) return;
+          renderTasks();
+          renderSubmissions();
+        });
+      }
+
+      // Глобальные клавиши: Escape, ловушка фокуса в модалке, ⌘K / Ctrl+K
+      document.addEventListener('keydown', handleGlobalKeydown);
     }
 
     document.addEventListener('DOMContentLoaded', init);
